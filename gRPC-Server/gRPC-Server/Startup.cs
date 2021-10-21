@@ -1,4 +1,4 @@
-﻿using gRPC_Server.Models;
+﻿using gRPCServer.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace gRPC_Server
+namespace gRPCServer
 {
     public class Startup
     {
@@ -44,7 +44,8 @@ namespace gRPC_Server
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<GreeterService>().EnableGrpcWeb(); 
+                endpoints.MapGrpcService<GreeterService>().EnableGrpcWeb();
+                endpoints.MapGrpcService<WozObjectService>().EnableGrpcWeb();
 
                 endpoints.MapGet("/", async context =>
                 {

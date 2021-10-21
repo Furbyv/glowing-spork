@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace gRPC_Server.Models
+namespace gRPCServer.Models
 {
     public class WozObject
     {

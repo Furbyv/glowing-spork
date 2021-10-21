@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pfNLiQZr1wwHYOqAfm5PusEp12Rh2xpn/dgttSYuH2/Mi1Rd80q5iJ0Lg85gKUHVsm7TKGLnksU45wBjOkWDXg==",
+  "dgSpecHash": "Zhjh/JmnQ2A5cxp/nPQ0r7Sg1/0BDVy38evtUevZX4m0yL/X6T9WcXLwBVzbLcIGDh+2XAXg9BBNHSCfDNKqVg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fbver\\source\\repos\\glowing-spork\\gRPC-Server\\gRPC-Server\\gRPC-Server.csproj",
+  "projectFilePath": "C:\\Users\\fbver\\source\\repos\\glowing-spork\\gRPC-Server\\gRPC-Server\\gRPCServer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\fbver\\.nuget\\packages\\google.protobuf\\3.18.0\\google.protobuf.3.18.0.nupkg.sha512",
     "C:\\Users\\fbver\\.nuget\\packages\\grpc.aspnetcore\\2.40.0\\grpc.aspnetcore.2.40.0.nupkg.sha512",

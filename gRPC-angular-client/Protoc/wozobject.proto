@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPCServer.Protos";
+
+package wozobject;
+
+// The greeting service definition.
+service WozObjects {
+  // Sends a greeting
+  rpc GetWozObject (WozObjectRequestById) returns (WozObjectReply);
+}
+
+// The request message containing the user's name.
+message WozObjectRequestById {
+  int64 wozobjectnummer = 1;
+}
+
+// The response message containing the greetings.
+message WozObjectReply {
+  int64 wozobjectnummer = 1;
+}

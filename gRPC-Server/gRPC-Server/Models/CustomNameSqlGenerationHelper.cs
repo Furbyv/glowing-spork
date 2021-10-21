@@ -1,12 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace gRPC_Server.Models
+namespace gRPCServer.Models
 {
     public class CustomNameSqlGenerationHelper : RelationalSqlGenerationHelper
     {

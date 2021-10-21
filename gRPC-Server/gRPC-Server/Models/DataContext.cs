@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace gRPC_Server.Models
+namespace gRPCServer.Models
 {
     public class DataContext : DbContext
     {

@@ -1111,9 +1111,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\fbver\\source\\repos\\glowing-spork\\gRPC-Server\\gRPC-Server\\gRPC-Server.csproj",
-      "projectName": "gRPC-Server",
-      "projectPath": "C:\\Users\\fbver\\source\\repos\\glowing-spork\\gRPC-Server\\gRPC-Server\\gRPC-Server.csproj",
+      "projectUniqueName": "C:\\Users\\fbver\\source\\repos\\glowing-spork\\gRPC-Server\\gRPC-Server\\gRPCServer.csproj",
+      "projectName": "gRPCServer",
+      "projectPath": "C:\\Users\\fbver\\source\\repos\\glowing-spork\\gRPC-Server\\gRPC-Server\\gRPCServer.csproj",
       "packagesPath": "C:\\Users\\fbver\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\fbver\\source\\repos\\glowing-spork\\gRPC-Server\\gRPC-Server\\obj\\",
       "projectStyle": "PackageReference",
