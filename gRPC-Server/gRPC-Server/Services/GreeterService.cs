@@ -1,4 +1,5 @@
 using Grpc.Core;
+using gRPC_Server.Models;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,19 @@ namespace gRPC_Server
     public class GreeterService : Greeter.GreeterBase
     {
         private readonly ILogger<GreeterService> _logger;
-        public GreeterService(ILogger<GreeterService> logger)
+        readonly DataContext _dbContext;
+        public GreeterService(ILogger<GreeterService> logger, DataContext dbContext)
         {
+            _dbContext = dbContext;
             _logger = logger;
         }
 
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
+            var wozobject = _dbContext.WozObjects.Where(w => w.WozObjectNummer == 1).SingleOrDefault();
             return Task.FromResult(new HelloReply
             {
-                Message = "Hello " + request.Name
+                Message = "Hello " + wozobject.WozObjectNummer+ request.Name
             });
         }
     }

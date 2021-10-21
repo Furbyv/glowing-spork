@@ -30,3 +30,10 @@ C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net5
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net5.0\ref\gRPC-Server.dll
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net5.0\gRPC-Server.pdb
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net5.0\gRPC-Server.genruntimeconfig.cache
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net5.0\Npgsql.dll
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll

@@ -47,6 +47,10 @@
             "Grpc.AspNetCore.Web": {
               "target": "Package",
               "version": "[2.40.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[5.0.10, )"
             }
           },
           "imports": [
