@@ -1,9 +1,25 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace gRPCServer.Models
+#nullable disable
+
+namespace gRPCServer
 {
-    public class WozObject
+    public partial class Wozobject
     {
-        [Key] public long WozObjectNummer { get; set; }
+        public Wozobject()
+        {
+            Wozdeelobjects = new HashSet<Wozdeelobject>();
+            Wozobjectproperties = new HashSet<Wozobjectproperty>();
+        }
+
+        [Key]
+        public long Wozobjectnummer { get; set; }
+        public DateTime? Startdate { get; set; }
+        public DateTime? Enddate { get; set; }
+
+        public virtual ICollection<Wozdeelobject> Wozdeelobjects { get; set; }
+        public virtual ICollection<Wozobjectproperty> Wozobjectproperties { get; set; }
     }
 }

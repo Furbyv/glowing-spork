@@ -4,6 +4,7 @@ using gRPCServer.Protos;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
 
 namespace gRPCServer
 {
@@ -17,13 +18,25 @@ namespace gRPCServer
             _logger = logger;
         }
 
-        public override Task<WozObjectReply> GetWozObject(WozObjectRequestById request, ServerCallContext context)
+        public override Task<WozObjectsReply> GetWozObject(WozObjectRequestById request, ServerCallContext context)
         {
-            var wozobject = _dbContext.WozObjects.Where(w => w.WozObjectNummer == request.Wozobjectnummer).SingleOrDefault();
-            return Task.FromResult(new WozObjectReply
+            var wozobjects = _dbContext.Wozobjectproperties.Where(w => w.Wozobjectnummer.ToString()
+            .Contains(request.Wozobjectnummer.ToString())).Where(p => DateTime.Now >= p.Startdate && DateTime.Now >= p.Enddate).Select(w => new WozObjectReply
             {
-                Wozobjectnummer = wozobject.WozObjectNummer
-            });
+                Wozobjectnummer = (long)w.Wozobjectnummer,
+                Gemeentenaam = "Test", //Add foreign key to gemeente?
+                Straatnaam = w.Straatnaam,
+                Huisnummer = (int)w.Huisnummer,
+                Huisletter = w.Huisletter,
+                Huisnummertoevoeging = w.Huisnummertoevoeging,
+                Postcode = w.Postcode,
+                Soortobjectcode = w.Soortobjectcode
+            }).ToList();
+
+            var reply = new WozObjectsReply();
+            reply.Wozobjects.Add(wozobjects);
+
+            return Task.FromResult(reply);
         }
     }
 }

@@ -1,4 +1,5 @@
 syntax = "proto3";
+import "google/protobuf/wrappers.proto";
 
 option csharp_namespace = "gRPCServer.Protos";
 
@@ -7,7 +8,7 @@ package wozobject;
 // The greeting service definition.
 service WozObjects {
   // Sends a greeting
-  rpc GetWozObject (WozObjectRequestById) returns (WozObjectReply);
+  rpc GetWozObject (WozObjectRequestById) returns (WozObjectsReply);
 }
 
 // The request message containing the user's name.
@@ -15,7 +16,18 @@ message WozObjectRequestById {
   int64 wozobjectnummer = 1;
 }
 
+message WozObjectsReply {
+    repeated WozObjectReply wozobjects = 1;
+}
+
 // The response message containing the greetings.
 message WozObjectReply {
   int64 wozobjectnummer = 1;
+  google.protobuf.StringValue gemeentenaam = 2;
+  google.protobuf.StringValue straatnaam = 3;
+  int32 huisnummer = 4;
+  google.protobuf.StringValue huisletter = 5;
+  google.protobuf.StringValue huisnummertoevoeging = 6;
+  google.protobuf.StringValue postcode = 7;
+  google.protobuf.StringValue soortobjectcode = 8;
 }

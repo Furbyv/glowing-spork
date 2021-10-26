@@ -20,10 +20,10 @@ namespace gRPCServer
 
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
-            var wozobject = _dbContext.WozObjects.Where(w => w.WozObjectNummer == 1).SingleOrDefault();
+            var wozobject = _dbContext.Wozobjects.Where(w => w.Wozobjectnummer == 1).SingleOrDefault();
             return Task.FromResult(new HelloReply
             {
-                Message = "Hello " + wozobject.WozObjectNummer+ request.Name
+                Message = "Hello " + wozobject.Wozobjectnummer+ request.Name
             });
         }
     }
