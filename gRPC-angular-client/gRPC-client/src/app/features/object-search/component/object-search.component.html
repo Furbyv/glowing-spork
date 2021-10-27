@@ -1,0 +1,35 @@
+<mat-card>
+  <div class="row">
+    <mat-form-field class="search" appearance="fill">
+      <mat-label>{{ "search-object-by-number" | transloco }}</mat-label>
+      <input
+        matInput
+        type="number"
+        #search
+        maxlength="maxCharacters"
+        [placeholder]="'search-object-by-number' | transloco"
+      />
+      <mat-hint align="end">{{ search.value.length }} / 12</mat-hint>
+    </mat-form-field>
+    <button
+      mat-icon-button
+      color="primary"
+      class="search-button"
+      aria-label="search button"
+      (click)="onSearch(search.value)"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+  <ng-container *ngIf="wozobjects$ | async as Wozobjects">
+    <mat-action-list>
+      <ng-container *ngFor="let wozobject of Wozobjects">
+        <mat-list-item>
+          <span mat-line> {{ wozobject.wozobjectnummer }}</span>
+          {{ wozobject.straatnaam }}
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </ng-container>
+    </mat-action-list>
+  </ng-container>
+</mat-card>

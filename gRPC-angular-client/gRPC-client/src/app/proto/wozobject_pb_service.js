@@ -16,7 +16,7 @@ WozObjects.GetWozObject = {
   requestStream: false,
   responseStream: false,
   requestType: wozobject_pb.WozObjectRequestById,
-  responseType: wozobject_pb.WozObjectReply
+  responseType: wozobject_pb.WozObjectsReply
 };
 
 exports.WozObjects = WozObjects;

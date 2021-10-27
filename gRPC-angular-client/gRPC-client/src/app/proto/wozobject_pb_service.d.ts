@@ -10,7 +10,7 @@ type WozObjectsGetWozObject = {
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof wozobject_pb.WozObjectRequestById;
-  readonly responseType: typeof wozobject_pb.WozObjectReply;
+  readonly responseType: typeof wozobject_pb.WozObjectsReply;
 };
 
 export class WozObjects {
@@ -53,11 +53,11 @@ export class WozObjectsClient {
   getWozObject(
     requestMessage: wozobject_pb.WozObjectRequestById,
     metadata: grpc.Metadata,
-    callback: (error: ServiceError|null, responseMessage: wozobject_pb.WozObjectReply|null) => void
+    callback: (error: ServiceError|null, responseMessage: wozobject_pb.WozObjectsReply|null) => void
   ): UnaryResponse;
   getWozObject(
     requestMessage: wozobject_pb.WozObjectRequestById,
-    callback: (error: ServiceError|null, responseMessage: wozobject_pb.WozObjectReply|null) => void
+    callback: (error: ServiceError|null, responseMessage: wozobject_pb.WozObjectsReply|null) => void
   ): UnaryResponse;
 }
 

@@ -1,6 +1,21 @@
+@import "variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .toolbar-spacer {
   flex: 1 1 auto;
 }
-.example-icon {
-  padding: 0 14px;
+
+mat-toolbar {
+  height: $toolbar-height;
+}
+
+.page-container {
+  flex: 1;
+  margin: $default-gap;
+  background-color: #fafafa;
 }

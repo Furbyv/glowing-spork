@@ -1,0 +1,46 @@
+@use "~@angular/material" as mat;
+@import "~@angular/material/theming";
+
+$primary-colors: (
+  main: #0084cc,
+  lighter: #c2e2f2,
+  darker: #2081c4,
+  200: #0084cc,
+  contrast: (
+    main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  ),
+);
+
+$accent-colors: (
+  main: #f58025,
+  lighter: #fde0cb,
+  darker: #f37c37,
+  200: #f58025,
+  contrast: (
+    main: $dark-primary-text,
+    lighter: $dark-primary-text,
+    darker: $dark-primary-text,
+  ),
+);
+
+$my-primary: mat.define-palette($primary-colors, main, lighter, darker);
+$my-accent: mat.define-palette($accent-colors, main, lighter, darker);
+$my-warn: mat.define-palette(mat.$red-palette);
+
+$text-main: #515151;
+$text-header: #065494;
+
+$my-theme: mat.define-light-theme($my-primary, $my-accent, $my-warn);
+
+$primary-main: map_get($primary-colors, main);
+$primary-lighter: map_get($primary-colors, lighter);
+$primary-darker: map_get($primary-colors, darker);
+
+$accent-main: map_get($primary-colors, main);
+$accent-lighter: map_get($primary-colors, lighter);
+$accent-darker: map_get($primary-colors, darker);
+
+$default-gap: 16px;
+$toolbar-height: 64px;

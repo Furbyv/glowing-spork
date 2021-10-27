@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~12.2.11",
     "@angular/router": "~12.2.11",
     "@improbable-eng/grpc-web": "^0.14.1",
+    "@ngneat/transloco": "^3.0.6",
     "@types/google-protobuf": "^3.15.5",
     "google-protobuf": "^3.19.0",
     "protoc": "^1.0.4",

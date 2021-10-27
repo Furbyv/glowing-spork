@@ -24,17 +24,28 @@ namespace gRPCServer.Protos {
     static WozobjectReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChZQcm90b3Mvd296b2JqZWN0LnByb3RvEgl3b3pvYmplY3QiLwoUV296T2Jq",
-            "ZWN0UmVxdWVzdEJ5SWQSFwoPd296b2JqZWN0bnVtbWVyGAEgASgDIikKDldv",
-            "ek9iamVjdFJlcGx5EhcKD3dvem9iamVjdG51bW1lchgBIAEoAzJYCgpXb3pP",
-            "YmplY3RzEkoKDEdldFdvek9iamVjdBIfLndvem9iamVjdC5Xb3pPYmplY3RS",
-            "ZXF1ZXN0QnlJZBoZLndvem9iamVjdC5Xb3pPYmplY3RSZXBseUIUqgIRZ1JQ",
-            "Q1NlcnZlci5Qcm90b3NiBnByb3RvMw=="));
+            "ChZQcm90b3Mvd296b2JqZWN0LnByb3RvEgl3b3pvYmplY3QaHmdvb2dsZS9w",
+            "cm90b2J1Zi93cmFwcGVycy5wcm90byIvChRXb3pPYmplY3RSZXF1ZXN0QnlJ",
+            "ZBIXCg93b3pvYmplY3RudW1tZXIYASABKAMiQAoPV296T2JqZWN0c1JlcGx5",
+            "Ei0KCndvem9iamVjdHMYASADKAsyGS53b3pvYmplY3QuV296T2JqZWN0UmVw",
+            "bHki+AIKDldvek9iamVjdFJlcGx5EhcKD3dvem9iamVjdG51bW1lchgBIAEo",
+            "AxIyCgxnZW1lZW50ZW5hYW0YAiABKAsyHC5nb29nbGUucHJvdG9idWYuU3Ry",
+            "aW5nVmFsdWUSMAoKc3RyYWF0bmFhbRgDIAEoCzIcLmdvb2dsZS5wcm90b2J1",
+            "Zi5TdHJpbmdWYWx1ZRISCgpodWlzbnVtbWVyGAQgASgFEjAKCmh1aXNsZXR0",
+            "ZXIYBSABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSOgoUaHVp",
+            "c251bW1lcnRvZXZvZWdpbmcYBiABKAsyHC5nb29nbGUucHJvdG9idWYuU3Ry",
+            "aW5nVmFsdWUSLgoIcG9zdGNvZGUYByABKAsyHC5nb29nbGUucHJvdG9idWYu",
+            "U3RyaW5nVmFsdWUSNQoPc29vcnRvYmplY3Rjb2RlGAggASgLMhwuZ29vZ2xl",
+            "LnByb3RvYnVmLlN0cmluZ1ZhbHVlMlkKCldvek9iamVjdHMSSwoMR2V0V296",
+            "T2JqZWN0Eh8ud296b2JqZWN0Lldvek9iamVjdFJlcXVlc3RCeUlkGhoud296",
+            "b2JqZWN0Lldvek9iamVjdHNSZXBseUIUqgIRZ1JQQ1NlcnZlci5Qcm90b3Ni",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectRequestById), global::gRPCServer.Protos.WozObjectRequestById.Parser, new[]{ "Wozobjectnummer" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectReply), global::gRPCServer.Protos.WozObjectReply.Parser, new[]{ "Wozobjectnummer" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectsReply), global::gRPCServer.Protos.WozObjectsReply.Parser, new[]{ "Wozobjects" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectReply), global::gRPCServer.Protos.WozObjectReply.Parser, new[]{ "Wozobjectnummer", "Gemeentenaam", "Straatnaam", "Huisnummer", "Huisletter", "Huisnummertoevoeging", "Postcode", "Soortobjectcode" }, null, null, null, null)
           }));
     }
     #endregion
@@ -216,6 +227,167 @@ namespace gRPCServer.Protos {
 
   }
 
+  public sealed partial class WozObjectsReply : pb::IMessage<WozObjectsReply>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<WozObjectsReply> _parser = new pb::MessageParser<WozObjectsReply>(() => new WozObjectsReply());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<WozObjectsReply> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::gRPCServer.Protos.WozobjectReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public WozObjectsReply() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public WozObjectsReply(WozObjectsReply other) : this() {
+      wozobjects_ = other.wozobjects_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public WozObjectsReply Clone() {
+      return new WozObjectsReply(this);
+    }
+
+    /// <summary>Field number for the "wozobjects" field.</summary>
+    public const int WozobjectsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::gRPCServer.Protos.WozObjectReply> _repeated_wozobjects_codec
+        = pb::FieldCodec.ForMessage(10, global::gRPCServer.Protos.WozObjectReply.Parser);
+    private readonly pbc::RepeatedField<global::gRPCServer.Protos.WozObjectReply> wozobjects_ = new pbc::RepeatedField<global::gRPCServer.Protos.WozObjectReply>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::gRPCServer.Protos.WozObjectReply> Wozobjects {
+      get { return wozobjects_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as WozObjectsReply);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(WozObjectsReply other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!wozobjects_.Equals(other.wozobjects_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= wozobjects_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      wozobjects_.WriteTo(output, _repeated_wozobjects_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      wozobjects_.WriteTo(ref output, _repeated_wozobjects_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += wozobjects_.CalculateSize(_repeated_wozobjects_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(WozObjectsReply other) {
+      if (other == null) {
+        return;
+      }
+      wozobjects_.Add(other.wozobjects_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            wozobjects_.AddEntriesFrom(input, _repeated_wozobjects_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            wozobjects_.AddEntriesFrom(ref input, _repeated_wozobjects_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   /// <summary>
   /// The response message containing the greetings.
   /// </summary>
@@ -231,7 +403,7 @@ namespace gRPCServer.Protos {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::gRPCServer.Protos.WozobjectReflection.Descriptor.MessageTypes[1]; }
+      get { return global::gRPCServer.Protos.WozobjectReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -249,6 +421,13 @@ namespace gRPCServer.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public WozObjectReply(WozObjectReply other) : this() {
       wozobjectnummer_ = other.wozobjectnummer_;
+      Gemeentenaam = other.Gemeentenaam;
+      Straatnaam = other.Straatnaam;
+      huisnummer_ = other.huisnummer_;
+      Huisletter = other.Huisletter;
+      Huisnummertoevoeging = other.Huisnummertoevoeging;
+      Postcode = other.Postcode;
+      Soortobjectcode = other.Soortobjectcode;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -268,6 +447,95 @@ namespace gRPCServer.Protos {
       }
     }
 
+    /// <summary>Field number for the "gemeentenaam" field.</summary>
+    public const int GemeentenaamFieldNumber = 2;
+    private static readonly pb::FieldCodec<string> _single_gemeentenaam_codec = pb::FieldCodec.ForClassWrapper<string>(18);
+    private string gemeentenaam_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Gemeentenaam {
+      get { return gemeentenaam_; }
+      set {
+        gemeentenaam_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "straatnaam" field.</summary>
+    public const int StraatnaamFieldNumber = 3;
+    private static readonly pb::FieldCodec<string> _single_straatnaam_codec = pb::FieldCodec.ForClassWrapper<string>(26);
+    private string straatnaam_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Straatnaam {
+      get { return straatnaam_; }
+      set {
+        straatnaam_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "huisnummer" field.</summary>
+    public const int HuisnummerFieldNumber = 4;
+    private int huisnummer_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Huisnummer {
+      get { return huisnummer_; }
+      set {
+        huisnummer_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "huisletter" field.</summary>
+    public const int HuisletterFieldNumber = 5;
+    private static readonly pb::FieldCodec<string> _single_huisletter_codec = pb::FieldCodec.ForClassWrapper<string>(42);
+    private string huisletter_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Huisletter {
+      get { return huisletter_; }
+      set {
+        huisletter_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "huisnummertoevoeging" field.</summary>
+    public const int HuisnummertoevoegingFieldNumber = 6;
+    private static readonly pb::FieldCodec<string> _single_huisnummertoevoeging_codec = pb::FieldCodec.ForClassWrapper<string>(50);
+    private string huisnummertoevoeging_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Huisnummertoevoeging {
+      get { return huisnummertoevoeging_; }
+      set {
+        huisnummertoevoeging_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "postcode" field.</summary>
+    public const int PostcodeFieldNumber = 7;
+    private static readonly pb::FieldCodec<string> _single_postcode_codec = pb::FieldCodec.ForClassWrapper<string>(58);
+    private string postcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Postcode {
+      get { return postcode_; }
+      set {
+        postcode_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "soortobjectcode" field.</summary>
+    public const int SoortobjectcodeFieldNumber = 8;
+    private static readonly pb::FieldCodec<string> _single_soortobjectcode_codec = pb::FieldCodec.ForClassWrapper<string>(66);
+    private string soortobjectcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Soortobjectcode {
+      get { return soortobjectcode_; }
+      set {
+        soortobjectcode_ = value;
+      }
+    }
+
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as WozObjectReply);
@@ -282,6 +550,13 @@ namespace gRPCServer.Protos {
         return true;
       }
       if (Wozobjectnummer != other.Wozobjectnummer) return false;
+      if (Gemeentenaam != other.Gemeentenaam) return false;
+      if (Straatnaam != other.Straatnaam) return false;
+      if (Huisnummer != other.Huisnummer) return false;
+      if (Huisletter != other.Huisletter) return false;
+      if (Huisnummertoevoeging != other.Huisnummertoevoeging) return false;
+      if (Postcode != other.Postcode) return false;
+      if (Soortobjectcode != other.Soortobjectcode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -289,6 +564,13 @@ namespace gRPCServer.Protos {
     public override int GetHashCode() {
       int hash = 1;
       if (Wozobjectnummer != 0L) hash ^= Wozobjectnummer.GetHashCode();
+      if (gemeentenaam_ != null) hash ^= Gemeentenaam.GetHashCode();
+      if (straatnaam_ != null) hash ^= Straatnaam.GetHashCode();
+      if (Huisnummer != 0) hash ^= Huisnummer.GetHashCode();
+      if (huisletter_ != null) hash ^= Huisletter.GetHashCode();
+      if (huisnummertoevoeging_ != null) hash ^= Huisnummertoevoeging.GetHashCode();
+      if (postcode_ != null) hash ^= Postcode.GetHashCode();
+      if (soortobjectcode_ != null) hash ^= Soortobjectcode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -309,6 +591,28 @@ namespace gRPCServer.Protos {
         output.WriteRawTag(8);
         output.WriteInt64(Wozobjectnummer);
       }
+      if (gemeentenaam_ != null) {
+        _single_gemeentenaam_codec.WriteTagAndValue(output, Gemeentenaam);
+      }
+      if (straatnaam_ != null) {
+        _single_straatnaam_codec.WriteTagAndValue(output, Straatnaam);
+      }
+      if (Huisnummer != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Huisnummer);
+      }
+      if (huisletter_ != null) {
+        _single_huisletter_codec.WriteTagAndValue(output, Huisletter);
+      }
+      if (huisnummertoevoeging_ != null) {
+        _single_huisnummertoevoeging_codec.WriteTagAndValue(output, Huisnummertoevoeging);
+      }
+      if (postcode_ != null) {
+        _single_postcode_codec.WriteTagAndValue(output, Postcode);
+      }
+      if (soortobjectcode_ != null) {
+        _single_soortobjectcode_codec.WriteTagAndValue(output, Soortobjectcode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -322,6 +626,28 @@ namespace gRPCServer.Protos {
         output.WriteRawTag(8);
         output.WriteInt64(Wozobjectnummer);
       }
+      if (gemeentenaam_ != null) {
+        _single_gemeentenaam_codec.WriteTagAndValue(ref output, Gemeentenaam);
+      }
+      if (straatnaam_ != null) {
+        _single_straatnaam_codec.WriteTagAndValue(ref output, Straatnaam);
+      }
+      if (Huisnummer != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(Huisnummer);
+      }
+      if (huisletter_ != null) {
+        _single_huisletter_codec.WriteTagAndValue(ref output, Huisletter);
+      }
+      if (huisnummertoevoeging_ != null) {
+        _single_huisnummertoevoeging_codec.WriteTagAndValue(ref output, Huisnummertoevoeging);
+      }
+      if (postcode_ != null) {
+        _single_postcode_codec.WriteTagAndValue(ref output, Postcode);
+      }
+      if (soortobjectcode_ != null) {
+        _single_soortobjectcode_codec.WriteTagAndValue(ref output, Soortobjectcode);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -333,6 +659,27 @@ namespace gRPCServer.Protos {
       int size = 0;
       if (Wozobjectnummer != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Wozobjectnummer);
+      }
+      if (gemeentenaam_ != null) {
+        size += _single_gemeentenaam_codec.CalculateSizeWithTag(Gemeentenaam);
+      }
+      if (straatnaam_ != null) {
+        size += _single_straatnaam_codec.CalculateSizeWithTag(Straatnaam);
+      }
+      if (Huisnummer != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Huisnummer);
+      }
+      if (huisletter_ != null) {
+        size += _single_huisletter_codec.CalculateSizeWithTag(Huisletter);
+      }
+      if (huisnummertoevoeging_ != null) {
+        size += _single_huisnummertoevoeging_codec.CalculateSizeWithTag(Huisnummertoevoeging);
+      }
+      if (postcode_ != null) {
+        size += _single_postcode_codec.CalculateSizeWithTag(Postcode);
+      }
+      if (soortobjectcode_ != null) {
+        size += _single_soortobjectcode_codec.CalculateSizeWithTag(Soortobjectcode);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -347,6 +694,39 @@ namespace gRPCServer.Protos {
       }
       if (other.Wozobjectnummer != 0L) {
         Wozobjectnummer = other.Wozobjectnummer;
+      }
+      if (other.gemeentenaam_ != null) {
+        if (gemeentenaam_ == null || other.Gemeentenaam != "") {
+          Gemeentenaam = other.Gemeentenaam;
+        }
+      }
+      if (other.straatnaam_ != null) {
+        if (straatnaam_ == null || other.Straatnaam != "") {
+          Straatnaam = other.Straatnaam;
+        }
+      }
+      if (other.Huisnummer != 0) {
+        Huisnummer = other.Huisnummer;
+      }
+      if (other.huisletter_ != null) {
+        if (huisletter_ == null || other.Huisletter != "") {
+          Huisletter = other.Huisletter;
+        }
+      }
+      if (other.huisnummertoevoeging_ != null) {
+        if (huisnummertoevoeging_ == null || other.Huisnummertoevoeging != "") {
+          Huisnummertoevoeging = other.Huisnummertoevoeging;
+        }
+      }
+      if (other.postcode_ != null) {
+        if (postcode_ == null || other.Postcode != "") {
+          Postcode = other.Postcode;
+        }
+      }
+      if (other.soortobjectcode_ != null) {
+        if (soortobjectcode_ == null || other.Soortobjectcode != "") {
+          Soortobjectcode = other.Soortobjectcode;
+        }
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -366,6 +746,52 @@ namespace gRPCServer.Protos {
             Wozobjectnummer = input.ReadInt64();
             break;
           }
+          case 18: {
+            string value = _single_gemeentenaam_codec.Read(input);
+            if (gemeentenaam_ == null || value != "") {
+              Gemeentenaam = value;
+            }
+            break;
+          }
+          case 26: {
+            string value = _single_straatnaam_codec.Read(input);
+            if (straatnaam_ == null || value != "") {
+              Straatnaam = value;
+            }
+            break;
+          }
+          case 32: {
+            Huisnummer = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            string value = _single_huisletter_codec.Read(input);
+            if (huisletter_ == null || value != "") {
+              Huisletter = value;
+            }
+            break;
+          }
+          case 50: {
+            string value = _single_huisnummertoevoeging_codec.Read(input);
+            if (huisnummertoevoeging_ == null || value != "") {
+              Huisnummertoevoeging = value;
+            }
+            break;
+          }
+          case 58: {
+            string value = _single_postcode_codec.Read(input);
+            if (postcode_ == null || value != "") {
+              Postcode = value;
+            }
+            break;
+          }
+          case 66: {
+            string value = _single_soortobjectcode_codec.Read(input);
+            if (soortobjectcode_ == null || value != "") {
+              Soortobjectcode = value;
+            }
+            break;
+          }
         }
       }
     #endif
@@ -382,6 +808,52 @@ namespace gRPCServer.Protos {
             break;
           case 8: {
             Wozobjectnummer = input.ReadInt64();
+            break;
+          }
+          case 18: {
+            string value = _single_gemeentenaam_codec.Read(ref input);
+            if (gemeentenaam_ == null || value != "") {
+              Gemeentenaam = value;
+            }
+            break;
+          }
+          case 26: {
+            string value = _single_straatnaam_codec.Read(ref input);
+            if (straatnaam_ == null || value != "") {
+              Straatnaam = value;
+            }
+            break;
+          }
+          case 32: {
+            Huisnummer = input.ReadInt32();
+            break;
+          }
+          case 42: {
+            string value = _single_huisletter_codec.Read(ref input);
+            if (huisletter_ == null || value != "") {
+              Huisletter = value;
+            }
+            break;
+          }
+          case 50: {
+            string value = _single_huisnummertoevoeging_codec.Read(ref input);
+            if (huisnummertoevoeging_ == null || value != "") {
+              Huisnummertoevoeging = value;
+            }
+            break;
+          }
+          case 58: {
+            string value = _single_postcode_codec.Read(ref input);
+            if (postcode_ == null || value != "") {
+              Postcode = value;
+            }
+            break;
+          }
+          case 66: {
+            string value = _single_soortobjectcode_codec.Read(ref input);
+            if (soortobjectcode_ == null || value != "") {
+              Soortobjectcode = value;
+            }
             break;
           }
         }

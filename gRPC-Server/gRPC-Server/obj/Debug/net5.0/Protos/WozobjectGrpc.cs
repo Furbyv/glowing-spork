@@ -51,15 +51,15 @@ namespace gRPCServer.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::gRPCServer.Protos.WozObjectRequestById> __Marshaller_wozobject_WozObjectRequestById = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.WozObjectRequestById.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::gRPCServer.Protos.WozObjectReply> __Marshaller_wozobject_WozObjectReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.WozObjectReply.Parser));
+    static readonly grpc::Marshaller<global::gRPCServer.Protos.WozObjectsReply> __Marshaller_wozobject_WozObjectsReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.WozObjectsReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectReply> __Method_GetWozObject = new grpc::Method<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectReply>(
+    static readonly grpc::Method<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectsReply> __Method_GetWozObject = new grpc::Method<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectsReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetWozObject",
         __Marshaller_wozobject_WozObjectRequestById,
-        __Marshaller_wozobject_WozObjectReply);
+        __Marshaller_wozobject_WozObjectsReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -78,7 +78,7 @@ namespace gRPCServer.Protos {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::gRPCServer.Protos.WozObjectReply> GetWozObject(global::gRPCServer.Protos.WozObjectRequestById request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::gRPCServer.Protos.WozObjectsReply> GetWozObject(global::gRPCServer.Protos.WozObjectRequestById request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -101,7 +101,7 @@ namespace gRPCServer.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public static void BindService(grpc::ServiceBinderBase serviceBinder, WozObjectsBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_GetWozObject, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectReply>(serviceImpl.GetWozObject));
+      serviceBinder.AddMethod(__Method_GetWozObject, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectsReply>(serviceImpl.GetWozObject));
     }
 
   }
