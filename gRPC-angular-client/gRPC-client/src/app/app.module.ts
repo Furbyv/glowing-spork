@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
 import { ObjectSearchComponent } from './features/object-search/component/object-search.component';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [AppComponent, ObjectSearchComponent],
@@ -19,6 +20,7 @@ import { ObjectSearchComponent } from './features/object-search/component/object
     MaterialModule,
     HttpClientModule,
     TranslocoRootModule,
+    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

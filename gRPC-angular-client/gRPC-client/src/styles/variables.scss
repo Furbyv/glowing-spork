@@ -32,7 +32,7 @@ $my-warn: mat.define-palette(mat.$red-palette);
 $text-main: #515151;
 $text-header: #065494;
 
-$my-theme: mat.define-light-theme($my-primary, $my-accent, $my-warn);
+$my-light-theme: mat.define-light-theme($my-primary, $my-accent, $my-warn);
 
 $primary-main: map_get($primary-colors, main);
 $primary-lighter: map_get($primary-colors, lighter);
@@ -44,3 +44,30 @@ $accent-darker: map_get($primary-colors, darker);
 
 $default-gap: 16px;
 $toolbar-height: 64px;
+
+// Dark theme
+$my-dark-primary-colors: (
+  main: #ff4c29,
+  lighter: #f38570,
+  darker: #ff4d2985,
+  200: #ff4c29,
+  contrast: (
+    main: $light-primary-text,
+    lighter: $light-primary-text,
+    darker: $light-primary-text,
+  ),
+);
+
+$my-dark-primary: mat.define-palette(
+  $my-dark-primary-colors,
+  main,
+  lighter,
+  darker
+);
+$my-dark-accent: mat-palette($mat-amber, 900);
+$my-dark-warn: mat-palette($mat-deep-orange);
+$my-dark-theme: mat.define-dark-theme(
+  $my-dark-primary,
+  $my-dark-accent,
+  $my-dark-warn
+);

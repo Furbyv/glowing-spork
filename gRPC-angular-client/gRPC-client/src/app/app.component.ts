@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ColorSchemeService } from './layout/services/color-scheme.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'gRPC-client';
+
+  constructor(colorSchemeService: ColorSchemeService) {
+    // Load Color Scheme
+    colorSchemeService.load();
+  }
 }
