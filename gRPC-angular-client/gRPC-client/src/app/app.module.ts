@@ -8,12 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
 import { LayoutModule } from './layout/layout.module';
-import { ObjectSearchComponent } from './features/object-search/components/object-search/object-search.component';
-import { ObjectSearchListComponent } from './features/object-search/components/object-search-list/object-search-list/object-search-list.component';
-import { ObjectSearchListItemComponent } from './features/object-search/components/object-search-list-item/object-search-list-item/object-search-list-item.component';
+import { ObjectSearchModule } from './features/object-search/object-search.module';
 
 @NgModule({
-  declarations: [AppComponent, ObjectSearchComponent, ObjectSearchListComponent, ObjectSearchListItemComponent],
+  declarations: [AppComponent],
   imports: [
     FormsModule,
     BrowserModule,
@@ -23,6 +21,7 @@ import { ObjectSearchListItemComponent } from './features/object-search/componen
     HttpClientModule,
     TranslocoRootModule,
     LayoutModule,
+    ObjectSearchModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

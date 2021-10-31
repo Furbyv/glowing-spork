@@ -11,7 +11,7 @@ import { WozObjectsClient } from 'src/app/proto/wozobject_pb_service';
 import { grpcToObservable } from 'src/app/shared/grpc-utility';
 import { environment } from 'src/environments/environment';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ObjectSearchService {
   private wozObjectRequest$$: Subject<WozObjectRequestById> =
     new ReplaySubject<WozObjectRequestById>(1);

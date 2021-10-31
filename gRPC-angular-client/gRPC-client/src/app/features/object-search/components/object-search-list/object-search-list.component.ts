@@ -5,7 +5,6 @@ import {
   Input,
 } from '@angular/core';
 import { WozObjectReply } from 'src/app/proto/wozobject_pb';
-import { WozObjects } from 'src/app/proto/wozobject_pb_service';
 
 @Component({
   selector: 'app-object-search-list',

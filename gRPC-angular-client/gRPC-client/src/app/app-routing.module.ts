@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ObjectSearchComponent } from './features/object-search/components/object-search/object-search.component';
+import { ObjectSearchModule } from './features/object-search/object-search.module';
 
 const routes: Routes = [
-  { path: 'search-object', component: ObjectSearchComponent },
   { path: '', redirectTo: '/search-object', pathMatch: 'full' },
+  {
+    path: 'search-object',
+    loadChildren: () =>
+      import('./features/object-search/object-search.module').then(
+        (m) => m.ObjectSearchModule
+      ),
+  },
 ];
 
 @NgModule({

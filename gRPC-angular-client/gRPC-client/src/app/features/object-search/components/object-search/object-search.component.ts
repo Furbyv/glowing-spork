@@ -1,13 +1,13 @@
-import { Component, Input } from '@angular/core';
-import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
-import { filter, map, startWith, tap } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { combineLatest, Subject } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { ObjectSearchService } from '../../services/object-search.service';
 
 @Component({
   selector: 'app-object-search',
   templateUrl: './object-search.component.html',
   styleUrls: ['./object-search.component.scss'],
-  providers: [ObjectSearchService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ObjectSearchComponent {
   private startRequest$$: Subject<boolean> = new Subject<boolean>();
