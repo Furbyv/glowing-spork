@@ -38,3 +38,7 @@ mat-list-item {
   position: block;
   grid-area: divider;
 }
+
+::ng-deep .mat-list-item-content {
+  padding-left: 0px !important;
+}

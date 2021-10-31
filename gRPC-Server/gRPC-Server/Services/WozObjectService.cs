@@ -21,7 +21,7 @@ namespace gRPCServer
         public override Task<WozObjectsReply> GetWozObject(WozObjectRequestById request, ServerCallContext context)
         {
             var wozobjects = _dbContext.Wozobjectproperties.Where(w => w.Wozobjectnummer.ToString()
-            .Contains(request.Wozobjectnummer.ToString())).Where(p => DateTime.Now >= p.Startdate && DateTime.Now >= p.Enddate)
+            .Contains(request.Wozobjectnummer.ToString())).Where(p => DateTime.Now >= p.Startdate && DateTime.Now <= p.Enddate)
             .Select(w => WozObjectConverter.WozobjectpropertyToWozObjectsReply(w)).ToList();
 
             var reply = new WozObjectsReply();
