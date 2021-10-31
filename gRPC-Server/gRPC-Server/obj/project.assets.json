@@ -2,6 +2,20 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "EFCore.NamingConventions/5.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.2",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/EFCore.NamingConventions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/EFCore.NamingConventions.dll": {}
+        }
+      },
       "Google.Protobuf/3.18.0": {
         "type": "package",
         "compile": {
@@ -415,6 +429,18 @@
     }
   },
   "libraries": {
+    "EFCore.NamingConventions/5.0.2": {
+      "sha512": "5MQ2lU2cplHcjQzIeRY4NSVn7ix6pzzjEboCaRsBjavUb3HZNI96a3u1dApE/LKkPLyNJUR6s2HquX2N1qsh0Q==",
+      "type": "package",
+      "path": "efcore.namingconventions/5.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "efcore.namingconventions.5.0.2.nupkg.sha512",
+        "efcore.namingconventions.nuspec",
+        "lib/netstandard2.1/EFCore.NamingConventions.dll"
+      ]
+    },
     "Google.Protobuf/3.18.0": {
       "sha512": "Jm6+nppUm9LD+XVsLFkf1YyVlAKsG5gq+Hc/Rn3Zi2pDObBI6PCH/eHBFUJdARl40DpczEdHlV3+WTPOGIXetg==",
       "type": "package",
@@ -1263,6 +1289,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "EFCore.NamingConventions >= 5.0.2",
       "Grpc.AspNetCore >= 2.40.0",
       "Grpc.AspNetCore.Web >= 2.40.0",
       "Microsoft.EntityFrameworkCore >= 5.0.11",
@@ -1311,6 +1338,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "EFCore.NamingConventions": {
+            "target": "Package",
+            "version": "[5.0.2, )"
+          },
           "Grpc.AspNetCore": {
             "target": "Package",
             "version": "[2.40.0, )"

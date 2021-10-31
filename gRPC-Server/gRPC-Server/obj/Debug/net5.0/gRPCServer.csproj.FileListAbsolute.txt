@@ -39,3 +39,4 @@ C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net5
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net5.0\ref\gRPCServer.dll
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net5.0\gRPCServer.pdb
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net5.0\gRPCServer.genruntimeconfig.cache
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net5.0\EFCore.NamingConventions.dll

@@ -7,11 +7,13 @@ import { MaterialModule } from './shared/material/material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
-import { ObjectSearchComponent } from './features/object-search/component/object-search.component';
 import { LayoutModule } from './layout/layout.module';
+import { ObjectSearchComponent } from './features/object-search/components/object-search/object-search.component';
+import { ObjectSearchListComponent } from './features/object-search/components/object-search-list/object-search-list/object-search-list.component';
+import { ObjectSearchListItemComponent } from './features/object-search/components/object-search-list-item/object-search-list-item/object-search-list-item.component';
 
 @NgModule({
-  declarations: [AppComponent, ObjectSearchComponent],
+  declarations: [AppComponent, ObjectSearchComponent, ObjectSearchListComponent, ObjectSearchListItemComponent],
   imports: [
     FormsModule,
     BrowserModule,

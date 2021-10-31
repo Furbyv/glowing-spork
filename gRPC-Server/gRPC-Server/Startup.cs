@@ -27,7 +27,7 @@ namespace gRPCServer
             .AllowAnyHeader()
             .AllowCredentials()));
             services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(optionsBuilder =>
-            optionsBuilder.UseNpgsql(_configuration.GetConnectionString("dbContext")).ReplaceService<ISqlGenerationHelper, CustomNameSqlGenerationHelper>());
+            optionsBuilder.UseNpgsql(_configuration.GetConnectionString("dbContext")).ReplaceService<ISqlGenerationHelper, CustomNameSqlGenerationHelper>().EnableDetailedErrors());
             services.AddGrpc();
         }
 

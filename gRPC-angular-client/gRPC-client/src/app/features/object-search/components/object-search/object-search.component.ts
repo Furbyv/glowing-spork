@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { ObjectSearchService } from '../services/object-search.service';
+import { BehaviorSubject, combineLatest, Subject } from 'rxjs';
+import { filter, map, startWith, tap } from 'rxjs/operators';
+import { ObjectSearchService } from '../../services/object-search.service';
 
 @Component({
   selector: 'app-object-search',
@@ -8,15 +10,25 @@ import { ObjectSearchService } from '../services/object-search.service';
   providers: [ObjectSearchService],
 })
 export class ObjectSearchComponent {
+  private startRequest$$: Subject<boolean> = new Subject<boolean>();
+
   @Input() maxCharacters: number = 12;
 
-  wozobjects$ = this.objectSearchService.wozObjects$;
+  loading$ = combineLatest([
+    this.objectSearchService.wozObjects$,
+    this.startRequest$$,
+  ]).pipe(map(([state]) => state.loading));
+
+  wozobjects$ = this.objectSearchService.wozObjects$.pipe(
+    filter((state) => state.complete),
+    map((state) => state.res!)
+  );
 
   constructor(private objectSearchService: ObjectSearchService) {}
 
   onSearch(value: string) {
     var numberValue = this.ConvertStringToNumber(value);
-    console.log(numberValue);
+    this.startRequest$$.next(true);
     this.objectSearchService.findWozObjects(numberValue);
   }
 

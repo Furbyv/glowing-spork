@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "zPKTD12UZ9Pgnql6V8xxCJjTi5tgmqXPasKNiMeeRTOu1Ro4Zzi/8bhzNf20EJobPsOmg9uF/7f6k28FV37WnQ==",
+  "dgSpecHash": "2jaPEoupZfS3R7Kh5RaXr8ewbhde4UlODBy2dmu1Vnn5Usxf9pSNsMFGAnx+hqrYcwFNMMTWaZQQA/Umke0tcw==",
   "success": true,
   "projectFilePath": "C:\\Users\\fbver\\source\\repos\\glowing-spork\\gRPC-Server\\gRPC-Server\\gRPCServer.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\fbver\\.nuget\\packages\\efcore.namingconventions\\5.0.2\\efcore.namingconventions.5.0.2.nupkg.sha512",
     "C:\\Users\\fbver\\.nuget\\packages\\google.protobuf\\3.18.0\\google.protobuf.3.18.0.nupkg.sha512",
     "C:\\Users\\fbver\\.nuget\\packages\\grpc.aspnetcore\\2.40.0\\grpc.aspnetcore.2.40.0.nupkg.sha512",
     "C:\\Users\\fbver\\.nuget\\packages\\grpc.aspnetcore.server\\2.40.0\\grpc.aspnetcore.server.2.40.0.nupkg.sha512",

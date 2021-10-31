@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  padding-bottom: 8px;
+  height: 56px;
+}
+
+mat-list-item {
+  margin-bottom: 4px;
+}
+
+.item-container {
+  display: grid;
+  grid-template-areas:
+    "image address address"
+    "image details details"
+    "divider divider divider";
+  height: 100%;
+  padding-bottom: 8px;
+}
+
+.image {
+  grid-area: image;
+}
+
+.address {
+  margin-left: 8px;
+  grid-area: address;
+  height: 50%;
+}
+
+.details {
+  margin-left: 8px;
+  grid-area: details;
+  height: 50%;
+}
+
+.divider {
+  position: block;
+  grid-area: divider;
+}

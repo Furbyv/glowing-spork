@@ -17,6 +17,6 @@ namespace gRPCServer
         public decimal Gemeentecode { get; set; }
         public string Gemeentenaam { get; set; }
 
-        public virtual ICollection<Wozobjectproperty> Wozobjectproperties { get; set; }
+        public ICollection<Wozobjectproperty> Wozobjectproperties { get; set; }
     }
 }

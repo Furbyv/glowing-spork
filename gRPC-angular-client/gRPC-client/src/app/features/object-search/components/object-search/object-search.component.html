@@ -21,15 +21,17 @@
       <mat-icon>search</mat-icon>
     </button>
   </div>
-  <ng-container *ngIf="wozobjects$ | async as Wozobjects">
-    <mat-action-list>
-      <ng-container *ngFor="let wozobject of Wozobjects">
-        <mat-list-item>
-          <span mat-line> {{ wozobject.wozobjectnummer }}</span>
-          {{ wozobject.straatnaam }}
-        </mat-list-item>
-        <mat-divider></mat-divider>
-      </ng-container>
-    </mat-action-list>
-  </ng-container>
+  <mat-spinner
+    class="loader"
+    *ngIf="loading$ | async; else content"
+    [diameter]="48"
+    aria-label="searching objects"
+  ></mat-spinner>
+  <ng-template #content>
+    <ng-container *ngIf="wozobjects$ | async as Wozobjects">
+      <app-object-search-list
+        [wozObjects]="Wozobjects"
+      ></app-object-search-list>
+    </ng-container>
+  </ng-template>
 </mat-card>

@@ -19,7 +19,7 @@ namespace gRPCServer
         public DateTime? Startdate { get; set; }
         public DateTime? Enddate { get; set; }
 
-        public virtual ICollection<Wozdeelobject> Wozdeelobjects { get; set; }
-        public virtual ICollection<Wozobjectproperty> Wozobjectproperties { get; set; }
+        public  ICollection<Wozdeelobject> Wozdeelobjects { get; set; }
+        public  ICollection<Wozobjectproperty> Wozobjectproperties { get; set; }
     }
 }

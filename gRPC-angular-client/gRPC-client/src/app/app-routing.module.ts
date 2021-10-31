@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ObjectSearchComponent } from './features/object-search/component/object-search.component';
+import { ObjectSearchComponent } from './features/object-search/components/object-search/object-search.component';
 
 const routes: Routes = [
   { path: 'search-object', component: ObjectSearchComponent },

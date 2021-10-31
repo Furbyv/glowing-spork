@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace gRPCServer
 {
-    public partial class Wozobjectproperty
+    public class Wozobjectproperty
     {
         public Wozobjectproperty()
         {
@@ -15,10 +16,10 @@ namespace gRPCServer
         }
         [Key]
         public long Id { get; set; }
-        public long? Wozobjectnummer { get; set; }
+        public long Wozobjectnummer { get; set; }
         public string Adresidentificatie { get; set; }
         public string Nummeraanduiding { get; set; }
-        public decimal? Gemeentecode { get; set; }
+        public decimal Gemeentecode { get; set; }
         public string Naamopenbareruimte { get; set; }
         public string Straatnaam { get; set; }
         public decimal? Huisnummer { get; set; }
@@ -54,9 +55,10 @@ namespace gRPCServer
         public decimal? Tijdstipregistratie { get; set; }
         public DateTime? Startdate { get; set; }
         public DateTime? Enddate { get; set; }
-
-        public virtual Gemeente GemeentecodeNavigation { get; set; }
-        public virtual Wozobject WozobjectnummerNavigation { get; set; }
-        public virtual ICollection<Wozobjectflexproperty> Wozobjectflexproperties { get; set; }
+        [ForeignKey("GemeenteCode")]
+        public  Gemeente Gemeente { get; set; }
+        [ForeignKey("Wozobjectnummer")]
+        public  Wozobject WozObject { get; set; }
+        public  ICollection<Wozobjectflexproperty> Wozobjectflexproperties { get; set; }
     }
 }

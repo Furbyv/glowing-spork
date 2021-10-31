@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AsyncState, toAsyncState } from '@ngneat/loadoff';
 import { Subject, ReplaySubject, Observable, combineLatest } from 'rxjs';
 import { switchMap, map, shareReplay } from 'rxjs/operators';
 import {
@@ -23,16 +24,16 @@ export class ObjectSearchService {
     this.wozObjectRequest$$.next(request);
   }
 
-  wozObjects$: Observable<WozObjectReply.AsObject[]> = combineLatest([
-    this.wozObjectRequest$$,
-  ]).pipe(
-    switchMap(([request]) =>
-      grpcToObservable<WozObjectsReply>(
-        this.client.getWozObject.bind(this.client),
-        request
-      )
-    ),
-    map((w) => w.toObject().wozobjectsList),
-    shareReplay({ bufferSize: 1, refCount: true })
-  );
+  wozObjects$: Observable<AsyncState<WozObjectReply.AsObject[]>> =
+    combineLatest([this.wozObjectRequest$$]).pipe(
+      switchMap(([request]) =>
+        grpcToObservable<WozObjectsReply>(
+          this.client.getWozObject.bind(this.client),
+          request
+        )
+      ),
+      map((w) => w.toObject().wozobjectsList),
+      shareReplay({ bufferSize: 1, refCount: true }),
+      toAsyncState()
+    );
 }
