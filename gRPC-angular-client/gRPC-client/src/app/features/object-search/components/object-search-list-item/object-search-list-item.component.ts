@@ -21,7 +21,7 @@ export class ObjectSearchListItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.trimmedAddress =
-      this.wozObject?.straatnaam.replace(/[^a-zA-Z ]/g, '') ?? '';
+      this.wozObject!.straatnaam?.value!.replace(/[^a-zA-Z ]/g, '') ?? '';
     this.trimmedAddress =
       this.trimmedAddress +
       ` ${this.wozObject?.huisnummer}${this.wozObject?.huisletter} ${this.wozObject?.huisnummertoevoeging}`;

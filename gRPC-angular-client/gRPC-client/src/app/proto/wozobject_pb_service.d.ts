@@ -13,9 +13,19 @@ type WozObjectsGetWozObject = {
   readonly responseType: typeof wozobject_pb.WozObjectsReply;
 };
 
+type WozObjectsGetFullWozObject = {
+  readonly methodName: string;
+  readonly service: typeof WozObjects;
+  readonly requestStream: false;
+  readonly responseStream: true;
+  readonly requestType: typeof wozobject_pb.WozObjectRequestById;
+  readonly responseType: typeof wozobject_pb.FullWozObjectReply;
+};
+
 export class WozObjects {
   static readonly serviceName: string;
   static readonly GetWozObject: WozObjectsGetWozObject;
+  static readonly GetFullWozObject: WozObjectsGetFullWozObject;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -59,5 +69,6 @@ export class WozObjectsClient {
     requestMessage: wozobject_pb.WozObjectRequestById,
     callback: (error: ServiceError|null, responseMessage: wozobject_pb.WozObjectsReply|null) => void
   ): UnaryResponse;
+  getFullWozObject(requestMessage: wozobject_pb.WozObjectRequestById, metadata?: grpc.Metadata): ResponseStream<wozobject_pb.FullWozObjectReply>;
 }
 

@@ -1,4 +1,6 @@
 syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+
 option csharp_namespace = "gRPCServer.Protos";
 
 package wozobject;
@@ -7,25 +9,43 @@ package wozobject;
 service WozObjects {
   // Sends a greeting
   rpc GetWozObject (WozObjectRequestById) returns (WozObjectsReply);
+  rpc GetFullWozObject (WozObjectRequestById) returns (stream FullWozObjectReply);
 }
 
-// The request message containing the user's name.
+// The request message containing the object's id.
 message WozObjectRequestById {
   int64 wozobjectnummer = 1;
 }
 
+// The response message containing the WozObjects.
 message WozObjectsReply {
     repeated WozObjectReply wozobjects = 1;
 }
 
-// The response message containing the greetings.
 message WozObjectReply {
   int64 wozobjectnummer = 1;
-  string gemeentenaam = 2;
-  string straatnaam = 3;
+  google.protobuf.StringValue gemeentenaam = 2;
+  google.protobuf.StringValue straatnaam = 3;
   int32 huisnummer = 4;
-  string huisletter = 5;
-  string huisnummertoevoeging = 6;
-  string postcode = 7;
-  string soortobjectcode = 8;
+  google.protobuf.StringValue huisletter = 5;
+  google.protobuf.StringValue huisnummertoevoeging = 6;
+  google.protobuf.StringValue postcode = 7;
+  google.protobuf.StringValue soortobjectcode = 8;
+}
+
+message FullWozObjectReply {
+  int64 wozobjectnummer = 1;
+  google.protobuf.StringValue gemeentenaam = 2;
+  google.protobuf.StringValue straatnaam = 3;
+  int32 huisnummer = 4;
+  google.protobuf.StringValue huisletter = 5;
+  google.protobuf.StringValue huisnummertoevoeging = 6;
+  google.protobuf.StringValue postcode = 7;
+  google.protobuf.StringValue soortobjectcode = 8;
+  google.protobuf.StringValue wijkcode = 9;
+  google.protobuf.StringValue buurtcode = 10;
+  google.protobuf.StringValue woonplaats = 11;
+  google.protobuf.StringValue locatieomschrijving = 12;
+  google.protobuf.StringValue indicatieligging = 13;
+  google.protobuf.StringValue omschrijving = 14;
 }

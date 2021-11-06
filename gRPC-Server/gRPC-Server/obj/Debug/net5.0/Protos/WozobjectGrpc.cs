@@ -52,6 +52,8 @@ namespace gRPCServer.Protos {
     static readonly grpc::Marshaller<global::gRPCServer.Protos.WozObjectRequestById> __Marshaller_wozobject_WozObjectRequestById = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.WozObjectRequestById.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::gRPCServer.Protos.WozObjectsReply> __Marshaller_wozobject_WozObjectsReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.WozObjectsReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::gRPCServer.Protos.FullWozObjectReply> __Marshaller_wozobject_FullWozObjectReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.FullWozObjectReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectsReply> __Method_GetWozObject = new grpc::Method<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectsReply>(
@@ -60,6 +62,14 @@ namespace gRPCServer.Protos {
         "GetWozObject",
         __Marshaller_wozobject_WozObjectRequestById,
         __Marshaller_wozobject_WozObjectsReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.FullWozObjectReply> __Method_GetFullWozObject = new grpc::Method<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.FullWozObjectReply>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "GetFullWozObject",
+        __Marshaller_wozobject_WozObjectRequestById,
+        __Marshaller_wozobject_FullWozObjectReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -83,6 +93,12 @@ namespace gRPCServer.Protos {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task GetFullWozObject(global::gRPCServer.Protos.WozObjectRequestById request, grpc::IServerStreamWriter<global::gRPCServer.Protos.FullWozObjectReply> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -91,7 +107,8 @@ namespace gRPCServer.Protos {
     public static grpc::ServerServiceDefinition BindService(WozObjectsBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GetWozObject, serviceImpl.GetWozObject).Build();
+          .AddMethod(__Method_GetWozObject, serviceImpl.GetWozObject)
+          .AddMethod(__Method_GetFullWozObject, serviceImpl.GetFullWozObject).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -102,6 +119,7 @@ namespace gRPCServer.Protos {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, WozObjectsBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_GetWozObject, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectsReply>(serviceImpl.GetWozObject));
+      serviceBinder.AddMethod(__Method_GetFullWozObject, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.FullWozObjectReply>(serviceImpl.GetFullWozObject));
     }
 
   }

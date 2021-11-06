@@ -19,6 +19,15 @@ WozObjects.GetWozObject = {
   responseType: wozobject_pb.WozObjectsReply
 };
 
+WozObjects.GetFullWozObject = {
+  methodName: "GetFullWozObject",
+  service: WozObjects,
+  requestStream: false,
+  responseStream: true,
+  requestType: wozobject_pb.WozObjectRequestById,
+  responseType: wozobject_pb.FullWozObjectReply
+};
+
 exports.WozObjects = WozObjects;
 
 function WozObjectsClient(serviceHost, options) {
@@ -52,6 +61,45 @@ WozObjectsClient.prototype.getWozObject = function getWozObject(requestMessage, 
   return {
     cancel: function () {
       callback = null;
+      client.close();
+    }
+  };
+};
+
+WozObjectsClient.prototype.getFullWozObject = function getFullWozObject(requestMessage, metadata) {
+  var listeners = {
+    data: [],
+    end: [],
+    status: []
+  };
+  var client = grpc.invoke(WozObjects.GetFullWozObject, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onMessage: function (responseMessage) {
+      listeners.data.forEach(function (handler) {
+        handler(responseMessage);
+      });
+    },
+    onEnd: function (status, statusMessage, trailers) {
+      listeners.status.forEach(function (handler) {
+        handler({ code: status, details: statusMessage, metadata: trailers });
+      });
+      listeners.end.forEach(function (handler) {
+        handler({ code: status, details: statusMessage, metadata: trailers });
+      });
+      listeners = null;
+    }
+  });
+  return {
+    on: function (type, handler) {
+      listeners[type].push(handler);
+      return this;
+    },
+    cancel: function () {
+      listeners = null;
       client.close();
     }
   };
