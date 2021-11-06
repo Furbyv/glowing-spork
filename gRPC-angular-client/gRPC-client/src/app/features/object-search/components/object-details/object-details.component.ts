@@ -14,7 +14,6 @@ export class ObjectDetailsComponent implements OnInit {
   id: number | undefined;
 
   loading$ = this.getFullWozObjectService.fullWozObject$.pipe(
-    tap((state) => console.log(state.res!)),
     map((state) => state.loading)
   );
 

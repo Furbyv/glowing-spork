@@ -5,7 +5,6 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat.core();
-@include angular-material-theme($my-light-theme);
 
 .mat-form-field-appearance-outline .mat-form-field-prefix,
 .mat-form-field-appearance-outline .mat-form-field-suffix {
@@ -29,6 +28,7 @@
 
 .color-scheme-light {
   @include mat.all-component-themes($my-light-theme);
+  @include angular-material-theme($my-light-theme);
   // Example how you can easy add own custom styles
   .card-wrapper {
     color: #d0d0d0;

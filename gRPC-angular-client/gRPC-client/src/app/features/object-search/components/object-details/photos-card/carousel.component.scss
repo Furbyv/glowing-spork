@@ -1,0 +1,32 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 6000px;
+}
+
+.carousel {
+  position: relative;
+}
+
+.carousel-wrapper {
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+}
+
+.navigation-back {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.navigation-next {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+}

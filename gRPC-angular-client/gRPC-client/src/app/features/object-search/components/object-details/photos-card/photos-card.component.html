@@ -1,0 +1,11 @@
+<mat-card>
+  <div style="margin: 2em" class="container">
+    <app-carousel>
+      <ng-container *ngFor="let photo of photos">
+        <ng-container *carouselItem>
+          <img [src]="photo.src" class="photo" />
+        </ng-container>
+      </ng-container>
+    </app-carousel>
+  </div>
+</mat-card>

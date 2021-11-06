@@ -1,14 +1,13 @@
-<mat-card>
-  <mat-spinner
-    class="loader"
-    *ngIf="loading$ | async; else content"
-    [diameter]="48"
-    aria-label="searching objects"
-  ></mat-spinner>
-  <ng-template #content>
-    <p>{{ id }}</p>
-    <ng-container *ngIf="wozObject$ | async as wozobject">
-      <p>{{ wozobject.soortobjectcode!.value }}</p>
-    </ng-container>
-  </ng-template>
-</mat-card>
+<mat-spinner
+  class="loader"
+  *ngIf="loading$ | async; else content"
+  [diameter]="48"
+  aria-label="searching objects"
+></mat-spinner>
+<ng-template #content>
+  <p>{{ id }}</p>
+  <ng-container *ngIf="wozObject$ | async as wozobject">
+    <p>{{ wozobject.soortobjectcode!.value }}</p>
+  </ng-container>
+  <app-photos-card></app-photos-card>
+</ng-template>

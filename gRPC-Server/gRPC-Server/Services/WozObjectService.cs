@@ -34,15 +34,13 @@ namespace gRPCServer
 
         public override async Task GetFullWozObject(WozObjectRequestById request, IServerStreamWriter<FullWozObjectReply> responseStream, ServerCallContext context)
         {
-            Stopwatch timer = new Stopwatch();
-            timer.Start();
             var wozobject = _dbContext.Wozobjectproperties.Where(w => w.Wozobjectnummer == request.Wozobjectnummer)
                 .Where(p => DateTime.Now >= p.Startdate && DateTime.Now <= p.Enddate).FirstOrDefault();
 
             var reply = WozObjectConverter.WozobjectpropertyToFullWozObjectsReply(wozobject);
             await responseStream.WriteAsync(reply);
 
-            while (1 == 1)
+            while (true)
             {
                 //_dbContext.Entry<Wozobjectproperty>(wozobject).Reload();
                 //_dbContext.ChangeTracker.DetectChanges();
@@ -50,13 +48,12 @@ namespace gRPCServer
                 //Console.WriteLine(_dbContext.ChangeTracker.DebugView.LongView);
                 if (true)
                 {
-                    _dbContext.Entry<Wozobjectproperty>(wozobject).Reload();
+                    _dbContext.Entry(wozobject).Reload();
                     reply = WozObjectConverter.WozobjectpropertyToFullWozObjectsReply(wozobject);
                     await responseStream.WriteAsync(reply);
                 }
                 Thread.Sleep(10000);
             }
-            timer.Stop();
             return;
         }
     }

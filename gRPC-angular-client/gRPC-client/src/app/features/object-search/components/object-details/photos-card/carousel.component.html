@@ -1,0 +1,27 @@
+<div class="carousel" [ngStyle]="carouselWrapperStyle">
+  <section class="carousel-wrapper" [ngStyle]="carouselWrapperStyle">
+    <ul class="carousel-inner" #carousel>
+      <li *ngFor="let item of items" class="carousel-item">
+        <ng-container [ngTemplateOutlet]="item.tpl"></ng-container>
+      </li>
+    </ul>
+  </section>
+  <button
+    mat-icon-button
+    (click)="prev()"
+    class="navigation-back"
+    color="warning"
+    [disabled]="currentSlide === 0"
+  >
+    <mat-icon> arrow_back_ios </mat-icon>
+  </button>
+  <button
+    class="navigation-next"
+    mat-icon-button
+    (click)="next()"
+    color="warning"
+    [disabled]="currentSlide === items.length - 1"
+  >
+    <mat-icon> arrow_forward_ios </mat-icon>
+  </button>
+</div>
