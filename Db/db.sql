@@ -134,3 +134,12 @@ create table wozdeelobjectproperties(
 	CONSTRAINT PK_wozdeelobjectproperties PRIMARY KEY(id),
 	CONSTRAINT FK_wozdeelobjectproperties_wozdeelobjects FOREIGN key(wozdeelobjectid) references wozdeelobjects(id)  on delete CASCADE
 );
+
+CREATE table images(
+	id bigserial,
+	ìmage bytea,
+	wozobjectnummer int8,
+	main bit,
+	CONSTRAINT PK_images PRIMARY KEY(id),
+	CONSTRAINT FK_images_objects FOREIGN key(wozobjectnummer) references wozobjects(wozobjectnummer)  on delete CASCADE
+);
