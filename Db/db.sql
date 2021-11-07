@@ -137,7 +137,7 @@ create table wozdeelobjectproperties(
 
 CREATE table images(
 	id bigserial,
-	ìmage bytea,
+	imagedata bytea,
 	wozobjectnummer int8,
 	main bit,
 	CONSTRAINT PK_images PRIMARY KEY(id),

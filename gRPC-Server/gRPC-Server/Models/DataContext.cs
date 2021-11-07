@@ -13,7 +13,7 @@ namespace gRPCServer.Models
         public virtual DbSet<Wozobject> Wozobjects { get; set; }
         public virtual DbSet<Wozobjectflexproperty> Wozobjectflexproperties { get; set; }
         public virtual DbSet<Wozobjectproperty> Wozobjectproperties { get; set; }
-
+        public virtual DbSet<Image> Images { get; set; }
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
     }
 }

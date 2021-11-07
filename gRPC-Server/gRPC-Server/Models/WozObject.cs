@@ -8,18 +8,15 @@ namespace gRPCServer
 {
     public partial class Wozobject
     {
-        public Wozobject()
-        {
-            Wozdeelobjects = new HashSet<Wozdeelobject>();
-            Wozobjectproperties = new HashSet<Wozobjectproperty>();
-        }
+        public Wozobject(){}
 
         [Key]
         public long Wozobjectnummer { get; set; }
         public DateTime? Startdate { get; set; }
         public DateTime? Enddate { get; set; }
 
-        public  ICollection<Wozdeelobject> Wozdeelobjects { get; set; }
-        public  ICollection<Wozobjectproperty> Wozobjectproperties { get; set; }
+        public  ICollection<Wozdeelobject> Wozdeelobjects { get; set; } = new HashSet<Wozdeelobject>();
+        public  ICollection<Wozobjectproperty> Wozobjectproperties { get; set; } = new HashSet<Wozobjectproperty>();
+        public ICollection<Image> Images { get; set; } = new HashSet<Image>();
     }
 }
