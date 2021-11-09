@@ -1,57 +1,46 @@
-﻿using gRPCServer.Models;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿namespace gRPCServer;
 
-namespace gRPCServer
+public class Startup
 {
-    public class Startup
+    // This method gets called by the runtime. Use this method to add services to the container.
+    // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+
+    readonly IConfiguration _configuration;
+    public Startup(IConfiguration configuration) => _configuration = configuration;
+
+    public void ConfigureServices(IServiceCollection services)
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        services.AddCors(options =>
+        options.AddDefaultPolicy(builder => builder
+        .SetIsOriginAllowed(_ => true)
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()));
+        services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(optionsBuilder =>
+        optionsBuilder.UseNpgsql(_configuration.GetConnectionString("dbContext")).ReplaceService<ISqlGenerationHelper, CustomNameSqlGenerationHelper>().EnableDetailedErrors());
+        services.AddGrpc();
+    }
 
-        readonly IConfiguration _configuration;
-        public Startup(IConfiguration configuration) => _configuration = configuration;
-
-        public void ConfigureServices(IServiceCollection services)
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
         {
-            services.AddCors(options =>
-            options.AddDefaultPolicy(builder => builder
-            .SetIsOriginAllowed(_ => true)
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials()));
-            services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(optionsBuilder =>
-            optionsBuilder.UseNpgsql(_configuration.GetConnectionString("dbContext")).ReplaceService<ISqlGenerationHelper, CustomNameSqlGenerationHelper>().EnableDetailedErrors());
-            services.AddGrpc();
+            app.UseDeveloperExceptionPage();
         }
+        app.UseCors();
+        app.UseRouting();
+        app.UseGrpcWeb();
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        app.UseEndpoints(endpoints =>
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            app.UseCors();
-            app.UseRouting();
-            app.UseGrpcWeb();
+            endpoints.MapGrpcService<WozObjectService>().EnableGrpcWeb();
+            endpoints.MapGrpcService<WozObjectImagesService>().EnableGrpcWeb();
 
-            app.UseEndpoints(endpoints =>
+            endpoints.MapGet("/", async context =>
             {
-                endpoints.MapGrpcService<GreeterService>().EnableGrpcWeb();
-                endpoints.MapGrpcService<WozObjectService>().EnableGrpcWeb();
-
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
-                });
+                await context.Response.WriteAsync("Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
             });
-        }
+        });
     }
 }

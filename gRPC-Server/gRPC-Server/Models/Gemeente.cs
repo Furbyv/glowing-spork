@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿#nullable disable
 
-#nullable disable
-
-namespace gRPCServer
+namespace gRPCServer;
+public partial class Gemeente
 {
-    public partial class Gemeente
-    {
-        public Gemeente()
-        {
-            Wozobjectproperties = new HashSet<Wozobjectproperty>();
-        }
+    public Gemeente() { }
 
-        [Key]
-        public decimal Gemeentecode { get; set; }
-        public string Gemeentenaam { get; set; }
+    [Key]
+    public decimal Gemeentecode { get; set; }
+    public string Gemeentenaam { get; set; }
 
-        public ICollection<Wozobjectproperty> Wozobjectproperties { get; set; }
-    }
+    public ICollection<Wozobjectproperty> Wozobjectproperties { get; set; } = new HashSet<Wozobjectproperty>();
 }
+

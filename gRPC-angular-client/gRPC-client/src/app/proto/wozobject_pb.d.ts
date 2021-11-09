@@ -202,3 +202,103 @@ export namespace FullWozObjectReply {
   }
 }
 
+export class WozObjectImageRequest extends jspb.Message {
+  getWozobjectnummer(): number;
+  setWozobjectnummer(value: number): void;
+
+  getOnlyMain(): boolean;
+  setOnlyMain(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WozObjectImageRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: WozObjectImageRequest): WozObjectImageRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: WozObjectImageRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WozObjectImageRequest;
+  static deserializeBinaryFromReader(message: WozObjectImageRequest, reader: jspb.BinaryReader): WozObjectImageRequest;
+}
+
+export namespace WozObjectImageRequest {
+  export type AsObject = {
+    wozobjectnummer: number,
+    onlyMain: boolean,
+  }
+}
+
+export class WozObjectImageReply extends jspb.Message {
+  getImageData(): Uint8Array | string;
+  getImageData_asU8(): Uint8Array;
+  getImageData_asB64(): string;
+  setImageData(value: Uint8Array | string): void;
+
+  getIsMain(): boolean;
+  setIsMain(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): WozObjectImageReply.AsObject;
+  static toObject(includeInstance: boolean, msg: WozObjectImageReply): WozObjectImageReply.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: WozObjectImageReply, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): WozObjectImageReply;
+  static deserializeBinaryFromReader(message: WozObjectImageReply, reader: jspb.BinaryReader): WozObjectImageReply;
+}
+
+export namespace WozObjectImageReply {
+  export type AsObject = {
+    imageData: Uint8Array | string,
+    isMain: boolean,
+  }
+}
+
+export class UploadImageRequest extends jspb.Message {
+  getWozobjectnummer(): number;
+  setWozobjectnummer(value: number): void;
+
+  getImageData(): Uint8Array | string;
+  getImageData_asU8(): Uint8Array;
+  getImageData_asB64(): string;
+  setImageData(value: Uint8Array | string): void;
+
+  getIsMain(): boolean;
+  setIsMain(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UploadImageRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: UploadImageRequest): UploadImageRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UploadImageRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UploadImageRequest;
+  static deserializeBinaryFromReader(message: UploadImageRequest, reader: jspb.BinaryReader): UploadImageRequest;
+}
+
+export namespace UploadImageRequest {
+  export type AsObject = {
+    wozobjectnummer: number,
+    imageData: Uint8Array | string,
+    isMain: boolean,
+  }
+}
+
+export class UploadImageReply extends jspb.Message {
+  getSucces(): boolean;
+  setSucces(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): UploadImageReply.AsObject;
+  static toObject(includeInstance: boolean, msg: UploadImageReply): UploadImageReply.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: UploadImageReply, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): UploadImageReply;
+  static deserializeBinaryFromReader(message: UploadImageReply, reader: jspb.BinaryReader): UploadImageReply;
+}
+
+export namespace UploadImageReply {
+  export type AsObject = {
+    succes: boolean,
+  }
+}
+

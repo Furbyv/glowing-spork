@@ -34,3 +34,18 @@ export function grpcStreamtoObservable<T>(
     //streamCall.on('error', (err: ServiceError) => observer.error(err));
   });
 }
+
+export function grpcArrayStreamtoObservable<T>(
+  grpcStreamFn: (...p: any) => ResponseStream<T>,
+  request: Message
+): Observable<T[]> {
+  return new Observable<T[]>((observer: Observer<T[]>) => {
+    const reply: T[] = [];
+    const streamCall = grpcStreamFn(request);
+    streamCall.on('data', (response) => reply.push(response));
+    streamCall.on('end', () => {
+      observer.next(reply);
+      return observer.complete();
+    });
+  });
+}

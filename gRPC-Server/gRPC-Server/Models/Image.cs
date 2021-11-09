@@ -1,20 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace gRPCServer
+﻿
+namespace gRPCServer;
+public class Image
 {
-    public class Image
-    {
-        [Key]
-        public long Id { get; set; }
-        public long? Wozobjectnummer { get; set; }
+    [Key]
+    public long Id { get; set; }
+    public long? Wozobjectnummer { get; set; }
 
-        public byte[] Imagedata { get; set; }
+    public byte[] Imagedata { get; set; }
 
-        public bool Main { get; set; }
+    public bool Main { get; set; }
 
-        [ForeignKey("Wozobjectnummer")]
-        public Wozobject WozObject { get; set; }
+    [ForeignKey("Wozobjectnummer")]
+    public Wozobject WozObject { get; set; }
 
-    }
 }
+

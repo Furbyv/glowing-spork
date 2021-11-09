@@ -1,0 +1,13 @@
+﻿global using gRPCServer.Services;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Storage;
+global using Grpc.Core;
+global using gRPCServer.Converters;
+global using gRPCServer.Models;
+global using gRPCServer.Protos;
+global using System.Diagnostics.CodeAnalysis;
+global using System.Text;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using System.Collections;
+global using Google.Protobuf;

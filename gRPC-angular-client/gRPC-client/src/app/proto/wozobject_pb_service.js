@@ -28,6 +28,24 @@ WozObjects.GetFullWozObject = {
   responseType: wozobject_pb.FullWozObjectReply
 };
 
+WozObjects.GetWozObjectImages = {
+  methodName: "GetWozObjectImages",
+  service: WozObjects,
+  requestStream: false,
+  responseStream: true,
+  requestType: wozobject_pb.WozObjectImageRequest,
+  responseType: wozobject_pb.WozObjectImageReply
+};
+
+WozObjects.UploadWozObjectImage = {
+  methodName: "UploadWozObjectImage",
+  service: WozObjects,
+  requestStream: false,
+  responseStream: false,
+  requestType: wozobject_pb.UploadImageRequest,
+  responseType: wozobject_pb.UploadImageReply
+};
+
 exports.WozObjects = WozObjects;
 
 function WozObjectsClient(serviceHost, options) {
@@ -100,6 +118,76 @@ WozObjectsClient.prototype.getFullWozObject = function getFullWozObject(requestM
     },
     cancel: function () {
       listeners = null;
+      client.close();
+    }
+  };
+};
+
+WozObjectsClient.prototype.getWozObjectImages = function getWozObjectImages(requestMessage, metadata) {
+  var listeners = {
+    data: [],
+    end: [],
+    status: []
+  };
+  var client = grpc.invoke(WozObjects.GetWozObjectImages, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onMessage: function (responseMessage) {
+      listeners.data.forEach(function (handler) {
+        handler(responseMessage);
+      });
+    },
+    onEnd: function (status, statusMessage, trailers) {
+      listeners.status.forEach(function (handler) {
+        handler({ code: status, details: statusMessage, metadata: trailers });
+      });
+      listeners.end.forEach(function (handler) {
+        handler({ code: status, details: statusMessage, metadata: trailers });
+      });
+      listeners = null;
+    }
+  });
+  return {
+    on: function (type, handler) {
+      listeners[type].push(handler);
+      return this;
+    },
+    cancel: function () {
+      listeners = null;
+      client.close();
+    }
+  };
+};
+
+WozObjectsClient.prototype.uploadWozObjectImage = function uploadWozObjectImage(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(WozObjects.UploadWozObjectImage, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
       client.close();
     }
   };

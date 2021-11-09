@@ -22,10 +22,30 @@ type WozObjectsGetFullWozObject = {
   readonly responseType: typeof wozobject_pb.FullWozObjectReply;
 };
 
+type WozObjectsGetWozObjectImages = {
+  readonly methodName: string;
+  readonly service: typeof WozObjects;
+  readonly requestStream: false;
+  readonly responseStream: true;
+  readonly requestType: typeof wozobject_pb.WozObjectImageRequest;
+  readonly responseType: typeof wozobject_pb.WozObjectImageReply;
+};
+
+type WozObjectsUploadWozObjectImage = {
+  readonly methodName: string;
+  readonly service: typeof WozObjects;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof wozobject_pb.UploadImageRequest;
+  readonly responseType: typeof wozobject_pb.UploadImageReply;
+};
+
 export class WozObjects {
   static readonly serviceName: string;
   static readonly GetWozObject: WozObjectsGetWozObject;
   static readonly GetFullWozObject: WozObjectsGetFullWozObject;
+  static readonly GetWozObjectImages: WozObjectsGetWozObjectImages;
+  static readonly UploadWozObjectImage: WozObjectsUploadWozObjectImage;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -70,5 +90,15 @@ export class WozObjectsClient {
     callback: (error: ServiceError|null, responseMessage: wozobject_pb.WozObjectsReply|null) => void
   ): UnaryResponse;
   getFullWozObject(requestMessage: wozobject_pb.WozObjectRequestById, metadata?: grpc.Metadata): ResponseStream<wozobject_pb.FullWozObjectReply>;
+  getWozObjectImages(requestMessage: wozobject_pb.WozObjectImageRequest, metadata?: grpc.Metadata): ResponseStream<wozobject_pb.WozObjectImageReply>;
+  uploadWozObjectImage(
+    requestMessage: wozobject_pb.UploadImageRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: wozobject_pb.UploadImageReply|null) => void
+  ): UnaryResponse;
+  uploadWozObjectImage(
+    requestMessage: wozobject_pb.UploadImageRequest,
+    callback: (error: ServiceError|null, responseMessage: wozobject_pb.UploadImageReply|null) => void
+  ): UnaryResponse;
 }
 

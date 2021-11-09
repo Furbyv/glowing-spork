@@ -1,11 +1,17 @@
 <mat-card>
   <div style="margin: 2em" class="container">
     <app-carousel>
-      <ng-container *ngFor="let photo of photos">
-        <ng-container *carouselItem>
-          <img [src]="photo.src" class="photo" />
+      <mat-spinner
+        *ngIf="loading$ | async; else content"
+        class="photo"
+      ></mat-spinner>
+      <ng-template #content>
+        <ng-container *ngFor="let image of images$ | async">
+          <ng-container *carouselItem>
+            <img [src]="image" class="photo" />
+          </ng-container>
         </ng-container>
-      </ng-container>
+      </ng-template>
     </app-carousel>
   </div>
 </mat-card>

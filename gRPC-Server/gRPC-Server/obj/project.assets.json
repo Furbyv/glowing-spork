@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
+    "net6.0": {
       "EFCore.NamingConventions/5.0.2": {
         "type": "package",
         "dependencies": {
@@ -33,10 +33,10 @@
           "Grpc.Tools": "2.40.0"
         },
         "compile": {
-          "lib/net5.0/_._": {}
+          "lib/net6.0/_._": {}
         },
         "runtime": {
-          "lib/net5.0/_._": {}
+          "lib/net6.0/_._": {}
         }
       },
       "Grpc.AspNetCore.Server/2.40.0": {
@@ -45,10 +45,10 @@
           "Grpc.Net.Common": "2.40.0"
         },
         "compile": {
-          "lib/net5.0/Grpc.AspNetCore.Server.dll": {}
+          "lib/net6.0/Grpc.AspNetCore.Server.dll": {}
         },
         "runtime": {
-          "lib/net5.0/Grpc.AspNetCore.Server.dll": {}
+          "lib/net6.0/Grpc.AspNetCore.Server.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -61,10 +61,10 @@
           "Grpc.Net.ClientFactory": "2.40.0"
         },
         "compile": {
-          "lib/net5.0/Grpc.AspNetCore.Server.ClientFactory.dll": {}
+          "lib/net6.0/Grpc.AspNetCore.Server.ClientFactory.dll": {}
         },
         "runtime": {
-          "lib/net5.0/Grpc.AspNetCore.Server.ClientFactory.dll": {}
+          "lib/net6.0/Grpc.AspNetCore.Server.ClientFactory.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -73,10 +73,10 @@
       "Grpc.AspNetCore.Web/2.40.0": {
         "type": "package",
         "compile": {
-          "lib/net5.0/Grpc.AspNetCore.Web.dll": {}
+          "lib/net6.0/Grpc.AspNetCore.Web.dll": {}
         },
         "runtime": {
-          "lib/net5.0/Grpc.AspNetCore.Web.dll": {}
+          "lib/net6.0/Grpc.AspNetCore.Web.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -101,10 +101,10 @@
           "Microsoft.Extensions.Logging.Abstractions": "3.0.3"
         },
         "compile": {
-          "lib/net5.0/Grpc.Net.Client.dll": {}
+          "lib/net6.0/Grpc.Net.Client.dll": {}
         },
         "runtime": {
-          "lib/net5.0/Grpc.Net.Client.dll": {}
+          "lib/net6.0/Grpc.Net.Client.dll": {}
         }
       },
       "Grpc.Net.ClientFactory/2.40.0": {
@@ -114,10 +114,10 @@
           "Microsoft.Extensions.Http": "3.0.3"
         },
         "compile": {
-          "lib/net5.0/Grpc.Net.ClientFactory.dll": {}
+          "lib/net6.0/Grpc.Net.ClientFactory.dll": {}
         },
         "runtime": {
-          "lib/net5.0/Grpc.Net.ClientFactory.dll": {}
+          "lib/net6.0/Grpc.Net.ClientFactory.dll": {}
         }
       },
       "Grpc.Net.Common/2.40.0": {
@@ -126,10 +126,10 @@
           "Grpc.Core.Api": "2.40.0"
         },
         "compile": {
-          "lib/net5.0/Grpc.Net.Common.dll": {}
+          "lib/net6.0/Grpc.Net.Common.dll": {}
         },
         "runtime": {
-          "lib/net5.0/Grpc.Net.Common.dll": {}
+          "lib/net6.0/Grpc.Net.Common.dll": {}
         }
       },
       "Grpc.Tools/2.40.0": {
@@ -1288,7 +1288,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0": [
+    "net6.0": [
       "EFCore.NamingConventions >= 5.0.2",
       "Grpc.AspNetCore >= 2.40.0",
       "Grpc.AspNetCore.Web >= 2.40.0",
@@ -1316,15 +1316,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {}
         }
       },
@@ -1335,8 +1335,8 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "dependencies": {
           "EFCore.NamingConventions": {
             "target": "Package",
@@ -1391,7 +1391,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

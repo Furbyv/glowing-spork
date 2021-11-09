@@ -10,6 +10,8 @@ service WozObjects {
   // Sends a greeting
   rpc GetWozObject (WozObjectRequestById) returns (WozObjectsReply);
   rpc GetFullWozObject (WozObjectRequestById) returns (stream FullWozObjectReply);
+  rpc GetWozObjectImages (WozObjectImageRequest) returns (stream WozObjectImageReply);
+  rpc UploadWozObjectImage (UploadImageRequest) returns (UploadImageReply);
 }
 
 // The request message containing the object's id.
@@ -48,4 +50,24 @@ message FullWozObjectReply {
   google.protobuf.StringValue locatieomschrijving = 12;
   google.protobuf.StringValue indicatieligging = 13;
   google.protobuf.StringValue omschrijving = 14;
+}
+
+message WozObjectImageRequest{
+    int64 wozobjectnummer =1;
+    bool only_main =2;
+}
+
+message WozObjectImageReply{
+    bytes image_data = 1;
+    bool is_main =2;
+}
+
+message UploadImageRequest{
+    int64 wozobjectnummer =1;
+    bytes image_data = 2;
+    bool is_main =3;
+}
+
+message UploadImageReply{
+    bool succes =1;
 }

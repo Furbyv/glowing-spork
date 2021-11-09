@@ -4,17 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { ObjectDetailsComponent } from './components/object-details/object-details.component';
-import { CarouselItemDirective } from './components/object-details/photos-card/carousel-item.directive';
-import {
-  CarouselComponent,
-  CarouselItemElement,
-} from './components/object-details/photos-card/carousel.component';
 import { PhotosCardComponent } from './components/object-details/photos-card/photos-card.component';
 import { ObjectSearchListItemComponent } from './components/object-search-list-item/object-search-list-item.component';
 import { ObjectSearchListComponent } from './components/object-search-list/object-search-list.component';
 import { ObjectSearchComponent } from './components/object-search/object-search.component';
 import { ObjectSearchRoutingModule } from './object-search-routing.module';
 import { ObjectSearchPageComponent } from './pages/object-search-page.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,14 +20,12 @@ import { ObjectSearchPageComponent } from './pages/object-search-page.component'
     ObjectDetailsComponent,
     ObjectSearchPageComponent,
     PhotosCardComponent,
-    CarouselComponent,
-    CarouselItemDirective,
-    CarouselItemElement,
   ],
   imports: [
     CommonModule,
     FormsModule,
     MaterialModule,
+    SharedModule,
     ObjectSearchRoutingModule,
     TranslocoModule,
   ],
