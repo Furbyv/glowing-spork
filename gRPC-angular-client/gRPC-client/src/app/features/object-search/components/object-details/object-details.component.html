@@ -9,5 +9,5 @@
   <ng-container *ngIf="wozObject$ | async as wozobject">
     <p>{{ wozobject.soortobjectcode!.value }}</p>
   </ng-container>
-  <app-photos-card></app-photos-card>
+  <app-photos-card [id]="id"></app-photos-card>
 </ng-template>

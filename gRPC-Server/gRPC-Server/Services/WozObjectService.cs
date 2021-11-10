@@ -36,7 +36,7 @@ public class WozObjectService : WozObjects.WozObjectsBase
             //_dbContext.ChangeTracker.DetectChanges();
             //Console.WriteLine(_dbContext.ChangeTracker.HasChanges());
             //Console.WriteLine(_dbContext.ChangeTracker.DebugView.LongView);
-            if (true)
+            if (_dbContext.ChangeTracker.HasChanges())
             {
                 _dbContext.Entry(wozobject).Reload();
                 reply = WozObjectConverter.WozobjectpropertyToFullWozObjectsReply(wozobject);
@@ -45,6 +45,26 @@ public class WozObjectService : WozObjects.WozObjectsBase
             Thread.Sleep(10000);
         }
         return;
+    }
+
+    public override async Task GetWozObjectImages(WozObjectImageRequest request, IServerStreamWriter<WozObjectImageReply> responseStream, ServerCallContext context)
+    {
+        var images = _dbContext.Images.Where(w => w.Wozobjectnummer == request.Wozobjectnummer)
+            .Where(w => request.OnlyMain ? w.Main == true : (w.Main == true || w.Main == false))
+            .Select(i => WozObjectImageConverter.ImageToImageReply(i)).ToList();
+
+        foreach (var image in images)
+        {
+            await responseStream.WriteAsync(image);
+        }
+        return;
+    }
+
+    public override async Task<UploadImageReply> UploadWozObjectImage(UploadImageRequest request, ServerCallContext context)
+    {
+        var image = WozObjectImageConverter.UploadImageRequestToImage(request);
+        await _dbContext.AddAsync(image);
+        return new UploadImageReply { Succes = (await _dbContext.SaveChangesAsync()) > 0 };
     }
 }
 

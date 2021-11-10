@@ -5,35 +5,33 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
-import { filter, map, startWith } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { merge, Subject } from 'rxjs';
+import { filter, map, startWith, take, tap } from 'rxjs/operators';
 import { ImagesService } from '../../../services/images.service';
 
 @Component({
   selector: 'app-photos-card',
   templateUrl: 'photos-card.component.html',
   styleUrls: ['photos-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhotosCardComponent implements OnChanges {
+  loadstate$$: Subject<boolean> = new Subject<boolean>();
   @Input() id: number | undefined;
 
-  photos = [
-    { src: 'https://cloud.funda.nl/valentina_media/151/205/843_2160.jpg' },
-    { src: 'https://cloud.funda.nl/valentina_media/151/205/843_2160.jpg' },
-    { src: 'https://cloud.funda.nl/valentina_media/151/205/843_2160.jpg' },
-  ];
-
-  loading$ = this.imagesService.images$.pipe(
+  private getImageState$ = merge(
+    this.imagesService.images$,
+    this.imagesService.uploadRequest$
+  ).pipe(
     map((state) => state.loading),
     startWith(true)
   );
 
+  loading$ = merge(this.getImageState$, this.loadstate$$);
+
   images$ = this.imagesService.images$.pipe(
     filter((state) => state.success),
-    map((state) => state.res!),
-    map((images) =>
-      images.length ? images : [this.imagesService.defaultImage]
-    )
+    map((state) => state.res!)
   );
 
   ngOnChanges(changes: SimpleChanges) {
@@ -42,5 +40,19 @@ export class PhotosCardComponent implements OnChanges {
     }
   }
 
-  constructor(private imagesService: ImagesService) {}
+  constructor(
+    private imagesService: ImagesService,
+    private dialog: MatDialog
+  ) {}
+
+  onFileSelected(files: FileList | null) {
+    if (files && files.length && this.id) {
+      for (let i = 0; i < files.length; i++) {
+        files[i].arrayBuffer().then((buff) => {
+          let x = new Uint8Array(buff);
+          this.imagesService.uploadImages(x, this.id!);
+        });
+      }
+    }
+  }
 }

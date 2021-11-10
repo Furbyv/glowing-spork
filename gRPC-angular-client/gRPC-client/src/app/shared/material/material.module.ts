@@ -9,6 +9,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFileUploadModule } from 'angular-material-fileupload';
 
 @NgModule({
   imports: [
@@ -22,6 +24,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatListModule,
     MatMenuModule,
     MatSlideToggleModule,
+    MatDialogModule,
+    MatFileUploadModule,
   ],
   exports: [
     MatToolbarModule,
@@ -34,6 +38,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatListModule,
     MatMenuModule,
     MatSlideToggleModule,
+    MatDialogModule,
+    MatFileUploadModule,
   ],
 })
 export class MaterialModule {}

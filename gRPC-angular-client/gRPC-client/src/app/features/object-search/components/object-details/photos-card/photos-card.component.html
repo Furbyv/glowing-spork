@@ -1,17 +1,32 @@
-<mat-card>
-  <div style="margin: 2em" class="container">
-    <app-carousel>
-      <mat-spinner
-        *ngIf="loading$ | async; else content"
-        class="photo"
-      ></mat-spinner>
-      <ng-template #content>
+<mat-card class="photo-container">
+  <!-- <img *ngFor="let image of images$ | async" [src]="image" /> -->
+  <mat-spinner
+    *ngIf="loading$ | async; else content"
+    class="photo"
+  ></mat-spinner>
+  <ng-template #content>
+    <div class="action-row">
+      <input
+        type="file"
+        class="file-input"
+        (change)="onFileSelected(fileUpload.files)"
+        #fileUpload
+        multiple
+      />
+      <button mat-icon-button (click)="fileUpload.click()">
+        <mat-icon>file_upload</mat-icon>
+      </button>
+      <span></span>
+      <button mat-icon-button><mat-icon>fullscreen</mat-icon></button>
+    </div>
+    <div class="container">
+      <app-carousel>
         <ng-container *ngFor="let image of images$ | async">
-          <ng-container *carouselItem>
+          <ng-container *carouselItem class="photo">
             <img [src]="image" class="photo" />
           </ng-container>
         </ng-container>
-      </ng-template>
-    </app-carousel>
-  </div>
+      </app-carousel>
+    </div>
+  </ng-template>
 </mat-card>

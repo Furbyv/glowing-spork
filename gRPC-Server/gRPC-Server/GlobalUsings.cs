@@ -1,5 +1,4 @@
-﻿global using gRPCServer.Services;
-global using Microsoft.EntityFrameworkCore;
+﻿global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Storage;
 global using Grpc.Core;
 global using gRPCServer.Converters;

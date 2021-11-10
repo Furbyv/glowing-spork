@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter, map, tap } from 'rxjs/operators';
 import { GetFullWozObjectService } from '../../services/get-full-object.service';
+import { ImagesService } from '../../services/images.service';
 @UntilDestroy()
 @Component({
   selector: 'app-object-details',
@@ -22,15 +23,22 @@ export class ObjectDetailsComponent implements OnInit {
     map((state) => state.res!)
   );
 
+  images$ = this.imagesService.images$.pipe(
+    filter((state) => state.success),
+    map((state) => state.res!)
+  );
+
   constructor(
     private route: ActivatedRoute,
-    private getFullWozObjectService: GetFullWozObjectService
+    private getFullWozObjectService: GetFullWozObjectService,
+    private imagesService: ImagesService
   ) {}
 
   ngOnInit(): void {
     this.route.params.pipe(untilDestroyed(this)).subscribe((params: Params) => {
       this.id = +params['id'];
       this.getFullWozObjectService.getFullWozObject(this.id);
+      this.imagesService.getImage(this.id, false);
     });
   }
 }

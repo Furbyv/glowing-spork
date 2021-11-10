@@ -1,22 +1,63 @@
 import { Injectable } from '@angular/core';
 import { AsyncState, toAsyncState } from '@ngneat/loadoff';
-import { Observable, ReplaySubject, Subject } from 'rxjs';
-import { map, shareReplay, switchMap } from 'rxjs/operators';
 import {
+  BehaviorSubject,
+  combineLatest,
+  Observable,
+  Observer,
+  ReplaySubject,
+  Subject,
+} from 'rxjs';
+import {
+  combineAll,
+  concatMap,
+  map,
+  shareReplay,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
+import {
+  UploadImageReply,
+  UploadImageRequest,
   WozObjectImageReply,
   WozObjectImageRequest,
 } from 'src/app/proto/wozobject_pb';
 import { WozObjectsClient } from 'src/app/proto/wozobject_pb_service';
-import { grpcArrayStreamtoObservable } from 'src/app/shared/grpc-utility';
+import {
+  grpcArrayStreamtoObservable,
+  grpcToObservable,
+} from 'src/app/shared/grpc-utility';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Injectable({ providedIn: 'root' })
 export class ImagesService {
+  private refresh$$: Subject<boolean> = new BehaviorSubject<boolean>(false);
+  private client = new WozObjectsClient(environment.baseUrl);
   private imageRequest$$: Subject<WozObjectImageRequest> =
     new ReplaySubject<WozObjectImageRequest>(1);
 
-  private client = new WozObjectsClient(environment.baseUrl);
+  private imageUploadRequest$$: Subject<{ data: Uint8Array; id: number }> =
+    new ReplaySubject<{ data: Uint8Array; id: number }>(1);
+
+  uploadRequest$ = this.imageUploadRequest$$.pipe(
+    map((request) => {
+      const req = new UploadImageRequest();
+      req.setImageData(request.data);
+      req.setIsMain(false);
+      req.setWozobjectnummer(request.id);
+      return req;
+    }),
+    switchMap((req) =>
+      grpcToObservable<UploadImageReply>(
+        this.client.uploadWozObjectImage.bind(this.client),
+        req
+      )
+    ),
+    toAsyncState(),
+    shareReplay({ bufferSize: 1, refCount: true }),
+    tap((_) => this.refresh$$.next(true))
+  );
 
   getImage(id: number, onlyMain: boolean): void {
     const request = new WozObjectImageRequest();
@@ -25,8 +66,11 @@ export class ImagesService {
     this.imageRequest$$.next(request);
   }
 
-  images$: Observable<AsyncState<SafeUrl[]>> = this.imageRequest$$.pipe(
-    switchMap((request) =>
+  images$: Observable<AsyncState<SafeUrl[]>> = combineLatest(
+    this.imageRequest$$,
+    this.refresh$$
+  ).pipe(
+    concatMap(([request]) =>
       grpcArrayStreamtoObservable<WozObjectImageReply>(
         this.client.getWozObjectImages.bind(this.client),
         request
@@ -35,6 +79,7 @@ export class ImagesService {
     map((w) =>
       w.map((reply) => this.convertByteArrayToImage(reply.toObject().imageData))
     ),
+    map((reply) => (reply.length ? reply : [this.defaultImage])),
     toAsyncState(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
@@ -45,8 +90,12 @@ export class ImagesService {
   }
 
   defaultImage = this.sanitizer.bypassSecurityTrustUrl(
-    'src/assets/default_image.jpg'
+    'assets/default_image.jpg'
   );
+
+  uploadImages(data: Uint8Array, id: number) {
+    this.imageUploadRequest$$.next({ data, id });
+  }
 
   constructor(private sanitizer: DomSanitizer) {}
 }

@@ -4,3 +4,20 @@
   height: 300px;
   text-align: center;
 }
+
+.photo-container {
+  width: 332px;
+}
+
+.action-row {
+  display: flex;
+  flex-direction: row;
+}
+
+span {
+  flex: 1;
+}
+
+.file-input {
+  display: none;
+}

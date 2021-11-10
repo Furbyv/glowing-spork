@@ -35,7 +35,6 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapGrpcService<WozObjectService>().EnableGrpcWeb();
-            endpoints.MapGrpcService<WozObjectImagesService>().EnableGrpcWeb();
 
             endpoints.MapGet("/", async context =>
             {
