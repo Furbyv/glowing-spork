@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { combineLatest, Subject } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { ObjectSearchService } from '../../services/object-search.service';
 
 @Component({
@@ -21,7 +21,8 @@ export class ObjectSearchComponent {
 
   wozobjects$ = this.objectSearchService.wozObjects$.pipe(
     filter((state) => state.complete),
-    map((state) => state.res!)
+    map((state) => state.res!),
+    map((w) => w.toObject().wozobjectsList)
   );
 
   constructor(private objectSearchService: ObjectSearchService) {}

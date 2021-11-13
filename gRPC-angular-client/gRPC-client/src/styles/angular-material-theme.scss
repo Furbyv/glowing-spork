@@ -24,6 +24,9 @@
   .page-container {
     background-color: #334756;
   }
+  .mat-paginator-range-label {
+    margin: 0 !important;
+  }
 }
 
 .color-scheme-light {
@@ -38,5 +41,8 @@
   }
   .page-container {
     background-color: #fafafa;
+  }
+  .mat-paginator-range-label {
+    margin: 0 !important;
   }
 }

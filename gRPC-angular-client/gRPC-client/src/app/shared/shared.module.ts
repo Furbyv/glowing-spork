@@ -6,22 +6,11 @@ import {
   CarouselComponent,
   CarouselItemElement,
 } from './carousel/carousel.component';
-import { UploadDialogComponent } from './upload-dialog/upload-dialog.component';
 import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({
-  declarations: [
-    CarouselComponent,
-    CarouselItemDirective,
-    CarouselItemElement,
-    UploadDialogComponent,
-  ],
+  declarations: [CarouselComponent, CarouselItemDirective, CarouselItemElement],
   imports: [CommonModule, MaterialModule, TranslocoModule],
-  exports: [
-    CarouselComponent,
-    CarouselItemDirective,
-    CarouselItemElement,
-    UploadDialogComponent,
-  ],
+  exports: [CarouselComponent, CarouselItemDirective, CarouselItemElement],
 })
 export class SharedModule {}

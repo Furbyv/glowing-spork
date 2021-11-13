@@ -15,8 +15,10 @@ import { WozObjectReply } from 'src/app/proto/wozobject_pb';
 })
 export class ObjectSearchListItemComponent implements OnInit {
   @Input() wozObject: WozObjectReply.AsObject | undefined;
-  src: string = 'https://cloud.funda.nl/valentina_media/151/205/843_2160.jpg';
   trimmedAddress: string = '';
+  secondLineAddress: string = '';
+  objectDetails: string = '';
+
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
@@ -24,7 +26,13 @@ export class ObjectSearchListItemComponent implements OnInit {
       this.wozObject!.straatnaam?.value!.replace(/[^a-zA-Z ]/g, '') ?? '';
     this.trimmedAddress =
       this.trimmedAddress +
-      ` ${this.wozObject?.huisnummer}${this.wozObject?.huisletter} ${this.wozObject?.huisnummertoevoeging}`;
+      ` ${this.wozObject?.huisnummer ?? 0}${
+        this.wozObject?.huisletter?.value ?? ''
+      } ${this.wozObject?.huisnummertoevoeging?.value ?? ''}`;
+    this.secondLineAddress = `Gemeente: ${
+      this.wozObject?.gemeentenaam?.value ?? ''
+    }, postcode: ${this.wozObject?.postcode?.value ?? ''}`;
+    this.objectDetails = `soc: ${this.wozObject?.soortobjectcode?.value ?? ''}`;
   }
 
   OnObjectClick() {

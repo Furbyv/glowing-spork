@@ -24,7 +24,9 @@ import {
 } from 'src/app/proto/wozobject_pb';
 import { WozObjectsClient } from 'src/app/proto/wozobject_pb_service';
 import {
+  grpcArrayStreamtoAsyncObservable,
   grpcArrayStreamtoObservable,
+  grpcStreamtoAsyncStateObservable,
   grpcToObservable,
 } from 'src/app/shared/grpc-utility';
 import { environment } from 'src/environments/environment';
@@ -66,21 +68,16 @@ export class ImagesService {
     this.imageRequest$$.next(request);
   }
 
-  images$: Observable<AsyncState<SafeUrl[]>> = combineLatest(
+  images$: Observable<AsyncState<WozObjectImageReply[]>> = combineLatest(
     this.imageRequest$$,
     this.refresh$$
   ).pipe(
     concatMap(([request]) =>
-      grpcArrayStreamtoObservable<WozObjectImageReply>(
+      grpcArrayStreamtoAsyncObservable<WozObjectImageReply>(
         this.client.getWozObjectImages.bind(this.client),
         request
       )
     ),
-    map((w) =>
-      w.map((reply) => this.convertByteArrayToImage(reply.toObject().imageData))
-    ),
-    map((reply) => (reply.length ? reply : [this.defaultImage])),
-    toAsyncState(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
@@ -95,6 +92,10 @@ export class ImagesService {
 
   uploadImages(data: Uint8Array, id: number) {
     this.imageUploadRequest$$.next({ data, id });
+  }
+
+  refresh() {
+    this.refresh$$.next(true);
   }
 
   constructor(private sanitizer: DomSanitizer) {}

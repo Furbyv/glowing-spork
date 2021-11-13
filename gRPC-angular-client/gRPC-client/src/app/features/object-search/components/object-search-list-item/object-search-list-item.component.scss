@@ -1,41 +1,42 @@
 :host {
   display: block;
-  padding-bottom: 8px;
-  height: 56px;
+  position: relative;
+  padding-top: 8px;
 }
 
-mat-list-item {
+.mat-list-item {
   margin-bottom: 4px;
-}
-
-.item-container {
-  display: grid;
+  display: grid !important;
   grid-template-areas:
-    "image address address"
-    "image details details"
-    "divider divider divider";
+    "details"
+    "address"
+    "second-address"
+    "divider";
   height: 100%;
-  padding-bottom: 8px;
-}
-
-.image {
-  grid-area: image;
 }
 
 .address {
   margin-left: 8px;
   grid-area: address;
-  height: 50%;
+}
+
+.second-address {
+  margin-left: 8px;
+  grid-area: second-address;
 }
 
 .details {
   margin-left: 8px;
   grid-area: details;
-  height: 50%;
+}
+
+.object-details {
+  margin-left: 8px;
+  grid-area: object-details;
+  padding-bottom: 4px;
 }
 
 .divider {
-  position: block;
   grid-area: divider;
 }
 

@@ -1,8 +1,9 @@
 import { grpc } from '@improbable-eng/grpc-web';
+import { AsyncState, createAsyncState } from '@ngneat/loadoff';
 import { Message } from 'google-protobuf';
 import { Observable, Observer } from 'rxjs';
 import { UnaryResponse } from '../proto/greet_pb_service';
-import { ResponseStream } from '../proto/wozobject_pb_service';
+import { ResponseStream, Status } from '../proto/wozobject_pb_service';
 
 interface ServiceError {
   message: string;
@@ -23,6 +24,27 @@ export function grpcToObservable<T>(
   });
 }
 
+export function grpcToAsyncObservable<T>(
+  grpcFn: (...p: any) => UnaryResponse,
+  request: Message
+): Observable<AsyncState<T>> {
+  return new Observable((observer: Observer<AsyncState<T>>) => {
+    observer.next(
+      createAsyncState({
+        loading: true,
+        complete: false,
+      })
+    );
+    grpcFn(request, (err: ServiceError, next: T) => {
+      if (err) observer.error(err);
+      observer.next(
+        createAsyncState({ loading: false, complete: true, res: next })
+      );
+      observer.complete();
+    });
+  });
+}
+
 export function grpcStreamtoObservable<T>(
   grpcStreamFn: (...p: any) => ResponseStream<T>,
   request: Message
@@ -34,6 +56,30 @@ export function grpcStreamtoObservable<T>(
     //streamCall.on('error', (err: ServiceError) => observer.error(err));
   });
 }
+
+export function grpcStreamtoAsyncStateObservable<T>(
+  grpcStreamFn: (...p: any) => ResponseStream<T>,
+  request: Message
+): Observable<AsyncState<T>> {
+  return new Observable<AsyncState<T>>((observer: Observer<AsyncState<T>>) => {
+    observer.next(
+      createAsyncState({
+        loading: true,
+        complete: false,
+      })
+    );
+    const streamCall = grpcStreamFn(request);
+    streamCall.on('data', (next) =>
+      observer.next(
+        createAsyncState({ loading: false, complete: true, res: next })
+      )
+    );
+    streamCall.on('end', () => observer.complete());
+    //streamCall.on('error', (err: ServiceError) => observer.error(err));
+  });
+}
+
+// state = createAsyncState({ loading: false, complete: true, res: data })
 
 export function grpcArrayStreamtoObservable<T>(
   grpcStreamFn: (...p: any) => ResponseStream<T>,
@@ -48,4 +94,31 @@ export function grpcArrayStreamtoObservable<T>(
       return observer.complete();
     });
   });
+}
+
+export function grpcArrayStreamtoAsyncObservable<T>(
+  grpcStreamFn: (...p: any) => ResponseStream<T>,
+  request: Message
+): Observable<AsyncState<T[]>> {
+  return new Observable<AsyncState<T[]>>(
+    (observer: Observer<AsyncState<T[]>>) => {
+      const reply: T[] = [];
+      const streamCall = grpcStreamFn(request);
+      const state = createAsyncState({
+        loading: true,
+        complete: false,
+        res: reply,
+      });
+      observer.next(state);
+      streamCall.on('data', (response) => reply.push(response));
+      streamCall.on('end', () => {
+        state.res = reply;
+        state.loading = false;
+        state.success = true;
+        state.complete = true;
+        observer.next(state);
+        return observer.complete();
+      });
+    }
+  );
 }

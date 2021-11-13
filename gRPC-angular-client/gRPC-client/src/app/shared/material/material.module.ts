@@ -10,7 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatFileUploadModule } from 'angular-material-fileupload';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
     MatMenuModule,
     MatSlideToggleModule,
     MatDialogModule,
-    MatFileUploadModule,
+    MatPaginatorModule,
   ],
   exports: [
     MatToolbarModule,
@@ -39,7 +39,7 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
     MatMenuModule,
     MatSlideToggleModule,
     MatDialogModule,
-    MatFileUploadModule,
+    MatPaginatorModule,
   ],
 })
 export class MaterialModule {}

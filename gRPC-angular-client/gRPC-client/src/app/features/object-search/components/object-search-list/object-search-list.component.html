@@ -1,6 +1,17 @@
+<mat-paginator
+  [length]="length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  [hidePageSize]="true"
+  (page)="onPageEvent($event)"
+  aria-label="Select page"
+>
+</mat-paginator>
 <mat-action-list>
-  <app-object-search-list-item
-    *ngFor="let wozobject of wozObjects"
-    [wozObject]="wozobject"
-  ></app-object-search-list-item>
+  <ng-container *ngIf="pageEvent">
+    <app-object-search-list-item
+      *ngFor="let wozobject of slicedList"
+      [wozObject]="wozobject"
+    ></app-object-search-list-item>
+  </ng-container>
 </mat-action-list>

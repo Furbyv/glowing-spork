@@ -1,13 +1,12 @@
-<mat-list-item (click)="OnObjectClick()">
-  <div class="item-container">
-    <img [src]="src" class="image" style="max-height: 50px" />
-
-    <div class="address">
-      {{ trimmedAddress }}
-    </div>
-    <div class="details">
-      {{ wozObject!.wozobjectnummer }}
-    </div>
-    <mat-divider class="divider"></mat-divider>
+<div (click)="OnObjectClick()" class="mat-list-item">
+  <div class="details">
+    {{ wozObject!.wozobjectnummer }} {{ objectDetails }}
   </div>
-</mat-list-item>
+  <div class="address">
+    {{ trimmedAddress }}
+  </div>
+  <div class="second-address">
+    {{ secondLineAddress }}
+  </div>
+  <mat-divider class="divider"></mat-divider>
+</div>

@@ -31,7 +31,13 @@ export class PhotosCardComponent implements OnChanges {
 
   images$ = this.imagesService.images$.pipe(
     filter((state) => state.success),
-    map((state) => state.res!)
+    map((state) => state.res!),
+    map((reply) =>
+      reply.map((r) =>
+        this.imagesService.convertByteArrayToImage(r.toObject().imageData)
+      )
+    ),
+    map((reply) => (reply.length ? reply : [this.imagesService.defaultImage]))
   );
 
   ngOnChanges(changes: SimpleChanges) {
@@ -54,5 +60,9 @@ export class PhotosCardComponent implements OnChanges {
         });
       }
     }
+  }
+
+  refresh() {
+    this.imagesService.refresh();
   }
 }

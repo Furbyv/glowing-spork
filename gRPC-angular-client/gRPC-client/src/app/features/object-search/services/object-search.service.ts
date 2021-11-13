@@ -8,7 +8,10 @@ import {
   WozObjectsReply,
 } from 'src/app/proto/wozobject_pb';
 import { WozObjectsClient } from 'src/app/proto/wozobject_pb_service';
-import { grpcToObservable } from 'src/app/shared/grpc-utility';
+import {
+  grpcToAsyncObservable,
+  grpcToObservable,
+} from 'src/app/shared/grpc-utility';
 import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -24,16 +27,14 @@ export class ObjectSearchService {
     this.wozObjectRequest$$.next(request);
   }
 
-  wozObjects$: Observable<AsyncState<WozObjectReply.AsObject[]>> =
-    combineLatest([this.wozObjectRequest$$]).pipe(
-      switchMap(([request]) =>
-        grpcToObservable<WozObjectsReply>(
-          this.client.getWozObject.bind(this.client),
-          request
-        )
-      ),
-      map((w) => w.toObject().wozobjectsList),
-      shareReplay({ bufferSize: 1, refCount: true }),
-      toAsyncState()
-    );
+  wozObjects$: Observable<AsyncState<WozObjectsReply>> = combineLatest([
+    this.wozObjectRequest$$,
+  ]).pipe(
+    switchMap(([request]) =>
+      grpcToAsyncObservable<WozObjectsReply>(
+        this.client.getWozObject.bind(this.client),
+        request
+      )
+    )
+  );
 }
