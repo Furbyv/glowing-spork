@@ -4,7 +4,7 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-  ViewContainerRef,
+  ViewContainerRef
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { merge, Subject } from 'rxjs';
@@ -15,7 +15,7 @@ import { ExpandPhotoDialog } from './expand-photo-dialog/expand-photo-dialog.com
 @Component({
   selector: 'app-photos-card',
   templateUrl: 'photos-card.component.html',
-  styleUrls: ['photos-card.component.scss'],
+  styleUrls: ['photos-card.component.scss']
 })
 export class PhotosCardComponent implements OnChanges {
   loadstate$$: Subject<boolean> = new Subject<boolean>();
@@ -28,27 +28,29 @@ export class PhotosCardComponent implements OnChanges {
     this.imagesService.images$,
     this.imagesService.uploadRequest$
   ).pipe(
-    map((state) => state.loading),
+    map(state => state.loading),
     startWith(true)
   );
 
   loading$ = merge(this.getImageState$, this.loadstate$$);
 
   images$ = this.imagesService.images$.pipe(
-    filter((state) => state.success),
-    map((state) => state.res!),
-    map((reply) =>
-      reply.map((r) =>
-        this.imagesService.convertByteArrayToImage(r.toObject().imageData)
+    filter(state => state.success),
+    map(state => state.res!),
+    map(reply =>
+      reply.map(r =>
+        r.imageData
+          ? this.imagesService.convertByteArrayToImage(r.imageData!)
+          : null
       )
     ),
-    map((reply) => (reply.length ? reply : [this.imagesService.defaultImage])),
-    tap((a) => console.log(a.length))
+    map(reply => reply.filter(r => r !== null)),
+    map(reply => (reply.length ? reply : [this.imagesService.defaultImage]))
   );
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.id && this.id) {
-      this.imagesService.getImage(this.id, false);
+      this.imagesService.getImages(this.id, false);
     }
     this.containerClass = this.expanded
       ? 'photo-container-expanded'
@@ -66,7 +68,7 @@ export class PhotosCardComponent implements OnChanges {
   onFileSelected(files: FileList | null) {
     if (files && files.length && this.id) {
       for (let i = 0; i < files.length; i++) {
-        files[i].arrayBuffer().then((buff) => {
+        files[i].arrayBuffer().then(buff => {
           let x = new Uint8Array(buff);
           this.imagesService.uploadImages(x, this.id!);
         });
@@ -79,7 +81,7 @@ export class PhotosCardComponent implements OnChanges {
       width: '630px',
       height: '800px',
       viewContainerRef: this.vcr,
-      data: { name: this.id },
+      data: { name: this.id }
     });
   }
 

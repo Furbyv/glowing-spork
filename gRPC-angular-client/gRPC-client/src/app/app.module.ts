@@ -10,6 +10,8 @@ import { TranslocoRootModule } from './transloco-root.module';
 import { LayoutModule } from './layout/layout.module';
 import { ObjectSearchModule } from './features/object-search/object-search.module';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { GrpcCoreModule } from '@ngx-grpc/core';
+import { GrpcWebClientModule } from '@ngx-grpc/grpc-web-client';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,13 +25,17 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     TranslocoRootModule,
     LayoutModule,
     ObjectSearchModule,
+    GrpcCoreModule.forRoot(),
+    GrpcWebClientModule.forRoot({
+      settings: { host: 'https://localhost:5001' }
+    })
   ],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'outline' },
-    },
+      useValue: { appearance: 'outline' }
+    }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

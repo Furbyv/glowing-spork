@@ -10,65 +10,71 @@
       <span></span>
     </div>
     <form class="example-form" #propertiesForm="ngForm">
-      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field class="example-full-width" *ngIf="wozObject.postcode">
         <mat-label>Postcode</mat-label>
         <input
           name="postcode"
           matInput
           placeholder="1234AB"
-          [value]="wozObject.getPostcode()"
+          [(ngModel)]="wozObject.postcode.value"
           #postcode
         />
       </mat-form-field>
 
-      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field class="example-full-width" *ngIf="wozObject.wijkcode">
         <mat-label>Wijkcode</mat-label>
         <input
           matInput
+          name="wijk"
           placeholder="Wijk"
-          [value]="wozObject.wijkcode ? wozObject.wijkcode.value : null"
+          [(ngModel)]="wozObject.wijkcode.value"
         />
       </mat-form-field>
 
-      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field class="example-full-width" *ngIf="wozObject.buurtcode">
         <mat-label>Buurtcode</mat-label>
         <input
           matInput
+          name="buurt"
           placeholder="Buurt"
-          [value]="wozObject.buurtcode ? wozObject.buurtcode.value : null"
+          [(ngModel)]="wozObject.buurtcode.value"
         />
       </mat-form-field>
 
-      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field
+        class="example-full-width"
+        *ngIf="wozObject.soortobjectcode"
+      >
         <mat-label>Soort object</mat-label>
         <input
           matInput
-          [value]="
-            wozObject.soortobjectcode ? wozObject.soortobjectcode.value : null
-          "
+          name="soortobject"
+          [(ngModel)]="wozObject.soortobjectcode.value"
         />
       </mat-form-field>
 
-      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field
+        class="example-full-width"
+        *ngIf="wozObject.indicatieligging"
+      >
         <mat-label>Indicatie ligging</mat-label>
         <input
           matInput
           placeholder="3"
-          [value]="
-            wozObject.indicatieligging ? wozObject.indicatieligging.value : null
-          "
+          name="ligging"
+          [(ngModel)]="wozObject.indicatieligging.value"
         />
       </mat-form-field>
 
-      <mat-form-field class="example-full-width" appearance="fill">
+      <mat-form-field
+        class="example-full-width"
+        *ngIf="wozObject.locatieomschrijving"
+      >
         <mat-label>Locatieomschrijving</mat-label>
         <input
           matInput
-          [value]="
-            wozObject.locatieomschrijving
-              ? wozObject.locatieomschrijving.value
-              : null
-          "
+          name="locatieoms"
+          [(ngModel)]="wozObject.locatieomschrijving.value"
         />
       </mat-form-field>
     </form>

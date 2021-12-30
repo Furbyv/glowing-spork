@@ -3,29 +3,28 @@ import {
   ChangeDetectionStrategy,
   Input,
   OnChanges,
-  SimpleChanges,
+  SimpleChanges
 } from '@angular/core';
-import { ReplaySubject, Subject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-import { FullWozObjectReply } from 'src/app/proto/wozobject_pb';
+import { FullWozObjectReply } from 'src/app/proto/wozobject.pb';
 import { GetFullWozObjectService } from '../../../services/get-full-object.service';
 
 @Component({
   selector: 'app-object-properties',
   templateUrl: './object-properties.component.html',
   styleUrls: ['./object-properties.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ObjectPropertiesComponent implements OnChanges {
   @Input() id: number | undefined = 0;
 
   loading$ = this.getFullWozObjectService.fullWozObject$.pipe(
-    map((state) => state.loading)
+    map(state => state.loading)
   );
 
   wozObject$ = this.getFullWozObjectService.fullWozObject$.pipe(
-    filter((state) => state.success),
-    map((state) => state.res!)
+    filter(state => state.success),
+    map(state => state.res!)
   );
 
   constructor(private getFullWozObjectService: GetFullWozObjectService) {}
@@ -42,7 +41,7 @@ export class ObjectPropertiesComponent implements OnChanges {
     }
   }
 
-  onSave(wozObject: FullWozObjectReply.AsObject) {
+  onSave(wozObject: FullWozObjectReply) {
     console.log(wozObject);
   }
 }

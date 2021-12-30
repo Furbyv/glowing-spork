@@ -3,24 +3,24 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   Input,
-  OnChanges,
+  OnChanges
 } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { WozObjectReply } from 'src/app/proto/wozobject_pb';
+import { WozObjectReply } from 'src/app/proto/wozobject.pb';
 
 @Component({
   selector: 'app-object-search-list',
   templateUrl: './object-search-list.component.html',
   styleUrls: ['./object-search-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ObjectSearchListComponent implements OnInit, OnChanges {
-  @Input() wozObjects: WozObjectReply.AsObject[] = [];
+  @Input() wozObjects: WozObjectReply[] = [];
   // MatPaginator Inputs
   length = 100;
   pageSize = 25;
   pageSizeOptions: number[] = [5, 10, 25, 100];
-  slicedList: WozObjectReply.AsObject[] = [];
+  slicedList: WozObjectReply[] = [];
 
   // MatPaginator Output
   pageEvent: PageEvent = new PageEvent();
@@ -49,7 +49,7 @@ export class ObjectSearchListComponent implements OnInit, OnChanges {
     if (setPageSizeOptionsInput) {
       this.pageSizeOptions = setPageSizeOptionsInput
         .split(',')
-        .map((str) => +str);
+        .map(str => +str);
     }
   }
 }

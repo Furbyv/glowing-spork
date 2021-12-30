@@ -9,23 +9,18 @@ import { ImagesService } from '../../services/images.service';
   selector: 'app-object-details',
   templateUrl: './object-details.component.html',
   styleUrls: ['./object-details.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ObjectDetailsComponent implements OnInit {
   id: number | undefined;
 
   loading$ = this.getFullWozObjectService.fullWozObject$.pipe(
-    map((state) => state.loading)
+    map(state => state.loading)
   );
 
   wozObject$ = this.getFullWozObjectService.fullWozObject$.pipe(
-    filter((state) => state.success),
-    map((state) => state.res!)
-  );
-
-  images$ = this.imagesService.images$.pipe(
-    filter((state) => state.success),
-    map((state) => state.res!)
+    filter(state => state.success),
+    map(state => state.res!)
   );
 
   constructor(
@@ -38,7 +33,6 @@ export class ObjectDetailsComponent implements OnInit {
     this.route.params.pipe(untilDestroyed(this)).subscribe((params: Params) => {
       this.id = +params['id'];
       this.getFullWozObjectService.getFullWozObject(this.id);
-      this.imagesService.getImage(this.id, false);
     });
   }
 }

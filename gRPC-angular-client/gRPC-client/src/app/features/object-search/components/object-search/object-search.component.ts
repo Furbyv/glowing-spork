@@ -7,7 +7,7 @@ import { ObjectSearchService } from '../../services/object-search.service';
   selector: 'app-object-search',
   templateUrl: './object-search.component.html',
   styleUrls: ['./object-search.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ObjectSearchComponent {
   private startRequest$$: Subject<boolean> = new Subject<boolean>();
@@ -16,13 +16,13 @@ export class ObjectSearchComponent {
 
   loading$ = combineLatest([
     this.objectSearchService.wozObjects$,
-    this.startRequest$$,
+    this.startRequest$$
   ]).pipe(map(([state]) => state.loading));
 
   wozobjects$ = this.objectSearchService.wozObjects$.pipe(
-    filter((state) => state.complete),
-    map((state) => state.res!),
-    map((w) => w.toObject().wozobjectsList)
+    filter(state => state.complete),
+    map(state => state.res!),
+    map(w => w.wozobjects)
   );
 
   constructor(private objectSearchService: ObjectSearchService) {}

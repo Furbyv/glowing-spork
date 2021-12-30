@@ -3,7 +3,7 @@ import {
   AnimationBuilder,
   AnimationFactory,
   AnimationPlayer,
-  style,
+  style
 } from '@angular/animations';
 import {
   AfterViewInit,
@@ -16,21 +16,21 @@ import {
   OnChanges,
   QueryList,
   ViewChild,
-  ViewChildren,
+  ViewChildren
 } from '@angular/core';
 import { CarouselItemDirective } from './carousel-item.directive';
 
 //https://netbasal.com/building-a-simple-carousel-component-with-angular-3a94092b7080
 
 @Directive({
-  selector: '.carousel-item',
+  selector: '.carousel-item'
 })
 export class CarouselItemElement {}
 
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss'],
+  styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements AfterViewInit, OnChanges {
   @ContentChildren(CarouselItemDirective, { descendants: true })
@@ -56,7 +56,7 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
 
   private buildAnimation(offset: number) {
     return this.builder.build([
-      animate(this.timing, style({ transform: `translateX(-${offset}px)` })),
+      animate(this.timing, style({ transform: `translateX(-${offset}px)` }))
     ]);
   }
 
@@ -75,20 +75,16 @@ export class CarouselComponent implements AfterViewInit, OnChanges {
   constructor(private builder: AnimationBuilder) {}
 
   ngAfterViewInit() {
-    this.itemWidth =
-      this.itemsElements.first.nativeElement.getBoundingClientRect().width;
-    console.log(this.itemWidth);
+    this.itemWidth = this.itemsElements.first.nativeElement.getBoundingClientRect().width;
     this.carouselWrapperStyle = {
-      width: `${this.itemWidth}px`,
+      width: `${this.itemWidth}px`
     };
   }
 
   ngOnChanges() {
-    this.itemWidth =
-      this.itemsElements.first.nativeElement.getBoundingClientRect().width;
-    console.log('b', this.itemWidth);
+    this.itemWidth = this.itemsElements.first.nativeElement.getBoundingClientRect().width;
     this.carouselWrapperStyle = {
-      width: `${this.itemWidth}px`,
+      width: `${this.itemWidth}px`
     };
   }
 }
