@@ -12,6 +12,7 @@ service WozObjects {
   rpc GetFullWozObject (WozObjectRequestById) returns (stream FullWozObjectReply);
   rpc GetWozObjectImages (WozObjectImageRequest) returns (stream WozObjectImageReply);
   rpc UploadWozObjectImage (UploadImageRequest) returns (UploadImageReply);
+  rpc SaveFullWozObject (FullWozObjectReply) returns (FullWozObjectSaveReply);
 }
 
 // The request message containing the object's id.
@@ -22,6 +23,10 @@ message WozObjectRequestById {
 // The response message containing the WozObjects.
 message WozObjectsReply {
     repeated WozObjectReply wozobjects = 1;
+}
+
+message FullWozObjectSaveReply {
+    bool isSuccess = 1;
 }
 
 message WozObjectReply {

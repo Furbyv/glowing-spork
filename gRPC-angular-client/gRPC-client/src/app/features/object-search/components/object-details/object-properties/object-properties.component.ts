@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { ReplaySubject, Subject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import { FullWozObjectReply } from 'src/app/proto/wozobject_pb';
 import { GetFullWozObjectService } from '../../../services/get-full-object.service';
 
 @Component({
@@ -17,7 +18,6 @@ import { GetFullWozObjectService } from '../../../services/get-full-object.servi
 })
 export class ObjectPropertiesComponent implements OnChanges {
   @Input() id: number | undefined = 0;
-  refresh$$: Subject<boolean> = new ReplaySubject<boolean>(1);
 
   loading$ = this.getFullWozObjectService.fullWozObject$.pipe(
     map((state) => state.loading)
@@ -32,7 +32,17 @@ export class ObjectPropertiesComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.id && this.id) {
+      this.onRefresh();
+    }
+  }
+
+  onRefresh() {
+    if (this.id) {
       this.getFullWozObjectService.getFullWozObject(this.id);
     }
+  }
+
+  onSave(wozObject: FullWozObjectReply.AsObject) {
+    console.log(wozObject);
   }
 }

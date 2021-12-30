@@ -40,12 +40,22 @@ type WozObjectsUploadWozObjectImage = {
   readonly responseType: typeof wozobject_pb.UploadImageReply;
 };
 
+type WozObjectsSaveFullWozObject = {
+  readonly methodName: string;
+  readonly service: typeof WozObjects;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof wozobject_pb.FullWozObjectReply;
+  readonly responseType: typeof wozobject_pb.FullWozObjectSaveReply;
+};
+
 export class WozObjects {
   static readonly serviceName: string;
   static readonly GetWozObject: WozObjectsGetWozObject;
   static readonly GetFullWozObject: WozObjectsGetFullWozObject;
   static readonly GetWozObjectImages: WozObjectsGetWozObjectImages;
   static readonly UploadWozObjectImage: WozObjectsUploadWozObjectImage;
+  static readonly SaveFullWozObject: WozObjectsSaveFullWozObject;
 }
 
 export type ServiceError = { message: string, code: number; metadata: grpc.Metadata }
@@ -99,6 +109,15 @@ export class WozObjectsClient {
   uploadWozObjectImage(
     requestMessage: wozobject_pb.UploadImageRequest,
     callback: (error: ServiceError|null, responseMessage: wozobject_pb.UploadImageReply|null) => void
+  ): UnaryResponse;
+  saveFullWozObject(
+    requestMessage: wozobject_pb.FullWozObjectReply,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: wozobject_pb.FullWozObjectSaveReply|null) => void
+  ): UnaryResponse;
+  saveFullWozObject(
+    requestMessage: wozobject_pb.FullWozObjectReply,
+    callback: (error: ServiceError|null, responseMessage: wozobject_pb.FullWozObjectSaveReply|null) => void
   ): UnaryResponse;
 }
 

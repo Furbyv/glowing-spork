@@ -62,6 +62,8 @@ namespace gRPCServer.Protos {
     static readonly grpc::Marshaller<global::gRPCServer.Protos.UploadImageRequest> __Marshaller_wozobject_UploadImageRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.UploadImageRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::gRPCServer.Protos.UploadImageReply> __Marshaller_wozobject_UploadImageReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.UploadImageReply.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::gRPCServer.Protos.FullWozObjectSaveReply> __Marshaller_wozobject_FullWozObjectSaveReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.FullWozObjectSaveReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectsReply> __Method_GetWozObject = new grpc::Method<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectsReply>(
@@ -94,6 +96,14 @@ namespace gRPCServer.Protos {
         "UploadWozObjectImage",
         __Marshaller_wozobject_UploadImageRequest,
         __Marshaller_wozobject_UploadImageReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::gRPCServer.Protos.FullWozObjectReply, global::gRPCServer.Protos.FullWozObjectSaveReply> __Method_SaveFullWozObject = new grpc::Method<global::gRPCServer.Protos.FullWozObjectReply, global::gRPCServer.Protos.FullWozObjectSaveReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SaveFullWozObject",
+        __Marshaller_wozobject_FullWozObjectReply,
+        __Marshaller_wozobject_FullWozObjectSaveReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -135,6 +145,12 @@ namespace gRPCServer.Protos {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::gRPCServer.Protos.FullWozObjectSaveReply> SaveFullWozObject(global::gRPCServer.Protos.FullWozObjectReply request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -146,7 +162,8 @@ namespace gRPCServer.Protos {
           .AddMethod(__Method_GetWozObject, serviceImpl.GetWozObject)
           .AddMethod(__Method_GetFullWozObject, serviceImpl.GetFullWozObject)
           .AddMethod(__Method_GetWozObjectImages, serviceImpl.GetWozObjectImages)
-          .AddMethod(__Method_UploadWozObjectImage, serviceImpl.UploadWozObjectImage).Build();
+          .AddMethod(__Method_UploadWozObjectImage, serviceImpl.UploadWozObjectImage)
+          .AddMethod(__Method_SaveFullWozObject, serviceImpl.SaveFullWozObject).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -160,6 +177,7 @@ namespace gRPCServer.Protos {
       serviceBinder.AddMethod(__Method_GetFullWozObject, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.FullWozObjectReply>(serviceImpl.GetFullWozObject));
       serviceBinder.AddMethod(__Method_GetWozObjectImages, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::gRPCServer.Protos.WozObjectImageRequest, global::gRPCServer.Protos.WozObjectImageReply>(serviceImpl.GetWozObjectImages));
       serviceBinder.AddMethod(__Method_UploadWozObjectImage, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::gRPCServer.Protos.UploadImageRequest, global::gRPCServer.Protos.UploadImageReply>(serviceImpl.UploadWozObjectImage));
+      serviceBinder.AddMethod(__Method_SaveFullWozObject, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::gRPCServer.Protos.FullWozObjectReply, global::gRPCServer.Protos.FullWozObjectSaveReply>(serviceImpl.SaveFullWozObject));
     }
 
   }

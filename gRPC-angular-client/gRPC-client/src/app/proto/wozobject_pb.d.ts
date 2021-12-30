@@ -46,6 +46,26 @@ export namespace WozObjectsReply {
   }
 }
 
+export class FullWozObjectSaveReply extends jspb.Message {
+  getIssuccess(): boolean;
+  setIssuccess(value: boolean): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): FullWozObjectSaveReply.AsObject;
+  static toObject(includeInstance: boolean, msg: FullWozObjectSaveReply): FullWozObjectSaveReply.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: FullWozObjectSaveReply, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): FullWozObjectSaveReply;
+  static deserializeBinaryFromReader(message: FullWozObjectSaveReply, reader: jspb.BinaryReader): FullWozObjectSaveReply;
+}
+
+export namespace FullWozObjectSaveReply {
+  export type AsObject = {
+    issuccess: boolean,
+  }
+}
+
 export class WozObjectReply extends jspb.Message {
   getWozobjectnummer(): number;
   setWozobjectnummer(value: number): void;

@@ -46,6 +46,15 @@ WozObjects.UploadWozObjectImage = {
   responseType: wozobject_pb.UploadImageReply
 };
 
+WozObjects.SaveFullWozObject = {
+  methodName: "SaveFullWozObject",
+  service: WozObjects,
+  requestStream: false,
+  responseStream: false,
+  requestType: wozobject_pb.FullWozObjectReply,
+  responseType: wozobject_pb.FullWozObjectSaveReply
+};
+
 exports.WozObjects = WozObjects;
 
 function WozObjectsClient(serviceHost, options) {
@@ -167,6 +176,37 @@ WozObjectsClient.prototype.uploadWozObjectImage = function uploadWozObjectImage(
     callback = arguments[1];
   }
   var client = grpc.unary(WozObjects.UploadWozObjectImage, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+WozObjectsClient.prototype.saveFullWozObject = function saveFullWozObject(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(WozObjects.SaveFullWozObject, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,

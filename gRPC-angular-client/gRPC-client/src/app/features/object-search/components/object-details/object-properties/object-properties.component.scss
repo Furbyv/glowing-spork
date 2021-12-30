@@ -11,3 +11,12 @@ mat-card {
   padding-left: 8px;
   width: 50%;
 }
+
+.action-row {
+  display: flex;
+  flex-direction: row;
+}
+
+span {
+  flex: 1;
+}

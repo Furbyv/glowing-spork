@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslocoRootModule } from './transloco-root.module';
 import { LayoutModule } from './layout/layout.module';
 import { ObjectSearchModule } from './features/object-search/object-search.module';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,12 @@ import { ObjectSearchModule } from './features/object-search/object-search.modul
     LayoutModule,
     ObjectSearchModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline' },
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
