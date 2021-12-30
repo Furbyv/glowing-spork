@@ -4,11 +4,13 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
+  ViewContainerRef,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { merge, Subject } from 'rxjs';
-import { filter, map, startWith, take, tap } from 'rxjs/operators';
+import { filter, map, shareReplay, startWith, take, tap } from 'rxjs/operators';
 import { ImagesService } from '../../../services/images.service';
+import { ExpandPhotoDialog } from './expand-photo-dialog/expand-photo-dialog.component';
 
 @Component({
   selector: 'app-photos-card',
@@ -18,7 +20,10 @@ import { ImagesService } from '../../../services/images.service';
 export class PhotosCardComponent implements OnChanges {
   loadstate$$: Subject<boolean> = new Subject<boolean>();
   @Input() id: number | undefined;
+  @Input() expanded: boolean = false;
 
+  containerClass: string = 'photo-container';
+  photoClass: string = 'photo';
   private getImageState$ = merge(
     this.imagesService.images$,
     this.imagesService.uploadRequest$
@@ -37,18 +42,25 @@ export class PhotosCardComponent implements OnChanges {
         this.imagesService.convertByteArrayToImage(r.toObject().imageData)
       )
     ),
-    map((reply) => (reply.length ? reply : [this.imagesService.defaultImage]))
+    map((reply) => (reply.length ? reply : [this.imagesService.defaultImage])),
+    tap((a) => console.log(a.length))
   );
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.id && this.id) {
       this.imagesService.getImage(this.id, false);
     }
+    this.containerClass = this.expanded
+      ? 'photo-container-expanded'
+      : 'photo-container';
+
+    this.photoClass = this.expanded ? 'photo-expanded' : 'photo';
   }
 
   constructor(
     private imagesService: ImagesService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private vcr: ViewContainerRef
   ) {}
 
   onFileSelected(files: FileList | null) {
@@ -60,6 +72,15 @@ export class PhotosCardComponent implements OnChanges {
         });
       }
     }
+  }
+
+  onExpand() {
+    const dialogRef = this.dialog.open(ExpandPhotoDialog, {
+      width: '630px',
+      height: '800px',
+      viewContainerRef: this.vcr,
+      data: { name: this.id },
+    });
   }
 
   refresh() {

@@ -11,6 +11,7 @@ import { ObjectSearchComponent } from './components/object-search/object-search.
 import { ObjectSearchRoutingModule } from './object-search-routing.module';
 import { ObjectSearchPageComponent } from './pages/object-search-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ExpandPhotoDialog } from './components/object-details/photos-card/expand-photo-dialog/expand-photo-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ObjectDetailsComponent,
     ObjectSearchPageComponent,
     PhotosCardComponent,
+    ExpandPhotoDialog,
   ],
   imports: [
     CommonModule,

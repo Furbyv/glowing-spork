@@ -13,6 +13,7 @@ import {
   Directive,
   ElementRef,
   Input,
+  OnChanges,
   QueryList,
   ViewChild,
   ViewChildren,
@@ -31,7 +32,7 @@ export class CarouselItemElement {}
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.scss'],
 })
-export class CarouselComponent implements AfterViewInit {
+export class CarouselComponent implements AfterViewInit, OnChanges {
   @ContentChildren(CarouselItemDirective, { descendants: true })
   items!: QueryList<CarouselItemDirective>;
   @ViewChildren(CarouselItemElement, { read: ElementRef })
@@ -76,6 +77,16 @@ export class CarouselComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.itemWidth =
       this.itemsElements.first.nativeElement.getBoundingClientRect().width;
+    console.log(this.itemWidth);
+    this.carouselWrapperStyle = {
+      width: `${this.itemWidth}px`,
+    };
+  }
+
+  ngOnChanges() {
+    this.itemWidth =
+      this.itemsElements.first.nativeElement.getBoundingClientRect().width;
+    console.log('b', this.itemWidth);
     this.carouselWrapperStyle = {
       width: `${this.itemWidth}px`,
     };

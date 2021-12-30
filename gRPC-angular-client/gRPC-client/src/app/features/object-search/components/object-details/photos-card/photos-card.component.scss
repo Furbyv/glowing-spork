@@ -1,12 +1,33 @@
+::host {
+  box-sizing: border-box;
+}
+
 .photo {
   padding: 0;
   width: 300px;
   height: 300px;
   text-align: center;
+  overflow: hidden;
+}
+
+.photo-expanded {
+  padding: 0;
+  width: 600px;
+  height: 600px;
+  text-align: center;
+  overflow: hidden;
 }
 
 .photo-container {
   width: 332px;
+}
+
+.photo-container-expanded {
+  width: 600px;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .action-row {

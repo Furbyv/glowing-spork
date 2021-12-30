@@ -68,10 +68,10 @@ export class ImagesService {
     this.imageRequest$$.next(request);
   }
 
-  images$: Observable<AsyncState<WozObjectImageReply[]>> = combineLatest(
+  images$: Observable<AsyncState<WozObjectImageReply[]>> = combineLatest([
     this.imageRequest$$,
-    this.refresh$$
-  ).pipe(
+    this.refresh$$,
+  ]).pipe(
     concatMap(([request]) =>
       grpcArrayStreamtoAsyncObservable<WozObjectImageReply>(
         this.client.getWozObjectImages.bind(this.client),
