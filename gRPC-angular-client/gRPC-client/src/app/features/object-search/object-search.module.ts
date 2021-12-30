@@ -12,6 +12,8 @@ import { ObjectSearchRoutingModule } from './object-search-routing.module';
 import { ObjectSearchPageComponent } from './pages/object-search-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ExpandPhotoDialog } from './components/object-details/photos-card/expand-photo-dialog/expand-photo-dialog.component';
+import { ObjectPropertiesComponent } from './components/object-details/object-properties/object-properties.component';
+import { ObjectTabsComponent } from './components/object-details/object-tabs/object-tabs.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { ExpandPhotoDialog } from './components/object-details/photos-card/expan
     ObjectSearchListItemComponent,
     ObjectDetailsComponent,
     ObjectSearchPageComponent,
+    ObjectPropertiesComponent,
+    ObjectTabsComponent,
     PhotosCardComponent,
     ExpandPhotoDialog,
   ],

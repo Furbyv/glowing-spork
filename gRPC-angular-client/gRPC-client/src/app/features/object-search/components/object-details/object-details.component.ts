@@ -9,7 +9,7 @@ import { ImagesService } from '../../services/images.service';
   selector: 'app-object-details',
   templateUrl: './object-details.component.html',
   styleUrls: ['./object-details.component.scss'],
-  //changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ObjectDetailsComponent implements OnInit {
   id: number | undefined;
