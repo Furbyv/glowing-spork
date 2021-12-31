@@ -17,7 +17,6 @@ export class ObjectDetailsComponent implements OnInit {
   loading$ = this.getFullWozObjectService.fullWozObject$.pipe(
     map(state => state.loading)
   );
-
   wozObject$ = this.getFullWozObjectService.fullWozObject$.pipe(
     filter(state => state.success),
     map(state => state.res!)

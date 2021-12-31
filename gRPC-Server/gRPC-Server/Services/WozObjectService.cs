@@ -32,15 +32,13 @@ public class WozObjectService : WozObjects.WozObjectsBase
 
         while (true)
         {
-            //_dbContext.Entry<Wozobjectproperty>(wozobject).Reload();
-            //_dbContext.ChangeTracker.DetectChanges();
-            //Console.WriteLine(_dbContext.ChangeTracker.HasChanges());
-            //Console.WriteLine(_dbContext.ChangeTracker.DebugView.LongView);
-            if (_dbContext.ChangeTracker.HasChanges())
             {
                 _dbContext.Entry(wozobject).Reload();
-                reply = WozObjectConverter.WozobjectpropertyToFullWozObjectsReply(wozobject);
-                await responseStream.WriteAsync(reply);
+                var reloadedReply = WozObjectConverter.WozobjectpropertyToFullWozObjectsReply(wozobject);
+                if (!reply.Equals(reloadedReply))
+                {
+                    await responseStream.WriteAsync(reloadedReply);
+                }
             }
             Thread.Sleep(10000);
         }
@@ -55,7 +53,7 @@ public class WozObjectService : WozObjects.WozObjectsBase
         wozobject.Postcode = request.Postcode;
         var success = _dbContext.SaveChanges();
         var reply = new FullWozObjectSaveReply();
-        reply.IsSuccess = success > 0;
+        reply.IsSuccess = true;
 
         return Task.FromResult(reply);
     }

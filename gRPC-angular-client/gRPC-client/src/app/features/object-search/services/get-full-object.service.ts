@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AsyncState, toAsyncState } from '@ngneat/loadoff';
 import { combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
-import { shareReplay, switchMap, tap } from 'rxjs/operators';
+import { concatMap, shareReplay, switchMap } from 'rxjs/operators';
 import {
   FullWozObjectReply,
   FullWozObjectSaveReply,
@@ -9,16 +9,14 @@ import {
 } from 'src/app/proto/wozobject.pb';
 import { WozObjectsClient } from 'src/app/proto/wozobject.pbsc';
 
-import { environment } from 'src/environments/environment';
-
 @Injectable({ providedIn: 'root' })
 export class GetFullWozObjectService {
   private wozObjectRequest$$: Subject<WozObjectRequestById> = new ReplaySubject<
     WozObjectRequestById
   >(1);
-  private saveWozObjectRequest$$: Subject<
+  private saveWozObjectRequest$$: Subject<FullWozObjectReply> = new Subject<
     FullWozObjectReply
-  > = new ReplaySubject<FullWozObjectReply>(1);
+  >();
 
   constructor(private wozObjectClient: WozObjectsClient) {}
 
@@ -32,8 +30,8 @@ export class GetFullWozObjectService {
     AsyncState<FullWozObjectReply>
   > = this.wozObjectRequest$$.pipe(
     switchMap(request => this.wozObjectClient.getFullWozObject(request)),
-    toAsyncState(),
-    shareReplay({ bufferSize: 1, refCount: true })
+    toAsyncState()
+    //shareReplay({ bufferSize: 1, refCount: true })
   );
 
   saveState$: Observable<AsyncState<FullWozObjectSaveReply>> = combineLatest([
