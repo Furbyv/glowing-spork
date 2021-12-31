@@ -11,4 +11,9 @@
   flex: 1;
   height: 100%;
   margin-left: $default-gap;
+  margin-right: $default-gap;
+}
+
+.mat-drawer-collapsed {
+  position: inherit !important;
 }

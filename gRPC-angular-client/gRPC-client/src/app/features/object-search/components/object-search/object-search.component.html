@@ -1,37 +1,44 @@
-<mat-card>
-  <div class="row">
-    <mat-form-field class="search">
-      <mat-label>{{ "search-object-by-number" | transloco }}</mat-label>
-      <input
-        matInput
-        type="number"
-        #search
-        maxlength="maxCharacters"
-        [placeholder]="'search-object-by-number' | transloco"
-      />
-      <!-- <mat-hint align="end">{{ search.value.length }} / 12</mat-hint> -->
-    </mat-form-field>
-    <button
-      mat-icon-button
-      color="primary"
-      class="search-button"
-      aria-label="search button"
-      (click)="onSearch(search.value)"
-    >
-      <mat-icon>search</mat-icon>
-    </button>
+<section [class.search-drawer]="isExpanded">
+  <div class="toggle">
+    <mat-icon (click)="toggleMenu.emit(null)" [class.fold-icon]="isExpanded">
+      double_arrow
+    </mat-icon>
   </div>
-  <mat-spinner
-    class="loader"
-    *ngIf="loading$ | async; else content"
-    [diameter]="48"
-    aria-label="searching objects"
-  ></mat-spinner>
-  <ng-template #content>
-    <ng-container *ngIf="wozobjects$ | async as Wozobjects">
-      <app-object-search-list
-        [wozObjects]="Wozobjects"
-      ></app-object-search-list>
-    </ng-container>
-  </ng-template>
-</mat-card>
+  <ng-container *ngIf="isExpanded">
+    <div class="row">
+      <mat-form-field class="search">
+        <mat-label>{{ "search-object-by-number" | transloco }}</mat-label>
+        <input
+          matInput
+          type="number"
+          #search
+          maxlength="maxCharacters"
+          [placeholder]="'search-object-by-number' | transloco"
+        />
+        <!-- <mat-hint align="end">{{ search.value.length }} / 12</mat-hint> -->
+      </mat-form-field>
+      <button
+        mat-icon-button
+        color="primary"
+        class="search-button"
+        aria-label="search button"
+        (click)="onSearch(search.value)"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <mat-spinner
+      class="loader"
+      *ngIf="loading$ | async; else content"
+      [diameter]="48"
+      aria-label="searching objects"
+    ></mat-spinner>
+    <ng-template #content>
+      <ng-container *ngIf="wozobjects$ | async as Wozobjects">
+        <app-object-search-list
+          [wozObjects]="Wozobjects"
+        ></app-object-search-list>
+      </ng-container>
+    </ng-template>
+  </ng-container>
+</section>

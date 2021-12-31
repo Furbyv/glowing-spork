@@ -4,13 +4,30 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 380px;
 }
 
-mat-card {
+section {
   flex: 1;
+  padding-left: 8px;
   overflow: auto;
-  max-height: calc(100vh - 96px);
+}
+
+.search-drawer {
+  width: 360px;
+}
+
+.toggle {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 16px 16px 16px 8px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.fold-icon {
+  transform: rotate(180deg);
 }
 
 .full-width {

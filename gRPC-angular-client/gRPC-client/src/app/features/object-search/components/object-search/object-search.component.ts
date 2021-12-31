@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output
+} from '@angular/core';
 import { combineLatest, Subject } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { ObjectSearchService } from '../../services/object-search.service';
@@ -10,9 +16,11 @@ import { ObjectSearchService } from '../../services/object-search.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ObjectSearchComponent {
-  private startRequest$$: Subject<boolean> = new Subject<boolean>();
-
+  @Input() isExpanded: boolean = true;
   @Input() maxCharacters: number = 12;
+  @Output() toggleMenu = new EventEmitter();
+
+  private startRequest$$: Subject<boolean> = new Subject<boolean>();
 
   loading$ = combineLatest([
     this.objectSearchService.wozObjects$,

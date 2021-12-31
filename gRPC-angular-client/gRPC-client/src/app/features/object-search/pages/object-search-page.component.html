@@ -1,4 +1,17 @@
-<div class="container">
-  <app-object-search></app-object-search>
-  <div class="details"><router-outlet></router-outlet></div>
-</div>
+<mat-drawer-container class="container">
+  <mat-drawer
+    fixedInViewport="true"
+    mode="side"
+    [opened]="isExpanded"
+    #drawer
+    [class.mat-drawer-collapsed]="!isExpanded"
+    ><app-object-search
+      (toggleMenu)="toggleMenu()"
+      [isExpanded]="isExpanded"
+    ></app-object-search
+  ></mat-drawer>
+
+  <mat-drawer-content>
+    <div class="details"><router-outlet></router-outlet></div>
+  </mat-drawer-content>
+</mat-drawer-container>
