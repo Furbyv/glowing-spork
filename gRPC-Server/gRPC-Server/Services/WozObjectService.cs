@@ -30,7 +30,7 @@ public class WozObjectService : WozObjects.WozObjectsBase
         var reply = WozObjectConverter.WozobjectpropertyToFullWozObjectsReply(wozobject);
         await responseStream.WriteAsync(reply);
 
-        while (true)
+        while (!context.CancellationToken.IsCancellationRequested)
         {
             {
                 _dbContext.Entry(wozobject).Reload();
