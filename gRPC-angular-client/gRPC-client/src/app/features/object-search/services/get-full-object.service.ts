@@ -30,8 +30,8 @@ export class GetFullWozObjectService {
     AsyncState<FullWozObjectReply>
   > = this.wozObjectRequest$$.pipe(
     switchMap(request => this.wozObjectClient.getFullWozObject(request)),
-    toAsyncState()
-    //shareReplay({ bufferSize: 1, refCount: true })
+    toAsyncState(),
+    shareReplay({ bufferSize: 0, refCount: true })
   );
 
   saveState$: Observable<AsyncState<FullWozObjectSaveReply>> = combineLatest([

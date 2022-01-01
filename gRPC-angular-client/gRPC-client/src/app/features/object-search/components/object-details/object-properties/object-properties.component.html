@@ -1,5 +1,8 @@
-<mat-card>
-  <ng-container *ngIf="wozObject$ | async as wozObject">
+<ng-container *ngIf="wozObject$ | async as wozObject">
+  <app-object-property-header
+    [wozObject]="wozObject"
+  ></app-object-property-header>
+  <mat-card>
     <div class="action-row">
       <button mat-icon-button (click)="onRefresh()">
         <mat-icon>refresh</mat-icon>
@@ -10,8 +13,8 @@
       <span></span>
       <mat-icon *ngIf="saveState$ | async">check_circle</mat-icon>
     </div>
-    <form class="example-form" #propertiesForm="ngForm">
-      <mat-form-field class="example-full-width" *ngIf="wozObject.postcode">
+    <form class="properties-form" #propertiesForm="ngForm">
+      <mat-form-field class="propertie-width" *ngIf="wozObject.postcode">
         <mat-label>Postcode</mat-label>
         <input
           name="postcode"
@@ -22,7 +25,7 @@
         />
       </mat-form-field>
 
-      <mat-form-field class="example-full-width" *ngIf="wozObject.wijkcode">
+      <mat-form-field class="propertie-width" *ngIf="wozObject.wijkcode">
         <mat-label>Wijkcode</mat-label>
         <input
           matInput
@@ -32,7 +35,7 @@
         />
       </mat-form-field>
 
-      <mat-form-field class="example-full-width" *ngIf="wozObject.buurtcode">
+      <mat-form-field class="propertie-width" *ngIf="wozObject.buurtcode">
         <mat-label>Buurtcode</mat-label>
         <input
           matInput
@@ -42,10 +45,7 @@
         />
       </mat-form-field>
 
-      <mat-form-field
-        class="example-full-width"
-        *ngIf="wozObject.soortobjectcode"
-      >
+      <mat-form-field class="propertie-width" *ngIf="wozObject.soortobjectcode">
         <mat-label>Soort object</mat-label>
         <input
           matInput
@@ -55,7 +55,7 @@
       </mat-form-field>
 
       <mat-form-field
-        class="example-full-width"
+        class="propertie-width"
         *ngIf="wozObject.indicatieligging"
       >
         <mat-label>Indicatie ligging</mat-label>
@@ -68,7 +68,7 @@
       </mat-form-field>
 
       <mat-form-field
-        class="example-full-width"
+        class="propertie-width"
         *ngIf="wozObject.locatieomschrijving"
       >
         <mat-label>Locatieomschrijving</mat-label>
@@ -86,5 +86,5 @@
       }}
     </p>
   </ng-container> -->
-  </ng-container>
-</mat-card>
+  </mat-card>
+</ng-container>

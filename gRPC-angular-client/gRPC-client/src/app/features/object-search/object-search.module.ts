@@ -14,6 +14,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ExpandPhotoDialog } from './components/object-details/photos-card/expand-photo-dialog/expand-photo-dialog.component';
 import { ObjectPropertiesComponent } from './components/object-details/object-properties/object-properties.component';
 import { ObjectTabsComponent } from './components/object-details/object-tabs/object-tabs.component';
+import { ObjectPropertyHeaderComponent } from './components/object-details/object-properties/object-property-header/object-property-header.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +25,9 @@ import { ObjectTabsComponent } from './components/object-details/object-tabs/obj
     ObjectSearchPageComponent,
     ObjectPropertiesComponent,
     ObjectTabsComponent,
+    ObjectPropertyHeaderComponent,
     PhotosCardComponent,
-    ExpandPhotoDialog,
+    ExpandPhotoDialog
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,7 @@ import { ObjectTabsComponent } from './components/object-details/object-tabs/obj
     MaterialModule,
     SharedModule,
     ObjectSearchRoutingModule,
-    TranslocoModule,
-  ],
+    TranslocoModule
+  ]
 })
 export class ObjectSearchModule {}

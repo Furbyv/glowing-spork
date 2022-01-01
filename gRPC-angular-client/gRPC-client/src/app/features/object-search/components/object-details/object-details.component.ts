@@ -24,8 +24,7 @@ export class ObjectDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private getFullWozObjectService: GetFullWozObjectService,
-    private imagesService: ImagesService
+    private getFullWozObjectService: GetFullWozObjectService
   ) {}
 
   ngOnInit(): void {

@@ -1,4 +1,5 @@
 {
   "search-object-by-number":"Search an object by id",
-  "pick-file": "Please, pick files to upload"
+  "pick-file": "Please, pick files to upload",
+  "timeframe": "Timeframe"
 }

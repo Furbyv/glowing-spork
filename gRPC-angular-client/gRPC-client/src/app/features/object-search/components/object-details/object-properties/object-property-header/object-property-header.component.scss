@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+span {
+  flex: 1;
+}
+
+.timeframe-select {
+  width: 250px;
+}
+
+.address {
+  font-weight: normal;
+  margin-right: 16px;
+  margin-top: auto;
+  margin-bottom: auto;
+}

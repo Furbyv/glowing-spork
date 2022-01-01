@@ -1,15 +1,22 @@
-mat-card {
+:host {
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
-.example-form {
+mat-card {
+  margin-top: 16px;
+  flex: 1;
+}
+
+.properties-form {
   min-width: 150px;
   width: 100%;
 }
 
-.example-full-width {
+.propertie-width {
   padding-left: 8px;
-  width: 50%;
+  width: 33%;
 }
 
 .action-row {
