@@ -14,6 +14,7 @@
           #search
           maxlength="maxCharacters"
           [placeholder]="'search-object-by-number' | transloco"
+          (keydown.enter)="onSearch(search.value)"
         />
         <!-- <mat-hint align="end">{{ search.value.length }} / 12</mat-hint> -->
       </mat-form-field>

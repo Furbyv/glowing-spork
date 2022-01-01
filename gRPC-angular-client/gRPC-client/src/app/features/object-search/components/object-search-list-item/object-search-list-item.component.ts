@@ -28,9 +28,8 @@ export class ObjectSearchListItemComponent implements OnInit {
       this.trimmedAddress +
       ` ${this.wozObject?.huisnummer ?? 0}${this.wozObject?.huisletter?.value ??
         ''} ${this.wozObject?.huisnummertoevoeging?.value ?? ''}`;
-    this.secondLineAddress = `Gemeente: ${this.wozObject?.gemeentenaam?.value ??
-      ''}, postcode: ${this.wozObject?.postcode?.value ?? ''}`;
-    this.objectDetails = `soc: ${this.wozObject?.soortobjectcode?.value ?? ''}`;
+    this.secondLineAddress = `${this.wozObject?.postcode?.value ?? ''} | ${this
+      .wozObject?.gemeentenaam?.value ?? ''}`;
   }
 
   OnObjectClick() {

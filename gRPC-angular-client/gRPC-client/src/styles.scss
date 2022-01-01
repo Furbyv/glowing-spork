@@ -40,6 +40,10 @@ mat-drawer[style] {
   transform: none !important;
 }
 
+.mat-paginator-container {
+  min-height: 32px !important;
+}
+
 .loader {
   width: 100px;
   height: 100px;

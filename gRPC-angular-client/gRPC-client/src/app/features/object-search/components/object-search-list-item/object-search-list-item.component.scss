@@ -1,45 +1,39 @@
 :host {
   display: block;
-  position: relative;
-  padding-top: 8px;
 }
 
-.mat-list-item {
-  margin-bottom: 4px;
-  display: grid !important;
-  grid-template-areas:
-    "details"
-    "address"
-    "second-address"
-    "divider";
-  height: 100%;
+.img-container {
+  width: 56px;
+  height: 56px;
+  margin-right: 8px;
 }
 
-.address {
-  margin-left: 8px;
-  grid-area: address;
+.image {
+  width: 56px;
+  height: 56px;
 }
 
-.second-address {
-  margin-left: 8px;
-  grid-area: second-address;
+.item-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.details {
-  margin-left: 8px;
-  grid-area: details;
-}
-
-.object-details {
-  margin-left: 8px;
-  grid-area: object-details;
-  padding-bottom: 4px;
-}
-
-.divider {
-  grid-area: divider;
+.header {
+  flex: 1;
+  font-weight: bold;
 }
 
 ::ng-deep .mat-list-item-content {
   padding-left: 0px !important;
+  height: 100%;
+}
+
+mat-list-item {
+  height: 100% !important;
+}
+
+.mat-divider {
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
