@@ -1,5 +1,10 @@
 {
   "search-object-by-number":"Zoek op woz-objectnummer.",
   "pick-file": "Selecteer bestanden om te uploaden",
-  "timeframe": "Tijdvak"
+  "timeframe": "Tijdvak",
+  "subobjects": "Deelobjecten",
+  "comparable_transactions": "Vergelijkbare verkopen",
+  "tax_options": "Heffinggrondslagen",
+  "record25": "Controlerecords",
+  "notes":"Notities"
 }

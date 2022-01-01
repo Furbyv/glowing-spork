@@ -1,5 +1,10 @@
 {
   "search-object-by-number":"Search an object by id",
   "pick-file": "Please, pick files to upload",
-  "timeframe": "Timeframe"
+  "timeframe": "Timeframe",
+  "subobjects": "Subobjects",
+  "comparable_transactions": "Comparabe transactions",
+  "tax_options": "Taxation options",
+  "record25": "Record 25",
+  "notes":"Notes"
 }

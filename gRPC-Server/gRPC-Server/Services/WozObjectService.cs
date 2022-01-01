@@ -47,14 +47,10 @@ public class WozObjectService : WozObjects.WozObjectsBase
 
     public override Task<FullWozObjectSaveReply> SaveFullWozObject(FullWozObjectReply request, ServerCallContext context)
     {
-        var wozobject = _dbContext.Wozobjectproperties.Where(w => w.Wozobjectnummer == request.Wozobjectnummer)
-            .Where(p => DateTime.Now >= p.Startdate && DateTime.Now <= p.Enddate).FirstOrDefault();
-
-        wozobject.Postcode = request.Postcode;
-        var success = _dbContext.SaveChanges();
+        WozObjectConverter.FullWozObjectsReplyToWozobjectproperty(request, _dbContext);
+        _dbContext.SaveChanges();
         var reply = new FullWozObjectSaveReply();
         reply.IsSuccess = true;
-
         return Task.FromResult(reply);
     }
 
