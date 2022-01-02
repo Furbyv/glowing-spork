@@ -1,9 +1,3 @@
-C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.csproj.AssemblyReference.cache
-C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.AssemblyInfoInputs.cache
-C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.AssemblyInfo.cs
-C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.csproj.CoreCompileInputs.cache
-C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\appsettings.json
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\gRPCServer.exe
@@ -28,6 +22,12 @@ C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\Npgsql.dll
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.csproj.AssemblyReference.cache
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.AssemblyInfoInputs.cache
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.AssemblyInfo.cs
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.csproj.CoreCompileInputs.cache
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\scopedcss\bundle\gRPCServer.styles.css

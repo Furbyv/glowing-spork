@@ -6,5 +6,15 @@
   "comparable_transactions": "Vergelijkbare verkopen",
   "tax_options": "Heffinggrondslagen",
   "record25": "Controlerecords",
-  "notes":"Notities"
+  "notes": "Notities",
+  "volgnr": "Volgnr",
+  "deelcode": "Code",
+  "bouwjaar": "Bj",
+  "kwaliteit": "Kw",
+  "onderhoud": "Oh",
+  "uitstraling": "Ui",
+  "doelmatigheid": "Dm",
+  "voorzieningen": "Vz",
+  "opp": "Opp",
+  "stuks": "Aant"
 }

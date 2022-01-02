@@ -6,5 +6,15 @@
   "comparable_transactions": "Comparabe transactions",
   "tax_options": "Taxation options",
   "record25": "Record 25",
-  "notes":"Notes"
+  "notes":"Notes",
+ "volgnr":"Id",
+ "deelcode":"Code",
+ "bouwjaar":"Const.Year",
+ "kwaliteit":"Kw",
+ "onderhoud":"Oh",
+ "uitstraling":"Ui",
+ "doelmatigheid":"Dm",
+ "voorzieningen":"Vz",
+  "opp":"Surf.area",
+  "stuks":"Nr"
 }

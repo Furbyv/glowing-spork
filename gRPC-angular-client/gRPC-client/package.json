@@ -31,6 +31,8 @@
     "@ngx-grpc/core": "^2.4.1",
     "@ngx-grpc/grpc-web-client": "^2.4.1",
     "@ngx-grpc/well-known-types": "^2.4.1",
+    "ag-grid-angular": "^26.2.0",
+    "ag-grid-community": "^26.2.1",
     "angular-material-fileupload": "^3.0.2",
     "google-protobuf": "^3.19.1",
     "grpc-tools": "^1.11.2",

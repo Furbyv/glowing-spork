@@ -15,6 +15,8 @@ import { ExpandPhotoDialog } from './components/object-details/photos-card/expan
 import { ObjectPropertiesComponent } from './components/object-details/object-properties/object-properties.component';
 import { ObjectTabsComponent } from './components/object-details/object-tabs/object-tabs.component';
 import { ObjectPropertyHeaderComponent } from './components/object-details/object-properties/object-property-header/object-property-header.component';
+import { SubobjectGridComponent } from './components/subobject-grid/subobject-grid.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -27,10 +29,12 @@ import { ObjectPropertyHeaderComponent } from './components/object-details/objec
     ObjectTabsComponent,
     ObjectPropertyHeaderComponent,
     PhotosCardComponent,
-    ExpandPhotoDialog
+    ExpandPhotoDialog,
+    SubobjectGridComponent
   ],
   imports: [
     CommonModule,
+    AgGridModule,
     FormsModule,
     MaterialModule,
     SharedModule,

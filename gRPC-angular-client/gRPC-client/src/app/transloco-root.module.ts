@@ -20,16 +20,16 @@ export class TranslocoHttpLoader implements TranslocoLoader {
 }
 
 @NgModule({
-  exports: [ TranslocoModule ],
+  exports: [TranslocoModule],
   providers: [
     {
       provide: TRANSLOCO_CONFIG,
       useValue: translocoConfig({
         availableLangs: ['en', 'nl'],
-        defaultLang: 'en',
+        defaultLang: 'nl',
         // Remove this option if your application doesn't support changing language in runtime.
         reRenderOnLangChange: true,
-        prodMode: environment.production,
+        prodMode: environment.production
       })
     },
     { provide: TRANSLOCO_LOADER, useClass: TranslocoHttpLoader }

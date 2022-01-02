@@ -5,7 +5,7 @@ option csharp_namespace = "gRPCServer.Protos";
 
 package wozobject;
 
-// The greeting service definition.
+// The service definition.
 service WozObjects {
   // Sends a greeting
   rpc GetWozObject (WozObjectRequestById) returns (WozObjectsReply);

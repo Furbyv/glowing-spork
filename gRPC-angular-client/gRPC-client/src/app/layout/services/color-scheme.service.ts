@@ -1,9 +1,13 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ColorSchemeService {
+  private colorSchemeDark$$: Subject<boolean> = new ReplaySubject<boolean>(1);
+  public isDaarkScheme$ = this.colorSchemeDark$$.asObservable();
+
   private renderer: Renderer2;
   private colorScheme: string | null = 'dark';
   // Define prefix for clearer and more readable class names in scss files
@@ -22,14 +26,17 @@ export class ColorSchemeService {
         .matches
         ? 'dark'
         : 'light';
+      this.colorSchemeDark$$.next(this.colorScheme === 'dark');
     } else {
       // If the browser doesn't support prefers-color-scheme, set it as default to dark
       this.colorScheme = 'dark';
+      this.colorSchemeDark$$.next(true);
     }
   }
 
   _setColorScheme(scheme: string) {
     this.colorScheme = scheme;
+    this.colorSchemeDark$$.next(this.colorScheme === 'dark');
     // Save prefers-color-scheme to localStorage
     localStorage.setItem('prefers-color', scheme);
   }
@@ -39,6 +46,7 @@ export class ColorSchemeService {
     if (localStorage.getItem('prefers-color')) {
       // Save prefers-color-scheme from localStorage
       this.colorScheme = localStorage.getItem('prefers-color');
+      this.colorSchemeDark$$.next(this.colorScheme === 'dark');
     } else {
       // If no prefers-color-scheme is stored in localStorage, try to detect OS default prefers-color-scheme
       this._detectPrefersColorScheme();

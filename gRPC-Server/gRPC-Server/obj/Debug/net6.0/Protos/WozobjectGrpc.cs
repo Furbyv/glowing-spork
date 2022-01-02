@@ -9,7 +9,7 @@ using grpc = global::Grpc.Core;
 
 namespace gRPCServer.Protos {
   /// <summary>
-  /// The greeting service definition.
+  /// The service definition.
   /// </summary>
   public static partial class WozObjects
   {

@@ -1,8 +1,10 @@
 <mat-card>
   <mat-tab-group mat-align-tabs="start">
-    <mat-tab [label]="'subobjects' | transloco">{{
-      "subobjects" | transloco
-    }}</mat-tab>
+    <mat-tab [label]="'subobjects' | transloco">
+      <div class="tab-container">
+        <app-subobject-grid> </app-subobject-grid>
+      </div>
+    </mat-tab>
     <mat-tab [label]="'comparable_transactions' | transloco">{{
       "comparable_transactions" | transloco
     }}</mat-tab>
