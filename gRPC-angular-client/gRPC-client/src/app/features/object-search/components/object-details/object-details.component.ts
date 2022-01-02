@@ -21,6 +21,7 @@ export class ObjectDetailsComponent implements OnInit {
     filter(state => state.success),
     map(state => state.res!)
   );
+  address$ = this.getFullWozObjectService.address$;
 
   constructor(
     private route: ActivatedRoute,

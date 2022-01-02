@@ -1,0 +1,12 @@
+<mat-card>
+  <div class="map" id="map" class="match-parent">
+    <ng-container *ngIf="mapboxFeatures$ | async as feature">
+      <mgl-map
+        [style]="'mapbox://styles/mapbox/streets-v9'"
+        [zoom]="[16]"
+        [center]="feature.geometry.coordinates"
+      >
+      </mgl-map>
+    </ng-container>
+  </div>
+</mat-card>

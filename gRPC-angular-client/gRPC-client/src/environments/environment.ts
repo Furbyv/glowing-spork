@@ -5,6 +5,10 @@
 export const environment = {
   production: false,
   baseUrl: 'https://localhost:5001',
+  mapbox: {
+    accessToken:
+      'pk.eyJ1IjoiZnJhbmt2ZSIsImEiOiJja3h4ZDg1cXoyNTNpMnNtcGdmeThxeTY5In0.-OgEUsCLZv5yV35LiNa-Pg'
+  }
 };
 
 /*

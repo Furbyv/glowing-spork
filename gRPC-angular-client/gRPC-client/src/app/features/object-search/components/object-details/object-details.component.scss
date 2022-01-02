@@ -18,7 +18,18 @@ mat-card {
   flex: 1;
 }
 
+.bottom-row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
 .tabs {
   margin-top: 16px;
+  flex: 2;
+}
+.maps {
+  margin-top: 16px;
+  margin-left: 16px;
   flex: 1;
 }

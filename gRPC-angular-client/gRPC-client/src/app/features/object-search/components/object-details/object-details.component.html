@@ -5,14 +5,23 @@
   aria-label="searching objects"
 ></mat-spinner>
 <ng-template #content>
-  <div class="details-grid">
-    <div class="object-row">
-      <app-photos-card [id]="id" class="photo"></app-photos-card>
-      <app-object-properties
-        [id]="id"
-        class="object-properties"
-      ></app-object-properties>
+  <ng-container *ngIf="wozObject$ | async as wozobject">
+    <div class="details-grid">
+      <div class="object-row">
+        <app-photos-card [id]="id" class="photo"></app-photos-card>
+        <app-object-properties
+          [id]="id"
+          class="object-properties"
+        ></app-object-properties>
+      </div>
+      <div class="bottom-row">
+        <app-object-tabs class="tabs"></app-object-tabs>
+        <app-object-amp
+          *ngIf="address$ | async as address"
+          class="maps"
+          [address]="address"
+        ></app-object-amp>
+      </div>
     </div>
-    <app-object-tabs class="tabs"></app-object-tabs>
-  </div>
+  </ng-container>
 </ng-template>

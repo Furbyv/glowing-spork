@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AsyncState, toAsyncState } from '@ngneat/loadoff';
 import { combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
-import { concatMap, shareReplay, switchMap } from 'rxjs/operators';
+import { concatMap, filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import {
   FullWozObjectReply,
   FullWozObjectSaveReply,
@@ -32,6 +32,17 @@ export class GetFullWozObjectService {
     switchMap(request => this.wozObjectClient.getFullWozObject(request)),
     toAsyncState(),
     shareReplay({ bufferSize: 0, refCount: true })
+  );
+
+  address$ = this.fullWozObject$.pipe(
+    filter(state => state.success),
+    map(state => state.res!),
+    map(
+      wozobject =>
+        `${wozobject.straatnaam?.value!.replace(/[^a-zA-Z ]/g, '') ??
+          ''} ${wozobject.huisnummer ?? 0}${wozobject.huisletter?.value ??
+          ''} ${wozobject.huisnummertoevoeging?.value ?? ''}`
+    )
   );
 
   saveState$: Observable<AsyncState<FullWozObjectSaveReply>> = combineLatest([

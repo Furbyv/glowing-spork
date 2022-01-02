@@ -16,6 +16,8 @@ import { ObjectPropertiesComponent } from './components/object-details/object-pr
 import { ObjectTabsComponent } from './components/object-details/object-tabs/object-tabs.component';
 import { SubobjectGridComponent } from './components/subobject-grid/subobject-grid.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { ObjectMapComponent } from './components/object-map/object-map.component';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { AgGridModule } from 'ag-grid-angular';
     ObjectTabsComponent,
     PhotosCardComponent,
     ExpandPhotoDialog,
-    SubobjectGridComponent
+    SubobjectGridComponent,
+    ObjectMapComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +40,12 @@ import { AgGridModule } from 'ag-grid-angular';
     MaterialModule,
     SharedModule,
     ObjectSearchRoutingModule,
-    TranslocoModule
+    TranslocoModule,
+    NgxMapboxGLModule.withConfig({
+      accessToken:
+        'pk.eyJ1IjoiZnJhbmt2ZSIsImEiOiJja3h4ZDg1cXoyNTNpMnNtcGdmeThxeTY5In0.-OgEUsCLZv5yV35LiNa-Pg',
+      geocoderAccessToken: ''
+    })
   ]
 })
 export class ObjectSearchModule {}
