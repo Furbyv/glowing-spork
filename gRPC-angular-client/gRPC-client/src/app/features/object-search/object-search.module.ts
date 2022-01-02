@@ -14,7 +14,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ExpandPhotoDialog } from './components/object-details/photos-card/expand-photo-dialog/expand-photo-dialog.component';
 import { ObjectPropertiesComponent } from './components/object-details/object-properties/object-properties.component';
 import { ObjectTabsComponent } from './components/object-details/object-tabs/object-tabs.component';
-import { ObjectPropertyHeaderComponent } from './components/object-details/object-properties/object-property-header/object-property-header.component';
 import { SubobjectGridComponent } from './components/subobject-grid/subobject-grid.component';
 import { AgGridModule } from 'ag-grid-angular';
 
@@ -27,7 +26,6 @@ import { AgGridModule } from 'ag-grid-angular';
     ObjectSearchPageComponent,
     ObjectPropertiesComponent,
     ObjectTabsComponent,
-    ObjectPropertyHeaderComponent,
     PhotosCardComponent,
     ExpandPhotoDialog,
     SubobjectGridComponent

@@ -33,6 +33,15 @@ export class ObjectPropertiesComponent implements OnChanges {
     map(state => state.res!)
   );
 
+  address$ = this.wozObject$.pipe(
+    map(
+      wozobject =>
+        `${wozobject.straatnaam?.value!.replace(/[^a-zA-Z ]/g, '') ??
+          ''} ${wozobject.huisnummer ?? 0}${wozobject.huisletter?.value ??
+          ''} ${wozobject.huisnummertoevoeging?.value ?? ''}`
+    )
+  );
+
   constructor(private getFullWozObjectService: GetFullWozObjectService) {}
 
   ngOnChanges(changes: SimpleChanges): void {

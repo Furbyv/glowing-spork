@@ -5,7 +5,6 @@
 }
 
 mat-card {
-  margin-top: 16px;
   flex: 1;
 }
 
@@ -26,4 +25,11 @@ mat-card {
 
 span {
   flex: 1;
+}
+
+.address {
+  font-weight: normal;
+  margin-right: 16px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
