@@ -5,11 +5,17 @@
         private readonly ILogger<WozObjectService> _logger;
         readonly DataContext _dbContext;
 
+        public WozSubobjectService(ILogger<WozObjectService> logger, DataContext dbContext)
+        {
+            _dbContext = dbContext;
+            _logger = logger;
+        }
+
         public override Task<WozSubObjectsReply> GetSubObjects(SubobjectsRequestById request, ServerCallContext context)
         {
             var subobjects = _dbContext.Wozdeelobjects.Where(w => w.Wozobjectnummer == request.Wozobjectnummer)
                 .Where(p => DateTime.Now >= p.Startdate && DateTime.Now <= p.Enddate)
-                .Include(w => w.Wozdeelobjectproperties.Where(p => DateTime.Now >= p.Startdate && DateTime.Now <= p.Dtend))
+                .Include(w => w.Wozdeelobjectproperties.Where(p => DateTime.Now >= p.Startdate && DateTime.Now <= p.Enddate))
                 .Select(s=>WozSubobjectConverter.WozdeelobjectToWozSubobjectReply(s)).ToList();
 
             var reply = new WozSubObjectsReply();

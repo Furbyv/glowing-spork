@@ -15,7 +15,7 @@
         ></app-object-properties>
       </div>
       <div class="bottom-row">
-        <app-object-tabs class="tabs"></app-object-tabs>
+        <app-object-tabs class="tabs" [id]="id"></app-object-tabs>
         <app-object-amp
           *ngIf="address$ | async as address"
           class="maps"

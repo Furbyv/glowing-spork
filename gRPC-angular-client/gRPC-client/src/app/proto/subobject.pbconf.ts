@@ -7,9 +7,9 @@
 import { InjectionToken } from '@angular/core';
 
 /**
- * Specific GrpcClientSettings for Greeter.
+ * Specific GrpcClientSettings for SubObjects.
  * Use it only if your default settings are not set or the service requires other settings.
  */
-export const GRPC_GREETER_CLIENT_SETTINGS = new InjectionToken<any>(
-  'GRPC_GREETER_CLIENT_SETTINGS'
+export const GRPC_SUB_OBJECTS_CLIENT_SETTINGS = new InjectionToken<any>(
+  'GRPC_SUB_OBJECTS_CLIENT_SETTINGS'
 );

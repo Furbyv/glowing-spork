@@ -1,4 +1,5 @@
 <ag-grid-angular
+  *ngIf="rowData$ | async as rowData"
   [class.ag-theme-alpine]="!(isDarkTheme$ | async)"
   [class.ag-theme-alpine-dark]="isDarkTheme$ | async"
   [rowData]="rowData"
@@ -8,3 +9,9 @@
   (gridReady)="onGridReady($event)"
 >
 </ag-grid-angular>
+<mat-spinner
+  class="loader"
+  *ngIf="(loading$ | async) && !(rowData$ | async)"
+  [diameter]="48"
+  aria-label="searching objects"
+></mat-spinner>

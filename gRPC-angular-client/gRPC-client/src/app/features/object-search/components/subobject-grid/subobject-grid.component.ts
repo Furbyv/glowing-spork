@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Input,
   OnChanges,
   SimpleChanges
 } from '@angular/core';
@@ -13,7 +14,9 @@ import {
   GridApi,
   GridParams
 } from 'ag-grid-community';
+import { filter, map, startWith } from 'rxjs/operators';
 import { ColorSchemeService } from 'src/app/layout/services/color-scheme.service';
+import { SubObjectsService } from '../../services/subobjects.service';
 
 @Component({
   selector: 'app-subobject-grid',
@@ -22,41 +25,53 @@ import { ColorSchemeService } from 'src/app/layout/services/color-scheme.service
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SubobjectGridComponent implements OnChanges {
+  @Input() wozId: number | undefined;
   public isDarkTheme$ = this.colorSchemeService.isDaarkScheme$;
   private gridApi: GridApi | undefined;
   private gridColumnApi: ColumnApi | undefined;
-  // a default column definition with properties that get applied to every column
+
   defaultColDef: ColDef = {
-    // set every column width
-    // make every column editable
-    editable: true,
-    // make every column use 'text' filter by default
-    filter: 'agTextColumnFilter'
+    editable: true
+    //filter: 'agTextColumnFilter'
   };
 
   columnDefs: ColDef[] = [
-    { field: 'volgnr', headerName: this.transloco.translate('volgnr') },
-    { field: 'deelcode', headerName: this.transloco.translate('deelcode') },
-    { field: 'bouwjaar', headerName: this.transloco.translate('bouwjaar') },
-    { field: 'kwaliteit', headerName: this.transloco.translate('kwaliteit') },
-    { field: 'onderhoud', headerName: this.transloco.translate('onderhoud') },
     {
-      field: 'uitstraling',
+      field: 'nummerwozdeelobject',
+      headerName: this.transloco.translate('volgnr')
+    },
+    {
+      field: 'codewozdeelobject.value',
+      headerName: this.transloco.translate('deelcode')
+    },
+    {
+      field: 'bouwjaar',
+      headerName: this.transloco.translate('bouwjaar')
+    },
+    {
+      field: 'kwaliteit.value',
+      headerName: this.transloco.translate('kwaliteit')
+    },
+    {
+      field: 'onderhoud.value',
+      headerName: this.transloco.translate('onderhoud')
+    },
+    {
+      field: 'uitstraling.value',
       headerName: this.transloco.translate('uitstraling')
     },
     {
-      field: 'doelmatigheid',
+      field: 'doelmatigheid.value',
       headerName: this.transloco.translate('doelmatigheid')
     },
     {
-      field: 'voorzieningen',
+      field: 'voorzieningen.value',
       headerName: this.transloco.translate('voorzieningen')
     },
-    { field: 'opp', headerName: this.transloco.translate('opp') },
-    { field: 'stuks', headerName: this.transloco.translate('stuks') }
+    { field: 'oppervlakte', headerName: this.transloco.translate('opp') },
+    { field: 'aantalstuks', headerName: this.transloco.translate('stuks') }
   ];
 
-  // define a column type (you can define as many as you like)
   columnTypes: ColDefUtil = {
     nonEditableColumn: { editable: false },
     dateColumn: {
@@ -65,27 +80,24 @@ export class SubobjectGridComponent implements OnChanges {
     }
   };
 
-  rowData = [
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 },
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 },
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 },
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 },
-    { make: 'Toyota', model: 'Celica', price: 35000 },
-    { make: 'Ford', model: 'Mondeo', price: 32000 },
-    { make: 'Porsche', model: 'Boxter', price: 72000 }
-  ];
+  loading$ = this.subobjectsService.subObjects$.pipe(
+    filter(state => state.loading),
+    startWith(true)
+  );
 
-  ngOnChanges(_: SimpleChanges): void {}
+  rowData$ = this.subobjectsService.subObjects$.pipe(
+    filter(state => state.success),
+    map(state => state.res!)
+  );
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.wozId && this.wozId) {
+      this.subobjectsService.getSubObjects(this.wozId);
+    }
+  }
 
   constructor(
+    private subobjectsService: SubObjectsService,
     private colorSchemeService: ColorSchemeService,
     private transloco: TranslocoService
   ) {}
@@ -101,7 +113,7 @@ export class SubobjectGridComponent implements OnChanges {
           allColumnIds.push(column);
         });
       }
-      this.gridColumnApi.autoSizeColumns(allColumnIds, false);
+      this.gridColumnApi.autoSizeColumns(allColumnIds, true);
     }
   }
 }

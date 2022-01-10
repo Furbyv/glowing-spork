@@ -1,0 +1,35 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+
+option csharp_namespace = "gRPCServer.Protos";
+
+package subobject;
+
+// The service definition.
+service SubObjects {
+  rpc GetSubObjects (SubobjectsRequestById) returns (WozSubObjectsReply);
+}
+// The request message containing the object's id.
+message SubobjectsRequestById {
+  int64 wozobjectnummer = 1;
+}
+
+// The response message containing the WozSubObjects.
+message WozSubObjectsReply {
+    repeated WozSubObjectReply wozsubobjects = 1;
+}
+
+message WozSubObjectReply {
+  int32 id = 1;
+  int64 nummerwozdeelobject = 2;
+  google.protobuf.StringValue codewozdeelobject = 3;
+  int32 Bouwjaar = 4;
+  google.protobuf.StringValue Kwaliteit = 5;
+  google.protobuf.StringValue Onderhoud = 6;
+  google.protobuf.StringValue Uitstraling = 7;
+  google.protobuf.StringValue doelmatigheid = 8;
+  google.protobuf.StringValue voorzieningen = 9;
+  int32 oppervlakte = 10;
+  int32 aantalstuks = 11;
+  google.protobuf.StringValue bagidentificatie = 12;
+}

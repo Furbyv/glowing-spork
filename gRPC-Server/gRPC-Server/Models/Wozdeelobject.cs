@@ -8,6 +8,7 @@ public partial class Wozdeelobject
     public DateTime? Startdate { get; set; }
     public DateTime? Enddate { get; set; }
 
-    public virtual Wozobject WozobjectnummerNavigation { get; set; }
-    public virtual ICollection<Wozdeelobjectproperty> Wozdeelobjectproperties { get; set; } = new HashSet<Wozdeelobjectproperty>();
+    [ForeignKey("Wozobjectnummer")]
+    public Wozobject Wozobject { get; set; }
+    public ICollection<Wozdeelobjectproperty> Wozdeelobjectproperties { get; set; } = new HashSet<Wozdeelobjectproperty>();
 }

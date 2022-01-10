@@ -39,8 +39,8 @@ public partial class Wozdeelobjectproperty
     public decimal? Einddatumgeldigheid { get; set; }
     public decimal? Tijdstipregistratie { get; set; }
     public DateTime? Startdate { get; set; }
-    public DateTime? Dtend { get; set; }
-
+    public DateTime? Enddate { get; set; }
+    [ForeignKey("Wozdeelobjectid")]
     public virtual Wozdeelobject Wozdeelobject { get; set; }
 }
 

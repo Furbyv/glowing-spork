@@ -19,13 +19,14 @@ import {
   throwStatusErrors
 } from '@ngx-grpc/core';
 import { Observable } from 'rxjs';
-import * as thisProto from './greet.pb';
-import { GRPC_GREETER_CLIENT_SETTINGS } from './greet.pbconf';
+import * as thisProto from './subobject.pb';
+import * as googleProtobuf000 from '@ngx-grpc/well-known-types';
+import { GRPC_SUB_OBJECTS_CLIENT_SETTINGS } from './subobject.pbconf';
 /**
- * Service client implementation for greet.Greeter
+ * Service client implementation for subobject.SubObjects
  */
 @Injectable({ providedIn: 'any' })
-export class GreeterClient {
+export class SubObjectsClient {
   private client: GrpcClient<any>;
 
   /**
@@ -35,49 +36,49 @@ export class GreeterClient {
    */
   $raw = {
     /**
-     * Unary RPC for /greet.Greeter/SayHello
+     * Unary RPC for /subobject.SubObjects/GetSubObjects
      *
      * @param requestMessage Request message
      * @param requestMetadata Request metadata
-     * @returns Observable<GrpcEvent<thisProto.HelloReply>>
+     * @returns Observable<GrpcEvent<thisProto.WozSubObjectsReply>>
      */
-    sayHello: (
-      requestData: thisProto.HelloRequest,
+    getSubObjects: (
+      requestData: thisProto.SubobjectsRequestById,
       requestMetadata = new GrpcMetadata()
-    ): Observable<GrpcEvent<thisProto.HelloReply>> => {
+    ): Observable<GrpcEvent<thisProto.WozSubObjectsReply>> => {
       return this.handler.handle({
         type: GrpcCallType.unary,
         client: this.client,
-        path: '/greet.Greeter/SayHello',
+        path: '/subobject.SubObjects/GetSubObjects',
         requestData,
         requestMetadata,
-        requestClass: thisProto.HelloRequest,
-        responseClass: thisProto.HelloReply
+        requestClass: thisProto.SubobjectsRequestById,
+        responseClass: thisProto.WozSubObjectsReply
       });
     }
   };
 
   constructor(
-    @Optional() @Inject(GRPC_GREETER_CLIENT_SETTINGS) settings: any,
+    @Optional() @Inject(GRPC_SUB_OBJECTS_CLIENT_SETTINGS) settings: any,
     @Inject(GRPC_CLIENT_FACTORY) clientFactory: GrpcClientFactory<any>,
     private handler: GrpcHandler
   ) {
-    this.client = clientFactory.createClient('greet.Greeter', settings);
+    this.client = clientFactory.createClient('subobject.SubObjects', settings);
   }
 
   /**
-   * Unary RPC for /greet.Greeter/SayHello
+   * Unary RPC for /subobject.SubObjects/GetSubObjects
    *
    * @param requestMessage Request message
    * @param requestMetadata Request metadata
-   * @returns Observable<thisProto.HelloReply>
+   * @returns Observable<thisProto.WozSubObjectsReply>
    */
-  sayHello(
-    requestData: thisProto.HelloRequest,
+  getSubObjects(
+    requestData: thisProto.SubobjectsRequestById,
     requestMetadata = new GrpcMetadata()
-  ): Observable<thisProto.HelloReply> {
+  ): Observable<thisProto.WozSubObjectsReply> {
     return this.$raw
-      .sayHello(requestData, requestMetadata)
+      .getSubObjects(requestData, requestMetadata)
       .pipe(throwStatusErrors(), takeMessages());
   }
 }
