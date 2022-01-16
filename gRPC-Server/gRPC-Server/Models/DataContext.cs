@@ -1,4 +1,6 @@
-﻿namespace gRPCServer.Models;
+﻿using Npgsql;
+
+namespace gRPCServer.Models;
 public class DataContext : DbContext
 {
     public virtual DbSet<Flexproperty> Flexproperties { get; set; }
@@ -10,6 +12,8 @@ public class DataContext : DbContext
     public virtual DbSet<Wozobjectflexproperty> Wozobjectflexproperties { get; set; }
     public virtual DbSet<Wozobjectproperty> Wozobjectproperties { get; set; }
     public virtual DbSet<Image> Images { get; set; }
-    public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+    public DataContext(DbContextOptions<DataContext> options) : base(options) {
+        NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite();
+    }
 }
 

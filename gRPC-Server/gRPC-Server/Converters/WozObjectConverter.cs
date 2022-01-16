@@ -10,7 +10,9 @@ public static class WozObjectConverter
         Huisletter = property.Huisletter,
         Huisnummertoevoeging = property.Huisnummertoevoeging,
         Postcode = property.Postcode,
-        Soortobjectcode = property.Soortobjectcode
+        Soortobjectcode = property.Soortobjectcode,
+        Lat = property.WozObject.Geometry != null ? property.WozObject.Geometry.Y : 0,
+        Lon = property.WozObject.Geometry != null ? property.WozObject.Geometry.X : 0,
     };
 
     public static FullWozObjectReply WozobjectpropertyToFullWozObjectsReply(Wozobjectproperty property) => new FullWozObjectReply
@@ -28,7 +30,9 @@ public static class WozObjectConverter
         Woonplaats = property.Woonplaatsnaam,
         Locatieomschrijving = property.Locatieomschrijving,
         Indicatieligging = property.Indicatieligging,
-        Omschrijving = property.Omschrijving
+        Omschrijving = property.Omschrijving,
+        Lat = property.WozObject.Geometry.Y,
+        Lon = property.WozObject.Geometry.X,
     };
 
     public static Wozobjectproperty FullWozObjectsReplyToWozobjectproperty(FullWozObjectReply fullWozObject, DataContext dbContext)

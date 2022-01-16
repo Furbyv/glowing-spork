@@ -2,6 +2,7 @@ create table wozobjects(
 	wozobjectnummer int8,
 	StartDate date,
 	EndDate date,
+	geometry geometry(point, 4326),
 	CONSTRAINT PK_wozobjects PRIMARY KEY(wozobjectnummer)
 );
 

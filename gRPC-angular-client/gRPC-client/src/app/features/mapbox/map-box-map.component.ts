@@ -18,6 +18,7 @@ import {
   MapboxSearchService
 } from 'src/app/features/mapbox/mapbox-search.service';
 import { environment } from 'src/environments/environment';
+import { ObjectSearchService } from '../object-search/services/object-search.service';
 
 interface FeatureArray {
   type: string;
@@ -25,15 +26,13 @@ interface FeatureArray {
 }
 
 @Component({
-  selector: 'app-object-map',
-  templateUrl: './object-map.component.html',
-  styleUrls: ['./object-map.component.scss'],
+  selector: 'app-map-box-map',
+  templateUrl: './map-box-map.component.html',
+  styleUrls: ['./map-box-map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ObjectMapComponent implements OnChanges, AfterViewInit {
-  private addressQuery$$: Subject<string> = new ReplaySubject<string>(0);
+export class MapBoxMapComponent implements OnChanges, AfterViewInit {
   private mapLoaded$$: Subject<boolean> = new ReplaySubject<boolean>(1);
-  @Input() address: string | undefined;
   private map: mapboxgl.Map | undefined;
   private mapStyle = 'mapbox://styles/mapbox/streets-v11';
 
@@ -48,10 +47,8 @@ export class ObjectMapComponent implements OnChanges, AfterViewInit {
     features: []
   };
 
-  mapboxFeatures$: Observable<GeoJSON.Feature[]> = this.addressQuery$$.pipe(
-    switchMap(query => this.mapboxSearchService.search_word(query)),
-    map(f => [f[0]])
-  );
+  mapboxFeatures$: Observable<GeoJSON.Feature[]> = this.objectSearchService
+    .wozObjectGeoJson$;
 
   labels$ = combineLatest([this.mapboxFeatures$, this.mapLoaded$$]).pipe(
     tap(([f]) => {
@@ -88,17 +85,13 @@ export class ObjectMapComponent implements OnChanges, AfterViewInit {
     })
   );
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.address && this.address) {
-      this.addressQuery$$.next(this.address);
-    }
-  }
+  ngOnChanges(changes: SimpleChanges): void {}
 
   ngAfterViewInit(): void {
     const initialState = {
       lng: 6.046511,
       lat: 53.084784,
-      zoom: 16
+      zoom: 12
     };
     if (this.mapContainer) {
       this.map = new Map({
@@ -116,7 +109,7 @@ export class ObjectMapComponent implements OnChanges, AfterViewInit {
     }
   }
 
-  constructor(private mapboxSearchService: MapboxSearchService) {
+  constructor(private objectSearchService: ObjectSearchService) {
     this.labels$.subscribe(val => console.log(val));
   }
 }

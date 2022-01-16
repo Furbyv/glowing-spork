@@ -17,7 +17,7 @@ public class Startup
         .AllowAnyHeader()
         .AllowCredentials()));
         services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(optionsBuilder =>
-        optionsBuilder.UseNpgsql(_configuration.GetConnectionString("dbContext")).ReplaceService<ISqlGenerationHelper, CustomNameSqlGenerationHelper>().EnableDetailedErrors());
+        optionsBuilder.UseNpgsql(_configuration.GetConnectionString("dbContext"), x=> x.UseNetTopologySuite()).ReplaceService<ISqlGenerationHelper, CustomNameSqlGenerationHelper>().EnableDetailedErrors());
         services.AddGrpc();
     }
 

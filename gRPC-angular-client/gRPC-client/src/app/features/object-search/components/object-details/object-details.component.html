@@ -16,11 +16,11 @@
       </div>
       <div class="bottom-row">
         <app-object-tabs class="tabs" [id]="id"></app-object-tabs>
-        <app-object-amp
+        <app-object-map
           *ngIf="address$ | async as address"
           class="maps"
           [address]="address"
-        ></app-object-amp>
+        ></app-object-map>
       </div>
     </div>
   </ng-container>

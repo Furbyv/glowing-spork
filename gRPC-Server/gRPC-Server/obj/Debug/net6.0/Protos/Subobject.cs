@@ -65,19 +65,23 @@ namespace gRPCServer.Protos {
     private static readonly pb::MessageParser<SubobjectsRequestById> _parser = new pb::MessageParser<SubobjectsRequestById>(() => new SubobjectsRequestById());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<SubobjectsRequestById> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::gRPCServer.Protos.SubobjectReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SubobjectsRequestById() {
       OnConstruction();
     }
@@ -85,12 +89,14 @@ namespace gRPCServer.Protos {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SubobjectsRequestById(SubobjectsRequestById other) : this() {
       wozobjectnummer_ = other.wozobjectnummer_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public SubobjectsRequestById Clone() {
       return new SubobjectsRequestById(this);
     }
@@ -99,6 +105,7 @@ namespace gRPCServer.Protos {
     public const int WozobjectnummerFieldNumber = 1;
     private long wozobjectnummer_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Wozobjectnummer {
       get { return wozobjectnummer_; }
       set {
@@ -107,11 +114,13 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as SubobjectsRequestById);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(SubobjectsRequestById other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -124,6 +133,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (Wozobjectnummer != 0L) hash ^= Wozobjectnummer.GetHashCode();
@@ -134,11 +144,13 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -155,6 +167,7 @@ namespace gRPCServer.Protos {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Wozobjectnummer != 0L) {
         output.WriteRawTag(8);
@@ -167,6 +180,7 @@ namespace gRPCServer.Protos {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (Wozobjectnummer != 0L) {
@@ -179,6 +193,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(SubobjectsRequestById other) {
       if (other == null) {
         return;
@@ -190,6 +205,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -211,6 +227,7 @@ namespace gRPCServer.Protos {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -240,19 +257,23 @@ namespace gRPCServer.Protos {
     private static readonly pb::MessageParser<WozSubObjectsReply> _parser = new pb::MessageParser<WozSubObjectsReply>(() => new WozSubObjectsReply());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<WozSubObjectsReply> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::gRPCServer.Protos.SubobjectReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WozSubObjectsReply() {
       OnConstruction();
     }
@@ -260,12 +281,14 @@ namespace gRPCServer.Protos {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WozSubObjectsReply(WozSubObjectsReply other) : this() {
       wozsubobjects_ = other.wozsubobjects_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WozSubObjectsReply Clone() {
       return new WozSubObjectsReply(this);
     }
@@ -276,16 +299,19 @@ namespace gRPCServer.Protos {
         = pb::FieldCodec.ForMessage(10, global::gRPCServer.Protos.WozSubObjectReply.Parser);
     private readonly pbc::RepeatedField<global::gRPCServer.Protos.WozSubObjectReply> wozsubobjects_ = new pbc::RepeatedField<global::gRPCServer.Protos.WozSubObjectReply>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::RepeatedField<global::gRPCServer.Protos.WozSubObjectReply> Wozsubobjects {
       get { return wozsubobjects_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as WozSubObjectsReply);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(WozSubObjectsReply other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -298,6 +324,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       hash ^= wozsubobjects_.GetHashCode();
@@ -308,11 +335,13 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -326,6 +355,7 @@ namespace gRPCServer.Protos {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       wozsubobjects_.WriteTo(ref output, _repeated_wozsubobjects_codec);
       if (_unknownFields != null) {
@@ -335,6 +365,7 @@ namespace gRPCServer.Protos {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       size += wozsubobjects_.CalculateSize(_repeated_wozsubobjects_codec);
@@ -345,6 +376,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(WozSubObjectsReply other) {
       if (other == null) {
         return;
@@ -354,6 +386,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -375,6 +408,7 @@ namespace gRPCServer.Protos {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
@@ -401,19 +435,23 @@ namespace gRPCServer.Protos {
     private static readonly pb::MessageParser<WozSubObjectReply> _parser = new pb::MessageParser<WozSubObjectReply>(() => new WozSubObjectReply());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<WozSubObjectReply> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
       get { return global::gRPCServer.Protos.SubobjectReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     pbr::MessageDescriptor pb::IMessage.Descriptor {
       get { return Descriptor; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WozSubObjectReply() {
       OnConstruction();
     }
@@ -421,6 +459,7 @@ namespace gRPCServer.Protos {
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WozSubObjectReply(WozSubObjectReply other) : this() {
       id_ = other.id_;
       nummerwozdeelobject_ = other.nummerwozdeelobject_;
@@ -438,6 +477,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WozSubObjectReply Clone() {
       return new WozSubObjectReply(this);
     }
@@ -446,6 +486,7 @@ namespace gRPCServer.Protos {
     public const int IdFieldNumber = 1;
     private int id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Id {
       get { return id_; }
       set {
@@ -457,6 +498,7 @@ namespace gRPCServer.Protos {
     public const int NummerwozdeelobjectFieldNumber = 2;
     private long nummerwozdeelobject_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public long Nummerwozdeelobject {
       get { return nummerwozdeelobject_; }
       set {
@@ -469,6 +511,7 @@ namespace gRPCServer.Protos {
     private static readonly pb::FieldCodec<string> _single_codewozdeelobject_codec = pb::FieldCodec.ForClassWrapper<string>(26);
     private string codewozdeelobject_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Codewozdeelobject {
       get { return codewozdeelobject_; }
       set {
@@ -481,6 +524,7 @@ namespace gRPCServer.Protos {
     public const int BouwjaarFieldNumber = 4;
     private int bouwjaar_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Bouwjaar {
       get { return bouwjaar_; }
       set {
@@ -493,6 +537,7 @@ namespace gRPCServer.Protos {
     private static readonly pb::FieldCodec<string> _single_kwaliteit_codec = pb::FieldCodec.ForClassWrapper<string>(42);
     private string kwaliteit_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Kwaliteit {
       get { return kwaliteit_; }
       set {
@@ -506,6 +551,7 @@ namespace gRPCServer.Protos {
     private static readonly pb::FieldCodec<string> _single_onderhoud_codec = pb::FieldCodec.ForClassWrapper<string>(50);
     private string onderhoud_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Onderhoud {
       get { return onderhoud_; }
       set {
@@ -519,6 +565,7 @@ namespace gRPCServer.Protos {
     private static readonly pb::FieldCodec<string> _single_uitstraling_codec = pb::FieldCodec.ForClassWrapper<string>(58);
     private string uitstraling_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Uitstraling {
       get { return uitstraling_; }
       set {
@@ -532,6 +579,7 @@ namespace gRPCServer.Protos {
     private static readonly pb::FieldCodec<string> _single_doelmatigheid_codec = pb::FieldCodec.ForClassWrapper<string>(66);
     private string doelmatigheid_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Doelmatigheid {
       get { return doelmatigheid_; }
       set {
@@ -545,6 +593,7 @@ namespace gRPCServer.Protos {
     private static readonly pb::FieldCodec<string> _single_voorzieningen_codec = pb::FieldCodec.ForClassWrapper<string>(74);
     private string voorzieningen_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Voorzieningen {
       get { return voorzieningen_; }
       set {
@@ -557,6 +606,7 @@ namespace gRPCServer.Protos {
     public const int OppervlakteFieldNumber = 10;
     private int oppervlakte_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Oppervlakte {
       get { return oppervlakte_; }
       set {
@@ -568,6 +618,7 @@ namespace gRPCServer.Protos {
     public const int AantalstuksFieldNumber = 11;
     private int aantalstuks_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int Aantalstuks {
       get { return aantalstuks_; }
       set {
@@ -580,6 +631,7 @@ namespace gRPCServer.Protos {
     private static readonly pb::FieldCodec<string> _single_bagidentificatie_codec = pb::FieldCodec.ForClassWrapper<string>(98);
     private string bagidentificatie_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Bagidentificatie {
       get { return bagidentificatie_; }
       set {
@@ -589,11 +641,13 @@ namespace gRPCServer.Protos {
 
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
       return Equals(other as WozSubObjectReply);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool Equals(WozSubObjectReply other) {
       if (ReferenceEquals(other, null)) {
         return false;
@@ -617,6 +671,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
       if (Id != 0) hash ^= Id.GetHashCode();
@@ -638,11 +693,13 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override string ToString() {
       return pb::JsonFormatter.ToDiagnosticString(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void WriteTo(pb::CodedOutputStream output) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
@@ -696,6 +753,7 @@ namespace gRPCServer.Protos {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       if (Id != 0) {
         output.WriteRawTag(8);
@@ -745,6 +803,7 @@ namespace gRPCServer.Protos {
     #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
       if (Id != 0) {
@@ -790,6 +849,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(WozSubObjectReply other) {
       if (other == null) {
         return;
@@ -848,6 +908,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(pb::CodedInputStream input) {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       input.ReadRawMessage(this);
@@ -934,6 +995,7 @@ namespace gRPCServer.Protos {
 
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {

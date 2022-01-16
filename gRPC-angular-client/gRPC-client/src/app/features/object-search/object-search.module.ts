@@ -18,6 +18,7 @@ import { SubobjectGridComponent } from './components/subobject-grid/subobject-gr
 import { AgGridModule } from 'ag-grid-angular';
 import { ObjectMapComponent } from './components/object-map/object-map.component';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { MapBoxMapComponent } from '../mapbox/map-box-map.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
     PhotosCardComponent,
     ExpandPhotoDialog,
     SubobjectGridComponent,
-    ObjectMapComponent
+    ObjectMapComponent,
+    MapBoxMapComponent
   ],
   imports: [
     CommonModule,

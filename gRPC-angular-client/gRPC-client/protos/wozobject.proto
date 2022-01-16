@@ -5,7 +5,7 @@ option csharp_namespace = "gRPCServer.Protos";
 
 package wozobject;
 
-// The greeting service definition.
+// The service definition.
 service WozObjects {
   // Sends a greeting
   rpc GetWozObject (WozObjectRequestById) returns (WozObjectsReply);
@@ -38,6 +38,8 @@ message WozObjectReply {
   google.protobuf.StringValue huisnummertoevoeging = 6;
   google.protobuf.StringValue postcode = 7;
   google.protobuf.StringValue soortobjectcode = 8;
+  google.protobuf.DoubleValue lat =9;
+  google.protobuf.DoubleValue lon =10;
 }
 
 message FullWozObjectReply {
@@ -55,6 +57,8 @@ message FullWozObjectReply {
   google.protobuf.StringValue locatieomschrijving = 12;
   google.protobuf.StringValue indicatieligging = 13;
   google.protobuf.StringValue omschrijving = 14;
+  google.protobuf.DoubleValue lat =15;
+ google.protobuf.DoubleValue lon =16;
 }
 
 message WozObjectImageRequest{

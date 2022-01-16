@@ -4,7 +4,6 @@ C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\gRPCServer.deps.json
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\gRPCServer.runtimeconfig.json
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\gRPCServer.dll
-C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\ref\gRPCServer.dll
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\gRPCServer.pdb
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\EFCore.NamingConventions.dll
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\Google.Protobuf.dll
@@ -36,3 +35,9 @@ C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\ref\gRPCServer.dll
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.pdb
 C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\gRPCServer.genruntimeconfig.cache
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\NetTopologySuite.dll
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\NetTopologySuite.IO.PostGis.dll
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite.dll
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\bin\Debug\net6.0\Npgsql.NetTopologySuite.dll
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\EFCoreNpgsqlNetTopologySuite.cs
+C:\Users\fbver\source\repos\glowing-spork\gRPC-Server\gRPC-Server\obj\Debug\net6.0\refint\gRPCServer.dll

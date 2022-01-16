@@ -6,13 +6,16 @@ import { Observable } from 'rxjs';
 
 export interface MapboxOutput {
   attribution: string;
-  features: Feature[];
+  features: GeoJSON.Feature[];
   query: [];
 }
 
 export interface Feature {
+  id: string;
+  type: string;
   place_name: string;
   geometry: { type: string; coordinates: [number, number] };
+  properties: { description: string; id: string };
 }
 
 @Injectable({
@@ -21,7 +24,7 @@ export interface Feature {
 export class MapboxSearchService {
   constructor(private http: HttpClient) {}
 
-  public search_word(query: string): Observable<Feature[]> {
+  public search_word(query: string): Observable<GeoJSON.Feature[]> {
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
     return this.http
       .get<MapboxOutput>(

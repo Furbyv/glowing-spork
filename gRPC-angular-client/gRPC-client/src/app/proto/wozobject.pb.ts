@@ -473,6 +473,8 @@ export class WozObjectReply implements GrpcMessage {
       _instance.huisnummertoevoeging || undefined;
     _instance.postcode = _instance.postcode || undefined;
     _instance.soortobjectcode = _instance.soortobjectcode || undefined;
+    _instance.lat = _instance.lat || undefined;
+    _instance.lon = _instance.lon || undefined;
   }
 
   /**
@@ -534,6 +536,20 @@ export class WozObjectReply implements GrpcMessage {
           _reader.readMessage(
             _instance.soortobjectcode,
             googleProtobuf000.StringValue.deserializeBinaryFromReader
+          );
+          break;
+        case 9:
+          _instance.lat = new googleProtobuf000.DoubleValue();
+          _reader.readMessage(
+            _instance.lat,
+            googleProtobuf000.DoubleValue.deserializeBinaryFromReader
+          );
+          break;
+        case 10:
+          _instance.lon = new googleProtobuf000.DoubleValue();
+          _reader.readMessage(
+            _instance.lon,
+            googleProtobuf000.DoubleValue.deserializeBinaryFromReader
           );
           break;
         default:
@@ -601,6 +617,20 @@ export class WozObjectReply implements GrpcMessage {
         googleProtobuf000.StringValue.serializeBinaryToWriter
       );
     }
+    if (_instance.lat) {
+      _writer.writeMessage(
+        9,
+        _instance.lat as any,
+        googleProtobuf000.DoubleValue.serializeBinaryToWriter
+      );
+    }
+    if (_instance.lon) {
+      _writer.writeMessage(
+        10,
+        _instance.lon as any,
+        googleProtobuf000.DoubleValue.serializeBinaryToWriter
+      );
+    }
   }
 
   private _wozobjectnummer?: string;
@@ -611,6 +641,8 @@ export class WozObjectReply implements GrpcMessage {
   private _huisnummertoevoeging?: googleProtobuf000.StringValue;
   private _postcode?: googleProtobuf000.StringValue;
   private _soortobjectcode?: googleProtobuf000.StringValue;
+  private _lat?: googleProtobuf000.DoubleValue;
+  private _lon?: googleProtobuf000.DoubleValue;
 
   /**
    * Message constructor. Initializes the properties and applies default Protobuf values if necessary
@@ -637,6 +669,12 @@ export class WozObjectReply implements GrpcMessage {
       : undefined;
     this.soortobjectcode = _value.soortobjectcode
       ? new googleProtobuf000.StringValue(_value.soortobjectcode)
+      : undefined;
+    this.lat = _value.lat
+      ? new googleProtobuf000.DoubleValue(_value.lat)
+      : undefined;
+    this.lon = _value.lon
+      ? new googleProtobuf000.DoubleValue(_value.lon)
       : undefined;
     WozObjectReply.refineValues(this);
   }
@@ -688,6 +726,18 @@ export class WozObjectReply implements GrpcMessage {
   set soortobjectcode(value: googleProtobuf000.StringValue | undefined) {
     this._soortobjectcode = value;
   }
+  get lat(): googleProtobuf000.DoubleValue | undefined {
+    return this._lat;
+  }
+  set lat(value: googleProtobuf000.DoubleValue | undefined) {
+    this._lat = value;
+  }
+  get lon(): googleProtobuf000.DoubleValue | undefined {
+    return this._lon;
+  }
+  set lon(value: googleProtobuf000.DoubleValue | undefined) {
+    this._lon = value;
+  }
 
   /**
    * Serialize message to binary data
@@ -717,7 +767,9 @@ export class WozObjectReply implements GrpcMessage {
       postcode: this.postcode ? this.postcode.toObject() : undefined,
       soortobjectcode: this.soortobjectcode
         ? this.soortobjectcode.toObject()
-        : undefined
+        : undefined,
+      lat: this.lat ? this.lat.toObject() : undefined,
+      lon: this.lon ? this.lon.toObject() : undefined
     };
   }
 
@@ -755,7 +807,9 @@ export class WozObjectReply implements GrpcMessage {
       postcode: this.postcode ? this.postcode.toProtobufJSON(options) : null,
       soortobjectcode: this.soortobjectcode
         ? this.soortobjectcode.toProtobufJSON(options)
-        : null
+        : null,
+      lat: this.lat ? this.lat.toProtobufJSON(options) : null,
+      lon: this.lon ? this.lon.toProtobufJSON(options) : null
     };
   }
 }
@@ -772,6 +826,8 @@ export module WozObjectReply {
     huisnummertoevoeging?: googleProtobuf000.StringValue.AsObject;
     postcode?: googleProtobuf000.StringValue.AsObject;
     soortobjectcode?: googleProtobuf000.StringValue.AsObject;
+    lat?: googleProtobuf000.DoubleValue.AsObject;
+    lon?: googleProtobuf000.DoubleValue.AsObject;
   }
 
   /**
@@ -786,6 +842,8 @@ export module WozObjectReply {
     huisnummertoevoeging?: googleProtobuf000.StringValue.AsProtobufJSON | null;
     postcode?: googleProtobuf000.StringValue.AsProtobufJSON | null;
     soortobjectcode?: googleProtobuf000.StringValue.AsProtobufJSON | null;
+    lat?: googleProtobuf000.DoubleValue.AsProtobufJSON | null;
+    lon?: googleProtobuf000.DoubleValue.AsProtobufJSON | null;
   }
 }
 
@@ -828,6 +886,8 @@ export class FullWozObjectReply implements GrpcMessage {
     _instance.locatieomschrijving = _instance.locatieomschrijving || undefined;
     _instance.indicatieligging = _instance.indicatieligging || undefined;
     _instance.omschrijving = _instance.omschrijving || undefined;
+    _instance.lat = _instance.lat || undefined;
+    _instance.lon = _instance.lon || undefined;
   }
 
   /**
@@ -931,6 +991,20 @@ export class FullWozObjectReply implements GrpcMessage {
           _reader.readMessage(
             _instance.omschrijving,
             googleProtobuf000.StringValue.deserializeBinaryFromReader
+          );
+          break;
+        case 15:
+          _instance.lat = new googleProtobuf000.DoubleValue();
+          _reader.readMessage(
+            _instance.lat,
+            googleProtobuf000.DoubleValue.deserializeBinaryFromReader
+          );
+          break;
+        case 16:
+          _instance.lon = new googleProtobuf000.DoubleValue();
+          _reader.readMessage(
+            _instance.lon,
+            googleProtobuf000.DoubleValue.deserializeBinaryFromReader
           );
           break;
         default:
@@ -1040,6 +1114,20 @@ export class FullWozObjectReply implements GrpcMessage {
         googleProtobuf000.StringValue.serializeBinaryToWriter
       );
     }
+    if (_instance.lat) {
+      _writer.writeMessage(
+        15,
+        _instance.lat as any,
+        googleProtobuf000.DoubleValue.serializeBinaryToWriter
+      );
+    }
+    if (_instance.lon) {
+      _writer.writeMessage(
+        16,
+        _instance.lon as any,
+        googleProtobuf000.DoubleValue.serializeBinaryToWriter
+      );
+    }
   }
 
   private _wozobjectnummer?: string;
@@ -1056,6 +1144,8 @@ export class FullWozObjectReply implements GrpcMessage {
   private _locatieomschrijving?: googleProtobuf000.StringValue;
   private _indicatieligging?: googleProtobuf000.StringValue;
   private _omschrijving?: googleProtobuf000.StringValue;
+  private _lat?: googleProtobuf000.DoubleValue;
+  private _lon?: googleProtobuf000.DoubleValue;
 
   /**
    * Message constructor. Initializes the properties and applies default Protobuf values if necessary
@@ -1100,6 +1190,12 @@ export class FullWozObjectReply implements GrpcMessage {
       : undefined;
     this.omschrijving = _value.omschrijving
       ? new googleProtobuf000.StringValue(_value.omschrijving)
+      : undefined;
+    this.lat = _value.lat
+      ? new googleProtobuf000.DoubleValue(_value.lat)
+      : undefined;
+    this.lon = _value.lon
+      ? new googleProtobuf000.DoubleValue(_value.lon)
       : undefined;
     FullWozObjectReply.refineValues(this);
   }
@@ -1187,6 +1283,18 @@ export class FullWozObjectReply implements GrpcMessage {
   set omschrijving(value: googleProtobuf000.StringValue | undefined) {
     this._omschrijving = value;
   }
+  get lat(): googleProtobuf000.DoubleValue | undefined {
+    return this._lat;
+  }
+  set lat(value: googleProtobuf000.DoubleValue | undefined) {
+    this._lat = value;
+  }
+  get lon(): googleProtobuf000.DoubleValue | undefined {
+    return this._lon;
+  }
+  set lon(value: googleProtobuf000.DoubleValue | undefined) {
+    this._lon = value;
+  }
 
   /**
    * Serialize message to binary data
@@ -1226,7 +1334,11 @@ export class FullWozObjectReply implements GrpcMessage {
       indicatieligging: this.indicatieligging
         ? this.indicatieligging.toObject()
         : undefined,
-      omschrijving: this.omschrijving ? this.omschrijving.toObject() : undefined
+      omschrijving: this.omschrijving
+        ? this.omschrijving.toObject()
+        : undefined,
+      lat: this.lat ? this.lat.toObject() : undefined,
+      lon: this.lon ? this.lon.toObject() : undefined
     };
   }
 
@@ -1278,7 +1390,9 @@ export class FullWozObjectReply implements GrpcMessage {
         : null,
       omschrijving: this.omschrijving
         ? this.omschrijving.toProtobufJSON(options)
-        : null
+        : null,
+      lat: this.lat ? this.lat.toProtobufJSON(options) : null,
+      lon: this.lon ? this.lon.toProtobufJSON(options) : null
     };
   }
 }
@@ -1301,6 +1415,8 @@ export module FullWozObjectReply {
     locatieomschrijving?: googleProtobuf000.StringValue.AsObject;
     indicatieligging?: googleProtobuf000.StringValue.AsObject;
     omschrijving?: googleProtobuf000.StringValue.AsObject;
+    lat?: googleProtobuf000.DoubleValue.AsObject;
+    lon?: googleProtobuf000.DoubleValue.AsObject;
   }
 
   /**
@@ -1321,6 +1437,8 @@ export module FullWozObjectReply {
     locatieomschrijving?: googleProtobuf000.StringValue.AsProtobufJSON | null;
     indicatieligging?: googleProtobuf000.StringValue.AsProtobufJSON | null;
     omschrijving?: googleProtobuf000.StringValue.AsProtobufJSON | null;
+    lat?: googleProtobuf000.DoubleValue.AsProtobufJSON | null;
+    lon?: googleProtobuf000.DoubleValue.AsProtobufJSON | null;
   }
 }
 
