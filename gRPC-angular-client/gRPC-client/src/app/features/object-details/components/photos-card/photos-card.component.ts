@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   Input,
   OnChanges,
@@ -8,8 +7,8 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { merge, Subject } from 'rxjs';
-import { filter, map, shareReplay, startWith, take, tap } from 'rxjs/operators';
-import { ImagesService } from '../../../services/images.service';
+import { filter, map, startWith } from 'rxjs/operators';
+import { ImagesService } from '../../services/images.service';
 import { ExpandPhotoDialog } from './expand-photo-dialog/expand-photo-dialog.component';
 
 @Component({

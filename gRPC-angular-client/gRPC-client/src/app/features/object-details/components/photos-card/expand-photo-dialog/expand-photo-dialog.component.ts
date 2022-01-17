@@ -1,6 +1,6 @@
 import { Component, Inject, OnChanges } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ImagesService } from 'src/app/features/object-search/services/images.service';
+import { ImagesService } from 'src/app/features/object-details/services/images.service';
 
 export interface PhotoDialogData {
   id: number;
@@ -9,7 +9,7 @@ export interface PhotoDialogData {
 @Component({
   selector: 'app-expand-dialog',
   styleUrls: ['expand-photo-dialog.component.scss'],
-  templateUrl: 'expand-photo-dialog.component.html',
+  templateUrl: 'expand-photo-dialog.component.html'
 })
 export class ExpandPhotoDialog {
   id: number;

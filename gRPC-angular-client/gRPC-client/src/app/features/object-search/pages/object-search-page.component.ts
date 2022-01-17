@@ -5,14 +5,12 @@ import {
   transition,
   trigger
 } from '@angular/animations';
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { merge, Observable, ReplaySubject, Subject } from 'rxjs';
-import { filter, map, startWith } from 'rxjs/operators';
-import { GetFullWozObjectService } from '../services/get-full-object.service';
+import { map, startWith, tap } from 'rxjs/operators';
+import { GetFullWozObjectService } from '../../object-details/services/get-full-object.service';
 
-@UntilDestroy()
 @Component({
   selector: 'app-object-search-page',
   templateUrl: './object-search-page.component.html',
@@ -62,6 +60,7 @@ export class ObjectSearchPageComponent {
   public isExpanded = false;
 
   private wozObjectstate$ = this.getwozObjectService.wozObjectRequest$.pipe(
+    tap(a => console.log(a)),
     map(req => (req.wozobjectnummer ? 'displayObject' : 'displayMap'))
   );
 

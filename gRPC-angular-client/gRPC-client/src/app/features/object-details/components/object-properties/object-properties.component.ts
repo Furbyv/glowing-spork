@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { filter, map, tap } from 'rxjs/operators';
 import { FullWozObjectReply } from 'src/app/proto/wozobject.pb';
-import { GetFullWozObjectService } from '../../../services/get-full-object.service';
+import { GetFullWozObjectService } from '../../services/get-full-object.service';
 
 @Component({
   selector: 'app-object-properties',

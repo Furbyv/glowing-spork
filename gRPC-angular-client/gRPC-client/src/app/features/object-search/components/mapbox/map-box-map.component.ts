@@ -12,15 +12,12 @@ import {
   EventEmitter
 } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
-import { Map, NavigationControl } from 'mapbox-gl';
+import { Map } from 'mapbox-gl';
 import { combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
-import {
-  Feature,
-  MapboxSearchService
-} from 'src/app/features/mapbox/mapbox-search.service';
+import { tap } from 'rxjs/operators';
+import { Feature } from 'src/app/features/object-search/components/mapbox/mapbox-search.service';
 import { environment } from 'src/environments/environment';
-import { ObjectSearchService } from '../object-search/services/object-search.service';
+import { ObjectSearchService } from '../../services/object-search.service';
 
 interface FeatureArray {
   type: string;

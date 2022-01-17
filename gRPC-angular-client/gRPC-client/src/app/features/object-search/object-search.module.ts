@@ -3,36 +3,23 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MaterialModule } from 'src/app/shared/material/material.module';
-import { ObjectDetailsComponent } from './components/object-details/object-details.component';
-import { PhotosCardComponent } from './components/object-details/photos-card/photos-card.component';
 import { ObjectSearchListItemComponent } from './components/object-search-list-item/object-search-list-item.component';
 import { ObjectSearchListComponent } from './components/object-search-list/object-search-list.component';
 import { ObjectSearchComponent } from './components/object-search/object-search.component';
 import { ObjectSearchRoutingModule } from './object-search-routing.module';
-import { ObjectSearchPageComponent } from './pages/object-search-page.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ExpandPhotoDialog } from './components/object-details/photos-card/expand-photo-dialog/expand-photo-dialog.component';
-import { ObjectPropertiesComponent } from './components/object-details/object-properties/object-properties.component';
-import { ObjectTabsComponent } from './components/object-details/object-tabs/object-tabs.component';
-import { SubobjectGridComponent } from './components/subobject-grid/subobject-grid.component';
 import { AgGridModule } from 'ag-grid-angular';
-import { ObjectMapComponent } from './components/object-map/object-map.component';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
-import { MapBoxMapComponent } from '../mapbox/map-box-map.component';
+import { MapBoxMapComponent } from './components/mapbox/map-box-map.component';
+import { ObjectSearchPageComponent } from './pages/object-search-page.component';
+import { ObjectDetailsModule } from '../object-details/object-details.module';
 
 @NgModule({
   declarations: [
     ObjectSearchComponent,
+    ObjectSearchPageComponent,
     ObjectSearchListComponent,
     ObjectSearchListItemComponent,
-    ObjectDetailsComponent,
-    ObjectSearchPageComponent,
-    ObjectPropertiesComponent,
-    ObjectTabsComponent,
-    PhotosCardComponent,
-    ExpandPhotoDialog,
-    SubobjectGridComponent,
-    ObjectMapComponent,
     MapBoxMapComponent
   ],
   imports: [
@@ -41,6 +28,7 @@ import { MapBoxMapComponent } from '../mapbox/map-box-map.component';
     FormsModule,
     MaterialModule,
     SharedModule,
+    ObjectDetailsModule,
     ObjectSearchRoutingModule,
     TranslocoModule,
     NgxMapboxGLModule.withConfig({

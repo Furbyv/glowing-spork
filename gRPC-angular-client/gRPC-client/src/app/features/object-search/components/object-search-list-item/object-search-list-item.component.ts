@@ -33,6 +33,7 @@ export class ObjectSearchListItemComponent implements OnInit {
   }
 
   OnObjectClick() {
+    console.log('click!');
     this.router.navigate([this.wozObject?.wozobjectnummer], {
       relativeTo: this.route
     });

@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { filter, map, tap } from 'rxjs/operators';
-import { GetFullWozObjectService } from '../../services/get-full-object.service';
-import { ImagesService } from '../../services/images.service';
+import { filter, map } from 'rxjs/operators';
+import { GetFullWozObjectService } from '../services/get-full-object.service';
+
 @UntilDestroy()
 @Component({
   selector: 'app-object-details',
@@ -31,6 +31,7 @@ export class ObjectDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.pipe(untilDestroyed(this)).subscribe((params: Params) => {
       this.id = +params['id'];
+      console.log(`go to ${this.id}`);
       this.getFullWozObjectService.getFullWozObject(this.id);
     });
   }
