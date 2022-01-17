@@ -40,6 +40,16 @@ export class ObjectSearchService {
     )
   );
 
+  private getAdres(w: WozObjectReply): string {
+    const straatnaam = w.straatnaam ? w.straatnaam.value : '';
+    const huisnummer = w.huisnummer;
+    const huisletter = w.huisletter ? w.huisletter.value : '';
+    const huisnummertoevoeging = w.huisnummertoevoeging
+      ? w.huisnummertoevoeging.value
+      : '';
+    return `${straatnaam} ${huisnummer}${huisletter} ${huisnummertoevoeging}`;
+  }
+
   convertWozObjectsToGeoJson(wozObjects: WozObjectReply[]): GeoJSON.Feature[] {
     return wozObjects.map(w => {
       const geometry: GeoJSON.Point = {
@@ -51,7 +61,7 @@ export class ObjectSearchService {
         type: 'Feature',
         geometry,
         properties: {
-          adres: `${w.straatnaam?.value} ${w.huisnummer}${w.huisletter?.value} ${w.huisnummertoevoeging?.value}`
+          adres: this.getAdres(w)
         }
       };
       return feature;

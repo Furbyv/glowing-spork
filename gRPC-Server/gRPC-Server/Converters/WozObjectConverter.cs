@@ -38,7 +38,7 @@ public static class WozObjectConverter
     public static Wozobjectproperty FullWozObjectsReplyToWozobjectproperty(FullWozObjectReply fullWozObject, DataContext dbContext)
     {
         var wozobject = dbContext.Wozobjectproperties.Where(w => w.Wozobjectnummer == fullWozObject.Wozobjectnummer)
-           .Where(p => DateTime.Now >= p.Startdate && DateTime.Now <= p.Enddate).FirstOrDefault();
+           .Where(p => DateTime.UtcNow >= p.Startdate && DateTime.UtcNow <= p.Enddate).FirstOrDefault();
 
         if(wozobject != null)
         {

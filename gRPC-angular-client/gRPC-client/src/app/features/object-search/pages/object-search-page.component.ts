@@ -6,6 +6,7 @@ import {
   OnDestroy,
   ChangeDetectorRef
 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-object-search-page',
@@ -18,7 +19,14 @@ export class ObjectSearchPageComponent {
 
   public toggleMenu() {
     this.isExpanded = !this.isExpanded;
+    window.dispatchEvent(new Event('resize'));
   }
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
+
+  onSelectionChange(id: string) {
+    this.router.navigate([id], {
+      relativeTo: this.route
+    });
+  }
 }
