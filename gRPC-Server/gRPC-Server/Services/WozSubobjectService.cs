@@ -14,8 +14,8 @@
         public override Task<WozSubObjectsReply> GetSubObjects(SubobjectsRequestById request, ServerCallContext context)
         {
             var subobjects = _dbContext.Wozdeelobjects.Where(w => w.Wozobjectnummer == request.Wozobjectnummer)
-                .Where(p => DateTime.Now >= p.Startdate && DateTime.Now <= p.Enddate)
-                .Include(w => w.Wozdeelobjectproperties.Where(p => DateTime.Now >= p.Startdate && DateTime.Now <= p.Enddate))
+                .Where(p => DateTime.UtcNow >= p.Startdate && DateTime.UtcNow <= p.Enddate)
+                .Include(w => w.Wozdeelobjectproperties.Where(p => DateTime.UtcNow >= p.Startdate && DateTime.UtcNow <= p.Enddate))
                 .Select(s=>WozSubobjectConverter.WozdeelobjectToWozSubobjectReply(s)).ToList();
 
             var reply = new WozSubObjectsReply();

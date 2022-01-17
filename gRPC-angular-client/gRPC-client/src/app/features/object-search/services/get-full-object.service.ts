@@ -17,6 +17,7 @@ export class GetFullWozObjectService {
   private saveWozObjectRequest$$: Subject<FullWozObjectReply> = new Subject<
     FullWozObjectReply
   >();
+  wozObjectRequest$ = this.wozObjectRequest$$.asObservable();
 
   constructor(private wozObjectClient: WozObjectsClient) {}
 

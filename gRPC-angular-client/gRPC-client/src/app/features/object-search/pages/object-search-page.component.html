@@ -14,9 +14,11 @@
   <mat-drawer-content class="container">
     <div class="details">
       <app-map-box-map
+        [@displayMapState]="state$ | async"
         [toggleRefresh]="isExpanded"
         (onSelect)="onSelectionChange($event)"
       ></app-map-box-map>
+      <router-outlet [@displayObjectState]="state$ | async"></router-outlet>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
