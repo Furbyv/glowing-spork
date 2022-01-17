@@ -14,6 +14,12 @@ export class ObjectSearchService {
   private wozObjectRequest$$: Subject<WozObjectRequestById> = new ReplaySubject<
     WozObjectRequestById
   >(1);
+  private goToObject$$: Subject<number> = new ReplaySubject<number>(0);
+  goToObject$ = this.goToObject$$.asObservable();
+
+  goToObject(id: number) {
+    this.goToObject$$.next(id);
+  }
 
   findWozObjects(id: number): void {
     const request = new WozObjectRequestById();

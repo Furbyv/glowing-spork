@@ -8,7 +8,7 @@ import {
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { merge, Observable, ReplaySubject, Subject } from 'rxjs';
-import { map, startWith, tap } from 'rxjs/operators';
+import { filter, map, startWith, tap } from 'rxjs/operators';
 import { GetFullWozObjectService } from '../../object-details/services/get-full-object.service';
 import { SearchLayoutService } from '../services/search-layout.service';
 
@@ -59,6 +59,11 @@ export class ObjectSearchPageComponent {
 
   state$ = this.layoutService.state$;
 
+  wozObject$ = this.getFullWozObjectService.fullWozObject$.pipe(
+    filter(state => state.success),
+    map(state => state.res!)
+  );
+
   public toggleMenu() {
     this.isExpanded = !this.isExpanded;
     this.refreshEvent();
@@ -67,7 +72,8 @@ export class ObjectSearchPageComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private layoutService: SearchLayoutService
+    private layoutService: SearchLayoutService,
+    private getFullWozObjectService: GetFullWozObjectService
   ) {}
 
   refreshEvent() {

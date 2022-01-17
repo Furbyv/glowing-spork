@@ -1,0 +1,20 @@
+@import "variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-card {
+  flex: 1;
+  display: flex;
+  margin-top: $default-gap;
+  margin-bottom: $default-gap;
+  width: 100%;
+}
+
+mat-card-title {
+  margin: auto;
+  text-align: center;
+}

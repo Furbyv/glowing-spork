@@ -20,7 +20,6 @@ export class ObjectPropertiesComponent implements OnChanges {
 
   saveState$ = this.getFullWozObjectService.saveState$.pipe(
     filter(state => state.complete),
-    tap(a => console.log(a)),
     map(state => state.res!.isSuccess)
   );
 
@@ -57,7 +56,6 @@ export class ObjectPropertiesComponent implements OnChanges {
   }
 
   onSave(wozObject: FullWozObjectReply) {
-    console.log(wozObject);
     this.getFullWozObjectService.saveWozObject(wozObject);
   }
 }

@@ -59,7 +59,6 @@ export class ObjectMapComponent implements OnChanges, AfterViewInit {
           'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
           (error, image) => {
             if (this.map && image) {
-              console.log(image);
               this.map.addImage('custom-marker', image);
               this.map.addSource('points', {
                 type: 'geojson',
@@ -109,7 +108,6 @@ export class ObjectMapComponent implements OnChanges, AfterViewInit {
       });
 
       this.map.on('load', () => {
-        console.log('loaded');
         this.mapLoaded$$.next(true);
       });
     }

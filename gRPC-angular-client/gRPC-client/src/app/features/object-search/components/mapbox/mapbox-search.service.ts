@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject, Subject } from 'rxjs';
 
 export interface MapboxOutput {
   attribution: string;
@@ -23,7 +23,6 @@ export interface Feature {
 })
 export class MapboxSearchService {
   constructor(private http: HttpClient) {}
-
   public search_word(query: string): Observable<GeoJSON.Feature[]> {
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
     return this.http

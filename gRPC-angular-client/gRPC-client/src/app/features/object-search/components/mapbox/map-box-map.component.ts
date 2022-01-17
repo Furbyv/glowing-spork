@@ -11,10 +11,11 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import * as mapboxgl from 'mapbox-gl';
 import { Map } from 'mapbox-gl';
 import { combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { Feature } from 'src/app/features/object-search/components/mapbox/mapbox-search.service';
 import { environment } from 'src/environments/environment';
 import { ObjectSearchService } from '../../services/object-search.service';
@@ -24,6 +25,7 @@ interface FeatureArray {
   features: Feature[];
 }
 
+@UntilDestroy()
 @Component({
   selector: 'app-map-box-map',
   templateUrl: './map-box-map.component.html',
@@ -50,6 +52,19 @@ export class MapBoxMapComponent implements OnChanges, AfterViewInit {
 
   mapboxFeatures$: Observable<GeoJSON.Feature[]> = this.objectSearchService
     .wozObjectGeoJson$;
+
+  navigateToPoint$: Observable<[number, number]> = combineLatest([
+    this.objectSearchService.goToObject$,
+    this.mapboxFeatures$
+  ]).pipe(
+    map(([point, features]) => features.filter(f => f.id === point.toString())),
+    map(f => f[0]),
+    filter(f => !!f),
+    map(f => [
+      (f.geometry as GeoJSON.Point).coordinates[0],
+      (f.geometry as GeoJSON.Point).coordinates[1]
+    ])
+  );
 
   labels$ = combineLatest([this.mapboxFeatures$, this.mapLoaded$$]).pipe(
     tap(([f]) => {
@@ -163,5 +178,15 @@ export class MapBoxMapComponent implements OnChanges, AfterViewInit {
 
   constructor(private objectSearchService: ObjectSearchService) {
     this.labels$.subscribe(val => console.log(val));
+    this.navigateToPoint$
+      .pipe(
+        untilDestroyed(this),
+        filter(f => !!f)
+      )
+      .subscribe(f => {
+        if (this.map) {
+          this.map.flyTo({ center: f, zoom: 16 });
+        }
+      });
   }
 }

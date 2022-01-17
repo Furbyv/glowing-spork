@@ -13,6 +13,9 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { MapBoxMapComponent } from './components/mapbox/map-box-map.component';
 import { ObjectSearchPageComponent } from './pages/object-search-page.component';
 import { ObjectDetailsModule } from '../object-details/object-details.module';
+import { SmallActionBarComponent } from './components/object-search/small-action-bar/small-action-bar.component';
+import { LargeActionBarComponent } from './components/object-search/large-action-bar/large-action-bar.component';
+import { NoObjectComponent } from './components/no-object/no-object.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { ObjectDetailsModule } from '../object-details/object-details.module';
     ObjectSearchPageComponent,
     ObjectSearchListComponent,
     ObjectSearchListItemComponent,
-    MapBoxMapComponent
+    SmallActionBarComponent,
+    LargeActionBarComponent,
+    MapBoxMapComponent,
+    NoObjectComponent
   ],
   imports: [
     CommonModule,
