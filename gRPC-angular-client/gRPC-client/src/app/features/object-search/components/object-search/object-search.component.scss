@@ -26,6 +26,16 @@ section {
   }
 }
 
+.toggle-small {
+  flex-direction: column;
+}
+
+.small-icons {
+  flex: 1;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
 .fold-icon {
   transform: rotate(180deg);
 }

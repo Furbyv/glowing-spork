@@ -19,6 +19,7 @@ export class ObjectSearchComponent {
   @Input() isExpanded: boolean = true;
   @Input() maxCharacters: number = 12;
   @Output() toggleMenu = new EventEmitter();
+  @Output() toggleMap = new EventEmitter();
 
   private startRequest$$: Subject<boolean> = new Subject<boolean>();
 
@@ -34,6 +35,10 @@ export class ObjectSearchComponent {
   );
 
   constructor(private objectSearchService: ObjectSearchService) {}
+
+  onToggleMap() {
+    this.toggleMap.emit();
+  }
 
   onSearch(value: string) {
     var numberValue = this.ConvertStringToNumber(value);

@@ -7,6 +7,7 @@
     [class.mat-drawer-collapsed]="!isExpanded"
     ><app-object-search
       (toggleMenu)="toggleMenu()"
+      (toggleMap)="toggleMap()"
       [isExpanded]="isExpanded"
     ></app-object-search
   ></mat-drawer>
@@ -18,7 +19,11 @@
         [toggleRefresh]="isExpanded"
         (onSelect)="onSelectionChange($event)"
       ></app-map-box-map>
-      <router-outlet [@displayObjectState]="state$ | async"></router-outlet>
+      <ng-container *ngIf="state$ | async as state">
+        <div class="router" [@displayObjectState]="state">
+          <router-outlet *ngIf="state === 'displayObject'"></router-outlet>
+        </div>
+      </ng-container>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

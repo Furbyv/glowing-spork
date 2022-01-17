@@ -57,37 +57,37 @@ export class MapBoxMapComponent implements OnChanges, AfterViewInit {
   labels$ = combineLatest([this.mapboxFeatures$, this.mapLoaded$$]).pipe(
     tap(([f]) => {
       if (this.map) {
-        this.map.loadImage(
-          '../../../assets/markers/mapbox-marker-icon-20px-blue.png',
-          (error, image) => {
-            if (this.map && image) {
-              console.log(image);
-              this.map.addImage('custom-marker', image);
-              this.map.addSource('points', {
-                type: 'geojson',
-                data: { type: 'FeatureCollection', features: f }
-              });
-              // Add a symbol layer
-              this.map.addLayer({
-                id: 'points',
-                type: 'symbol',
-                source: 'points',
-                layout: {
-                  'icon-image': 'custom-marker',
-                  'icon-allow-overlap': true,
-                  // get the title name from the source's "title" property
-                  'text-field': ['get', 'adres'],
-                  'text-font': [
-                    'Arial Unicode MS Regular ',
-                    'Arial Unicode MS Regular'
-                  ],
-                  'text-offset': [0, 1.25],
-                  'text-anchor': 'top'
-                }
-              });
-            }
+        const id = 'points';
+        if (this.map.getLayer(id)) {
+          this.map.removeLayer(id);
+        }
+        if (this.map.getSource(id)) {
+          this.map.removeSource(id);
+        }
+
+        this.map.addSource(id, {
+          type: 'geojson',
+          data: { type: 'FeatureCollection', features: f }
+        });
+
+        // Add a symbol layer
+        this.map.addLayer({
+          id,
+          type: 'symbol',
+          source: 'points',
+          layout: {
+            'icon-image': 'custom-marker',
+            'icon-allow-overlap': true,
+            // get the title name from the source's "title" property
+            'text-field': ['get', 'adres'],
+            'text-font': [
+              'Arial Unicode MS Regular ',
+              'Arial Unicode MS Regular'
+            ],
+            'text-offset': [0, 1.25],
+            'text-anchor': 'top'
           }
-        );
+        });
       }
     })
   );
@@ -116,7 +116,16 @@ export class MapBoxMapComponent implements OnChanges, AfterViewInit {
       });
 
       this.map.on('load', () => {
-        console.log('loaded');
+        if (this.map) {
+          this.map.loadImage(
+            '../../../assets/markers/mapbox-marker-icon-20px-blue.png',
+            (error, image) => {
+              if (this.map && image) {
+                this.map.addImage('custom-marker', image);
+              }
+            }
+          );
+        }
         this.mapLoaded$$.next(true);
         window.dispatchEvent(new Event('resize'));
       });

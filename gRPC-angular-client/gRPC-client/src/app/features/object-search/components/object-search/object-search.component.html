@@ -1,6 +1,17 @@
 <section [class.search-drawer]="isExpanded">
-  <div class="toggle">
-    <mat-icon (click)="toggleMenu.emit(null)" [class.fold-icon]="isExpanded">
+  <div class="toggle" [class.toggle-small]="!isExpanded">
+    <mat-icon
+      class="map-icon"
+      [class.small-icons]="!isExpanded"
+      (click)="onToggleMap()"
+    >
+      map
+    </mat-icon>
+    <mat-icon
+      (click)="toggleMenu.emit(null)"
+      [class.fold-icon]="isExpanded"
+      [class.small-icons]="!isExpanded"
+    >
       double_arrow
     </mat-icon>
   </div>

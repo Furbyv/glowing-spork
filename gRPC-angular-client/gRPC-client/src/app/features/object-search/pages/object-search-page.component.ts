@@ -72,7 +72,7 @@ export class ObjectSearchPageComponent {
 
   public toggleMenu() {
     this.isExpanded = !this.isExpanded;
-    window.dispatchEvent(new Event('resize'));
+    this.refreshEvent();
   }
 
   constructor(
@@ -80,6 +80,17 @@ export class ObjectSearchPageComponent {
     private router: Router,
     private getwozObjectService: GetFullWozObjectService
   ) {}
+
+  refreshEvent() {
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 500);
+  }
+
+  toggleMap() {
+    this.stateToggle$$.next('displayMap');
+    this.refreshEvent();
+  }
 
   onSelectionChange(id: string) {
     this.stateToggle$$.next('displayObject');
