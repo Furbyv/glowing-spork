@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WozObjectReply } from 'src/app/proto/wozobject.pb';
+import { SearchLayoutService } from '../../services/search-layout.service';
 
 @Component({
   selector: 'app-object-search-list-item',
@@ -19,7 +20,11 @@ export class ObjectSearchListItemComponent implements OnInit {
   secondLineAddress: string = '';
   objectDetails: string = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private layoutService: SearchLayoutService
+  ) {}
 
   ngOnInit(): void {
     this.trimmedAddress =
@@ -33,7 +38,7 @@ export class ObjectSearchListItemComponent implements OnInit {
   }
 
   OnObjectClick() {
-    console.log('click!');
+    this.layoutService.toggleObject();
     this.router.navigate([this.wozObject?.wozobjectnummer], {
       relativeTo: this.route
     });

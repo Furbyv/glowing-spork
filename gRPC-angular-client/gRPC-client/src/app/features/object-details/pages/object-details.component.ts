@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter, map } from 'rxjs/operators';
+import { SearchLayoutService } from '../../object-search/services/search-layout.service';
 import { GetFullWozObjectService } from '../services/get-full-object.service';
 
 @UntilDestroy()
@@ -25,13 +26,14 @@ export class ObjectDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private getFullWozObjectService: GetFullWozObjectService
+    private getFullWozObjectService: GetFullWozObjectService,
+    private searchLayoutService: SearchLayoutService
   ) {}
 
   ngOnInit(): void {
     this.route.params.pipe(untilDestroyed(this)).subscribe((params: Params) => {
+      this.searchLayoutService.toggleObject();
       this.id = +params['id'];
-      console.log(`go to ${this.id}`);
       this.getFullWozObjectService.getFullWozObject(this.id);
     });
   }

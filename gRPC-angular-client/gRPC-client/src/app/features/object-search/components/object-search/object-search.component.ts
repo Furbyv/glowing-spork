@@ -8,6 +8,7 @@ import {
 import { combineLatest, Subject } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { ObjectSearchService } from '../../services/object-search.service';
+import { SearchLayoutService } from '../../services/search-layout.service';
 
 @Component({
   selector: 'app-object-search',
@@ -19,7 +20,6 @@ export class ObjectSearchComponent {
   @Input() isExpanded: boolean = true;
   @Input() maxCharacters: number = 12;
   @Output() toggleMenu = new EventEmitter();
-  @Output() toggleMap = new EventEmitter();
 
   private startRequest$$: Subject<boolean> = new Subject<boolean>();
 
@@ -34,10 +34,17 @@ export class ObjectSearchComponent {
     map(w => w.wozobjects)
   );
 
-  constructor(private objectSearchService: ObjectSearchService) {}
+  constructor(
+    private objectSearchService: ObjectSearchService,
+    private layoutService: SearchLayoutService
+  ) {}
 
   onToggleMap() {
-    this.toggleMap.emit();
+    this.layoutService.toggleMap();
+  }
+
+  onToggleObject() {
+    this.layoutService.toggleObject();
   }
 
   onSearch(value: string) {

@@ -7,7 +7,6 @@
     [class.mat-drawer-collapsed]="!isExpanded"
     ><app-object-search
       (toggleMenu)="toggleMenu()"
-      (toggleMap)="toggleMap()"
       [isExpanded]="isExpanded"
     ></app-object-search
   ></mat-drawer>
@@ -21,7 +20,7 @@
       ></app-map-box-map>
       <ng-container *ngIf="state$ | async as state">
         <div class="router" [@displayObjectState]="state">
-          <router-outlet *ngIf="state === 'displayObject'"></router-outlet>
+          <router-outlet></router-outlet>
         </div>
       </ng-container>
     </div>

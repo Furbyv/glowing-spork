@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { merge, Observable, ReplaySubject, Subject } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
 import { GetFullWozObjectService } from '../../object-details/services/get-full-object.service';
+import { SearchLayoutService } from '../services/search-layout.service';
 
 @Component({
   selector: 'app-object-search-page',
@@ -54,20 +55,9 @@ import { GetFullWozObjectService } from '../../object-details/services/get-full-
   ]
 })
 export class ObjectSearchPageComponent {
-  private stateToggle$$: Subject<
-    'displayMap' | 'displayObject'
-  > = new ReplaySubject<'displayMap' | 'displayObject'>(0);
   public isExpanded = false;
 
-  private wozObjectstate$ = this.getwozObjectService.wozObjectRequest$.pipe(
-    tap(a => console.log(a)),
-    map(req => (req.wozobjectnummer ? 'displayObject' : 'displayMap'))
-  );
-
-  state$: Observable<'displayMap' | 'displayObject'> = merge(
-    this.wozObjectstate$,
-    this.stateToggle$$.asObservable()
-  ).pipe(startWith('displayMap'));
+  state$ = this.layoutService.state$;
 
   public toggleMenu() {
     this.isExpanded = !this.isExpanded;
@@ -77,7 +67,7 @@ export class ObjectSearchPageComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private getwozObjectService: GetFullWozObjectService
+    private layoutService: SearchLayoutService
   ) {}
 
   refreshEvent() {
@@ -86,13 +76,8 @@ export class ObjectSearchPageComponent {
     }, 500);
   }
 
-  toggleMap() {
-    this.stateToggle$$.next('displayMap');
-    this.refreshEvent();
-  }
-
   onSelectionChange(id: string) {
-    this.stateToggle$$.next('displayObject');
+    this.layoutService.toggleObject();
     this.router.navigate([id], {
       relativeTo: this.route
     });
