@@ -100,6 +100,13 @@ export class MapBoxMapComponent implements OnChanges, AfterViewInit {
             'text-anchor': 'top'
           }
         });
+        if (f[0]) {
+          const coordinates = (f[0].geometry as GeoJSON.Point).coordinates;
+          this.map.flyTo({
+            center: [coordinates[0], coordinates[1]],
+            zoom: 12
+          });
+        }
       }
     })
   );
