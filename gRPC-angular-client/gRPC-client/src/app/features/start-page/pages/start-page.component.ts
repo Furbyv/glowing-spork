@@ -11,8 +11,10 @@ export class StartPageComponent {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   navigateToObjectSearch() {
-    this.router.navigate(['search-object'], {
-      relativeTo: this.route
-    });
+    this.router.navigate(['search-object']);
+  }
+
+  navigateToTaxOverview() {
+    this.router.navigate(['tax-overview']);
   }
 }

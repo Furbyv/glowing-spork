@@ -13,6 +13,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { GrpcCoreModule } from '@ngx-grpc/core';
 import { GrpcWebClientModule } from '@ngx-grpc/grpc-web-client';
 import { AgGridModule } from 'ag-grid-angular';
+import { TaxOverviewModule } from './features/tax-overview/tax-overview.module';
+import { StartPageModule } from './features/start-page/start-page.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +27,7 @@ import { AgGridModule } from 'ag-grid-angular';
     HttpClientModule,
     TranslocoRootModule,
     LayoutModule,
-    ObjectSearchModule,
+    StartPageModule,
     AgGridModule.withComponents([]),
     GrpcCoreModule.forRoot(),
     GrpcWebClientModule.forRoot({

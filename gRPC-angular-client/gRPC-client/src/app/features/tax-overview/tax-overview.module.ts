@@ -1,0 +1,39 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { TranslocoModule } from '@ngneat/transloco';
+import { MaterialModule } from 'src/app/shared/material/material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { AgGridModule } from 'ag-grid-angular';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
+import { ObjectDetailsModule } from '../object-details/object-details.module';
+import { TaxOverviewPageComponent } from './pages/tax-overview-page.component';
+import { TaxOverviewRoutingModule } from './tax-overview-routing.module';
+import { TaxOverviewDrawerComponent } from './layout/tax-overview-drawer/tax-overview-drawer.component';
+import { SmallActionBarComponent } from './layout/small-action-bar/small-action-bar.component';
+import { LargeActionBarComponent } from './layout/large-action-bar/large-action-bar.component';
+
+@NgModule({
+  declarations: [
+    TaxOverviewPageComponent,
+    TaxOverviewDrawerComponent,
+    SmallActionBarComponent,
+    LargeActionBarComponent
+  ],
+  imports: [
+    CommonModule,
+    AgGridModule,
+    FormsModule,
+    MaterialModule,
+    SharedModule,
+    ObjectDetailsModule,
+    TranslocoModule,
+    TaxOverviewRoutingModule,
+    NgxMapboxGLModule.withConfig({
+      accessToken:
+        'pk.eyJ1IjoiZnJhbmt2ZSIsImEiOiJja3h4ZDg1cXoyNTNpMnNtcGdmeThxeTY5In0.-OgEUsCLZv5yV35LiNa-Pg',
+      geocoderAccessToken: ''
+    })
+  ]
+})
+export class TaxOverviewModule {}

@@ -31,7 +31,6 @@ import { PhotosCardComponent } from './components/photos-card/photos-card.compon
     FormsModule,
     MaterialModule,
     SharedModule,
-    ObjectSearchRoutingModule,
     TranslocoModule,
     NgxMapboxGLModule.withConfig({
       accessToken:
