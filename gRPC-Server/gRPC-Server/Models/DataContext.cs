@@ -12,6 +12,7 @@ public class DataContext : DbContext
     public virtual DbSet<Wozobjectflexproperty> Wozobjectflexproperties { get; set; }
     public virtual DbSet<Wozobjectproperty> Wozobjectproperties { get; set; }
     public virtual DbSet<Image> Images { get; set; }
+    public virtual DbSet<TaxOverview> Taxatieoverzicht { get; set; }
     public DataContext(DbContextOptions<DataContext> options) : base(options) {
         NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite();
     }
