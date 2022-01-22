@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ObjectSearchModule } from './features/object-search/object-search.module';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/search-object', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {
-    path: 'search-object',
+    path: 'home',
     loadChildren: () =>
-      import('./features/object-search/object-search.module').then(
-        (m) => m.ObjectSearchModule
-      ),
-  },
+      import('./features/start-page/start-page.module').then(
+        m => m.StartPageModule
+      )
+  }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

@@ -16,5 +16,11 @@
  "doelmatigheid":"Dm",
  "voorzieningen":"Vz",
   "opp":"Surf.area",
-  "stuks":"Nr"
+  "stuks":"Nr",
+  "object-search" : "Object search",
+  "tax-overview" : "Taxation overview",
+  "transaction-overview" : "Transaction overview",
+  "reports" : "Reports",
+  "exports" : "Export files",
+  "settings" : "Settings"
 }

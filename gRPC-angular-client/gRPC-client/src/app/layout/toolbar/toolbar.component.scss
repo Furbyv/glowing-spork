@@ -10,9 +10,14 @@ mat-toolbar {
 
 .logo {
   height: 48px;
+  cursor: pointer;
 }
 
 .timeframe-select {
   width: 250px;
   font-size: 14px !important;
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0 !important;
 }

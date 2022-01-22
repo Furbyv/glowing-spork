@@ -16,5 +16,11 @@
   "doelmatigheid": "Dm",
   "voorzieningen": "Vz",
   "opp": "Opp",
-  "stuks": "Aant"
+  "stuks": "Aant",
+  "object-search" : "Zoek WOZ-object",
+  "tax-overview" : "Taxatieoverzicht",
+  "transaction-overview" : "PMA-overzicht",
+  "reports" : "Rapportages",
+  "exports" : "Exporteer bestanden",
+  "settings" : "Instellingen"
 }
