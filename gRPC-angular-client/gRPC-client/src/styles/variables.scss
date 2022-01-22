@@ -9,8 +9,8 @@ $primary-colors: (
   contrast: (
     main: $light-primary-text,
     lighter: $dark-primary-text,
-    darker: $light-primary-text,
-  ),
+    darker: $light-primary-text
+  )
 );
 
 $accent-colors: (
@@ -21,8 +21,8 @@ $accent-colors: (
   contrast: (
     main: $dark-primary-text,
     lighter: $dark-primary-text,
-    darker: $dark-primary-text,
-  ),
+    darker: $dark-primary-text
+  )
 );
 
 $my-primary: mat.define-palette($primary-colors, main, lighter, darker);
@@ -54,8 +54,8 @@ $my-dark-primary-colors: (
   contrast: (
     main: $light-primary-text,
     lighter: $light-primary-text,
-    darker: $light-primary-text,
-  ),
+    darker: $light-primary-text
+  )
 );
 
 $my-dark-primary: mat.define-palette(
@@ -64,6 +64,7 @@ $my-dark-primary: mat.define-palette(
   lighter,
   darker
 );
+$my-dark-main: map_get($my-dark-primary, main);
 $my-dark-accent: mat-palette($mat-amber, 900);
 $my-dark-warn: mat-palette($mat-deep-orange);
 $my-dark-theme: mat.define-dark-theme(

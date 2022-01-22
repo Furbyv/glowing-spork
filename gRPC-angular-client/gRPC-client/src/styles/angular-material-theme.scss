@@ -27,6 +27,7 @@
   .mat-paginator-range-label {
     margin: 0 !important;
   }
+  $primary: map-get($my-dark-theme, primary);
 }
 
 .color-scheme-light {
@@ -37,12 +38,13 @@
     color: #d0d0d0;
   }
   app-root {
-    background-color: #fafafa;
+    background-color: rgba(179, 178, 178, 0.8);
   }
   .page-container {
-    background-color: #fafafa;
+    background-color: rgba(179, 178, 178, 0.8);
   }
   .mat-paginator-range-label {
     margin: 0 !important;
   }
+  $primary: map-get($my-light-theme, primary);
 }
