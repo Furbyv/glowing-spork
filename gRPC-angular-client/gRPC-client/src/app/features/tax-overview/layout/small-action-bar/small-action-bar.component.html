@@ -1,11 +1,17 @@
 <div class="small-bar">
-  <mat-icon (click)="onToggleMenu()" class="small-icons">
-    double_arrow
-  </mat-icon>
-  <mat-icon class="small-icons" (click)="onFilter()">
-    map
-  </mat-icon>
-  <mat-icon class="small-icons" (click)="onSetFilters()">
-    maps_home_work
-  </mat-icon>
+  <button mat-icon-button>
+    <mat-icon (click)="onToggleMenu()" matTooltip="Expand menu">
+      double_arrow
+    </mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon (click)="onFilter()" matTooltip="Find objects">
+      refresh
+    </mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon (click)="onSetFilters()" matTooltip="Set filters">
+      filter_alt
+    </mat-icon>
+  </button>
 </div>

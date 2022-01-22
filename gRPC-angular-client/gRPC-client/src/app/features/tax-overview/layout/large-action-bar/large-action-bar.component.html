@@ -1,11 +1,14 @@
-<div class="large-bar">
-  <mat-icon (click)="onToggleMenu()" class="icons fold-icon">
-    double_arrow
-  </mat-icon>
-  <mat-icon class="icons" (click)="onFilter()">
-    map
-  </mat-icon>
-  <mat-icon class="icons" (click)="onSetFilters()">
-    maps_home_work
-  </mat-icon>
-</div>
+<mat-action-list>
+  <mat-list-item (click)="onToggleMenu()">
+    <h3 matLine>Collapse menu</h3>
+    <mat-icon matListIcon class="fold-icon">double_arrow</mat-icon>
+  </mat-list-item>
+  <mat-list-item (click)="onFilter()">
+    <h3 matLine>Find objects</h3>
+    <mat-icon matListIcon>refresh</mat-icon>
+  </mat-list-item>
+  <mat-list-item (click)="onSetFilters()">
+    <h3 matLine>Set filters</h3>
+    <mat-icon matListIcon>filter_alt</mat-icon>
+  </mat-list-item>
+</mat-action-list>
