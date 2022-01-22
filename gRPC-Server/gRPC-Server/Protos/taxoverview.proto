@@ -43,6 +43,10 @@ message SubObjectFilterRequest {
 }
 
 message WozObjectsTaxOverviewReply {
+	repeated WozObjectOverview overviewObjects =1;
+}
+
+message WozObjectOverview {
 	int32 tijdvakid =1;
 	int64 wozobjectnummer =2;
 	google.protobuf.DoubleValue lat =3;

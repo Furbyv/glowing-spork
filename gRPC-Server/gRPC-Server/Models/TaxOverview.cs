@@ -3,7 +3,7 @@ public class TaxOverview
 {
     public int Tijdvakid { get; set; }
     public long Wozobjectnummer { get; set; }
-    public Geometry Geometry { get; set; }
+    public Point Geometry { get; set; }
     public int Gemeentecode { get; set; }
     public string Straatnaam { get; set; }
     public int Huisnummer { get; set; }
