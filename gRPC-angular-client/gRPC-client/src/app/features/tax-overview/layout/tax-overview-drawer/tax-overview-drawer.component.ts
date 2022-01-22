@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { FilterDialogComponent } from '../../components/filter-dialog/filter-dialog.component';
 
 @Component({
   selector: 'app-tax-overview-drawer',
@@ -14,7 +16,17 @@ export class TaxOverviewDrawerComponent {
     this.refreshEvent();
   }
 
-  onSetFilters() {}
+  constructor(public dialog: MatDialog) {}
+
+  onSetFilters() {
+    const dialogRef = this.dialog.open(FilterDialogComponent, {
+      width: '250px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
   onDoFilter() {}
 

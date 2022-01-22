@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -12,18 +12,21 @@ import { TaxOverviewRoutingModule } from './tax-overview-routing.module';
 import { TaxOverviewDrawerComponent } from './layout/tax-overview-drawer/tax-overview-drawer.component';
 import { SmallActionBarComponent } from './layout/small-action-bar/small-action-bar.component';
 import { LargeActionBarComponent } from './layout/large-action-bar/large-action-bar.component';
+import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.component';
 
 @NgModule({
   declarations: [
     TaxOverviewPageComponent,
     TaxOverviewDrawerComponent,
     SmallActionBarComponent,
-    LargeActionBarComponent
+    LargeActionBarComponent,
+    FilterDialogComponent
   ],
   imports: [
     CommonModule,
     AgGridModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     SharedModule,
     ObjectDetailsModule,
