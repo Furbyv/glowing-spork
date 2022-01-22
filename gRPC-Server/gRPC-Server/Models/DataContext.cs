@@ -16,5 +16,9 @@ public class DataContext : DbContext
     public DataContext(DbContextOptions<DataContext> options) : base(options) {
         NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite();
     }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<TaxOverview>().HasNoKey();
+    }
 }
 
