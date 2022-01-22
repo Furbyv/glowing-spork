@@ -1,0 +1,81 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+
+option csharp_namespace = "gRPCServer.Protos";
+
+package taxoverview;
+
+//Overview service definition, delivers a list of (sub)objects meeting the requirements specified in the request.
+service Taxoverview {
+  //Gets all wozobjects meeting the conditions specified int the filter request
+  rpc GetOverviewObjects (WozObjectFilterRequest) returns (WozObjectsTaxOverviewReply);
+  //Gets all subobjects meeting the conditions specified int the filter request
+  rpc GetOverviewSubobjects(SubObjectFilterRequest) returns (SubObjectsTaxOverviewReply);
+}
+
+message WozObjectFilterRequest {
+  int32 tijdvakid = 1;
+  repeated int32 modelids = 2;
+  repeated int32 gemeentecodes = 3;
+  repeated string woonplaatsen = 4;
+  repeated string straatnamen = 5;
+  repeated string wijkcodes = 6;
+  repeated string buurtcodes = 7;
+  repeated int32 soortgroepids = 8;
+  repeated string soortobjectcodes = 9;
+}
+
+message SubObjectFilterRequest {
+  int32 tijdvakid = 1;
+  repeated int32 modelids = 2;
+  repeated int32 gemeentecodes = 3;
+  repeated string woonplaatsen = 4;
+  repeated string straatnamen = 5;
+  repeated string wijkcodes = 6;
+  repeated string buurtcodes = 7;
+  repeated int32 deelgroepids = 8;
+  repeated string deelcodes = 9;
+  repeated string kwaliteit = 10;
+  repeated string onderhoud = 11;
+  repeated string uitstraling = 12;
+  repeated string doelmatigheid = 13;
+  repeated string voorzieningen = 14;
+}
+
+message WozObjectsTaxOverviewReply {
+	int32 tijdvakid =1;
+	int64 wozobjectnummer =2;
+	google.protobuf.DoubleValue lat =3;
+	google.protobuf.DoubleValue lon =4;
+	int32 gemeentecode =5;
+	google.protobuf.StringValue straatnaam =6;
+	int32 huisnummer = 7;
+	google.protobuf.StringValue huisletter =8;
+	google.protobuf.StringValue huisnummertoevoeging =9;
+	google.protobuf.StringValue postcode =10;
+	google.protobuf.StringValue wijkcode =11;
+	google.protobuf.StringValue buurtcode =12;
+	google.protobuf.StringValue woonplaatsnaam =13;
+	google.protobuf.StringValue locatieomschrijving =14;
+	google.protobuf.StringValue soortobjectcode =15;
+	google.protobuf.StringValue indicatieligging =16;
+	google.protobuf.StringValue groepaanduiding =17;
+	google.protobuf.StringValue aanduidingbouwstroom = 18;
+	google.protobuf.StringValue statuswozobject =19;
+	google.protobuf.StringValue waardegebied =20;
+	google.protobuf.StringValue model =21;
+	int32 woninh =22;
+	int32 wonopp =23;
+	int32 grondopp =24;
+	int32 aanbouwopp =25;
+	int32 schuuropp = 26;
+	int32 garageopp =27;
+	int32 bouwjaar =28;
+	google.protobuf.StringValue kwaliteit =29;
+	google.protobuf.StringValue onderhoud =30;
+	google.protobuf.StringValue uitstraling =31;
+	google.protobuf.StringValue doelmatigheid =32;
+	google.protobuf.StringValue voorzieningen =33;
+}
+
+message SubObjectsTaxOverviewReply {}

@@ -9,6 +9,7 @@
   <ItemGroup>
     <Protobuf Include="Protos\wozobject.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\subobject.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\taxoverview.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
