@@ -20,7 +20,7 @@ export class TaxOverviewDrawerComponent {
 
   onSetFilters() {
     const dialogRef = this.dialog.open(FilterDialogComponent, {
-      width: '250px'
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,69 +1,71 @@
-<h1 mat-dialog-title>Set filters</h1>
-<div mat-dialog-content>
-  <mat-form-field>
-    <mat-label>Gemeenten:</mat-label>
-    <mat-select [formControl]="gemeenteControl" name="gemeente" multiple>
-      <mat-option *ngFor="let gemeente of gemeenteList" [value]="gemeente.id">
-        {{ gemeente.description }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Model:</mat-label>
-    <mat-select [formControl]="modelControl" name="gemeente" multiple>
-      <mat-option *ngFor="let model of modelList" [value]="model.id">
-        {{ model.description }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Woonplaatsen:</mat-label>
-    <mat-select [formControl]="woonplaatsControl" name="gemeente" multiple>
-      <mat-option
-        *ngFor="let woonplaats of woonplaatList"
-        [value]="woonplaats.id"
-      >
-        {{ woonplaats.description }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Straatnamen:</mat-label>
-    <mat-select [formControl]="straatnaamControl" name="gemeente" multiple>
-      <mat-option
-        *ngFor="let straatnaam of straatnaamList"
-        [value]="straatnaam.id"
-      >
-        {{ straatnaam.description }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Wijken:</mat-label>
-    <mat-select [formControl]="wijkControl" name="gemeente" multiple>
-      <mat-option *ngFor="let wijk of wijkList" [value]="wijk.id">
-        {{ wijk.description }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Buurten:</mat-label>
-    <mat-select [formControl]="buurtControl" name="gemeente" multiple>
-      <mat-option *ngFor="let buurt of buurtCodes" [value]="buurt.id">
-        {{ buurt.description }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Soortobjectcodes:</mat-label>
-    <mat-select [formControl]="socControl" name="gemeente" multiple>
-      <mat-option *ngFor="let soc of socList" [value]="soc.id">
-        {{ soc.description }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onCancelClick()">Cancel</button>
-  <button mat-button cdkFocusInitial (click)="onOkClick()">Ok</button>
+<div class="dialog-content">
+  <h1 mat-dialog-title>Selecteer filter</h1>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Gemeenten:</mat-label>
+      <mat-select [formControl]="gemeenteControl" name="gemeente" multiple>
+        <mat-option *ngFor="let gemeente of gemeenteList" [value]="gemeente.id">
+          {{ gemeente.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Model:</mat-label>
+      <mat-select [formControl]="modelControl" name="gemeente" multiple>
+        <mat-option *ngFor="let model of modelList" [value]="model.id">
+          {{ model.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Woonplaatsen:</mat-label>
+      <mat-select [formControl]="woonplaatsControl" name="gemeente" multiple>
+        <mat-option
+          *ngFor="let woonplaats of woonplaatList"
+          [value]="woonplaats.id"
+        >
+          {{ woonplaats.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Straatnamen:</mat-label>
+      <mat-select [formControl]="straatnaamControl" name="gemeente" multiple>
+        <mat-option
+          *ngFor="let straatnaam of straatnaamList"
+          [value]="straatnaam.id"
+        >
+          {{ straatnaam.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Wijken:</mat-label>
+      <mat-select [formControl]="wijkControl" name="gemeente" multiple>
+        <mat-option *ngFor="let wijk of wijkList" [value]="wijk.id">
+          {{ wijk.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Buurten:</mat-label>
+      <mat-select [formControl]="buurtControl" name="gemeente" multiple>
+        <mat-option *ngFor="let buurt of buurtCodes" [value]="buurt.id">
+          {{ buurt.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Soortobjectcodes:</mat-label>
+      <mat-select [formControl]="socControl" name="gemeente" multiple>
+        <mat-option *ngFor="let soc of socList" [value]="soc.id">
+          {{ soc.description }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button mat-button cdkFocusInitial (click)="onOkClick()">Ok</button>
+  </div>
 </div>
