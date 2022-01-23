@@ -6,7 +6,7 @@ public class TaxOverview
     public Point Geometry { get; set; }
     public int Gemeentecode { get; set; }
     public string Straatnaam { get; set; }
-    public int Huisnummer { get; set; }
+    public int? Huisnummer { get; set; }
     public string Huisletter { get; set; }
     public string Huisnummertoevoeging { get; set; }
     public string Postcode { get; set; }
@@ -21,13 +21,13 @@ public class TaxOverview
     public string Statuswozobject { get; set; }
     public string Waardegebied { get; set; }
     public string Model { get; set; }
-    public int Woninh { get; set; }
-    public int Wonopp { get; set; }
-    public int Grondopp { get; set; }
-    public int Aanbouwopp { get; set; }
-    public int Schuuropp { get; set; }
-    public int Garageopp { get; set; }
-    public int Bouwjaar { get; set; }
+    public int? Woninh { get; set; }
+    public int? Wonopp { get; set; }
+    public int? Grondopp { get; set; }
+    public int? Aanbouwopp { get; set; }
+    public int? Schuuropp { get; set; }
+    public int? Garageopp { get; set; }
+    public int? Bouwjaar { get; set; }
     public string Kwaliteit { get; set; }
     public string Onderhoud { get; set; }
     public string Uitstraling { get; set; }

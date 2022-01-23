@@ -13,11 +13,13 @@ import { TaxOverviewDrawerComponent } from './layout/tax-overview-drawer/tax-ove
 import { SmallActionBarComponent } from './layout/small-action-bar/small-action-bar.component';
 import { LargeActionBarComponent } from './layout/large-action-bar/large-action-bar.component';
 import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.component';
+import { TaxOverviewGridComponent } from './components/tax-overview-grid/tax-overview-grid.component';
 
 @NgModule({
   declarations: [
     TaxOverviewPageComponent,
     TaxOverviewDrawerComponent,
+    TaxOverviewGridComponent,
     SmallActionBarComponent,
     LargeActionBarComponent,
     FilterDialogComponent

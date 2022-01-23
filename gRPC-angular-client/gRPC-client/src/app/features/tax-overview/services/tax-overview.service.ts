@@ -11,7 +11,9 @@ import { TaxoverviewClient } from 'src/app/proto/taxoverview.pbsc';
 export class TaxOverviewService {
   private filterRequest$$: Subject<
     WozObjectFilterRequest
-  > = new BehaviorSubject<WozObjectFilterRequest>(new WozObjectFilterRequest());
+  > = new BehaviorSubject<WozObjectFilterRequest>(
+    new WozObjectFilterRequest({ tijdvakid: 3 })
+  );
 
   private refresh$$: Subject<void> = new ReplaySubject<void>(1);
 

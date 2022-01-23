@@ -94,6 +94,7 @@ export class FilterDialogComponent {
 
   onOkClick(): void {
     const request = new WozObjectFilterRequest();
+    request.tijdvakid = 3;
     request.buurtcodes = this.buurtControl.value;
     request.wijkcodes = this.wijkControl.value;
     request.gemeentecodes = this.gemeenteControl.value;
