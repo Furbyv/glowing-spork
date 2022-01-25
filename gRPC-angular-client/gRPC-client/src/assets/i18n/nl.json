@@ -22,5 +22,6 @@
   "transaction-overview" : "PMA-overzicht",
   "reports" : "Rapportages",
   "exports" : "Exporteer bestanden",
-  "settings" : "Instellingen"
+  "settings" : "Instellingen",
+  "do-filter-objects":"Klik op filter om objecten te tonen"
 }

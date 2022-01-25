@@ -16,6 +16,7 @@ export class TaxOverviewService {
   );
 
   private refresh$$: Subject<void> = new ReplaySubject<void>(1);
+  refresh$ = this.refresh$$.asObservable();
 
   overviewObject$ = combineLatest([this.filterRequest$$, this.refresh$$]).pipe(
     switchMap(([request]) =>

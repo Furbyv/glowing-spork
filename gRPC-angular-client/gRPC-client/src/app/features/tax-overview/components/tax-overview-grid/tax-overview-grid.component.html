@@ -1,5 +1,19 @@
-<mat-list>
-  <mat-list-item *ngFor="let item of data$ | async">{{
-    item.wozobjectnummer
-  }}</mat-list-item>
-</mat-list>
+<mat-spinner
+  class="loader"
+  *ngIf="(loading$ | async) && !(rowData$ | async); else content"
+  [diameter]="48"
+  aria-label="searching objects"
+></mat-spinner>
+<ng-template #content>
+  <ag-grid-angular
+    [class.ag-theme-alpine]="!(isDarkTheme$ | async)"
+    [class.ag-theme-alpine-dark]="isDarkTheme$ | async"
+    [rowData]="rowData$ | async"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [skipHeaderOnAutoSize]="true"
+    [overlayLoadingTemplate]="overlayLoadingTemplate"
+    (gridReady)="onGridReady($event)"
+  >
+  </ag-grid-angular>
+</ng-template>

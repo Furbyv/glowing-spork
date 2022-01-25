@@ -22,5 +22,6 @@
   "transaction-overview" : "Transaction overview",
   "reports" : "Reports",
   "exports" : "Export files",
-  "settings" : "Settings"
+  "settings" : "Settings",
+  "do-filter-objects":"Press filter to look-up objects"
 }
