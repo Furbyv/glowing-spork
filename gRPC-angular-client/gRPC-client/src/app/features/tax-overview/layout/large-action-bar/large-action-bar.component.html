@@ -3,6 +3,7 @@
     <h3 matLine>Collapse menu</h3>
     <mat-icon matListIcon class="fold-icon">double_arrow</mat-icon>
   </mat-list-item>
+  <mat-divider></mat-divider>
   <mat-list-item (click)="onFilter()">
     <h3 matLine>Find objects</h3>
     <mat-icon matListIcon>refresh</mat-icon>
@@ -11,4 +12,14 @@
     <h3 matLine>Set filters</h3>
     <mat-icon matListIcon>filter_alt</mat-icon>
   </mat-list-item>
+  <mat-divider></mat-divider>
+  <mat-list-item (click)="onToggleGrid()">
+    <h3 matLine>Open overview</h3>
+    <mat-icon matListIcon>view_list</mat-icon>
+  </mat-list-item>
+  <mat-list-item (click)="onToggleObject()">
+    <h3 matLine>Open object</h3>
+    <mat-icon matListIcon>maps_home_work</mat-icon>
+  </mat-list-item>
+  <mat-divider></mat-divider>
 </mat-action-list>

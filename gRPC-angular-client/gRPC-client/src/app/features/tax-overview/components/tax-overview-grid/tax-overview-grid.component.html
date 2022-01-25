@@ -9,10 +9,13 @@
     [class.ag-theme-alpine]="!(isDarkTheme$ | async)"
     [class.ag-theme-alpine-dark]="isDarkTheme$ | async"
     [rowData]="rowData$ | async"
+    [gridOptions]="gridOptions"
     [columnDefs]="columnDefs"
     [defaultColDef]="defaultColDef"
     [skipHeaderOnAutoSize]="true"
+    [rowSelection]="rowSelection"
     [overlayLoadingTemplate]="overlayLoadingTemplate"
+    (selectionChanged)="onSelectionChanged()"
     (gridReady)="onGridReady($event)"
   >
   </ag-grid-angular>

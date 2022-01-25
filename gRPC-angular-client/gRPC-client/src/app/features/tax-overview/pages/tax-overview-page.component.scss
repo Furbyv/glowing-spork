@@ -3,12 +3,22 @@
 .overview-container {
   display: flex;
   flex-direction: column;
+  flex: 1;
   height: 100%;
-  width: 100%;
+  overflow: hidden;
 }
 
-.grid-card {
+.tax-grid {
   flex: 1;
   margin: $default-gap;
   overflow: hidden;
+}
+
+.mat-drawer-collapsed {
+  position: inherit !important;
+}
+
+.router {
+  margin-left: $default-gap;
+  margin-right: $default-gap;
 }

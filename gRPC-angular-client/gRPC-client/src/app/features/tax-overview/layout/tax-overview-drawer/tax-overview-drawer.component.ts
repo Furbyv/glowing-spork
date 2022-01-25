@@ -1,5 +1,11 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { SearchLayoutService } from 'src/app/features/object-search/services/search-layout.service';
 import { WozObjectFilterRequest } from 'src/app/proto/taxoverview.pb';
 import { FilterDialogComponent } from '../../components/filter-dialog/filter-dialog.component';
 import { TaxOverviewService } from '../../services/tax-overview.service';
@@ -18,8 +24,17 @@ export class TaxOverviewDrawerComponent {
     this.refreshEvent();
   }
 
+  public toggleObject() {
+    this.layoutService.toggleObject();
+  }
+
+  public toggleGrid() {
+    this.layoutService.toggleGrid();
+  }
+
   constructor(
     public dialog: MatDialog,
+    private layoutService: SearchLayoutService,
     private taxOverviewService: TaxOverviewService
   ) {}
 

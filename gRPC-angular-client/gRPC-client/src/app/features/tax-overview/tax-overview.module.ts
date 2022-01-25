@@ -14,6 +14,7 @@ import { SmallActionBarComponent } from './layout/small-action-bar/small-action-
 import { LargeActionBarComponent } from './layout/large-action-bar/large-action-bar.component';
 import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.component';
 import { TaxOverviewGridComponent } from './components/tax-overview-grid/tax-overview-grid.component';
+import { SearchLayoutService } from '../object-search/services/search-layout.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { TaxOverviewGridComponent } from './components/tax-overview-grid/tax-ove
         'pk.eyJ1IjoiZnJhbmt2ZSIsImEiOiJja3h4ZDg1cXoyNTNpMnNtcGdmeThxeTY5In0.-OgEUsCLZv5yV35LiNa-Pg',
       geocoderAccessToken: ''
     })
-  ]
+  ],
+  providers: [SearchLayoutService]
 })
 export class TaxOverviewModule {}

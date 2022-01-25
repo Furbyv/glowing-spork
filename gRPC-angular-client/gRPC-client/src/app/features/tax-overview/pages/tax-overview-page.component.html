@@ -1,8 +1,15 @@
 <app-tax-overview-drawer>
   <div class="overview-container">
-    <mat-card class="grid-card">
-      <app-tax-overview-grid></app-tax-overview-grid>
-    </mat-card>
-    <router-outlet></router-outlet>
+    <div [@displayGridState]="state$ | async" class="tax-grid">
+      <app-tax-overview-grid
+        (selectedObjects)="onObjectSelect($event)"
+        (openObject)="onOpenObject($event)"
+      ></app-tax-overview-grid>
+    </div>
+    <ng-container *ngIf="state$ | async as state">
+      <div class="router" [@displayObjectState]="state">
+        <router-outlet></router-outlet>
+      </div>
+    </ng-container>
   </div>
 </app-tax-overview-drawer>

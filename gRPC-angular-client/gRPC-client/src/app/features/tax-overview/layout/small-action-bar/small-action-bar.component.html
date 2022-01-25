@@ -4,6 +4,7 @@
       double_arrow
     </mat-icon>
   </button>
+  <mat-divider></mat-divider>
   <button mat-icon-button>
     <mat-icon (click)="onFilter()" matTooltip="Find objects">
       refresh
@@ -14,4 +15,16 @@
       filter_alt
     </mat-icon>
   </button>
+  <mat-divider></mat-divider>
+  <button mat-icon-button>
+    <mat-icon (click)="onToggleGrid()" matTooltip="Open overview">
+      view_list
+    </mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon (click)="onToggleObject()" matTooltip="Open objects">
+      maps_home_work
+    </mat-icon>
+  </button>
+  <mat-divider></mat-divider>
 </div>

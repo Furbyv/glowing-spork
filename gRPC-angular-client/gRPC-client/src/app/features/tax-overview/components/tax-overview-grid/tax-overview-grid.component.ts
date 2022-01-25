@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { ColDef, Column, ColumnApi, GridApi } from 'ag-grid-community';
+import {
+  ColDef,
+  Column,
+  ColumnApi,
+  GridApi,
+  GridOptions
+} from 'ag-grid-community';
 import { combineLatest } from 'rxjs';
 import { filter, map, startWith } from 'rxjs/operators';
 import { ColorSchemeService } from 'src/app/layout/services/color-scheme.service';
@@ -12,6 +18,8 @@ import { TaxOverviewService } from '../../services/tax-overview.service';
   styleUrls: ['tax-overview-grid.component.scss']
 })
 export class TaxOverviewGridComponent {
+  @Output() openObject = new EventEmitter<number>();
+  @Output() selectedObjects = new EventEmitter<number[]>();
   public isDarkTheme$ = this.colorSchemeService.isDaarkScheme$;
   private gridApi: GridApi | undefined;
   private gridColumnApi: ColumnApi | undefined;
@@ -19,6 +27,14 @@ export class TaxOverviewGridComponent {
     'do-filter-objects'
   )}</span>`;
 
+  gridOptions: GridOptions = {
+    onRowDoubleClicked: (rows: any) => {
+      const objectNummer: number = rows.data.wozobjectnummer;
+      this.openObject.emit(objectNummer);
+    }
+  };
+
+  rowSelection = 'multiple';
   defaultColDef: ColDef = {
     editable: false,
     filter: 'agTextColumnFilter'
@@ -40,6 +56,13 @@ export class TaxOverviewGridComponent {
     private colorSchemeService: ColorSchemeService,
     private transloco: TranslocoService
   ) {}
+
+  onSelectionChanged() {
+    if (this.gridApi) {
+      const selectedRows = this.gridApi.getSelectedRows();
+      this.selectedObjects.emit(selectedRows.map(row => row.wozobjectnummer));
+    }
+  }
 
   onGridReady(params: any) {
     this.gridApi = params.api;

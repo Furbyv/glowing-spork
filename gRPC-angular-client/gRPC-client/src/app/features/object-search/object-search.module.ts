@@ -15,7 +15,8 @@ import { ObjectSearchPageComponent } from './pages/object-search-page.component'
 import { ObjectDetailsModule } from '../object-details/object-details.module';
 import { SmallActionBarComponent } from './components/object-search/small-action-bar/small-action-bar.component';
 import { LargeActionBarComponent } from './components/object-search/large-action-bar/large-action-bar.component';
-import { NoObjectComponent } from './components/no-object/no-object.component';
+import { NoObjectComponent } from '../object-details/no-object/no-object.component';
+import { SearchLayoutService } from './services/search-layout.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NoObjectComponent } from './components/no-object/no-object.component';
         'pk.eyJ1IjoiZnJhbmt2ZSIsImEiOiJja3h4ZDg1cXoyNTNpMnNtcGdmeThxeTY5In0.-OgEUsCLZv5yV35LiNa-Pg',
       geocoderAccessToken: ''
     })
-  ]
+  ],
+  providers: [SearchLayoutService]
 })
 export class ObjectSearchModule {}

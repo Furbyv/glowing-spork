@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class SearchLayoutService {
   private stateToggle$$: Subject<
-    'displayMap' | 'displayObject'
-  > = new BehaviorSubject<'displayMap' | 'displayObject'>('displayMap');
+    'displayMap' | 'displayObject' | 'displayGrid'
+  > = new BehaviorSubject<'displayMap' | 'displayObject' | 'displayGrid'>(
+    'displayMap'
+  );
 
   state$ = this.stateToggle$$.asObservable();
 
@@ -13,6 +15,11 @@ export class SearchLayoutService {
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));
     }, 500);
+  }
+
+  toggleGrid() {
+    this.stateToggle$$.next('displayGrid');
+    this.refreshEvent();
   }
 
   toggleMap() {

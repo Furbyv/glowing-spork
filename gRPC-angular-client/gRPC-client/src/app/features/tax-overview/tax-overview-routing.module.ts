@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ObjectDetailsComponent } from '../object-details/pages/object-details.component';
+import { NoObjectComponent } from '../object-details/no-object/no-object.component';
 import { TaxOverviewPageComponent } from './pages/tax-overview-page.component';
 
 const routes: Routes = [
@@ -9,8 +10,8 @@ const routes: Routes = [
     component: TaxOverviewPageComponent,
     children: [
       {
-        path: 'overview',
-        component: TaxOverviewPageComponent
+        path: '',
+        component: NoObjectComponent
       },
       {
         path: ':id',

@@ -15,6 +15,8 @@ export class SmallActionBarComponent {
   @Output() toggleMenu = new EventEmitter();
   @Output() doFilterAction = new EventEmitter();
   @Output() setFiltersAction = new EventEmitter();
+  @Output() toggleObject = new EventEmitter();
+  @Output() toggleGrid = new EventEmitter();
 
   onToggleMenu() {
     this.toggleMenu.emit();
@@ -26,5 +28,13 @@ export class SmallActionBarComponent {
 
   onSetFilters() {
     this.setFiltersAction.emit();
+  }
+
+  onToggleObject() {
+    this.toggleObject.emit();
+  }
+
+  onToggleGrid() {
+    this.toggleGrid.emit();
   }
 }

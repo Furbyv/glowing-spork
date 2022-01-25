@@ -22,7 +22,7 @@ export class ObjectSearchListItemComponent implements OnInit {
   trimmedAddress: string = '';
   secondLineAddress: string = '';
   objectDetails: string = '';
-  private state: 'displayMap' | 'displayObject' = 'displayMap';
+  private state: 'displayMap' | 'displayObject' | 'displayGrid' = 'displayMap';
 
   constructor(
     private route: ActivatedRoute,
