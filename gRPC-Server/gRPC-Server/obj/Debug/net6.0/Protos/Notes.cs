@@ -29,24 +29,24 @@ namespace gRPCServer.Protos {
             "dG8iKgoPR2V0Tm90ZXNSZXF1ZXN0EhcKD3dvem9iamVjdG51bW1lchgBIAEo",
             "AyItCglOb3RlUmVwbHkSIAoFbm90ZXMYASADKAsyES5ub3Rlcy5Ob3RlUmVj",
             "b3JkIjcKD0VkaXROb3RlUmVxdWVzdBIkCgllZGl0X25vdGUYASABKAsyES5u",
-            "b3Rlcy5Ob3RlUmVjb3JkIoEBCgpOb3RlUmVjb3JkEgoKAmlkGAEgASgDEhcK",
-            "D3dvem9iamVjdG51bW1lchgCIAEoAxIMCgR1c2VyGAMgASgJEi0KCW5vdGVf",
-            "ZGF0ZRgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASEQoJbm90",
-            "ZV90ZXh0GAUgASgJIkIKD0FkZE5vdGVzUmVxdWVzdBIOCgZ1c2VyaWQYASAB",
-            "KAMSHwoEbm90ZRgCIAEoCzIRLm5vdGVzLk5vdGVSZWNvcmQiJQoTQWRkT3JF",
-            "ZGl0Tm90ZXNSZXBseRIOCgZzdWNjZXMYASABKAgyvQEKBU5vdGVzEjQKCEdl",
-            "dE5vdGVzEhYubm90ZXMuR2V0Tm90ZXNSZXF1ZXN0GhAubm90ZXMuTm90ZVJl",
-            "cGx5Ej4KCEFkZE5vdGVzEhYubm90ZXMuQWRkTm90ZXNSZXF1ZXN0Ghoubm90",
-            "ZXMuQWRkT3JFZGl0Tm90ZXNSZXBseRI+CghFZGl0Tm90ZRIWLm5vdGVzLkVk",
-            "aXROb3RlUmVxdWVzdBoaLm5vdGVzLkFkZE9yRWRpdE5vdGVzUmVwbHlCFKoC",
-            "EWdSUENTZXJ2ZXIuUHJvdG9zYgZwcm90bzM="));
+            "b3Rlcy5Ob3RlUmVjb3JkIpEBCgpOb3RlUmVjb3JkEgoKAmlkGAEgASgDEhcK",
+            "D3dvem9iamVjdG51bW1lchgCIAEoAxIMCgR1c2VyGAMgASgJEg4KBnVzZXJp",
+            "ZBgEIAEoAxItCglub3RlX2RhdGUYBSABKAsyGi5nb29nbGUucHJvdG9idWYu",
+            "VGltZXN0YW1wEhEKCW5vdGVfdGV4dBgGIAEoCSJCCg9BZGROb3Rlc1JlcXVl",
+            "c3QSDgoGdXNlcmlkGAEgASgDEh8KBG5vdGUYAiABKAsyES5ub3Rlcy5Ob3Rl",
+            "UmVjb3JkIiUKE0FkZE9yRWRpdE5vdGVzUmVwbHkSDgoGc3VjY2VzGAEgASgI",
+            "Mr0BCgVOb3RlcxI0CghHZXROb3RlcxIWLm5vdGVzLkdldE5vdGVzUmVxdWVz",
+            "dBoQLm5vdGVzLk5vdGVSZXBseRI+CghBZGROb3RlcxIWLm5vdGVzLkFkZE5v",
+            "dGVzUmVxdWVzdBoaLm5vdGVzLkFkZE9yRWRpdE5vdGVzUmVwbHkSPgoIRWRp",
+            "dE5vdGUSFi5ub3Rlcy5FZGl0Tm90ZVJlcXVlc3QaGi5ub3Rlcy5BZGRPckVk",
+            "aXROb3Rlc1JlcGx5QhSqAhFnUlBDU2VydmVyLlByb3Rvc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.GetNotesRequest), global::gRPCServer.Protos.GetNotesRequest.Parser, new[]{ "Wozobjectnummer" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.NoteReply), global::gRPCServer.Protos.NoteReply.Parser, new[]{ "Notes" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.EditNoteRequest), global::gRPCServer.Protos.EditNoteRequest.Parser, new[]{ "EditNote" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.NoteRecord), global::gRPCServer.Protos.NoteRecord.Parser, new[]{ "Id", "Wozobjectnummer", "User", "NoteDate", "NoteText" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.NoteRecord), global::gRPCServer.Protos.NoteRecord.Parser, new[]{ "Id", "Wozobjectnummer", "User", "Userid", "NoteDate", "NoteText" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.AddNotesRequest), global::gRPCServer.Protos.AddNotesRequest.Parser, new[]{ "Userid", "Note" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.AddOrEditNotesReply), global::gRPCServer.Protos.AddOrEditNotesReply.Parser, new[]{ "Succes" }, null, null, null, null)
           }));
@@ -657,6 +657,7 @@ namespace gRPCServer.Protos {
       id_ = other.id_;
       wozobjectnummer_ = other.wozobjectnummer_;
       user_ = other.user_;
+      userid_ = other.userid_;
       noteDate_ = other.noteDate_ != null ? other.noteDate_.Clone() : null;
       noteText_ = other.noteText_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -704,8 +705,20 @@ namespace gRPCServer.Protos {
       }
     }
 
+    /// <summary>Field number for the "userid" field.</summary>
+    public const int UseridFieldNumber = 4;
+    private long userid_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Userid {
+      get { return userid_; }
+      set {
+        userid_ = value;
+      }
+    }
+
     /// <summary>Field number for the "note_date" field.</summary>
-    public const int NoteDateFieldNumber = 4;
+    public const int NoteDateFieldNumber = 5;
     private global::Google.Protobuf.WellKnownTypes.Timestamp noteDate_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -717,7 +730,7 @@ namespace gRPCServer.Protos {
     }
 
     /// <summary>Field number for the "note_text" field.</summary>
-    public const int NoteTextFieldNumber = 5;
+    public const int NoteTextFieldNumber = 6;
     private string noteText_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -746,6 +759,7 @@ namespace gRPCServer.Protos {
       if (Id != other.Id) return false;
       if (Wozobjectnummer != other.Wozobjectnummer) return false;
       if (User != other.User) return false;
+      if (Userid != other.Userid) return false;
       if (!object.Equals(NoteDate, other.NoteDate)) return false;
       if (NoteText != other.NoteText) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -758,6 +772,7 @@ namespace gRPCServer.Protos {
       if (Id != 0L) hash ^= Id.GetHashCode();
       if (Wozobjectnummer != 0L) hash ^= Wozobjectnummer.GetHashCode();
       if (User.Length != 0) hash ^= User.GetHashCode();
+      if (Userid != 0L) hash ^= Userid.GetHashCode();
       if (noteDate_ != null) hash ^= NoteDate.GetHashCode();
       if (NoteText.Length != 0) hash ^= NoteText.GetHashCode();
       if (_unknownFields != null) {
@@ -790,12 +805,16 @@ namespace gRPCServer.Protos {
         output.WriteRawTag(26);
         output.WriteString(User);
       }
+      if (Userid != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(Userid);
+      }
       if (noteDate_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteMessage(NoteDate);
       }
       if (NoteText.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(50);
         output.WriteString(NoteText);
       }
       if (_unknownFields != null) {
@@ -820,12 +839,16 @@ namespace gRPCServer.Protos {
         output.WriteRawTag(26);
         output.WriteString(User);
       }
+      if (Userid != 0L) {
+        output.WriteRawTag(32);
+        output.WriteInt64(Userid);
+      }
       if (noteDate_ != null) {
-        output.WriteRawTag(34);
+        output.WriteRawTag(42);
         output.WriteMessage(NoteDate);
       }
       if (NoteText.Length != 0) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(50);
         output.WriteString(NoteText);
       }
       if (_unknownFields != null) {
@@ -846,6 +869,9 @@ namespace gRPCServer.Protos {
       }
       if (User.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(User);
+      }
+      if (Userid != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Userid);
       }
       if (noteDate_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(NoteDate);
@@ -873,6 +899,9 @@ namespace gRPCServer.Protos {
       }
       if (other.User.Length != 0) {
         User = other.User;
+      }
+      if (other.Userid != 0L) {
+        Userid = other.Userid;
       }
       if (other.noteDate_ != null) {
         if (noteDate_ == null) {
@@ -910,14 +939,18 @@ namespace gRPCServer.Protos {
             User = input.ReadString();
             break;
           }
-          case 34: {
+          case 32: {
+            Userid = input.ReadInt64();
+            break;
+          }
+          case 42: {
             if (noteDate_ == null) {
               NoteDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
             input.ReadMessage(NoteDate);
             break;
           }
-          case 42: {
+          case 50: {
             NoteText = input.ReadString();
             break;
           }
@@ -948,14 +981,18 @@ namespace gRPCServer.Protos {
             User = input.ReadString();
             break;
           }
-          case 34: {
+          case 32: {
+            Userid = input.ReadInt64();
+            break;
+          }
+          case 42: {
             if (noteDate_ == null) {
               NoteDate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
             input.ReadMessage(NoteDate);
             break;
           }
-          case 42: {
+          case 50: {
             NoteText = input.ReadString();
             break;
           }

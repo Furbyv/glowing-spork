@@ -1,4 +1,4 @@
-﻿namespace gRPCServer.Models
+﻿namespace gRPCServer
 {
     public class Notes
     {
