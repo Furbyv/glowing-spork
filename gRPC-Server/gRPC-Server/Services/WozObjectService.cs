@@ -10,16 +10,27 @@ public class WozObjectService : WozObjects.WozObjectsBase
         _logger = logger;
     }
 
-    public override Task<WozObjectsReply> GetWozObject(WozObjectRequestById request, ServerCallContext context)
+    public async override Task<WozObjectsReply> GetWozObject(WozObjectRequestById request, ServerCallContext context)
     {
-        var wozobjects = _dbContext.Wozobjectproperties.Include(w => w.WozObject).Where(w => w.Wozobjectnummer.ToString()
+        var wozobjects = await _dbContext.Wozobjectproperties.Include(w => w.WozObject).Where(w => w.Wozobjectnummer.ToString()
         .Contains(request.Wozobjectnummer.ToString())).Where(p => DateTime.UtcNow >= p.Startdate && DateTime.UtcNow <= p.Enddate)
-        .Select(w => WozObjectConverter.WozobjectpropertyToWozObjectsReply(w)).ToList();
+        .Select(w => WozObjectConverter.WozobjectpropertyToWozObjectsReply(w)).ToListAsync(context.CancellationToken);
 
         var reply = new WozObjectsReply();
         reply.Wozobjects.Add(wozobjects);
 
-        return Task.FromResult(reply);
+        return reply;
+    }
+
+    public async override Task<WozObjectsReply> GetWozObjects(WozObjectRequestByIds request, ServerCallContext context)
+    {
+        var wozobjects =await  _dbContext.Wozobjectproperties.Include(w => w.WozObject).Where(w => request.Wozobjectnummers.Contains(w.Wozobjectnummer)).Where(p => DateTime.UtcNow >= p.Startdate && DateTime.UtcNow <= p.Enddate)
+        .Select(w => WozObjectConverter.WozobjectpropertyToWozObjectsReply(w)).ToListAsync(context.CancellationToken);
+
+        var reply = new WozObjectsReply();
+        reply.Wozobjects.Add(wozobjects);
+
+        return reply;
     }
 
     public override async Task GetFullWozObject(WozObjectRequestById request, IServerStreamWriter<FullWozObjectReply> responseStream, ServerCallContext context)

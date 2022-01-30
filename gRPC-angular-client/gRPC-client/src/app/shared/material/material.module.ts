@@ -15,6 +15,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 @NgModule({
   imports: [
@@ -33,7 +36,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTabsModule,
     MatSidenavModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    TextFieldModule
   ],
   exports: [
     MatToolbarModule,
@@ -51,7 +57,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTabsModule,
     MatSidenavModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDatepickerModule,
+    TextFieldModule
   ]
 })
 export class MaterialModule {}

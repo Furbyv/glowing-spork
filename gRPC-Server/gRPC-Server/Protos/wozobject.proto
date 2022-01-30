@@ -9,6 +9,7 @@ package wozobject;
 service WozObjects {
   // Sends a greeting
   rpc GetWozObject (WozObjectRequestById) returns (WozObjectsReply);
+  rpc GetWozObjects (WozObjectRequestByIds) returns (WozObjectsReply);
   rpc GetFullWozObject (WozObjectRequestById) returns (stream FullWozObjectReply);
   rpc GetWozObjectImages (WozObjectImageRequest) returns (stream WozObjectImageReply);
   rpc UploadWozObjectImage (UploadImageRequest) returns (UploadImageReply);
@@ -18,6 +19,11 @@ service WozObjects {
 // The request message containing the object's id.
 message WozObjectRequestById {
   int64 wozobjectnummer = 1;
+}
+
+// The request message containing multiple object's id.
+message WozObjectRequestByIds {
+  repeated int64 wozobjectnummers = 1;
 }
 
 // The response message containing the WozObjects.

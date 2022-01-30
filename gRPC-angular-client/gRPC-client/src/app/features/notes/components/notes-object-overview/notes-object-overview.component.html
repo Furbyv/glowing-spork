@@ -1,0 +1,13 @@
+<mat-spinner
+  class="loader"
+  *ngIf="loading$ | async; else content"
+  [diameter]="48"
+  aria-label="searching objects"
+></mat-spinner>
+<ng-template #content>
+  <div class="search-list" *ngIf="wozObjects$ | async as Wozobjects">
+    <app-object-search-list [wozObjects]="Wozobjects"></app-object-search-list>
+  </div>
+  <mat-divider [vertical]="true"></mat-divider>
+  <woz-notes-form class="content"></woz-notes-form>
+</ng-template>

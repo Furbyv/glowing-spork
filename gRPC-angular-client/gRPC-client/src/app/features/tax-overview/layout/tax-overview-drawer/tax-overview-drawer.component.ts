@@ -5,9 +5,12 @@ import {
   Output
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ReplaySubject, Subject } from 'rxjs';
+import { NotesDialogComponent } from 'src/app/features/notes/pages/notes-dialog.component';
 import { SearchLayoutService } from 'src/app/features/object-search/services/search-layout.service';
 import { WozObjectFilterRequest } from 'src/app/proto/taxoverview.pb';
 import { FilterDialogComponent } from '../../components/filter-dialog/filter-dialog.component';
+import { SelectedObjectsService } from '../../services/selected-objects.service';
 import { TaxOverviewService } from '../../services/tax-overview.service';
 
 @Component({
@@ -50,6 +53,14 @@ export class TaxOverviewDrawerComponent {
 
   onDoFilter() {
     this.taxOverviewService.refresh();
+  }
+
+  openNotes(selectedObjects: number[]) {
+    this.dialog.open(NotesDialogComponent, {
+      width: '60vw',
+      height: '60vh',
+      data: { wozobjectnummers: selectedObjects }
+    });
   }
 
   refreshEvent() {

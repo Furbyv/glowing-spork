@@ -53,6 +53,8 @@ namespace gRPCServer.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::gRPCServer.Protos.WozObjectsReply> __Marshaller_wozobject_WozObjectsReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.WozObjectsReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::gRPCServer.Protos.WozObjectRequestByIds> __Marshaller_wozobject_WozObjectRequestByIds = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.WozObjectRequestByIds.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::gRPCServer.Protos.FullWozObjectReply> __Marshaller_wozobject_FullWozObjectReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.FullWozObjectReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::gRPCServer.Protos.WozObjectImageRequest> __Marshaller_wozobject_WozObjectImageRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.WozObjectImageRequest.Parser));
@@ -71,6 +73,14 @@ namespace gRPCServer.Protos {
         __ServiceName,
         "GetWozObject",
         __Marshaller_wozobject_WozObjectRequestById,
+        __Marshaller_wozobject_WozObjectsReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::gRPCServer.Protos.WozObjectRequestByIds, global::gRPCServer.Protos.WozObjectsReply> __Method_GetWozObjects = new grpc::Method<global::gRPCServer.Protos.WozObjectRequestByIds, global::gRPCServer.Protos.WozObjectsReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetWozObjects",
+        __Marshaller_wozobject_WozObjectRequestByIds,
         __Marshaller_wozobject_WozObjectsReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -128,6 +138,12 @@ namespace gRPCServer.Protos {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::gRPCServer.Protos.WozObjectsReply> GetWozObjects(global::gRPCServer.Protos.WozObjectRequestByIds request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task GetFullWozObject(global::gRPCServer.Protos.WozObjectRequestById request, grpc::IServerStreamWriter<global::gRPCServer.Protos.FullWozObjectReply> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -160,6 +176,7 @@ namespace gRPCServer.Protos {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_GetWozObject, serviceImpl.GetWozObject)
+          .AddMethod(__Method_GetWozObjects, serviceImpl.GetWozObjects)
           .AddMethod(__Method_GetFullWozObject, serviceImpl.GetFullWozObject)
           .AddMethod(__Method_GetWozObjectImages, serviceImpl.GetWozObjectImages)
           .AddMethod(__Method_UploadWozObjectImage, serviceImpl.UploadWozObjectImage)
@@ -174,6 +191,7 @@ namespace gRPCServer.Protos {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, WozObjectsBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_GetWozObject, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.WozObjectsReply>(serviceImpl.GetWozObject));
+      serviceBinder.AddMethod(__Method_GetWozObjects, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::gRPCServer.Protos.WozObjectRequestByIds, global::gRPCServer.Protos.WozObjectsReply>(serviceImpl.GetWozObjects));
       serviceBinder.AddMethod(__Method_GetFullWozObject, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::gRPCServer.Protos.WozObjectRequestById, global::gRPCServer.Protos.FullWozObjectReply>(serviceImpl.GetFullWozObject));
       serviceBinder.AddMethod(__Method_GetWozObjectImages, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::gRPCServer.Protos.WozObjectImageRequest, global::gRPCServer.Protos.WozObjectImageReply>(serviceImpl.GetWozObjectImages));
       serviceBinder.AddMethod(__Method_UploadWozObjectImage, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::gRPCServer.Protos.UploadImageRequest, global::gRPCServer.Protos.UploadImageReply>(serviceImpl.UploadWozObjectImage));

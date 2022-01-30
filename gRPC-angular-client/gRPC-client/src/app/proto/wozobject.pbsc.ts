@@ -57,6 +57,27 @@ export class WozObjectsClient {
       });
     },
     /**
+     * Unary RPC for /wozobject.WozObjects/GetWozObjects
+     *
+     * @param requestMessage Request message
+     * @param requestMetadata Request metadata
+     * @returns Observable<GrpcEvent<thisProto.WozObjectsReply>>
+     */
+    getWozObjects: (
+      requestData: thisProto.WozObjectRequestByIds,
+      requestMetadata = new GrpcMetadata()
+    ): Observable<GrpcEvent<thisProto.WozObjectsReply>> => {
+      return this.handler.handle({
+        type: GrpcCallType.unary,
+        client: this.client,
+        path: '/wozobject.WozObjects/GetWozObjects',
+        requestData,
+        requestMetadata,
+        requestClass: thisProto.WozObjectRequestByIds,
+        responseClass: thisProto.WozObjectsReply
+      });
+    },
+    /**
      * Server streaming RPC for /wozobject.WozObjects/GetFullWozObject
      *
      * @param requestMessage Request message
@@ -163,6 +184,22 @@ export class WozObjectsClient {
   ): Observable<thisProto.WozObjectsReply> {
     return this.$raw
       .getWozObject(requestData, requestMetadata)
+      .pipe(throwStatusErrors(), takeMessages());
+  }
+
+  /**
+   * Unary RPC for /wozobject.WozObjects/GetWozObjects
+   *
+   * @param requestMessage Request message
+   * @param requestMetadata Request metadata
+   * @returns Observable<thisProto.WozObjectsReply>
+   */
+  getWozObjects(
+    requestData: thisProto.WozObjectRequestByIds,
+    requestMetadata = new GrpcMetadata()
+  ): Observable<thisProto.WozObjectsReply> {
+    return this.$raw
+      .getWozObjects(requestData, requestMetadata)
       .pipe(throwStatusErrors(), takeMessages());
   }
 

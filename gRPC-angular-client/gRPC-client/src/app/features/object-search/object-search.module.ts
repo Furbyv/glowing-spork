@@ -44,6 +44,7 @@ import { SearchLayoutService } from './services/search-layout.service';
       geocoderAccessToken: ''
     })
   ],
+  exports: [ObjectSearchListComponent],
   providers: [SearchLayoutService]
 })
 export class ObjectSearchModule {}

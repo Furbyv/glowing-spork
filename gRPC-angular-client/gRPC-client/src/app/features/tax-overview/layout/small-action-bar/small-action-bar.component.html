@@ -40,21 +40,23 @@
     </button>
   </ng-container>
   <mat-divider></mat-divider>
-  <button mat-icon-button>
-    <mat-icon matTooltip="Change status">
-      military_tech
-    </mat-icon>
-  </button>
-  <button mat-icon-button>
-    <mat-icon matTooltip="Add note">
-      note_add
-    </mat-icon>
-  </button>
-  <button mat-icon-button>
-    <mat-icon matTooltip="Add record25">
-      check_box
-    </mat-icon>
-  </button>
+  <ng-container *ngIf="selectedObjects$ | async as selectedObjects">
+    <button mat-icon-button>
+      <mat-icon matTooltip="Change status">
+        military_tech
+      </mat-icon>
+    </button>
+    <button mat-icon-button (click)="onOpenNotes(selectedObjects)">
+      <mat-icon matTooltip="Add note">
+        note_add
+      </mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon matTooltip="Add record25">
+        check_box
+      </mat-icon>
+    </button>
+  </ng-container>
   <mat-divider></mat-divider>
   <button mat-icon-button>
     <mat-icon matTooltip="Save changes">

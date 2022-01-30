@@ -1,0 +1,47 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "gRPCServer.Protos";
+
+package notes;
+
+// This services manages the notes for Wozobjects.
+// GetNotes can be used to request all notes for a wozobject by id
+// AddNotes can be used to add notes for a list of wozobjects.
+// EditNote, edits a single existing note by its Id
+service Notes {
+  rpc GetNotes (GetNotesRequest) returns (NoteReply);
+  rpc AddNotes (AddNotesRequest) returns (AddOrEditNotesReply);
+  rpc EditNote (EditNoteRequest) returns (AddOrEditNotesReply);
+}
+
+message GetNotesRequest {
+	int64 wozobjectnummer = 1;
+}
+
+message NoteReply{
+	repeated NoteRecord notes = 1;
+}
+
+message EditNoteRequest{
+	NoteRecord edit_note = 1;
+}
+
+message NoteRecord{
+	int64 id= 1;
+	int64 wozobjectnummer = 2;
+	string user = 3;
+	int64 userid = 4;
+	google.protobuf.Timestamp note_date = 5;
+	string note_text = 6;
+}
+
+message AddNotesRequest{
+	int64 userid =1;
+	NoteRecord note = 2;
+}
+
+message AddOrEditNotesReply{
+	bool succes = 1;
+}

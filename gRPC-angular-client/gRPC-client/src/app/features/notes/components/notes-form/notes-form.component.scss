@@ -1,0 +1,48 @@
+@import "variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.note-content {
+  display: flex;
+  flex-direction: column;
+  margin-left: $default-gap;
+  flex: 1;
+}
+
+.note-select {
+  margin-bottom: 8px;
+}
+
+.notes-field {
+  flex: 1;
+}
+
+.info-row {
+  display: flex;
+  width: 100%;
+}
+
+.info-field:last-child {
+  flex: 1;
+}
+
+.info-field:first-child {
+  margin-right: 8px;
+}
+
+span {
+  flex: 1;
+}
+
+.action-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.action-button {
+  margin-left: 8px;
+}

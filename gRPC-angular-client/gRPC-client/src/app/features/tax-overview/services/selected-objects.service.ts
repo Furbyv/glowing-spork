@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SelectedObjectsService {
-  private selectedObjects$$: Subject<number[]> = new ReplaySubject<number[]>(1);
+  private selectedObjects$$: Subject<number[]> = new BehaviorSubject<number[]>(
+    []
+  );
   selectedObjects$ = this.selectedObjects$$.asObservable();
 
   setSelectedObjects(objects: number[]) {

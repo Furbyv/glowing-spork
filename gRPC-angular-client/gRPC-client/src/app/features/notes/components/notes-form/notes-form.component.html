@@ -1,0 +1,43 @@
+<div class="note-content">
+  <mat-form-field class="note-select">
+    <mat-label>Notities</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let note of notes$ | async" [value]="note">
+        {{ getShortText(note) }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="info-row">
+    <mat-form-field class="info-field">
+      <mat-label>Wozobjectnummer</mat-label>
+      <input matInput value="Sushi" [disabled]="true" />
+    </mat-form-field>
+    <mat-form-field class="info-field">
+      <mat-label>Gebruiker</mat-label>
+      <input matInput value="Demo" [disabled]="true" />
+    </mat-form-field>
+  </div>
+  <mat-form-field class="date-field">
+    <mat-label>Datum</mat-label>
+    <input matInput [matDatepicker]="dp1" disabled />
+    <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+    <mat-datepicker #dp1></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="notes-field">
+    <mat-label>Enter note</mat-label>
+    <textarea
+      matInput
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="8"
+      placeholder="Enter note here"
+    ></textarea>
+  </mat-form-field>
+</div>
+<div class="action-row">
+  <button mat-raised-button class="action-button">Edit</button>
+  <button mat-raised-button color="primary" class="action-button">Add</button>
+  <button mat-raised-button color="accent" class="action-button">Save</button>
+  <span></span>
+  <button mat-raised-button>Close</button>
+</div>
