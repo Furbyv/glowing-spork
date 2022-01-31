@@ -44,7 +44,7 @@
       mat-raised-button
       class="action-button"
       (click)="onEdit()"
-      [disabled]="!isReadOnly() && !!selectedNote"
+      [disabled]="!isReadOnly() || !selectedNote"
     >
       Edit
     </button>

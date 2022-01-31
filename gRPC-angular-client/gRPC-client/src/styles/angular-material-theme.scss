@@ -24,8 +24,13 @@
   .page-container {
     background-color: #334756;
   }
+
   .mat-paginator-range-label {
     margin: 0 !important;
+  }
+  .mat-list-item-disabled {
+    background-color: gray;
+    opacity: 0.5;
   }
   $primary: map-get($my-dark-theme, primary);
 }

@@ -4,6 +4,9 @@ import {
   EventEmitter,
   Output
 } from '@angular/core';
+import { SearchLayoutService } from 'src/app/features/object-search/services/search-layout.service';
+import { SelectedObjectsService } from '../../services/selected-objects.service';
+import { TaxOverviewService } from '../../services/tax-overview.service';
 
 @Component({
   selector: 'app-tax-large-action',
@@ -17,6 +20,11 @@ export class LargeActionBarComponent {
   @Output() setFiltersAction = new EventEmitter();
   @Output() toggleObject = new EventEmitter();
   @Output() toggleGrid = new EventEmitter();
+  @Output() openNotes = new EventEmitter<number[]>();
+
+  state$ = this.layoutService.state$;
+  filterState$ = this.taxOverviewService.filterRequest$;
+  selectedObjects$ = this.selectedObjectsService.selectedObjects$;
 
   onToggleMenu() {
     this.toggleMenu.emit();
@@ -37,4 +45,14 @@ export class LargeActionBarComponent {
   onToggleGrid() {
     this.toggleGrid.emit();
   }
+
+  onOpenNotes(selectedObjects: number[]) {
+    this.openNotes.emit(selectedObjects);
+  }
+
+  constructor(
+    private layoutService: SearchLayoutService,
+    private taxOverviewService: TaxOverviewService,
+    private selectedObjectsService: SelectedObjectsService
+  ) {}
 }

@@ -23,8 +23,9 @@ export class SmallActionBarComponent {
   @Output() openNotes = new EventEmitter<number[]>();
 
   state$ = this.layoutService.state$;
-  filterState$ = this.taxOverviewService.refresh$;
+  filterState$ = this.taxOverviewService.filterRequest$;
   selectedObjects$ = this.selectedObjectsService.selectedObjects$;
+
   onToggleMenu() {
     this.toggleMenu.emit();
   }

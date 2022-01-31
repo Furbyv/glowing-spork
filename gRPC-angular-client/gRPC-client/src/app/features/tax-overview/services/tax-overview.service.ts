@@ -9,21 +9,20 @@ import { TaxoverviewClient } from 'src/app/proto/taxoverview.pbsc';
   providedIn: 'root'
 })
 export class TaxOverviewService {
-  private filterRequest$$: Subject<
+  private filterRequest$$: Subject<WozObjectFilterRequest> = new ReplaySubject<
     WozObjectFilterRequest
-  > = new BehaviorSubject<WozObjectFilterRequest>(
-    new WozObjectFilterRequest({ tijdvakid: 3 })
-  );
+  >(1);
 
-  private refresh$$: Subject<void> = new ReplaySubject<void>(1);
+  private refresh$$: Subject<boolean> = new BehaviorSubject<boolean>(true);
   refresh$ = this.refresh$$.asObservable();
+
+  filterRequest$ = this.filterRequest$$.asObservable();
 
   overviewObject$ = combineLatest([this.filterRequest$$, this.refresh$$]).pipe(
     switchMap(([request]) =>
-      this.taxOverviewClient.getOverviewObjects(request)
+      this.taxOverviewClient.getOverviewObjects(request).pipe(toAsyncState())
     ),
-    shareReplay({ bufferSize: 1, refCount: false }),
-    toAsyncState()
+    shareReplay({ bufferSize: 1, refCount: false })
   );
 
   constructor(private taxOverviewClient: TaxoverviewClient) {}
@@ -33,6 +32,6 @@ export class TaxOverviewService {
   }
 
   refresh() {
-    this.refresh$$.next();
+    this.refresh$$.next(true);
   }
 }

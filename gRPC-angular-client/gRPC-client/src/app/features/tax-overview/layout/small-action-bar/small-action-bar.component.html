@@ -6,12 +6,7 @@
   </button>
   <mat-divider></mat-divider>
   <ng-container *ngIf="state$ | async as state">
-    <button
-      mat-icon-button
-      [color]="
-        !(filterState$ | async) && state !== 'displayObject' ? 'primary' : ''
-      "
-    >
+    <button mat-icon-button [disabled]="!(filterState$ | async)">
       <mat-icon (click)="onFilter()" matTooltip="Find objects">
         refresh
       </mat-icon>
@@ -24,6 +19,7 @@
     <mat-divider></mat-divider>
     <button
       mat-icon-button
+      [disabled]="state !== 'displayObject'"
       [color]="state !== 'displayObject' ? 'primary' : ''"
     >
       <mat-icon (click)="onToggleGrid()" matTooltip="Open overview">
@@ -32,6 +28,7 @@
     </button>
     <button
       mat-icon-button
+      [disabled]="state === 'displayObject'"
       [color]="state === 'displayObject' ? 'primary' : ''"
     >
       <mat-icon (click)="onToggleObject()" matTooltip="Open objects">

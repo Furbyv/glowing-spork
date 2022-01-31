@@ -4,39 +4,52 @@
     <mat-icon matListIcon class="fold-icon">double_arrow</mat-icon>
   </mat-list-item>
   <mat-divider></mat-divider>
-  <mat-list-item (click)="onFilter()">
-    <h3 matLine>Find objects</h3>
-    <mat-icon matListIcon>refresh</mat-icon>
-  </mat-list-item>
-  <mat-list-item (click)="onSetFilters()">
-    <h3 matLine>Set filters</h3>
-    <mat-icon matListIcon>filter_alt</mat-icon>
-  </mat-list-item>
+  <ng-container *ngIf="state$ | async as state">
+    <mat-list-item (click)="onFilter()" [disabled]="!(filterState$ | async)">
+      <h3 matLine>Find objects</h3>
+      <mat-icon matListIcon>refresh</mat-icon>
+    </mat-list-item>
+    <mat-list-item (click)="onSetFilters()">
+      <h3 matLine>Set filters</h3>
+      <mat-icon matListIcon>filter_alt</mat-icon>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item
+      (click)="onToggleGrid()"
+      [disabled]="state !== 'displayObject'"
+    >
+      <h3 matLine>Open overview</h3>
+      <mat-icon matListIcon>view_list</mat-icon>
+    </mat-list-item>
+    <mat-list-item
+      (click)="onToggleObject()"
+      [disabled]="state === 'displayObject'"
+    >
+      <h3 matLine>Open object</h3>
+      <mat-icon matListIcon>maps_home_work</mat-icon>
+    </mat-list-item>
+  </ng-container>
   <mat-divider></mat-divider>
-  <mat-list-item (click)="onToggleGrid()">
-    <h3 matLine>Open overview</h3>
-    <mat-icon matListIcon>view_list</mat-icon>
-  </mat-list-item>
-  <mat-list-item (click)="onToggleObject()">
-    <h3 matLine>Open object</h3>
-    <mat-icon matListIcon>maps_home_work</mat-icon>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <h3 matLine>Change status</h3>
-    <mat-icon matListIcon>military_tech</mat-icon>
-  </mat-list-item>
-  <mat-list-item>
-    <h3 matLine>Notes</h3>
-    <mat-icon matListIcon>note_add</mat-icon>
-  </mat-list-item>
-  <mat-list-item>
-    <h3 matLine>Add record 25</h3>
-    <mat-icon matListIcon>check_box</mat-icon>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <h3 matLine>Save changes</h3>
-    <mat-icon matListIcon>save</mat-icon>
-  </mat-list-item>
+  <ng-container *ngIf="selectedObjects$ | async as selectedObjects">
+    <mat-list-item [disabled]="selectedObjects.length === 0">
+      <h3 matLine>Change status</h3>
+      <mat-icon matListIcon>military_tech</mat-icon>
+    </mat-list-item>
+    <mat-list-item
+      [disabled]="selectedObjects.length === 0"
+      (click)="onOpenNotes(selectedObjects)"
+    >
+      <h3 matLine>Notes</h3>
+      <mat-icon matListIcon>note_add</mat-icon>
+    </mat-list-item>
+    <mat-list-item [disabled]="selectedObjects.length === 0">
+      <h3 matLine>Add record 25</h3>
+      <mat-icon matListIcon>check_box</mat-icon>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <h3 matLine>Save changes</h3>
+      <mat-icon matListIcon>save</mat-icon>
+    </mat-list-item>
+  </ng-container>
 </mat-action-list>
