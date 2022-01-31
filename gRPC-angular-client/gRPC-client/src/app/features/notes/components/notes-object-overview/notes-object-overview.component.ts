@@ -9,6 +9,7 @@ import { GetWozObjectsService } from 'src/app/features/get-woz-objects/get-wozob
 })
 export class NotesObjectOverviewComponent implements OnChanges {
   @Input() wozobjectnummers: number[] = [];
+  selectedObject: number | undefined;
 
   loading$ = this.getWozObjectsService.wozobjects$.pipe(
     map(state => state.loading)
@@ -22,6 +23,10 @@ export class NotesObjectOverviewComponent implements OnChanges {
     if (changes.wozobjectnummers && this.wozobjectnummers) {
       this.getWozObjectsService.getWozObjects(this.wozobjectnummers);
     }
+  }
+
+  onSelect(id: number) {
+    this.selectedObject = id;
   }
 
   constructor(private getWozObjectsService: GetWozObjectsService) {}

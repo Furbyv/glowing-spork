@@ -1,0 +1,3 @@
+obj\IIS\net6.0\Protos/Wozobject.cs \
+obj\IIS\net6.0\Protos/WozobjectGrpc.cs: C:/Users/fbver/.nuget/packages/grpc.tools/2.41.0/build/native/include/google/protobuf/wrappers.proto\
+ Protos/wozobject.proto

@@ -6,8 +6,14 @@
 ></mat-spinner>
 <ng-template #content>
   <div class="search-list" *ngIf="wozObjects$ | async as Wozobjects">
-    <app-object-search-list [wozObjects]="Wozobjects"></app-object-search-list>
+    <app-object-search-list
+      [wozObjects]="Wozobjects"
+      (select)="onSelect($event)"
+    ></app-object-search-list>
   </div>
   <mat-divider [vertical]="true"></mat-divider>
-  <woz-notes-form class="content"></woz-notes-form>
+  <woz-notes-form
+    class="content"
+    [selectedObject]="selectedObject"
+  ></woz-notes-form>
 </ng-template>

@@ -2,7 +2,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
-  Output
+  Output,
+  ViewContainerRef
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ReplaySubject, Subject } from 'rxjs';
@@ -38,7 +39,8 @@ export class TaxOverviewDrawerComponent {
   constructor(
     public dialog: MatDialog,
     private layoutService: SearchLayoutService,
-    private taxOverviewService: TaxOverviewService
+    private taxOverviewService: TaxOverviewService,
+    private vcr: ViewContainerRef
   ) {}
 
   onSetFilters() {
@@ -59,6 +61,7 @@ export class TaxOverviewDrawerComponent {
     this.dialog.open(NotesDialogComponent, {
       width: '60vw',
       height: '60vh',
+      viewContainerRef: this.vcr,
       data: { wozobjectnummers: selectedObjects }
     });
   }

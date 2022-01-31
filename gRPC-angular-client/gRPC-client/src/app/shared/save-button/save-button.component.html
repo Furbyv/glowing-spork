@@ -1,0 +1,11 @@
+<ng-container *ngIf="loading">
+  <mat-spinner class="spinner" [diameter]="24"></mat-spinner>
+</ng-container>
+<button
+  mat-raised-button
+  [color]="color"
+  [disabled]="loading || disabled"
+  (click)="onSave()"
+>
+  {{ text }}
+</button>

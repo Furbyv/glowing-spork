@@ -1,7 +1,7 @@
 <div class="note-content">
-  <mat-form-field class="note-select">
+  <mat-form-field class="note-select" *ngIf="!isAddMode()">
     <mat-label>Notities</mat-label>
-    <mat-select>
+    <mat-select [(value)]="selectedNote">
       <mat-option *ngFor="let note of notes$ | async" [value]="note">
         {{ getShortText(note) }}
       </mat-option>
@@ -10,7 +10,7 @@
   <div class="info-row">
     <mat-form-field class="info-field">
       <mat-label>Wozobjectnummer</mat-label>
-      <input matInput value="Sushi" [disabled]="true" />
+      <input matInput [value]="selectedObject" [disabled]="true" />
     </mat-form-field>
     <mat-form-field class="info-field">
       <mat-label>Gebruiker</mat-label>
@@ -23,21 +23,45 @@
     <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
     <mat-datepicker #dp1></mat-datepicker>
   </mat-form-field>
-  <mat-form-field class="notes-field">
+  <mat-form-field class="notes-field" *ngIf="selectedNote">
     <mat-label>Enter note</mat-label>
     <textarea
       matInput
+      [(ngModel)]="selectedNote.noteText"
       cdkTextareaAutosize
       cdkAutosizeMinRows="1"
       cdkAutosizeMaxRows="8"
       placeholder="Enter note here"
+      [disabled]="isReadOnly()"
+      required
+      #textArea
     ></textarea>
   </mat-form-field>
 </div>
 <div class="action-row">
-  <button mat-raised-button class="action-button">Edit</button>
-  <button mat-raised-button color="primary" class="action-button">Add</button>
-  <button mat-raised-button color="accent" class="action-button">Save</button>
+  <button
+    mat-raised-button
+    class="action-button"
+    (click)="onEdit()"
+    [disabled]="isAddMode()"
+  >
+    Edit
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    class="action-button"
+    (click)="onAdd()"
+  >
+    Add
+  </button>
+  <woz-save-button
+    [color]="'accent'"
+    class="action-button"
+    (save)="onSave()"
+    [text]="'Save'"
+    [state]="saveState$ | async"
+  ></woz-save-button>
   <span></span>
   <button mat-raised-button>Close</button>
 </div>

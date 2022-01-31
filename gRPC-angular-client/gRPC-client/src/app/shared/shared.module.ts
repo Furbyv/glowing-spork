@@ -4,13 +4,24 @@ import { MaterialModule } from './material/material.module';
 import { CarouselItemDirective } from './carousel/carousel-item.directive';
 import {
   CarouselComponent,
-  CarouselItemElement,
+  CarouselItemElement
 } from './carousel/carousel.component';
 import { TranslocoModule } from '@ngneat/transloco';
+import { SaveButtonComponent } from './save-button/save-button.component';
 
 @NgModule({
-  declarations: [CarouselComponent, CarouselItemDirective, CarouselItemElement],
+  declarations: [
+    CarouselComponent,
+    CarouselItemDirective,
+    CarouselItemElement,
+    SaveButtonComponent
+  ],
   imports: [CommonModule, MaterialModule, TranslocoModule],
-  exports: [CarouselComponent, CarouselItemDirective, CarouselItemElement],
+  exports: [
+    CarouselComponent,
+    CarouselItemDirective,
+    CarouselItemElement,
+    SaveButtonComponent
+  ]
 })
 export class SharedModule {}

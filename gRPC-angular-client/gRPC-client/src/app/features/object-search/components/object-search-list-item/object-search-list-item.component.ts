@@ -2,7 +2,9 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  Input
+  Input,
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -19,21 +21,13 @@ import { SearchLayoutService } from '../../services/search-layout.service';
 })
 export class ObjectSearchListItemComponent implements OnInit {
   @Input() wozObject: WozObjectReply | undefined;
+  @Output() select = new EventEmitter<number>();
+  @Output() doubleClick = new EventEmitter<number>();
   trimmedAddress: string = '';
   secondLineAddress: string = '';
   objectDetails: string = '';
-  private state: 'displayMap' | 'displayObject' | 'displayGrid' = 'displayMap';
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private layoutService: SearchLayoutService,
-    private objectSearchService: ObjectSearchService
-  ) {
-    this.layoutService.state$
-      .pipe(untilDestroyed(this))
-      .subscribe(state => (this.state = state));
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.trimmedAddress =
@@ -47,19 +41,10 @@ export class ObjectSearchListItemComponent implements OnInit {
   }
 
   onObjectDblClick() {
-    this.layoutService.toggleObject();
-    this.router.navigate([this.wozObject?.wozobjectnummer], {
-      relativeTo: this.route
-    });
+    this.doubleClick.emit(+this.wozObject?.wozobjectnummer!);
   }
 
   onObjectClick() {
-    if (this.state === 'displayMap') {
-      this.objectSearchService.goToObject(+this.wozObject?.wozobjectnummer!);
-    } else {
-      this.router.navigate([this.wozObject?.wozobjectnummer], {
-        relativeTo: this.route
-      });
-    }
+    this.select.emit(+this.wozObject?.wozobjectnummer!);
   }
 }

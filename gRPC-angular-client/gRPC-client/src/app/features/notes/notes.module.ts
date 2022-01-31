@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { GetWozObjectsService } from '../get-woz-objects/get-wozobjects.service';
@@ -14,7 +15,13 @@ import { NotesDialogComponent } from './pages/notes-dialog.component';
     NotesObjectOverviewComponent,
     NotesFormComponent
   ],
-  imports: [CommonModule, SharedModule, MaterialModule, ObjectSearchModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SharedModule,
+    MaterialModule,
+    ObjectSearchModule
+  ],
   exports: [NotesDialogComponent],
   providers: [GetWozObjectsService]
 })

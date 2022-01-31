@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <GenerateRuntimeConfigurationFiles>True</GenerateRuntimeConfigurationFiles>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Configurations>Debug;Release;IIS</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

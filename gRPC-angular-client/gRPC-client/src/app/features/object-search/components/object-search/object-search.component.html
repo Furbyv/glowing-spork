@@ -45,6 +45,8 @@
       <ng-container *ngIf="wozobjects$ | async as Wozobjects">
         <app-object-search-list
           [wozObjects]="Wozobjects"
+          (doubleClick)="onObjectDoubleClicked($event)"
+          (select)="onObjectSelected($event)"
         ></app-object-search-list>
       </ng-container>
     </ng-template>
