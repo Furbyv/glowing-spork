@@ -11,7 +11,7 @@ import {
 } from 'src/app/proto/notes.pb';
 import { NotesClient } from 'src/app/proto/notes.pbsc';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class NotesService {
   private getNotesRequest: Subject<GetNotesRequest> = new ReplaySubject<
     GetNotesRequest
