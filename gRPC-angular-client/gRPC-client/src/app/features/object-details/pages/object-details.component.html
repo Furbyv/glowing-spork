@@ -17,9 +17,9 @@
       <div class="bottom-row">
         <app-object-tabs class="tabs" [id]="id"></app-object-tabs>
         <app-object-map
-          *ngIf="address$ | async as address"
+          *ngIf="wozObjectGeoJson$ | async as geo"
+          [objectFeatures]="geo"
           class="maps"
-          [address]="address"
         ></app-object-map>
       </div>
     </div>

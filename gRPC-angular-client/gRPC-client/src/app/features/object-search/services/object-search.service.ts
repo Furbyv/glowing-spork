@@ -8,6 +8,7 @@ import {
   WozObjectsReply
 } from 'src/app/proto/wozobject.pb';
 import { WozObjectsClient } from 'src/app/proto/wozobject.pbsc';
+import { convertWozObjectsToGeoJson } from 'src/app/shared/woz-object-utility';
 
 @Injectable({ providedIn: 'root' })
 export class ObjectSearchService {
@@ -41,36 +42,8 @@ export class ObjectSearchService {
     map(state => state.res!),
     map(wozObject =>
       wozObject.wozobjects
-        ? this.convertWozObjectsToGeoJson(wozObject.wozobjects)
+        ? convertWozObjectsToGeoJson(wozObject.wozobjects)
         : []
     )
   );
-
-  private getAdres(w: WozObjectReply): string {
-    const straatnaam = w.straatnaam ? w.straatnaam.value : '';
-    const huisnummer = w.huisnummer;
-    const huisletter = w.huisletter ? w.huisletter.value : '';
-    const huisnummertoevoeging = w.huisnummertoevoeging
-      ? w.huisnummertoevoeging.value
-      : '';
-    return `${straatnaam} ${huisnummer}${huisletter} ${huisnummertoevoeging}`;
-  }
-
-  convertWozObjectsToGeoJson(wozObjects: WozObjectReply[]): GeoJSON.Feature[] {
-    return wozObjects.map(w => {
-      const geometry: GeoJSON.Point = {
-        type: 'Point',
-        coordinates: [w.lon?.value!, w.lat?.value!]
-      };
-      const feature: GeoJSON.Feature = {
-        id: w.wozobjectnummer!,
-        type: 'Feature',
-        geometry,
-        properties: {
-          adres: this.getAdres(w)
-        }
-      };
-      return feature;
-    });
-  }
 }

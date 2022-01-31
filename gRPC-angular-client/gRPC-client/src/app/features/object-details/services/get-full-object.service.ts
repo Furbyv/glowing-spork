@@ -8,6 +8,7 @@ import {
   WozObjectRequestById
 } from 'src/app/proto/wozobject.pb';
 import { WozObjectsClient } from 'src/app/proto/wozobject.pbsc';
+import { convertWozObjectsToGeoJson } from 'src/app/shared/woz-object-utility';
 
 @Injectable({ providedIn: 'root' })
 export class GetFullWozObjectService {
@@ -56,4 +57,10 @@ export class GetFullWozObjectService {
   saveWozObject(wozObject: FullWozObjectReply) {
     this.saveWozObjectRequest$$.next(wozObject);
   }
+
+  wozObjectGeoJson$ = this.fullWozObject$.pipe(
+    filter(state => state.success),
+    map(state => state.res!),
+    map(wozObject => (wozObject ? convertWozObjectsToGeoJson([wozObject]) : []))
+  );
 }
