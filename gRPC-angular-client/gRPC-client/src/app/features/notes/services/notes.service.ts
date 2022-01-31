@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { RouteReuseStrategy } from '@angular/router';
 import { toAsyncState } from '@ngneat/loadoff';
-import { ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject, combineLatest, ReplaySubject, Subject } from 'rxjs';
 import { map, shareReplay, switchMap, tap } from 'rxjs/operators';
 import {
   AddNotesRequest,
@@ -22,9 +21,10 @@ export class NotesService {
   private editNote$$: Subject<EditNoteRequest> = new ReplaySubject<
     EditNoteRequest
   >(1);
+  private refresh$$: Subject<boolean> = new BehaviorSubject<boolean>(true);
 
-  notes$ = this.getNotesRequest.pipe(
-    switchMap(req => this.notesClient.getNotes(req)),
+  notes$ = combineLatest([this.getNotesRequest, this.refresh$$]).pipe(
+    switchMap(([req]) => this.notesClient.getNotes(req)),
     map(reply => reply.notes),
     toAsyncState(),
     shareReplay({ bufferSize: 1, refCount: true })
@@ -34,14 +34,24 @@ export class NotesService {
     switchMap(request =>
       this.notesClient.addNotes(request).pipe(toAsyncState())
     ),
-    shareReplay({ bufferSize: 1, refCount: true })
+    shareReplay({ bufferSize: 1, refCount: true }),
+    tap(state => {
+      if (state.success) {
+        this.refresh$$.next();
+      }
+    })
   );
 
   editState$ = this.editNote$$.pipe(
     switchMap(request =>
       this.notesClient.editNote(request).pipe(toAsyncState())
     ),
-    shareReplay({ bufferSize: 1, refCount: true })
+    shareReplay({ bufferSize: 1, refCount: true }),
+    tap(state => {
+      if (state.success) {
+        this.refresh$$.next();
+      }
+    })
   );
 
   constructor(private notesClient: NotesClient) {}

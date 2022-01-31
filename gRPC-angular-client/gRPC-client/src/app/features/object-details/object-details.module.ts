@@ -9,7 +9,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ExpandPhotoDialog } from './components/photos-card/expand-photo-dialog/expand-photo-dialog.component';
 import { ObjectMapComponent } from './components/object-map/object-map.component';
 import { SubobjectGridComponent } from './components/subobject-grid/subobject-grid.component';
-import { ObjectSearchRoutingModule } from '../object-search/object-search-routing.module';
 import { ObjectPropertiesComponent } from './components/object-properties/object-properties.component';
 import { ObjectTabsComponent } from './components/object-tabs/object-tabs.component';
 import { ObjectDetailsComponent } from './pages/object-details.component';

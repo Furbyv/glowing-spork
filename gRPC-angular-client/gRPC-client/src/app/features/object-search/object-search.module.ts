@@ -15,7 +15,6 @@ import { ObjectSearchPageComponent } from './pages/object-search-page.component'
 import { ObjectDetailsModule } from '../object-details/object-details.module';
 import { SmallActionBarComponent } from './components/object-search/small-action-bar/small-action-bar.component';
 import { LargeActionBarComponent } from './components/object-search/large-action-bar/large-action-bar.component';
-import { NoObjectComponent } from '../object-details/no-object/no-object.component';
 import { SearchLayoutService } from './services/search-layout.service';
 
 @NgModule({
@@ -26,8 +25,7 @@ import { SearchLayoutService } from './services/search-layout.service';
     ObjectSearchListItemComponent,
     SmallActionBarComponent,
     LargeActionBarComponent,
-    MapBoxMapComponent,
-    NoObjectComponent
+    MapBoxMapComponent
   ],
   imports: [
     CommonModule,

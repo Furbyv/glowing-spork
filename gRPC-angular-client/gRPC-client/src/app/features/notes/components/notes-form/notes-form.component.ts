@@ -1,11 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnChanges,
+  Output,
   SimpleChanges
 } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
 import { Timestamp } from '@ngx-grpc/well-known-types';
 import { merge } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
@@ -26,14 +27,19 @@ export enum FormMode {
 })
 export class NotesFormComponent implements OnChanges {
   @Input() selectedObject: number | undefined;
+  @Output() close = new EventEmitter<void>();
   private oldText: string = '';
   private formMode: FormMode = FormMode.readMode;
   readOnly = this.formMode === FormMode.readMode;
   selectedNote: NoteRecord | undefined;
   notes$ = this.notesService.notes$.pipe(
-    tap(a => console.log(a)),
     filter(state => state.success),
-    map(state => state.res!)
+    map(state => state.res!),
+    tap(notes => {
+      if (notes.length) {
+        this.selectedNote = notes[0];
+      }
+    })
   );
   saveState$ = merge(
     this.notesService.saveState$,
@@ -91,5 +97,22 @@ export class NotesFormComponent implements OnChanges {
 
   isReadOnly() {
     return this.formMode === FormMode.readMode;
+  }
+
+  isModified(): boolean {
+    if (this.selectedNote) {
+      return this.oldText !== this.selectedNote?.noteText;
+    }
+    return false;
+  }
+
+  onCancel() {
+    this.selectedNote = undefined;
+    this.oldText = '';
+    this.formMode = FormMode.readMode;
+  }
+
+  onClose() {
+    this.close.emit();
   }
 }

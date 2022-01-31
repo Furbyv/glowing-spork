@@ -41,17 +41,21 @@
   </ng-container>
   <mat-divider></mat-divider>
   <ng-container *ngIf="selectedObjects$ | async as selectedObjects">
-    <button mat-icon-button>
+    <button mat-icon-button [disabled]="selectedObjects.length === 0">
       <mat-icon matTooltip="Change status">
         military_tech
       </mat-icon>
     </button>
-    <button mat-icon-button (click)="onOpenNotes(selectedObjects)">
+    <button
+      mat-icon-button
+      [disabled]="selectedObjects.length === 0"
+      (click)="onOpenNotes(selectedObjects)"
+    >
       <mat-icon matTooltip="Add note">
         note_add
       </mat-icon>
     </button>
-    <button mat-icon-button>
+    <button mat-icon-button [disabled]="selectedObjects.length === 0">
       <mat-icon matTooltip="Add record25">
         check_box
       </mat-icon>

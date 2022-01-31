@@ -24,7 +24,6 @@ export class SaveButtonComponent implements OnChanges {
   loading = false;
 
   ngOnChanges(_: SimpleChanges): void {
-    console.log(this.state);
     if (this.state) {
       this.loading = this.state.loading;
     }

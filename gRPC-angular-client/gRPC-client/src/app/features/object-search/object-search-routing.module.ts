@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ObjectDetailsComponent } from '../object-details/pages/object-details.component';
-import { NoObjectComponent } from '../object-details/no-object/no-object.component';
+import { NoObjectComponent } from '../../shared/no-object/no-object.component';
 import { ObjectSearchPageComponent } from './pages/object-search-page.component';
 
 const routes: Routes = [

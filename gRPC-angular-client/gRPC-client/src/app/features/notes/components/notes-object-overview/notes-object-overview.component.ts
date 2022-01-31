@@ -1,14 +1,24 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import { filter, map } from 'rxjs/operators';
 import { GetWozObjectsService } from 'src/app/features/get-woz-objects/get-wozobjects.service';
 
 @Component({
   selector: 'woz-notes-object-overview',
   templateUrl: 'notes-object-overview.component.html',
-  styleUrls: ['notes-object-overview.component.scss']
+  styleUrls: ['notes-object-overview.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotesObjectOverviewComponent implements OnChanges {
   @Input() wozobjectnummers: number[] = [];
+  @Output() close = new EventEmitter<void>();
   selectedObject: number | undefined;
 
   loading$ = this.getWozObjectsService.wozobjects$.pipe(
@@ -30,4 +40,8 @@ export class NotesObjectOverviewComponent implements OnChanges {
   }
 
   constructor(private getWozObjectsService: GetWozObjectsService) {}
+
+  onClose() {
+    this.close.emit();
+  }
 }
