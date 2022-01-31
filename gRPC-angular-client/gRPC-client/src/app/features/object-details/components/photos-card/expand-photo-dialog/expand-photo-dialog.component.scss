@@ -1,8 +1,10 @@
-mat-card {
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   width: 100%;
 }
 
 .expand-container {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
 }

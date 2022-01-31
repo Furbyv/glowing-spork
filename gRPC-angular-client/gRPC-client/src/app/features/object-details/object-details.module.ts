@@ -13,6 +13,7 @@ import { ObjectPropertiesComponent } from './components/object-properties/object
 import { ObjectTabsComponent } from './components/object-tabs/object-tabs.component';
 import { ObjectDetailsComponent } from './pages/object-details.component';
 import { PhotosCardComponent } from './components/photos-card/photos-card.component';
+import { PhotoImageComponent } from './components/photos-card/photo-image/photo-image.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PhotosCardComponent } from './components/photos-card/photos-card.compon
     PhotosCardComponent,
     ExpandPhotoDialog,
     SubobjectGridComponent,
-    ObjectMapComponent
+    ObjectMapComponent,
+    PhotoImageComponent
   ],
   imports: [
     CommonModule,

@@ -76,9 +76,9 @@ export class PhotosCardComponent implements OnChanges {
   }
 
   onExpand() {
-    const dialogRef = this.dialog.open(ExpandPhotoDialog, {
-      width: '630px',
-      height: '800px',
+    this.dialog.open(ExpandPhotoDialog, {
+      width: '80vw',
+      height: '80vh',
       viewContainerRef: this.vcr,
       data: { name: this.id }
     });

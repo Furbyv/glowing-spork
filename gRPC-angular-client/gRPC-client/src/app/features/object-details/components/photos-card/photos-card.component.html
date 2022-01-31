@@ -1,5 +1,4 @@
-<mat-card [class]="containerClass">
-  <!-- <img *ngFor="let image of images$ | async" [src]="image" /> -->
+<mat-card>
   <mat-spinner
     *ngIf="loading$ | async; else content"
     class="loader"
@@ -25,14 +24,8 @@
         <mat-icon>fullscreen</mat-icon>
       </button>
     </div>
-    <div class="container" *ngIf="images$ | async as images">
-      <app-carousel>
-        <ng-container *ngFor="let image of images$ | async">
-          <ng-container *carouselItem [class]="photoClass">
-            <img [src]="image" [class]="photoClass" />
-          </ng-container>
-        </ng-container>
-      </app-carousel>
+    <div [class]="containerClass" *ngIf="images$ | async as images">
+      <woz-photo-image [images]="images"></woz-photo-image>
     </div>
   </ng-template>
 </mat-card>

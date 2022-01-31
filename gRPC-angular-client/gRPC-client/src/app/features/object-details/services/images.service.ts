@@ -54,7 +54,7 @@ export class ImagesService {
       req.wozobjectnummer = '' + request.id;
       return req;
     }),
-    switchMap(req => this.wozObjectsClient.uploadWozObjectImage(req)),
+    concatMap(req => this.wozObjectsClient.uploadWozObjectImage(req)),
     toAsyncState(),
     shareReplay({ bufferSize: 1, refCount: true }),
     tap(_ => this.refresh$$.next(true))
