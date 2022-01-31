@@ -1,15 +1,13 @@
 <ng-container *ngIf="wozObject$ | async as wozObject">
   <mat-card>
     <div class="action-row">
-      <h3 class="address">
-        {{ wozObject.wozobjectnummer }}
-      </h3>
       <h3 class="address" *ngIf="address$ | async as address">
         {{ address }}
       </h3>
       <h3 class="address">
         {{ wozObject.postcode!.value }}
       </h3>
+      <h3 class="address">({{ wozObject.wozobjectnummer }})</h3>
       <span></span>
       <button mat-icon-button (click)="onRefresh()">
         <mat-icon>refresh</mat-icon>
@@ -19,78 +17,78 @@
       </button>
       <mat-icon *ngIf="saveState$ | async">check_circle</mat-icon>
     </div>
-    <form class="properties-form" #propertiesForm="ngForm">
-      <mat-form-field class="propertie-width" *ngIf="wozObject.postcode">
-        <mat-label>Postcode</mat-label>
-        <input
-          name="postcode"
-          matInput
-          placeholder="1234AB"
-          [(ngModel)]="wozObject.postcode.value"
-          #postcode
-        />
-      </mat-form-field>
+    <mat-divider></mat-divider>
+    <div class="properties-container">
+      <form class="properties-form" #propertiesForm="ngForm">
+        <mat-form-field class="propertie-width" *ngIf="wozObject.postcode">
+          <mat-label>Postcode</mat-label>
+          <input
+            name="postcode"
+            matInput
+            placeholder="1234AB"
+            [(ngModel)]="wozObject.postcode.value"
+            #postcode
+          />
+        </mat-form-field>
 
-      <mat-form-field class="propertie-width" *ngIf="wozObject.wijkcode">
-        <mat-label>Wijkcode</mat-label>
-        <input
-          matInput
-          name="wijk"
-          placeholder="Wijk"
-          [(ngModel)]="wozObject.wijkcode.value"
-        />
-      </mat-form-field>
+        <mat-form-field class="propertie-width" *ngIf="wozObject.wijkcode">
+          <mat-label>Wijkcode</mat-label>
+          <input
+            matInput
+            name="wijk"
+            placeholder="Wijk"
+            [(ngModel)]="wozObject.wijkcode.value"
+          />
+        </mat-form-field>
 
-      <mat-form-field class="propertie-width" *ngIf="wozObject.buurtcode">
-        <mat-label>Buurtcode</mat-label>
-        <input
-          matInput
-          name="buurt"
-          placeholder="Buurt"
-          [(ngModel)]="wozObject.buurtcode.value"
-        />
-      </mat-form-field>
+        <mat-form-field class="propertie-width" *ngIf="wozObject.buurtcode">
+          <mat-label>Buurtcode</mat-label>
+          <input
+            matInput
+            name="buurt"
+            placeholder="Buurt"
+            [(ngModel)]="wozObject.buurtcode.value"
+          />
+        </mat-form-field>
 
-      <mat-form-field class="propertie-width" *ngIf="wozObject.soortobjectcode">
-        <mat-label>Soort object</mat-label>
-        <input
-          matInput
-          name="soortobject"
-          [(ngModel)]="wozObject.soortobjectcode.value"
-        />
-      </mat-form-field>
+        <mat-form-field
+          class="propertie-width"
+          *ngIf="wozObject.soortobjectcode"
+        >
+          <mat-label>Soort object</mat-label>
+          <input
+            matInput
+            name="soortobject"
+            [(ngModel)]="wozObject.soortobjectcode.value"
+          />
+        </mat-form-field>
 
-      <mat-form-field
-        class="propertie-width"
-        *ngIf="wozObject.indicatieligging"
-      >
-        <mat-label>Indicatie ligging</mat-label>
-        <input
-          matInput
-          placeholder="3"
-          name="ligging"
-          [(ngModel)]="wozObject.indicatieligging.value"
-        />
-      </mat-form-field>
+        <mat-form-field
+          class="propertie-width"
+          *ngIf="wozObject.indicatieligging"
+        >
+          <mat-label>Indicatie ligging</mat-label>
+          <input
+            matInput
+            placeholder="3"
+            name="ligging"
+            [(ngModel)]="wozObject.indicatieligging.value"
+          />
+        </mat-form-field>
 
-      <mat-form-field
-        class="propertie-width"
-        *ngIf="wozObject.locatieomschrijving"
-      >
-        <mat-label>Locatieomschrijving</mat-label>
-        <input
-          matInput
-          name="locatieoms"
-          [(ngModel)]="wozObject.locatieomschrijving.value"
-        />
-      </mat-form-field>
-    </form>
-    <!-- <ng-container *ngIf="wozObject$ | async as wozobject">
-    <p>
-      {{
-        wozobject.soortobjectcode ? wozobject.soortobjectcode.value : "onbekend"
-      }}
-    </p>
-  </ng-container> -->
+        <mat-form-field
+          class="propertie-width"
+          *ngIf="wozObject.locatieomschrijving"
+        >
+          <mat-label>Locatieomschrijving</mat-label>
+          <input
+            matInput
+            name="locatieoms"
+            [(ngModel)]="wozObject.locatieomschrijving.value"
+          />
+        </mat-form-field>
+      </form>
+      <mat-divider [vertical]="true"></mat-divider>
+    </div>
   </mat-card>
 </ng-container>

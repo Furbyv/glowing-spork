@@ -5,12 +5,26 @@
 }
 
 mat-card {
+  display: flex;
+  flex-direction: column;
   flex: 1;
 }
 
-.properties-form {
-  min-width: 150px;
+mat-card .mat-divider-horizontal {
+  position: inherit !important;
+}
+
+.properties-container {
+  display: flex;
+  flex: 1;
   width: 100%;
+  box-sizing: border-box;
+}
+
+.properties-form {
+  margin-top: 8px;
+  min-width: 150px;
+  width: 66%;
 }
 
 .propertie-width {
@@ -19,6 +33,7 @@ mat-card {
 }
 
 .action-row {
+  margin-left: 16px;
   display: flex;
   flex-direction: row;
 }
