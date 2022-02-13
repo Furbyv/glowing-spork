@@ -13,6 +13,7 @@ public static class WozObjectConverter
         Soortobjectcode = property.Soortobjectcode,
         Lat = property.WozObject.Geometry != null ? property.WozObject.Geometry.Y : 0,
         Lon = property.WozObject.Geometry != null ? property.WozObject.Geometry.X : 0,
+        ImageData = property.WozObject.Images.Count > 0 ? WozObjectImageConverter.ImageToByteString(property.WozObject.Images.FirstOrDefault()) : null
     };
 
     public static FullWozObjectReply WozobjectpropertyToFullWozObjectsReply(Wozobjectproperty property) => new FullWozObjectReply

@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { merge, Subject } from 'rxjs';
-import { filter, map, startWith } from 'rxjs/operators';
+import { filter, map, startWith, tap } from 'rxjs/operators';
 import { ImagesService } from '../../services/images.service';
 import { ExpandPhotoDialog } from './expand-photo-dialog/expand-photo-dialog.component';
 
@@ -23,9 +23,10 @@ export class PhotosCardComponent implements OnChanges {
 
   containerClass: string = 'photo-container';
   photoClass: string = 'photo';
+
   private getImageState$ = merge(
     this.imagesService.images$,
-    this.imagesService.uploadRequest$
+    this.imagesService.uploadRequest$.pipe(tap(a => console.log(a)))
   ).pipe(
     map(state => state.loading),
     startWith(true)

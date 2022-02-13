@@ -1,6 +1,6 @@
 <mat-list-item (click)="onObjectClick()" (dblclick)="onObjectDblClick()">
   <div class="img-container">
-    <img class="image" src="assets/default_image.jpg" />
+    <img class="image" [src]="image ?? 'assets/default_image.jpg'" />
   </div>
   <div class="item-container">
     <div class="header">

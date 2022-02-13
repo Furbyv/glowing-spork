@@ -616,6 +616,7 @@ export class WozObjectReply implements GrpcMessage {
     _instance.soortobjectcode = _instance.soortobjectcode || undefined;
     _instance.lat = _instance.lat || undefined;
     _instance.lon = _instance.lon || undefined;
+    _instance.imageData = _instance.imageData || undefined;
   }
 
   /**
@@ -691,6 +692,13 @@ export class WozObjectReply implements GrpcMessage {
           _reader.readMessage(
             _instance.lon,
             googleProtobuf000.DoubleValue.deserializeBinaryFromReader
+          );
+          break;
+        case 11:
+          _instance.imageData = new googleProtobuf000.BytesValue();
+          _reader.readMessage(
+            _instance.imageData,
+            googleProtobuf000.BytesValue.deserializeBinaryFromReader
           );
           break;
         default:
@@ -772,6 +780,13 @@ export class WozObjectReply implements GrpcMessage {
         googleProtobuf000.DoubleValue.serializeBinaryToWriter
       );
     }
+    if (_instance.imageData) {
+      _writer.writeMessage(
+        11,
+        _instance.imageData as any,
+        googleProtobuf000.BytesValue.serializeBinaryToWriter
+      );
+    }
   }
 
   private _wozobjectnummer?: string;
@@ -784,6 +799,7 @@ export class WozObjectReply implements GrpcMessage {
   private _soortobjectcode?: googleProtobuf000.StringValue;
   private _lat?: googleProtobuf000.DoubleValue;
   private _lon?: googleProtobuf000.DoubleValue;
+  private _imageData?: googleProtobuf000.BytesValue;
 
   /**
    * Message constructor. Initializes the properties and applies default Protobuf values if necessary
@@ -816,6 +832,9 @@ export class WozObjectReply implements GrpcMessage {
       : undefined;
     this.lon = _value.lon
       ? new googleProtobuf000.DoubleValue(_value.lon)
+      : undefined;
+    this.imageData = _value.imageData
+      ? new googleProtobuf000.BytesValue(_value.imageData)
       : undefined;
     WozObjectReply.refineValues(this);
   }
@@ -879,6 +898,12 @@ export class WozObjectReply implements GrpcMessage {
   set lon(value: googleProtobuf000.DoubleValue | undefined) {
     this._lon = value;
   }
+  get imageData(): googleProtobuf000.BytesValue | undefined {
+    return this._imageData;
+  }
+  set imageData(value: googleProtobuf000.BytesValue | undefined) {
+    this._imageData = value;
+  }
 
   /**
    * Serialize message to binary data
@@ -910,7 +935,8 @@ export class WozObjectReply implements GrpcMessage {
         ? this.soortobjectcode.toObject()
         : undefined,
       lat: this.lat ? this.lat.toObject() : undefined,
-      lon: this.lon ? this.lon.toObject() : undefined
+      lon: this.lon ? this.lon.toObject() : undefined,
+      imageData: this.imageData ? this.imageData.toObject() : undefined
     };
   }
 
@@ -950,7 +976,8 @@ export class WozObjectReply implements GrpcMessage {
         ? this.soortobjectcode.toProtobufJSON(options)
         : null,
       lat: this.lat ? this.lat.toProtobufJSON(options) : null,
-      lon: this.lon ? this.lon.toProtobufJSON(options) : null
+      lon: this.lon ? this.lon.toProtobufJSON(options) : null,
+      imageData: this.imageData ? this.imageData.toProtobufJSON(options) : null
     };
   }
 }
@@ -969,6 +996,7 @@ export module WozObjectReply {
     soortobjectcode?: googleProtobuf000.StringValue.AsObject;
     lat?: googleProtobuf000.DoubleValue.AsObject;
     lon?: googleProtobuf000.DoubleValue.AsObject;
+    imageData?: googleProtobuf000.BytesValue.AsObject;
   }
 
   /**
@@ -985,6 +1013,7 @@ export module WozObjectReply {
     soortobjectcode?: googleProtobuf000.StringValue.AsProtobufJSON | null;
     lat?: googleProtobuf000.DoubleValue.AsProtobufJSON | null;
     lon?: googleProtobuf000.DoubleValue.AsProtobufJSON | null;
+    imageData?: googleProtobuf000.BytesValue.AsProtobufJSON | null;
   }
 }
 

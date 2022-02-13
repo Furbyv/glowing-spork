@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AsyncState, toAsyncState } from '@ngneat/loadoff';
 import { Subject, ReplaySubject, Observable, combineLatest } from 'rxjs';
-import { switchMap, map, filter } from 'rxjs/operators';
+import { switchMap, map, filter, shareReplay } from 'rxjs/operators';
 import {
   WozObjectReply,
   WozObjectRequestById,
@@ -34,7 +34,8 @@ export class ObjectSearchService {
     this.wozObjectRequest$$
   ]).pipe(
     switchMap(([request]) => this.wozObjectClient.getWozObject(request)),
-    toAsyncState()
+    toAsyncState(),
+    shareReplay({ bufferSize: 1, refCount: true })
   );
 
   wozObjectGeoJson$ = this.wozObjects$.pipe(

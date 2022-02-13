@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aP/HrifxcVDfkoFaUtYjpvF7tXL+HJ63eCewiG4ouDTgTIPzM2FBaBavyCr8DuoKM9raa0vvp+vcPxFxtGttvQ==",
+  "dgSpecHash": "CNZ3kiHF+nUPbVRMQs2x3SFuNy8rCoXW64zyPQumluFazfGLj+k8XQb2bHQTuAV3OruKje2iUaCxHBtOuM2O5Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\fbver\\source\\repos\\glowing-spork\\gRPC-Server\\gRPC-Server\\gRPCServer.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,8 @@
     "C:\\Users\\fbver\\.nuget\\packages\\grpc.net.common\\2.41.0\\grpc.net.common.2.41.0.nupkg.sha512",
     "C:\\Users\\fbver\\.nuget\\packages\\grpc.tools\\2.41.0\\grpc.tools.2.41.0.nupkg.sha512",
     "C:\\Users\\fbver\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\fbver\\.nuget\\packages\\magick.net-q16-anycpu\\9.1.2\\magick.net-q16-anycpu.9.1.2.nupkg.sha512",
+    "C:\\Users\\fbver\\.nuget\\packages\\magick.net.core\\9.1.2\\magick.net.core.9.1.2.nupkg.sha512",
     "C:\\Users\\fbver\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.1\\microsoft.entityframeworkcore.6.0.1.nupkg.sha512",
     "C:\\Users\\fbver\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.1\\microsoft.entityframeworkcore.abstractions.6.0.1.nupkg.sha512",
     "C:\\Users\\fbver\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.1\\microsoft.entityframeworkcore.analyzers.6.0.1.nupkg.sha512",

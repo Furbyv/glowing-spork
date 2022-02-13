@@ -30,7 +30,7 @@ namespace gRPCServer.Protos {
             "dEJ5SWRzEhgKEHdvem9iamVjdG51bW1lcnMYASADKAMiQAoPV296T2JqZWN0",
             "c1JlcGx5Ei0KCndvem9iamVjdHMYASADKAsyGS53b3pvYmplY3QuV296T2Jq",
             "ZWN0UmVwbHkiKwoWRnVsbFdvek9iamVjdFNhdmVSZXBseRIRCglpc1N1Y2Nl",
-            "c3MYASABKAgizgMKDldvek9iamVjdFJlcGx5EhcKD3dvem9iamVjdG51bW1l",
+            "c3MYASABKAgi/wMKDldvek9iamVjdFJlcGx5EhcKD3dvem9iamVjdG51bW1l",
             "chgBIAEoAxIyCgxnZW1lZW50ZW5hYW0YAiABKAsyHC5nb29nbGUucHJvdG9i",
             "dWYuU3RyaW5nVmFsdWUSMAoKc3RyYWF0bmFhbRgDIAEoCzIcLmdvb2dsZS5w",
             "cm90b2J1Zi5TdHJpbmdWYWx1ZRISCgpodWlzbnVtbWVyGAQgASgFEjAKCmh1",
@@ -40,42 +40,43 @@ namespace gRPCServer.Protos {
             "dG9idWYuU3RyaW5nVmFsdWUSNQoPc29vcnRvYmplY3Rjb2RlGAggASgLMhwu",
             "Z29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEikKA2xhdBgJIAEoCzIcLmdv",
             "b2dsZS5wcm90b2J1Zi5Eb3VibGVWYWx1ZRIpCgNsb24YCiABKAsyHC5nb29n",
-            "bGUucHJvdG9idWYuRG91YmxlVmFsdWUijAYKEkZ1bGxXb3pPYmplY3RSZXBs",
-            "eRIXCg93b3pvYmplY3RudW1tZXIYASABKAMSMgoMZ2VtZWVudGVuYWFtGAIg",
-            "ASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjAKCnN0cmFhdG5h",
-            "YW0YAyABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSEgoKaHVp",
-            "c251bW1lchgEIAEoBRIwCgpodWlzbGV0dGVyGAUgASgLMhwuZ29vZ2xlLnBy",
-            "b3RvYnVmLlN0cmluZ1ZhbHVlEjoKFGh1aXNudW1tZXJ0b2V2b2VnaW5nGAYg",
-            "ASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEi4KCHBvc3Rjb2Rl",
-            "GAcgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjUKD3Nvb3J0",
-            "b2JqZWN0Y29kZRgIIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1",
-            "ZRIuCgh3aWprY29kZRgJIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdW",
-            "YWx1ZRIvCglidXVydGNvZGUYCiABKAsyHC5nb29nbGUucHJvdG9idWYuU3Ry",
-            "aW5nVmFsdWUSMAoKd29vbnBsYWF0cxgLIAEoCzIcLmdvb2dsZS5wcm90b2J1",
-            "Zi5TdHJpbmdWYWx1ZRI5ChNsb2NhdGllb21zY2hyaWp2aW5nGAwgASgLMhwu",
-            "Z29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjYKEGluZGljYXRpZWxpZ2dp",
-            "bmcYDSABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSMgoMb21z",
-            "Y2hyaWp2aW5nGA4gASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVl",
-            "EikKA2xhdBgPIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5Eb3VibGVWYWx1ZRIp",
-            "CgNsb24YECABKAsyHC5nb29nbGUucHJvdG9idWYuRG91YmxlVmFsdWUiQwoV",
-            "V296T2JqZWN0SW1hZ2VSZXF1ZXN0EhcKD3dvem9iamVjdG51bW1lchgBIAEo",
-            "AxIRCglvbmx5X21haW4YAiABKAgiOgoTV296T2JqZWN0SW1hZ2VSZXBseRIS",
-            "CgppbWFnZV9kYXRhGAEgASgMEg8KB2lzX21haW4YAiABKAgiUgoSVXBsb2Fk",
-            "SW1hZ2VSZXF1ZXN0EhcKD3dvem9iamVjdG51bW1lchgBIAEoAxISCgppbWFn",
-            "ZV9kYXRhGAIgASgMEg8KB2lzX21haW4YAyABKAgiIgoQVXBsb2FkSW1hZ2VS",
-            "ZXBseRIOCgZzdWNjZXMYASABKAgygwQKCldvek9iamVjdHMSSwoMR2V0V296",
-            "T2JqZWN0Eh8ud296b2JqZWN0Lldvek9iamVjdFJlcXVlc3RCeUlkGhoud296",
-            "b2JqZWN0Lldvek9iamVjdHNSZXBseRJNCg1HZXRXb3pPYmplY3RzEiAud296",
-            "b2JqZWN0Lldvek9iamVjdFJlcXVlc3RCeUlkcxoaLndvem9iamVjdC5Xb3pP",
-            "YmplY3RzUmVwbHkSVAoQR2V0RnVsbFdvek9iamVjdBIfLndvem9iamVjdC5X",
-            "b3pPYmplY3RSZXF1ZXN0QnlJZBodLndvem9iamVjdC5GdWxsV296T2JqZWN0",
-            "UmVwbHkwARJYChJHZXRXb3pPYmplY3RJbWFnZXMSIC53b3pvYmplY3QuV296",
-            "T2JqZWN0SW1hZ2VSZXF1ZXN0Gh4ud296b2JqZWN0Lldvek9iamVjdEltYWdl",
-            "UmVwbHkwARJSChRVcGxvYWRXb3pPYmplY3RJbWFnZRIdLndvem9iamVjdC5V",
-            "cGxvYWRJbWFnZVJlcXVlc3QaGy53b3pvYmplY3QuVXBsb2FkSW1hZ2VSZXBs",
-            "eRJVChFTYXZlRnVsbFdvek9iamVjdBIdLndvem9iamVjdC5GdWxsV296T2Jq",
-            "ZWN0UmVwbHkaIS53b3pvYmplY3QuRnVsbFdvek9iamVjdFNhdmVSZXBseUIU",
-            "qgIRZ1JQQ1NlcnZlci5Qcm90b3NiBnByb3RvMw=="));
+            "bGUucHJvdG9idWYuRG91YmxlVmFsdWUSLwoKaW1hZ2VfZGF0YRgLIAEoCzIb",
+            "Lmdvb2dsZS5wcm90b2J1Zi5CeXRlc1ZhbHVlIowGChJGdWxsV296T2JqZWN0",
+            "UmVwbHkSFwoPd296b2JqZWN0bnVtbWVyGAEgASgDEjIKDGdlbWVlbnRlbmFh",
+            "bRgCIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRIwCgpzdHJh",
+            "YXRuYWFtGAMgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEhIK",
+            "Cmh1aXNudW1tZXIYBCABKAUSMAoKaHVpc2xldHRlchgFIAEoCzIcLmdvb2ds",
+            "ZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI6ChRodWlzbnVtbWVydG9ldm9lZ2lu",
+            "ZxgGIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRIuCghwb3N0",
+            "Y29kZRgHIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI1Cg9z",
+            "b29ydG9iamVjdGNvZGUYCCABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5n",
+            "VmFsdWUSLgoId2lqa2NvZGUYCSABKAsyHC5nb29nbGUucHJvdG9idWYuU3Ry",
+            "aW5nVmFsdWUSLwoJYnV1cnRjb2RlGAogASgLMhwuZ29vZ2xlLnByb3RvYnVm",
+            "LlN0cmluZ1ZhbHVlEjAKCndvb25wbGFhdHMYCyABKAsyHC5nb29nbGUucHJv",
+            "dG9idWYuU3RyaW5nVmFsdWUSOQoTbG9jYXRpZW9tc2NocmlqdmluZxgMIAEo",
+            "CzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI2ChBpbmRpY2F0aWVs",
+            "aWdnaW5nGA0gASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjIK",
+            "DG9tc2NocmlqdmluZxgOIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdW",
+            "YWx1ZRIpCgNsYXQYDyABKAsyHC5nb29nbGUucHJvdG9idWYuRG91YmxlVmFs",
+            "dWUSKQoDbG9uGBAgASgLMhwuZ29vZ2xlLnByb3RvYnVmLkRvdWJsZVZhbHVl",
+            "IkMKFVdvek9iamVjdEltYWdlUmVxdWVzdBIXCg93b3pvYmplY3RudW1tZXIY",
+            "ASABKAMSEQoJb25seV9tYWluGAIgASgIIjoKE1dvek9iamVjdEltYWdlUmVw",
+            "bHkSEgoKaW1hZ2VfZGF0YRgBIAEoDBIPCgdpc19tYWluGAIgASgIIlIKElVw",
+            "bG9hZEltYWdlUmVxdWVzdBIXCg93b3pvYmplY3RudW1tZXIYASABKAMSEgoK",
+            "aW1hZ2VfZGF0YRgCIAEoDBIPCgdpc19tYWluGAMgASgIIiIKEFVwbG9hZElt",
+            "YWdlUmVwbHkSDgoGc3VjY2VzGAEgASgIMoMECgpXb3pPYmplY3RzEksKDEdl",
+            "dFdvek9iamVjdBIfLndvem9iamVjdC5Xb3pPYmplY3RSZXF1ZXN0QnlJZBoa",
+            "Lndvem9iamVjdC5Xb3pPYmplY3RzUmVwbHkSTQoNR2V0V296T2JqZWN0cxIg",
+            "Lndvem9iamVjdC5Xb3pPYmplY3RSZXF1ZXN0QnlJZHMaGi53b3pvYmplY3Qu",
+            "V296T2JqZWN0c1JlcGx5ElQKEEdldEZ1bGxXb3pPYmplY3QSHy53b3pvYmpl",
+            "Y3QuV296T2JqZWN0UmVxdWVzdEJ5SWQaHS53b3pvYmplY3QuRnVsbFdvek9i",
+            "amVjdFJlcGx5MAESWAoSR2V0V296T2JqZWN0SW1hZ2VzEiAud296b2JqZWN0",
+            "Lldvek9iamVjdEltYWdlUmVxdWVzdBoeLndvem9iamVjdC5Xb3pPYmplY3RJ",
+            "bWFnZVJlcGx5MAESUgoUVXBsb2FkV296T2JqZWN0SW1hZ2USHS53b3pvYmpl",
+            "Y3QuVXBsb2FkSW1hZ2VSZXF1ZXN0Ghsud296b2JqZWN0LlVwbG9hZEltYWdl",
+            "UmVwbHkSVQoRU2F2ZUZ1bGxXb3pPYmplY3QSHS53b3pvYmplY3QuRnVsbFdv",
+            "ek9iamVjdFJlcGx5GiEud296b2JqZWN0LkZ1bGxXb3pPYmplY3RTYXZlUmVw",
+            "bHlCFKoCEWdSUENTZXJ2ZXIuUHJvdG9zYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -83,7 +84,7 @@ namespace gRPCServer.Protos {
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectRequestByIds), global::gRPCServer.Protos.WozObjectRequestByIds.Parser, new[]{ "Wozobjectnummers" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectsReply), global::gRPCServer.Protos.WozObjectsReply.Parser, new[]{ "Wozobjects" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.FullWozObjectSaveReply), global::gRPCServer.Protos.FullWozObjectSaveReply.Parser, new[]{ "IsSuccess" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectReply), global::gRPCServer.Protos.WozObjectReply.Parser, new[]{ "Wozobjectnummer", "Gemeentenaam", "Straatnaam", "Huisnummer", "Huisletter", "Huisnummertoevoeging", "Postcode", "Soortobjectcode", "Lat", "Lon" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectReply), global::gRPCServer.Protos.WozObjectReply.Parser, new[]{ "Wozobjectnummer", "Gemeentenaam", "Straatnaam", "Huisnummer", "Huisletter", "Huisnummertoevoeging", "Postcode", "Soortobjectcode", "Lat", "Lon", "ImageData" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.FullWozObjectReply), global::gRPCServer.Protos.FullWozObjectReply.Parser, new[]{ "Wozobjectnummer", "Gemeentenaam", "Straatnaam", "Huisnummer", "Huisletter", "Huisnummertoevoeging", "Postcode", "Soortobjectcode", "Wijkcode", "Buurtcode", "Woonplaats", "Locatieomschrijving", "Indicatieligging", "Omschrijving", "Lat", "Lon" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectImageRequest), global::gRPCServer.Protos.WozObjectImageRequest.Parser, new[]{ "Wozobjectnummer", "OnlyMain" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectImageReply), global::gRPCServer.Protos.WozObjectImageReply.Parser, new[]{ "ImageData", "IsMain" }, null, null, null, null),
@@ -884,6 +885,7 @@ namespace gRPCServer.Protos {
       Soortobjectcode = other.Soortobjectcode;
       Lat = other.Lat;
       Lon = other.Lon;
+      ImageData = other.ImageData;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1029,6 +1031,20 @@ namespace gRPCServer.Protos {
     }
 
 
+    /// <summary>Field number for the "image_data" field.</summary>
+    public const int ImageDataFieldNumber = 11;
+    private static readonly pb::FieldCodec<pb::ByteString> _single_imageData_codec = pb::FieldCodec.ForClassWrapper<pb::ByteString>(90);
+    private pb::ByteString imageData_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString ImageData {
+      get { return imageData_; }
+      set {
+        imageData_ = value;
+      }
+    }
+
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1054,6 +1070,7 @@ namespace gRPCServer.Protos {
       if (Soortobjectcode != other.Soortobjectcode) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseNullableDoubleEqualityComparer.Equals(Lat, other.Lat)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseNullableDoubleEqualityComparer.Equals(Lon, other.Lon)) return false;
+      if (ImageData != other.ImageData) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1071,6 +1088,7 @@ namespace gRPCServer.Protos {
       if (soortobjectcode_ != null) hash ^= Soortobjectcode.GetHashCode();
       if (lat_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableDoubleEqualityComparer.GetHashCode(Lat);
       if (lon_ != null) hash ^= pbc::ProtobufEqualityComparers.BitwiseNullableDoubleEqualityComparer.GetHashCode(Lon);
+      if (imageData_ != null) hash ^= ImageData.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1121,6 +1139,9 @@ namespace gRPCServer.Protos {
       if (lon_ != null) {
         _single_lon_codec.WriteTagAndValue(output, Lon);
       }
+      if (imageData_ != null) {
+        _single_imageData_codec.WriteTagAndValue(output, ImageData);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1163,6 +1184,9 @@ namespace gRPCServer.Protos {
       if (lon_ != null) {
         _single_lon_codec.WriteTagAndValue(ref output, Lon);
       }
+      if (imageData_ != null) {
+        _single_imageData_codec.WriteTagAndValue(ref output, ImageData);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1202,6 +1226,9 @@ namespace gRPCServer.Protos {
       }
       if (lon_ != null) {
         size += _single_lon_codec.CalculateSizeWithTag(Lon);
+      }
+      if (imageData_ != null) {
+        size += _single_imageData_codec.CalculateSizeWithTag(ImageData);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1259,6 +1286,11 @@ namespace gRPCServer.Protos {
       if (other.lon_ != null) {
         if (lon_ == null || other.Lon != 0D) {
           Lon = other.Lon;
+        }
+      }
+      if (other.imageData_ != null) {
+        if (imageData_ == null || other.ImageData != pb::ByteString.Empty) {
+          ImageData = other.ImageData;
         }
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1340,6 +1372,13 @@ namespace gRPCServer.Protos {
             }
             break;
           }
+          case 90: {
+            pb::ByteString value = _single_imageData_codec.Read(input);
+            if (imageData_ == null || value != pb::ByteString.Empty) {
+              ImageData = value;
+            }
+            break;
+          }
         }
       }
     #endif
@@ -1416,6 +1455,13 @@ namespace gRPCServer.Protos {
             double? value = _single_lon_codec.Read(ref input);
             if (lon_ == null || value != 0D) {
               Lon = value;
+            }
+            break;
+          }
+          case 90: {
+            pb::ByteString value = _single_imageData_codec.Read(ref input);
+            if (imageData_ == null || value != pb::ByteString.Empty) {
+              ImageData = value;
             }
             break;
           }

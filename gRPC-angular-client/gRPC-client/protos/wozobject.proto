@@ -46,6 +46,7 @@ message WozObjectReply {
   google.protobuf.StringValue soortobjectcode = 8;
   google.protobuf.DoubleValue lat =9;
   google.protobuf.DoubleValue lon =10;
+  google.protobuf.BytesValue image_data = 11;
 }
 
 message FullWozObjectReply {

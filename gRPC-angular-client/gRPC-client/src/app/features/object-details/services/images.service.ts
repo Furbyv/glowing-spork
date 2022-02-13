@@ -47,6 +47,7 @@ export class ImagesService {
   }> = new ReplaySubject<{ data: Uint8Array; id: number }>(1);
 
   uploadRequest$ = this.imageUploadRequest$$.pipe(
+    tap(a => console.log(a)),
     map(request => {
       const req = new UploadImageRequest();
       req.imageData = request.data;

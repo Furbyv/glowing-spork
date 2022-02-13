@@ -12,9 +12,11 @@ public class WozObjectService : WozObjects.WozObjectsBase
 
     public async override Task<WozObjectsReply> GetWozObject(WozObjectRequestById request, ServerCallContext context)
     {
-        var wozobjects = await _dbContext.Wozobjectproperties.Include(w => w.WozObject).Where(w => w.Wozobjectnummer.ToString()
-        .Contains(request.Wozobjectnummer.ToString())).Where(p => DateTime.UtcNow >= p.Startdate && DateTime.UtcNow <= p.Enddate)
-        .Select(w => WozObjectConverter.WozobjectpropertyToWozObjectsReply(w)).ToListAsync(context.CancellationToken);
+        var wozobjects = await _dbContext.Wozobjectproperties
+            .Include(w => w.WozObject).ThenInclude(w => w.Images.Where(i => i.Main))
+            .Where(w => w.Wozobjectnummer.ToString().Contains(request.Wozobjectnummer.ToString()))
+            .Where(p => DateTime.UtcNow >= p.Startdate && DateTime.UtcNow <= p.Enddate)
+            .Select(w => WozObjectConverter.WozobjectpropertyToWozObjectsReply(w)).ToListAsync(context.CancellationToken);
 
         var reply = new WozObjectsReply();
         reply.Wozobjects.Add(wozobjects);
@@ -24,8 +26,12 @@ public class WozObjectService : WozObjects.WozObjectsBase
 
     public async override Task<WozObjectsReply> GetWozObjects(WozObjectRequestByIds request, ServerCallContext context)
     {
-        var wozobjects =await  _dbContext.Wozobjectproperties.Include(w => w.WozObject).Where(w => request.Wozobjectnummers.Contains(w.Wozobjectnummer)).Where(p => DateTime.UtcNow >= p.Startdate && DateTime.UtcNow <= p.Enddate)
-        .Select(w => WozObjectConverter.WozobjectpropertyToWozObjectsReply(w)).ToListAsync(context.CancellationToken);
+        var wozobjects =await  _dbContext.Wozobjectproperties.Include(w => w.WozObject)
+            .ThenInclude(w => w.Images.Where(i => i.Main))
+            .Where(w => request.Wozobjectnummers.Contains(w.Wozobjectnummer))
+            .Where(p => DateTime.UtcNow >= p.Startdate && DateTime.UtcNow <= p.Enddate)
+            .Select(w => WozObjectConverter.WozobjectpropertyToWozObjectsReply(w))
+            .ToListAsync(context.CancellationToken);
 
         var reply = new WozObjectsReply();
         reply.Wozobjects.Add(wozobjects);
