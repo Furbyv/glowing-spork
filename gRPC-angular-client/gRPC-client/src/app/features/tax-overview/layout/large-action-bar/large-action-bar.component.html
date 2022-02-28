@@ -16,7 +16,7 @@
     <mat-divider></mat-divider>
     <mat-list-item
       (click)="onToggleGrid()"
-      [disabled]="state !== 'displayObject'"
+      [disabled]="state === 'displayGrid'"
     >
       <h3 matLine>Open overview</h3>
       <mat-icon matListIcon>view_list</mat-icon>
@@ -27,6 +27,10 @@
     >
       <h3 matLine>Open object</h3>
       <mat-icon matListIcon>maps_home_work</mat-icon>
+    </mat-list-item>
+    <mat-list-item (click)="onToggleMap()" [disabled]="state === 'displayMap'">
+      <h3 matLine>Open map</h3>
+      <mat-icon matListIcon>map</mat-icon>
     </mat-list-item>
   </ng-container>
   <mat-divider></mat-divider>

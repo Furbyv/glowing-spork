@@ -16,6 +16,7 @@ import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.
 import { TaxOverviewGridComponent } from './components/tax-overview-grid/tax-overview-grid.component';
 import { SearchLayoutService } from '../object-search/services/search-layout.service';
 import { NotesModule } from '../notes/notes.module';
+import { MapBoxModule } from 'src/app/shared/map-box/map-box.module';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NotesModule } from '../notes/notes.module';
     TranslocoModule,
     TaxOverviewRoutingModule,
     NotesModule,
+    MapBoxModule,
     NgxMapboxGLModule.withConfig({
       accessToken:
         'pk.eyJ1IjoiZnJhbmt2ZSIsImEiOiJja3h4ZDg1cXoyNTNpMnNtcGdmeThxeTY5In0.-OgEUsCLZv5yV35LiNa-Pg',

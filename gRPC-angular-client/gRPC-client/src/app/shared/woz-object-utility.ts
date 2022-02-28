@@ -1,6 +1,9 @@
+import { WozObjectOverview } from '../proto/taxoverview.pb';
 import { FullWozObjectReply, WozObjectReply } from '../proto/wozobject.pb';
 
-export function getAddress(w: WozObjectReply | FullWozObjectReply): string {
+export function getAddress(
+  w: WozObjectReply | FullWozObjectReply | WozObjectOverview
+): string {
   const straatnaam = w.straatnaam ? w.straatnaam.value : '';
   const huisnummer = w.huisnummer;
   const huisletter = w.huisletter ? w.huisletter.value : '';
@@ -11,7 +14,7 @@ export function getAddress(w: WozObjectReply | FullWozObjectReply): string {
 }
 
 export function convertWozObjectsToGeoJson(
-  wozObjects: WozObjectReply[] | FullWozObjectReply[]
+  wozObjects: WozObjectReply[] | FullWozObjectReply[] | WozObjectOverview[]
 ): GeoJSON.Feature[] {
   return wozObjects.map(w => {
     const geometry: GeoJSON.Point = {
@@ -23,6 +26,7 @@ export function convertWozObjectsToGeoJson(
       type: 'Feature',
       geometry,
       properties: {
+        id: w.wozobjectnummer!,
         adres: getAddress(w)
       }
     };

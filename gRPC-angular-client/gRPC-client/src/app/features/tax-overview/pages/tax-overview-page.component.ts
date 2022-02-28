@@ -7,9 +7,12 @@ import {
 } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
+import { FeatureLayers } from 'src/app/shared/map-box/map-box.component';
 import { SearchLayoutService } from '../../object-search/services/search-layout.service';
 import { SelectedObjectsService } from '../services/selected-objects.service';
+import { TaxOverviewService } from '../services/tax-overview.service';
 
 @Component({
   selector: 'app-tax-overview-page',
@@ -26,6 +29,14 @@ import { SelectedObjectsService } from '../services/selected-objects.service';
         })
       ),
       state(
+        'displayMap',
+        style({
+          opacity: 0,
+          height: 0,
+          margin: 0
+        })
+      ),
+      state(
         'displayObject',
         style({
           opacity: 0,
@@ -35,9 +46,40 @@ import { SelectedObjectsService } from '../services/selected-objects.service';
       ),
       transition('* => *', animate('300ms ease-out'))
     ]),
+    trigger('displayMapState', [
+      state(
+        'displayGrid',
+        style({
+          opacity: 0,
+          height: '0'
+        })
+      ),
+      state(
+        'displayObject',
+        style({
+          opacity: 0,
+          height: '0'
+        })
+      ),
+      state(
+        'displayMap',
+        style({
+          opacity: 1,
+          height: '100%'
+        })
+      ),
+      transition('* => *', animate('300ms ease-out'))
+    ]),
     trigger('displayObjectState', [
       state(
         'displayGrid',
+        style({
+          opacity: 0,
+          height: '0'
+        })
+      ),
+      state(
+        'displayMap',
         style({
           opacity: 0,
           height: '0'
@@ -56,6 +98,13 @@ import { SelectedObjectsService } from '../services/selected-objects.service';
 })
 export class TaxOverviewPageComponent {
   state$ = this.layoutService.state$;
+  objectLayer$: Observable<
+    FeatureLayers[]
+  > = this.taxOverviewService.wozObjectGeoJson$.pipe(
+    map(layer => [
+      { id: 'objects', featureCollection: layer, markerId: 'blue-marker' }
+    ])
+  );
 
   onOpenObject(objectnumber: number) {
     this.layoutService.toggleObject();
@@ -71,13 +120,8 @@ export class TaxOverviewPageComponent {
   constructor(
     private layoutService: SearchLayoutService,
     private selectedObjectsService: SelectedObjectsService,
+    private taxOverviewService: TaxOverviewService,
     private route: ActivatedRoute,
     private router: Router
-  ) {
-    this.layoutService.state$.pipe(take(1)).subscribe(val => {
-      if (val === 'displayMap') {
-        this.layoutService.toggleGrid();
-      }
-    });
-  }
+  ) {}
 }

@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
 import { toAsyncState } from '@ngneat/loadoff';
-import { BehaviorSubject, combineLatest, ReplaySubject, Subject } from 'rxjs';
-import { shareReplay, switchMap } from 'rxjs/operators';
+import {
+  BehaviorSubject,
+  combineLatest,
+  Observable,
+  ReplaySubject,
+  Subject
+} from 'rxjs';
+import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import { WozObjectFilterRequest } from 'src/app/proto/taxoverview.pb';
 import { TaxoverviewClient } from 'src/app/proto/taxoverview.pbsc';
+import { convertWozObjectsToGeoJson } from 'src/app/shared/woz-object-utility';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +30,19 @@ export class TaxOverviewService {
       this.taxOverviewClient.getOverviewObjects(request).pipe(toAsyncState())
     ),
     shareReplay({ bufferSize: 1, refCount: false })
+  );
+
+  wozObjectGeoJson$: Observable<
+    GeoJSON.FeatureCollection
+  > = this.overviewObject$.pipe(
+    filter(state => state.success),
+    map(state => state.res!),
+    map(wozObject =>
+      wozObject.overviewObjects
+        ? convertWozObjectsToGeoJson(wozObject.overviewObjects)
+        : []
+    ),
+    map(features => ({ type: 'FeatureCollection', features }))
   );
 
   constructor(private taxOverviewClient: TaxoverviewClient) {}

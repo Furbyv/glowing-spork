@@ -20,6 +20,7 @@ export class LargeActionBarComponent {
   @Output() setFiltersAction = new EventEmitter();
   @Output() toggleObject = new EventEmitter();
   @Output() toggleGrid = new EventEmitter();
+  @Output() toggleMap = new EventEmitter();
   @Output() openNotes = new EventEmitter<number[]>();
 
   state$ = this.layoutService.state$;
@@ -44,6 +45,10 @@ export class LargeActionBarComponent {
 
   onToggleGrid() {
     this.toggleGrid.emit();
+  }
+
+  onToggleMap() {
+    this.toggleMap.emit();
   }
 
   onOpenNotes(selectedObjects: number[]) {

@@ -1,0 +1,40 @@
+@import "variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-card {
+  flex: 1;
+  display: flex;
+  margin-top: $default-gap;
+  margin-bottom: $default-gap;
+  width: 100%;
+}
+
+.mapboxgl-canvas {
+  width: 100% !important;
+}
+
+.map {
+  height: 100%;
+  flex: 1;
+}
+
+.mapboxgl-popup-content {
+  max-width: 400px;
+  font: 12px/20px "Helvetica Neue" !important;
+  color: black !important;
+}
+
+.boxdraw {
+  background: rgba(56, 135, 190, 0.1);
+  border: 2px solid #3887be;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}

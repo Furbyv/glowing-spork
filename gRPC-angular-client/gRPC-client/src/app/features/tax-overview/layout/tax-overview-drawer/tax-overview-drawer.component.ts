@@ -36,6 +36,10 @@ export class TaxOverviewDrawerComponent {
     this.layoutService.toggleGrid();
   }
 
+  public toggleMap() {
+    this.layoutService.toggleMap();
+  }
+
   constructor(
     public dialog: MatDialog,
     private layoutService: SearchLayoutService,
