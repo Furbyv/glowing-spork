@@ -22,6 +22,8 @@ export interface FeatureLayers {
   id: string;
   featureCollection: GeoJSON.FeatureCollection;
   markerId: string;
+  visible: boolean;
+  multiSelect: boolean;
 }
 
 @UntilDestroy()
@@ -35,6 +37,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   @Input() toggleRefresh: boolean = false;
   @Input() featureLayers: FeatureLayers[] | null = [];
   @Input() fullScreen: boolean = true;
+  @Input() layerSelection: boolean = true;
   @Input() multipleSelect: boolean = false;
   @Output() onSelect = new EventEmitter<string>();
   private mapLoaded$$: Subject<mapboxgl.Map> = new ReplaySubject<mapboxgl.Map>(
@@ -43,10 +46,12 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   private featureCollection$$: Subject<FeatureLayers[]> = new ReplaySubject<
     FeatureLayers[]
   >(1);
-  private map: mapboxgl.Map | undefined;
+  layers$ = this.featureCollection$$.asObservable();
+
+  map: mapboxgl.Map | undefined;
   private mapStyle = 'mapbox://styles/mapbox/streets-v11';
 
-  @ViewChild('map')
+  @ViewChild('mapbox')
   private mapContainer: ElementRef<HTMLElement> | undefined;
   @ViewChild('menu')
   private menuContainer: ElementRef<HTMLElement> | undefined;
@@ -290,6 +295,10 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         id,
         type: 'circle',
         source: id,
+        layout: {
+          // Make the layer visible by default.
+          visibility: layer.visible ? 'visible' : 'none'
+        },
         paint: {
           'circle-color': '#87c2fa',
           'circle-opacity': 0.75
@@ -310,6 +319,10 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         id: `highlighted`,
         type: 'circle',
         source: id,
+        layout: {
+          // Make the layer visible by default.
+          visibility: layer.visible ? 'visible' : 'none'
+        },
         paint: {
           'circle-color': '#2605ff',
           'circle-opacity': 0.75

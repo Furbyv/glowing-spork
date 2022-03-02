@@ -1,0 +1,8 @@
+<div id="menu" *ngIf="layers">
+  <a
+    *ngFor="let layer of layers"
+    [ngClass]="{ active: layer.visible }"
+    (click)="onToggleLayer(layer)"
+    >{{ layer.id }}</a
+  >
+</div>

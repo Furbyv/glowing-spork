@@ -1,3 +1,8 @@
 <mat-card>
-  <div class="map" #map></div>
+  <map-layer-select
+    *ngIf="layerSelection"
+    [layers]="layers$ | async"
+    [map]="map"
+  ></map-layer-select>
+  <div class="map" #mapbox></div>
 </mat-card>

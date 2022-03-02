@@ -102,7 +102,13 @@ export class TaxOverviewPageComponent {
     FeatureLayers[]
   > = this.taxOverviewService.wozObjectGeoJson$.pipe(
     map(layer => [
-      { id: 'objects', featureCollection: layer, markerId: 'blue-marker' }
+      {
+        id: 'objects',
+        featureCollection: layer,
+        markerId: 'blue-marker',
+        visible: true,
+        multiSelect: true
+      }
     ])
   );
 
