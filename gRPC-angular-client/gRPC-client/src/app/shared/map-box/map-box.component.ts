@@ -39,7 +39,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   @Input() fullScreen: boolean = true;
   @Input() layerSelection: boolean = true;
   @Input() multipleSelect: boolean = false;
-  @Output() onSelect = new EventEmitter<string>();
+  @Output() onSelect = new EventEmitter<string[]>();
   private mapLoaded$$: Subject<mapboxgl.Map> = new ReplaySubject<mapboxgl.Map>(
     1
   );
@@ -128,25 +128,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
 
       this.map.on('click', e => {
         if (e && e.features) {
-          this.onSelect.emit(`${e.features[0].id!}`);
-          // const point = e.features[0].geometry as GeoJSON.Point;
-          // // Copy coordinates array.
-          // const coordinates: [number, number] = [
-          //   point.coordinates[0],
-          //   point.coordinates[1]
-          // ];
-          // const description = `<p>${e.features[0].properties!.adres}</p>`;
-          // console.log(description);
-          // // Ensure that if the map is zoomed out such that multiple
-          // // copies of the feature are visible, the popup appears
-          // // over the copy being pointed to.
-          // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          //   coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-          // }
-          // new mapboxgl.Popup()
-          //   .setLngLat(coordinates)
-          //   .setHTML(description)
-          //   .addTo(this.map!);
+          this.onSelect.emit([`${e.features[0].id!}`]);
         }
       });
 
@@ -267,8 +249,9 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
       // Run through the selected features and set a filter
       // to match features with unique FIPS codes to activate
       // the `counties-highlighted` layer.
-      const fips = features.map(feature => feature.properties!.id);
-      this.map.setFilter('highlighted', ['in', 'id', ...fips]);
+      const selectedIds = features.map(feature => feature.properties!.id);
+      this.map.setFilter('highlighted', ['in', 'id', ...selectedIds]);
+      this.onSelect.emit(selectedIds);
     }
     this.start = undefined;
     this.map!.dragPan.enable();
