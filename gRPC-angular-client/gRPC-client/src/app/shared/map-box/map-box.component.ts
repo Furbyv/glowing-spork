@@ -92,6 +92,11 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   private keyDownListener: (this: Document, ev: KeyboardEvent) => any = e =>
     this.onKeyDown(e);
 
+  // Create a popup, but don't add it to the map yet.
+  private popup = new mapboxgl.Popup({
+    closeButton: false
+  });
+
   ngAfterViewInit(): void {
     const initialState = {
       lng: 6.046511,
@@ -121,7 +126,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         window.dispatchEvent(new Event('resize'));
       });
 
-      this.map.on('click', 'points', e => {
+      this.map.on('click', e => {
         if (e && e.features) {
           this.onSelect.emit(`${e.features[0].id!}`);
           // const point = e.features[0].geometry as GeoJSON.Point;
@@ -148,25 +153,26 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
       const canvas = this.map.getCanvas();
       canvas.addEventListener('mousedown', e => this.mouseDown(e), true);
 
-      // this.map.on('mousemove', e => {
-      //   if (!this.map) return;
-      //   const features = this.map.queryRenderedFeatures(e.point, {
-      //     layers: this.featureLayers?.map(l => l.id)
-      //   });
+      this.map.on('mousemove', e => {
+        const layerIds = this.featureLayers?.map(l => l.id);
+        if (!this.map || !layerIds || !layerIds.length) return;
+        const features = this.map.queryRenderedFeatures(e.point, {
+          layers: layerIds
+        });
 
-      //   // Change the cursor style as a UI indicator.
-      //   this.map.getCanvas().style.cursor = features.length ? 'pointer' : '';
+        // Change the cursor style as a UI indicator.
+        this.map.getCanvas().style.cursor = features.length ? 'pointer' : '';
 
-      //   if (!features.length) {
-      //     this.popup.remove();
-      //     return;
-      //   }
+        if (!features.length) {
+          this.popup.remove();
+          return;
+        }
 
-      //   this.popup
-      //     .setLngLat(e.lngLat)
-      //     .setText(features[0].properties!.id)
-      //     .addTo(this.map);
-      // });
+        this.popup
+          .setLngLat(e.lngLat)
+          .setText(features[0].properties!.id)
+          .addTo(this.map);
+      });
     }
   }
 
@@ -296,7 +302,6 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         type: 'circle',
         source: id,
         layout: {
-          // Make the layer visible by default.
           visibility: layer.visible ? 'visible' : 'none'
         },
         paint: {
@@ -315,20 +320,21 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         }
       });
 
-      map.addLayer({
-        id: `highlighted`,
-        type: 'circle',
-        source: id,
-        layout: {
-          // Make the layer visible by default.
-          visibility: layer.visible ? 'visible' : 'none'
-        },
-        paint: {
-          'circle-color': '#2605ff',
-          'circle-opacity': 0.75
-        },
-        filter: ['in', 'id', '']
-      }); // Place polygon under these labels.
+      if (layer.multiSelect) {
+        map.addLayer({
+          id: `highlighted`,
+          type: 'circle',
+          source: id,
+          layout: {
+            visibility: layer.visible ? 'visible' : 'none'
+          },
+          paint: {
+            'circle-color': '#2605ff',
+            'circle-opacity': 0.75
+          },
+          filter: ['in', 'id', '']
+        });
+      }
 
       if (layer.featureCollection.features[0]) {
         const coordinates = (layer.featureCollection.features[0]
