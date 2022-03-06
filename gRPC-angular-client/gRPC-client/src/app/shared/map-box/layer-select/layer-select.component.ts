@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FeatureLayer } from '../layer-definition/feature-layer';
 import { FeatureLayers } from '../map-box.component';
 
 @Component({
@@ -7,21 +8,21 @@ import { FeatureLayers } from '../map-box.component';
   styleUrls: ['layer-select.component.scss']
 })
 export class LayerSelectComponent {
-  @Input() layers: FeatureLayers[] | null = [];
+  @Input() layers: FeatureLayer[] | null = [];
   @Input() map: mapboxgl.Map | undefined;
 
-  onToggleLayer(layer: FeatureLayers) {
+  onToggleLayer(layer: FeatureLayer) {
     if (this.map) {
-      const visibility =
-        this.map.getLayoutProperty(layer.id, 'visibility') === 'visible'
-          ? 'none'
-          : 'visible';
-      this.map.setLayoutProperty(layer.id, 'visibility', visibility);
-      if (layer.multiSelect) {
-        if (this.map.getLayer('highlighted'))
-          this.map.setLayoutProperty(`highlighted`, 'visibility', visibility);
+      const visibility = layer.Visible ? 'none' : 'visible';
+      this.map.setLayoutProperty(layer.mainLayer.id, 'visibility', visibility);
+      if (layer.HighLightLayer) {
+        this.map.setLayoutProperty(
+          layer.HighLightLayer.id,
+          'visibility',
+          visibility
+        );
       }
-      layer.visible = !layer.visible;
+      layer.setLayerVisibility(!layer.Visible);
     }
   }
 }

@@ -8,7 +8,9 @@
     </div>
     <woz-map-box
       [@displayMapState]="state$ | async"
-      [featureLayers]="objectLayer$ | async"
+      [sources]="dataSources$ | async"
+      [layers]="layers"
+      [multipleSelect]="true"
     ></woz-map-box>
     <ng-container *ngIf="state$ | async as state">
       <div class="router" [@displayObjectState]="state">

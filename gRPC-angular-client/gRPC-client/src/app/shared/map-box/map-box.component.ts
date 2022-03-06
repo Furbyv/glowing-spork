@@ -16,11 +16,15 @@ import * as mapboxgl from 'mapbox-gl';
 import { Map } from 'mapbox-gl';
 import { combineLatest, ReplaySubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { FeatureLayer } from './layer-definition/feature-layer';
+import { MapSource } from './map-box.utility';
 import { markers } from './markers';
 
 export interface FeatureLayers {
   id: string;
   featureCollection: GeoJSON.FeatureCollection;
+  layerLayout: mapboxgl.AnyLayout;
+  layerPaint: mapboxgl.AnyPaint;
   markerId: string;
   visible: boolean;
   multiSelect: boolean;
@@ -35,7 +39,8 @@ export interface FeatureLayers {
 })
 export class MapBoxComponent implements OnChanges, AfterViewInit {
   @Input() toggleRefresh: boolean = false;
-  @Input() featureLayers: FeatureLayers[] | null = [];
+  @Input() layers: FeatureLayer[] | null = [];
+  @Input() sources: MapSource[] | null = [];
   @Input() fullScreen: boolean = true;
   @Input() layerSelection: boolean = true;
   @Input() multipleSelect: boolean = false;
@@ -43,25 +48,27 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   private mapLoaded$$: Subject<mapboxgl.Map> = new ReplaySubject<mapboxgl.Map>(
     1
   );
-  private featureCollection$$: Subject<FeatureLayers[]> = new ReplaySubject<
-    FeatureLayers[]
-  >(1);
-  layers$ = this.featureCollection$$.asObservable();
+  private layers$$: Subject<FeatureLayer[]> = new ReplaySubject<FeatureLayer[]>(
+    1
+  );
+  layers$ = this.layers$$.asObservable();
 
+  private sources$$: Subject<MapSource[]> = new ReplaySubject<MapSource[]>(1);
   map: mapboxgl.Map | undefined;
   private mapStyle = 'mapbox://styles/mapbox/streets-v11';
 
   @ViewChild('mapbox')
   private mapContainer: ElementRef<HTMLElement> | undefined;
-  @ViewChild('menu')
-  private menuContainer: ElementRef<HTMLElement> | undefined;
 
   lat = 48.137154;
   lng = 11.576124;
 
-  ngOnChanges(_: SimpleChanges): void {
-    if (this.featureLayers) {
-      this.featureCollection$$.next(this.featureLayers);
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.layers && changes.layers) {
+      this.layers$$.next(this.layers);
+    }
+    if (this.sources && changes.sources) {
+      this.sources$$.next(this.sources);
     }
 
     if (this.map) {
@@ -136,8 +143,15 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
       canvas.addEventListener('mousedown', e => this.mouseDown(e), true);
 
       this.map.on('mousemove', e => {
-        const layerIds = this.featureLayers?.map(l => l.id);
-        if (!this.map || !layerIds || !layerIds.length) return;
+        const layerIds = this.layers?.map(l => l.mainLayer.id);
+        if (
+          !this.map ||
+          !layerIds ||
+          !layerIds.length ||
+          !this.sources ||
+          !this.sources.length
+        )
+          return;
         const features = this.map.queryRenderedFeatures(e.point, {
           layers: layerIds
         });
@@ -173,6 +187,15 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   }
 
   mouseDown(e: MouseEvent) {
+    if (
+      !this.map ||
+      !this.layers ||
+      !this.layers.length ||
+      !this.sources ||
+      !this.sources.length
+    ) {
+      return;
+    }
     // Continue the rest of the function if the shiftkey is pressed.
     if (!(e.shiftKey && e.button === 0) || !this.map) return;
     // Disable default drag zooming when the shift key is held down.
@@ -237,9 +260,11 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
     }
 
     // If bbox exists. use this value as the argument for `queryRenderedFeatures`
-    if (bbox && this.map) {
+    if (bbox && this.map && this.start) {
       const features = this.map.queryRenderedFeatures(bbox, {
-        layers: this.featureLayers?.map(l => l.id)
+        layers: this.layers
+          ?.filter(l => l.MultiSelectable)
+          .map(l => l.mainLayer.id)
       });
 
       if (features.length >= 1000) {
@@ -250,7 +275,11 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
       // to match features with unique FIPS codes to activate
       // the `counties-highlighted` layer.
       const selectedIds = features.map(feature => feature.properties!.id);
-      this.map.setFilter('highlighted', ['in', 'id', ...selectedIds]);
+      this.layers?.forEach(l => {
+        if (this.map && l.HighLightLayer) {
+          this.map.setFilter(l.HighLightLayer.id, ['in', 'id', ...selectedIds]);
+        }
+      });
       this.onSelect.emit(selectedIds);
     }
     this.start = undefined;
@@ -259,14 +288,26 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
 
   constructor(private renderer: Renderer2) {
     //subscription after map initialization to set layers
-    combineLatest([this.featureCollection$$, this.mapLoaded$$])
+    combineLatest([this.layers$$, this.sources$$, this.mapLoaded$$])
       .pipe(untilDestroyed(this))
-      .subscribe(([collection, map]) => this.buildLayers(collection, map));
+      .subscribe(([collection, sources, map]) =>
+        this.buildLayers(collection, sources, map)
+      );
   }
 
-  buildLayers(layers: FeatureLayers[], map: mapboxgl.Map): void {
+  buildLayers(
+    layers: FeatureLayer[],
+    sources: MapSource[],
+    map: mapboxgl.Map
+  ): void {
+    sources.forEach(s => {
+      if (map.getSource(s.id)) {
+        map.removeSource(s.id);
+      }
+      map.addSource(s.id, s.source);
+    });
     layers.forEach(layer => {
-      const id = layer.id;
+      const id = layer.mainLayer.id;
       if (map.getLayer(id)) {
         map.removeLayer(id);
       }
@@ -274,58 +315,10 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         map.removeSource(id);
       }
 
-      map.addSource(id, {
-        type: 'geojson',
-        data: layer.featureCollection
-      });
-
       // Add a symbol layer
-      map.addLayer({
-        id,
-        type: 'circle',
-        source: id,
-        layout: {
-          visibility: layer.visible ? 'visible' : 'none'
-        },
-        paint: {
-          'circle-color': '#87c2fa',
-          'circle-opacity': 0.75
-          //'icon-image': layer.markerId,
-          //'icon-allow-overlap': true,
-          // get the title name from the source's "title" property
-          // 'text-field': ['get', 'adres'],
-          // 'text-font': [
-          //   'Arial Unicode MS Regular ',
-          //   'Arial Unicode MS Regular'
-          // ],
-          // 'text-offset': [0, 1.25],
-          // 'text-anchor': 'top'
-        }
-      });
-
-      if (layer.multiSelect) {
-        map.addLayer({
-          id: `highlighted`,
-          type: 'circle',
-          source: id,
-          layout: {
-            visibility: layer.visible ? 'visible' : 'none'
-          },
-          paint: {
-            'circle-color': '#2605ff',
-            'circle-opacity': 0.75
-          },
-          filter: ['in', 'id', '']
-        });
-      }
-
-      if (layer.featureCollection.features[0]) {
-        const coordinates = (layer.featureCollection.features[0]
-          .geometry as GeoJSON.Point).coordinates;
-        map.flyTo({
-          center: [coordinates[0], coordinates[1]],
-          zoom: 12
-        });
+      map.addLayer(layer.mainLayer);
+      if (layer.MultiSelectable && layer.HighLightLayer) {
+        map.addLayer(layer.HighLightLayer);
       }
     });
   }

@@ -7,9 +7,11 @@ import {
 } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CircleLayer } from 'mapbox-gl';
 import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
-import { FeatureLayers } from 'src/app/shared/map-box/map-box.component';
+import { map } from 'rxjs/operators';
+import { FeatureLayer } from 'src/app/shared/map-box/layer-definition/feature-layer';
+import { MapSource } from 'src/app/shared/map-box/map-box.utility';
 import { SearchLayoutService } from '../../object-search/services/search-layout.service';
 import { SelectedObjectsService } from '../services/selected-objects.service';
 import { TaxOverviewService } from '../services/tax-overview.service';
@@ -98,19 +100,48 @@ import { TaxOverviewService } from '../services/tax-overview.service';
 })
 export class TaxOverviewPageComponent {
   state$ = this.layoutService.state$;
-  objectLayer$: Observable<
-    FeatureLayers[]
+  dataSources$: Observable<
+    MapSource[]
   > = this.taxOverviewService.wozObjectGeoJson$.pipe(
-    map(layer => [
+    map(data => [
       {
         id: 'objects',
-        featureCollection: layer,
-        markerId: 'blue-marker',
-        visible: true,
-        multiSelect: true
+        source: {
+          type: 'geojson',
+          data
+        }
       }
     ])
   );
+
+  objectLayer: CircleLayer = {
+    id: 'Objecten',
+    type: 'circle',
+    source: 'objects',
+    paint: {
+      'circle-color': '#87c2fa',
+      'circle-opacity': 0.75
+    }
+  };
+
+  multiSelectLayer: CircleLayer = {
+    id: 'Objecten-hl',
+    type: 'circle',
+    source: 'objects',
+    paint: {
+      'circle-color': '#2605ff',
+      'circle-opacity': 0.75
+    },
+    filter: ['in', 'id', '']
+  };
+
+  layers: FeatureLayer[] = this.createFeautureLayers();
+
+  createFeautureLayers(): FeatureLayer[] {
+    const layer = new FeatureLayer(this.objectLayer);
+    layer.MakeMutliSelectable(this.multiSelectLayer);
+    return [layer];
+  }
 
   onOpenObject(objectnumber: number) {
     this.layoutService.toggleObject();
