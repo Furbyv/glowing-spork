@@ -143,15 +143,15 @@ export class TaxOverviewPageComponent {
     return [layer];
   }
 
-  onOpenObject(objectnumber: number) {
+  onOpenObject(objectnumber: number | string) {
     this.layoutService.toggleObject();
     this.router.navigate([objectnumber], {
       relativeTo: this.route
     });
   }
 
-  onObjectSelect(objects: number[]) {
-    this.selectedObjectsService.setSelectedObjects(objects);
+  onObjectSelect(objects: number[] | string[]) {
+    this.selectedObjectsService.setSelectedObjects(objects.map(o => +o));
   }
 
   constructor(

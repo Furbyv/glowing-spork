@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { FeatureLayer } from '../layer-definition/feature-layer';
-import { FeatureLayers } from '../map-box.component';
 
 @Component({
   selector: 'map-layer-select',

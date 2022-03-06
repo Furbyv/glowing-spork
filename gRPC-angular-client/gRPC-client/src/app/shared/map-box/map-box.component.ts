@@ -13,22 +13,13 @@ import {
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import * as mapboxgl from 'mapbox-gl';
+import * as geojson from 'geojson';
 import { Map } from 'mapbox-gl';
 import { combineLatest, ReplaySubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FeatureLayer } from './layer-definition/feature-layer';
 import { MapSource } from './map-box.utility';
 import { markers } from './markers';
-
-export interface FeatureLayers {
-  id: string;
-  featureCollection: GeoJSON.FeatureCollection;
-  layerLayout: mapboxgl.AnyLayout;
-  layerPaint: mapboxgl.AnyPaint;
-  markerId: string;
-  visible: boolean;
-  multiSelect: boolean;
-}
 
 @UntilDestroy()
 @Component({
@@ -44,7 +35,11 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   @Input() fullScreen: boolean = true;
   @Input() layerSelection: boolean = true;
   @Input() multipleSelect: boolean = false;
-  @Output() onSelect = new EventEmitter<string[]>();
+  @Output() clickSelect = new EventEmitter<string[]>();
+  @Output() dblclickSelect = new EventEmitter<string>();
+  @Output() multiselect = new EventEmitter<string[]>();
+  @Output() mapLoaded = new EventEmitter<mapboxgl.Map>();
+
   private mapLoaded$$: Subject<mapboxgl.Map> = new ReplaySubject<mapboxgl.Map>(
     1
   );
@@ -130,12 +125,20 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
           this.initMarkers(this.map);
         }
         this.mapLoaded$$.next(this.map);
+        this.mapLoaded.emit(this.map);
         window.dispatchEvent(new Event('resize'));
       });
 
       this.map.on('click', e => {
         if (e && e.features) {
-          this.onSelect.emit([`${e.features[0].id!}`]);
+          this.clickSelect.emit([`${e.features[0].id!}`]);
+        }
+      });
+
+      this.map.on('dblclick', e => {
+        if (e && e.features) {
+          console.log(e.features);
+          this.dblclickSelect.emit(`${e.features[0].id!}`);
         }
       });
 
@@ -280,7 +283,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
           this.map.setFilter(l.HighLightLayer.id, ['in', 'id', ...selectedIds]);
         }
       });
-      this.onSelect.emit(selectedIds);
+      this.multiselect.emit(selectedIds);
     }
     this.start = undefined;
     this.map!.dragPan.enable();
@@ -321,5 +324,64 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         map.addLayer(layer.HighLightLayer);
       }
     });
+    this.fitToFeatures(sources, map);
+  }
+
+  private fitToFeatures(sources: MapSource[], map: mapboxgl.Map) {
+    const s = [...sources.filter(s => s.source.type === 'geojson')];
+    const geoJsonSources = s.map(s => s.source as mapboxgl.GeoJSONSourceRaw);
+    const bounds = new mapboxgl.LngLatBounds();
+    const geo = geoJsonSources.flatMap(
+      (g: mapboxgl.GeoJSONSourceRaw) =>
+        g.data as GeoJSON.FeatureCollection<GeoJSON.Geometry>
+    );
+    const coordinates = geo.flatMap(
+      (
+        g: GeoJSON.FeatureCollection<
+          GeoJSON.Geometry,
+          GeoJSON.GeoJsonProperties
+        >
+      ) => g.features.flatMap(f => this.getCoordinates(f.geometry))
+    );
+    for (let index = 0; index < coordinates.length; index++) {
+      const c = coordinates[index];
+      if (c) {
+        bounds.extend(c);
+      }
+    }
+    map.fitBounds(bounds, { padding: 20 });
+  }
+
+  private getCoordinates(
+    geo: GeoJSON.Geometry
+  ): [number, number][] | undefined {
+    let positions: GeoJSON.Position[];
+    switch (geo.type) {
+      case 'Point':
+        positions = [(geo as GeoJSON.Point).coordinates];
+        break;
+      case 'MultiPoint':
+        positions = (geo as GeoJSON.MultiPoint).coordinates;
+        break;
+      case 'LineString':
+        positions = (geo as GeoJSON.LineString).coordinates;
+        break;
+      case 'MultiLineString':
+        positions = (geo as GeoJSON.MultiLineString).coordinates.flatMap(
+          c => c
+        );
+        break;
+      case 'Polygon':
+        positions = (geo as GeoJSON.Polygon).coordinates.flatMap(c => c);
+        break;
+      case 'MultiPolygon':
+        positions = (geo as GeoJSON.MultiPolygon).coordinates.flatMap(c =>
+          c.flatMap(a => a)
+        );
+        break;
+      default:
+        return undefined;
+    }
+    return positions.map(p => [p[0], p[1]]);
   }
 }
