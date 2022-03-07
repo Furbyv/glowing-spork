@@ -39,6 +39,7 @@ public class Startup
             endpoints.MapGrpcService<WozSubobjectService>().EnableGrpcWeb();
             endpoints.MapGrpcService<TaxOverviewService>().EnableGrpcWeb();
             endpoints.MapGrpcService<NoteService>().EnableGrpcWeb();
+            endpoints.MapGrpcService<TimePeriodService>().EnableGrpcWeb();
 
             endpoints.MapGet("/", async context =>
             {

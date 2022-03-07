@@ -3,6 +3,7 @@
 namespace gRPCServer.Models;
 public class DataContext : DbContext
 {
+    public virtual DbSet<TimePeriod> Timeperiods { get; set; }
     public virtual DbSet<Flexproperty> Flexproperties { get; set; }
     public virtual DbSet<Gemeente> Gemeenten { get; set; }
     public virtual DbSet<Propertytype> Propertytypes { get; set; }

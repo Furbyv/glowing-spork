@@ -1,0 +1,30 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+option csharp_namespace = "gRPCServer.Protos";
+
+package timeperiods;
+
+// This services manages the time periods available.
+// GeTimePeriods can be used to request all timeperiods available
+// AddTimePeriod can be used to add a new TimePeriod
+service TimePeriods {
+  rpc GetTimePeriods(google.protobuf.Empty) returns (TimePeriodsReply);
+  rpc AddTimePeriod (TimePeriodRecord) returns (AddTimePeriodReply);
+}
+
+message TimePeriodsReply{
+	repeated TimePeriodRecord time_periods = 1;
+}
+
+message TimePeriodRecord{
+	int64 id= 1;
+	string description = 2;
+	google.protobuf.Timestamp valuation_date = 3;
+	google.protobuf.Timestamp property_date = 4;
+}
+
+message AddTimePeriodReply{
+	bool succes = 1;
+}

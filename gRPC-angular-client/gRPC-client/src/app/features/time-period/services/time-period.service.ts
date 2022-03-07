@@ -1,37 +1,34 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-
-export interface TimeFrame {
-  id: number;
-  description: string;
-  sitDate: Date;
-  valuationDate: Date;
-}
+import { Empty } from '@ngx-grpc/well-known-types';
+import { merge, ReplaySubject, Subject } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { TimePeriodRecord } from 'src/app/proto/timeperiod.pb';
+import { TimePeriodsClient } from 'src/app/proto/timeperiod.pbsc';
 
 @Injectable({ providedIn: 'root' })
 export class TimePeriodService {
-  public timeframes: TimeFrame[] = [
-    {
-      id: 0,
-      description: 'Situatie 2020, Prijspeil 2019',
-      sitDate: new Date('2020-01-01'),
-      valuationDate: new Date('2019-01-01')
-    },
-    {
-      id: 1,
-      description: 'Situatie 2021, Prijspeil 2020',
-      sitDate: new Date('2021-01-01'),
-      valuationDate: new Date('2020-01-01')
-    },
-    {
-      id: 2,
-      description: 'Situatie 2022, Prijspeil 2021',
-      sitDate: new Date('2022-01-01'),
-      valuationDate: new Date('2021-01-01')
-    }
-  ];
-  private selectedTimePeriod$$: Subject<TimeFrame> = new BehaviorSubject<
-    TimeFrame
-  >(this.timeframes[0]);
-  public selectedTimeFrame$: Observable<TimeFrame> = this.selectedTimePeriod$$;
+  private selectedTimePeriod$$: Subject<TimePeriodRecord> = new ReplaySubject<
+    TimePeriodRecord
+  >(1);
+
+  public timePeriods$ = this.timePeriodsClient.getTimePeriods(new Empty()).pipe(
+    map(reply => reply.timePeriods!),
+    map(periods =>
+      periods.sort(
+        (a, b) => +b.valuationDate!.seconds! - +a.valuationDate!.seconds!
+      )
+    ),
+    shareReplay({ bufferSize: 1, refCount: false })
+  );
+
+  public selectedTimeFrame$ = merge(
+    this.selectedTimePeriod$$,
+    this.timePeriods$.pipe(map(p => p[0]))
+  );
+
+  constructor(private timePeriodsClient: TimePeriodsClient) {}
+
+  setSelectedTimePeriod(period: TimePeriodRecord) {
+    this.selectedTimePeriod$$.next(period);
+  }
 }
