@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/.angular
 # Only exists if Bazel was run
 /bazel-out
 
@@ -25,7 +26,7 @@ speed-measure-plugin*.json
 
 # IDE - VSCode
 .vscode/*
-!.vscode/settings.json
+.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
@@ -44,3 +45,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+.eslintcache
+
+# Cypress
+/cypress/screenshots
+/cypress/videos
+/cypress/results
