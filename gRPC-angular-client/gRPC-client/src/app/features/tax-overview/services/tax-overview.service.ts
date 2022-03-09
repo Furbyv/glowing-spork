@@ -16,9 +16,7 @@ import { convertWozObjectsToGeoJson } from 'src/app/shared/woz-object-utility';
   providedIn: 'root'
 })
 export class TaxOverviewService {
-  private filterRequest$$: Subject<WozObjectFilterRequest> = new ReplaySubject<
-    WozObjectFilterRequest
-  >(1);
+  private filterRequest$$: Subject<WozObjectFilterRequest> = new ReplaySubject<WozObjectFilterRequest>(1);
 
   private refresh$$: Subject<boolean> = new BehaviorSubject<boolean>(true);
   refresh$ = this.refresh$$.asObservable();
