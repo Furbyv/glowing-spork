@@ -9,9 +9,7 @@ import { TaxoverviewClient } from 'src/app/proto/taxoverview.pbsc';
   providedIn: 'root'
 })
 export class TaxOverviewService {
-  private filterRequest$$: Subject<WozObjectFilterRequest> = new ReplaySubject<
-    WozObjectFilterRequest
-  >(1);
+  private filterRequest$$: Subject<WozObjectFilterRequest> = new ReplaySubject<WozObjectFilterRequest>(1);
 
   private refresh$$: Subject<boolean> = new BehaviorSubject<boolean>(true);
   refresh$ = this.refresh$$.asObservable();
