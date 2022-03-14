@@ -1,45 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AsyncState, toAsyncState } from '@ngneat/loadoff';
-import {
-  BehaviorSubject,
-  combineLatest,
-  Observable,
-  Observer,
-  ReplaySubject,
-  Subject,
-  Subscriber,
-  Subscription
-} from 'rxjs';
-import {
-  combineAll,
-  concatMap,
-  map,
-  share,
-  shareReplay,
-  switchMap,
-  tap,
-  toArray
-} from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
+import { concatMap, map, shareReplay, tap, toArray } from 'rxjs/operators';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { WozObjectsClient } from 'src/app/proto/wozobject.pbsc';
-import {
-  UploadImageRequest,
-  WozObjectImageReply,
-  WozObjectImageRequest
-} from 'src/app/proto/wozobject.pb';
+import { UploadImageRequest, WozObjectImageReply, WozObjectImageRequest } from 'src/app/proto/wozobject.pb';
 
 @Injectable({ providedIn: 'root' })
 export class ImagesService {
   private refresh$$: Subject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(
-    private wozObjectsClient: WozObjectsClient,
-    private sanitizer: DomSanitizer
-  ) {}
+  constructor(private wozObjectsClient: WozObjectsClient, private sanitizer: DomSanitizer) {}
 
-  private imageRequest$$: Subject<WozObjectImageRequest> = new ReplaySubject<
-    WozObjectImageRequest
-  >(1);
+  private imageRequest$$: Subject<WozObjectImageRequest> = new ReplaySubject<WozObjectImageRequest>(1);
 
   private imageUploadRequest$$: Subject<{
     data: Uint8Array;
@@ -47,18 +20,17 @@ export class ImagesService {
   }> = new ReplaySubject<{ data: Uint8Array; id: number }>(1);
 
   uploadRequest$ = this.imageUploadRequest$$.pipe(
-    tap(a => console.log(a)),
-    map(request => {
+    map((request) => {
       const req = new UploadImageRequest();
       req.imageData = request.data;
       req.isMain = false;
       req.wozobjectnummer = '' + request.id;
       return req;
     }),
-    concatMap(req => this.wozObjectsClient.uploadWozObjectImage(req)),
+    concatMap((req) => this.wozObjectsClient.uploadWozObjectImage(req)),
     toAsyncState(),
     shareReplay({ bufferSize: 1, refCount: true }),
-    tap(_ => this.refresh$$.next(true))
+    tap((_) => this.refresh$$.next(true))
   );
 
   getImages(id: number, onlyMain: boolean): WozObjectImageRequest {
@@ -70,26 +42,19 @@ export class ImagesService {
   }
 
   //TODO make this a proper array based on all results
-  images$: Observable<AsyncState<WozObjectImageReply[]>> = combineLatest([
-    this.imageRequest$$,
-    this.refresh$$
-  ]).pipe(
-    concatMap(([request]) =>
-      this.wozObjectsClient.getWozObjectImages(request).pipe(toArray())
-    ),
+  images$: Observable<AsyncState<WozObjectImageReply[]>> = combineLatest([this.imageRequest$$, this.refresh$$]).pipe(
+    concatMap(([request]) => this.wozObjectsClient.getWozObjectImages(request).pipe(toArray())),
     toAsyncState(),
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
   convertByteArrayToImage(imageData: Uint8Array): SafeUrl {
     const blob = new Blob([imageData], { type: 'image/png' });
-    let objectURL = URL.createObjectURL(blob);
+    const objectURL = URL.createObjectURL(blob);
     return this.sanitizer.bypassSecurityTrustUrl(objectURL);
   }
 
-  defaultImage = this.sanitizer.bypassSecurityTrustUrl(
-    'assets/default_image.jpg'
-  );
+  defaultImage = this.sanitizer.bypassSecurityTrustUrl('assets/default_image.jpg');
 
   uploadImages(data: Uint8Array, id: number) {
     this.imageUploadRequest$$.next({ data, id });

@@ -34,7 +34,6 @@ export class ObjectSearchListItemComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.wozObject && this.wozObject && this.wozObject.imageData && this.wozObject.imageData.value) {
-      console.log(this.wozObject.imageData);
       this.image = this.imageService.convertByteArrayToImage(this.wozObject.imageData.value);
     }
   }

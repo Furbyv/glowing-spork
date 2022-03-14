@@ -15,6 +15,7 @@ import { SmallActionBarComponent } from './components/object-search/small-action
 import { LargeActionBarComponent } from './components/object-search/large-action-bar/large-action-bar.component';
 import { SearchLayoutService } from './services/search-layout.service';
 import { MapBoxModule } from 'src/app/shared/map-box/map-box.module';
+import { ObjectPopupComponent } from './components/object-popup/object-popup.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MapBoxModule } from 'src/app/shared/map-box/map-box.module';
     ObjectSearchListComponent,
     ObjectSearchListItemComponent,
     SmallActionBarComponent,
-    LargeActionBarComponent
+    LargeActionBarComponent,
+    ObjectPopupComponent,
   ],
   imports: [
     CommonModule,
@@ -34,9 +36,9 @@ import { MapBoxModule } from 'src/app/shared/map-box/map-box.module';
     ObjectDetailsModule,
     ObjectSearchRoutingModule,
     TranslocoModule,
-    MapBoxModule
+    MapBoxModule,
   ],
   exports: [ObjectSearchListComponent],
-  providers: [SearchLayoutService]
+  providers: [SearchLayoutService],
 })
 export class ObjectSearchModule {}

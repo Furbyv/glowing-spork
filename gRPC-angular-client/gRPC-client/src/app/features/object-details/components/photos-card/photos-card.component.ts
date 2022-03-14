@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  ViewContainerRef
-} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewContainerRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { merge, Subject } from 'rxjs';
 import { filter, map, startWith, tap } from 'rxjs/operators';
@@ -14,7 +8,7 @@ import { ExpandPhotoDialog } from './expand-photo-dialog/expand-photo-dialog.com
 @Component({
   selector: 'app-photos-card',
   templateUrl: 'photos-card.component.html',
-  styleUrls: ['photos-card.component.scss']
+  styleUrls: ['photos-card.component.scss'],
 })
 export class PhotosCardComponent implements OnChanges {
   loadstate$$: Subject<boolean> = new Subject<boolean>();
@@ -25,51 +19,36 @@ export class PhotosCardComponent implements OnChanges {
   containerClass: string = 'photo-container';
   photoClass: string = 'photo';
 
-  private getImageState$ = merge(
-    this.imagesService.images$,
-    this.imagesService.uploadRequest$.pipe(tap(a => console.log(a)))
-  ).pipe(
-    map(state => state.loading),
+  private getImageState$ = merge(this.imagesService.images$, this.imagesService.uploadRequest$).pipe(
+    map((state) => state.loading),
     startWith(true)
   );
 
   loading$ = merge(this.getImageState$, this.loadstate$$);
 
   images$ = this.imagesService.images$.pipe(
-    filter(state => state.success),
-    map(state => state.res!),
-    map(reply =>
-      reply.map(r =>
-        r.imageData
-          ? this.imagesService.convertByteArrayToImage(r.imageData!)
-          : null
-      )
-    ),
-    map(reply => reply.filter(r => r !== null)),
-    map(reply => (reply.length ? reply : [this.imagesService.defaultImage]))
+    filter((state) => state.success),
+    map((state) => state.res!),
+    map((reply) => reply.map((r) => (r.imageData ? this.imagesService.convertByteArrayToImage(r.imageData!) : null))),
+    map((reply) => reply.filter((r) => r !== null)),
+    map((reply) => (reply.length ? reply : [this.imagesService.defaultImage]))
   );
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.id && this.id) {
       this.imagesService.getImages(this.id, false);
     }
-    this.containerClass = this.expanded
-      ? 'photo-container-expanded'
-      : 'photo-container';
+    this.containerClass = this.expanded ? 'photo-container-expanded' : 'photo-container';
 
     this.photoClass = this.expanded ? 'photo-expanded' : 'photo';
   }
 
-  constructor(
-    private imagesService: ImagesService,
-    private dialog: MatDialog,
-    private vcr: ViewContainerRef
-  ) {}
+  constructor(private imagesService: ImagesService, private dialog: MatDialog, private vcr: ViewContainerRef) {}
 
   onFileSelected(files: FileList | null) {
     if (files && files.length && this.id) {
       for (let i = 0; i < files.length; i++) {
-        files[i].arrayBuffer().then(buff => {
+        files[i].arrayBuffer().then((buff) => {
           let x = new Uint8Array(buff);
           this.imagesService.uploadImages(x, this.id!);
         });
@@ -82,7 +61,7 @@ export class PhotosCardComponent implements OnChanges {
       width: '80vw',
       height: '80vh',
       viewContainerRef: this.vcr,
-      data: { name: this.id }
+      data: { name: this.id },
     });
   }
 

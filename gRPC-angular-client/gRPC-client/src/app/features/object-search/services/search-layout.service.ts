@@ -26,7 +26,6 @@ export class SearchLayoutService {
   }
 
   toggleObject() {
-    console.log('toggleObject');
     this.stateToggle$$.next('displayObject');
     this.refreshEvent();
   }

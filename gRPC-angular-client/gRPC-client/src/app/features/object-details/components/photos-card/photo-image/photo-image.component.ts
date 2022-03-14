@@ -1,17 +1,11 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'woz-photo-image',
   templateUrl: 'photo-image.component.html',
   styleUrls: ['photo-image.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PhotoImageComponent implements OnChanges {
   @Input() images: (SafeUrl | null)[] = [];
@@ -21,7 +15,6 @@ export class PhotoImageComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.currentSlide = 0;
-    console.log(this.images.length);
   }
 
   next() {
@@ -32,8 +25,7 @@ export class PhotoImageComponent implements OnChanges {
   prev() {
     if (this.currentSlide === 0) return;
 
-    this.currentSlide =
-      (this.currentSlide - 1 + this.images.length) % this.images.length;
+    this.currentSlide = (this.currentSlide - 1 + this.images.length) % this.images.length;
   }
 
   getImage(): SafeUrl | null {

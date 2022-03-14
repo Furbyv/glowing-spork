@@ -4,7 +4,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { FeatureLayer } from 'src/app/shared/map-box/layer-definition/feature-layer';
-import { MapSource } from 'src/app/shared/map-box/map-box.utility';
+import { MapSource } from 'src/app/shared/map-box/utility/map-box.utility';
 import { createFeatureLayers } from 'src/app/shared/map-box/utility/objects-layer';
 import { SearchLayoutService } from '../../object-search/services/search-layout.service';
 import { GetFullWozObjectService } from '../services/get-full-object.service';
@@ -14,41 +14,37 @@ import { GetFullWozObjectService } from '../services/get-full-object.service';
   selector: 'woz-object-details',
   templateUrl: './object-details.component.html',
   styleUrls: ['./object-details.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ObjectDetailsComponent implements OnInit {
   id: number | undefined;
 
-  loading$ = this.getFullWozObjectService.fullWozObject$.pipe(
-    map(state => state.loading)
-  );
+  loading$ = this.getFullWozObjectService.fullWozObject$.pipe(map((state) => state.loading));
   wozObject$ = this.getFullWozObjectService.fullWozObject$.pipe(
-    filter(state => state.success),
-    map(state => state.res!)
+    filter((state) => state.success),
+    map((state) => state.res!)
   );
 
   dataSources$: Observable<MapSource[]> = this.getFullWozObjectService.wozObjectGeoJson$.pipe(
-  map(data => [
-    {
-      id: 'objects',
-      source: {
-        type: 'geojson',
-        data
-      }
-    }
-  ])
-);
+    map((data) => [
+      {
+        id: 'objects',
+        source: {
+          type: 'geojson',
+          data,
+        },
+      },
+    ])
+  );
 
   layers: FeatureLayer[] = createFeatureLayers();
 
   address$ = this.wozObject$.pipe(
     map(
-      wozobject =>
-        `${wozobject.straatnaam?.value!.replace(/[^a-zA-Z ]/g, '') ??
-          ''} ${wozobject.huisnummer ?? 0}${wozobject.huisletter?.value ??
-          ''} ${wozobject.huisnummertoevoeging?.value ?? ''}, ${
-          wozobject.woonplaats?.value
-        }`
+      (wozobject) =>
+        `${wozobject.straatnaam?.value!.replace(/[^a-zA-Z ]/g, '') ?? ''} ${wozobject.huisnummer ?? 0}${
+          wozobject.huisletter?.value ?? ''
+        } ${wozobject.huisnummertoevoeging?.value ?? ''}, ${wozobject.woonplaats?.value}`
     )
   );
 

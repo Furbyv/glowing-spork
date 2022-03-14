@@ -1,5 +1,7 @@
-import { CircleLayer } from "mapbox-gl";
-import { FeatureLayer } from "../layer-definition/feature-layer";
+import { Type } from '@angular/core';
+import { CircleLayer } from 'mapbox-gl';
+import { FeatureLayer } from '../layer-definition/feature-layer';
+import { CustomPopUpComponent } from '../pop-up/custom-pop-up.component';
 
 const objectLayer: CircleLayer = {
   id: 'Objecten',
@@ -7,8 +9,8 @@ const objectLayer: CircleLayer = {
   source: 'objects',
   paint: {
     'circle-color': '#87c2fa',
-    'circle-opacity': 0.75
-  }
+    'circle-opacity': 0.75,
+  },
 };
 
 const multiSelectObjectLayer: CircleLayer = {
@@ -17,13 +19,13 @@ const multiSelectObjectLayer: CircleLayer = {
   source: 'objects',
   paint: {
     'circle-color': '#2605ff',
-    'circle-opacity': 0.75
+    'circle-opacity': 0.75,
   },
-  filter: ['in', 'id', '']
+  filter: ['in', 'id', ''],
 };
 
-export function createFeatureLayers(): FeatureLayer[] {
-  const layer = new FeatureLayer(objectLayer);
+export function createFeatureLayers(customPopUp?: Type<CustomPopUpComponent> | undefined): FeatureLayer[] {
+  const layer = new FeatureLayer(objectLayer, customPopUp);
   layer.MakeMutliSelectable(multiSelectObjectLayer);
   return [layer];
 }

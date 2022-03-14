@@ -28,7 +28,7 @@
         "@angular-eslint/directive-selector": [
           "error",
           {
-            "prefix": "flow",
+            "prefix": "woz",
             "style": "camelCase",
             "type": "attribute"
           }

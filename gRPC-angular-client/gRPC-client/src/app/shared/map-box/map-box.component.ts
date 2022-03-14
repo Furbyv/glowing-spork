@@ -10,6 +10,8 @@ import {
   Output,
   EventEmitter,
   Renderer2,
+  ViewContainerRef,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import * as mapboxgl from 'mapbox-gl';
@@ -17,8 +19,9 @@ import { Map } from 'mapbox-gl';
 import { combineLatest, ReplaySubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FeatureLayer } from './layer-definition/feature-layer';
-import { MapSource } from './map-box.utility';
+import { MapSource } from './utility/map-box.utility';
 import { markers } from './markers';
+import { CustomPopUpComponent } from './pop-up/custom-pop-up.component';
 
 @UntilDestroy()
 @Component({
@@ -49,7 +52,6 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
 
   @ViewChild('mapbox')
   private mapContainer: ElementRef<HTMLElement> | undefined;
-
   lat = 48.137154;
   lng = 11.576124;
 
@@ -79,6 +81,16 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
           });
         }
       });
+    }
+  }
+
+  @ViewChild('popup', { read: ViewContainerRef }) contentElement: ViewContainerRef;
+  private creatCustomPoUp(layer: FeatureLayer, data: GeoJSON.Feature) {
+    if (layer.customPopUp) {
+      this.contentElement.clear();
+      const componentRef = this.contentElement.createComponent<CustomPopUpComponent>(layer.customPopUp);
+      componentRef.instance.data = data.properties;
+      this.cdr.detectChanges();
     }
   }
 
@@ -121,10 +133,10 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         window.dispatchEvent(new Event('resize'));
       });
 
+      //set on click event for each layer
       this.layers?.forEach((l) => {
         if (l.onClickEvent && this.map) {
           this.map.on('click', l.mainLayer.id, (e) => {
-            console.log(e);
             if (e && e.features) {
               this.clickSelect.emit([`${e.features[0].id!}`]);
             }
@@ -132,9 +144,20 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         }
       });
 
+      //set custom popup event for each layer
+      this.layers?.forEach((l) => {
+        if (l.customPopUp && this.map) {
+          this.map.on('click', l.mainLayer.id, (e) => {
+            console.log(e);
+            if (e && e.features) {
+              this.creatCustomPoUp(l, e.features[0]);
+            }
+          });
+        }
+      });
+
       this.map.on('dblclick', (e) => {
         if (e && e.features) {
-          console.log(e.features);
           this.dblclickSelect.emit(`${e.features[0].id!}`);
         }
       });
@@ -164,6 +187,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
 
   private start: mapboxgl.Point | undefined;
   private box: HTMLDivElement | undefined;
+
   getMousePosition(map: mapboxgl.Map, e: MouseEvent | (mapboxgl.MapMouseEvent & mapboxgl.EventData)) {
     const canvas = map.getCanvas();
     const rect = canvas.getBoundingClientRect();
@@ -262,7 +286,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
     this.map!.dragPan.enable();
   }
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, private cdr: ChangeDetectorRef) {
     //subscription after map initialization to set layers
     combineLatest([this.layers$$, this.sources$$, this.mapLoaded$$])
       .pipe(untilDestroyed(this))

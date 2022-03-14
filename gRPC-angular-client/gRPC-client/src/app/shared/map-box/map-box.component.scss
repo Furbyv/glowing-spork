@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 :host {
   display: flex;
@@ -23,4 +23,12 @@
   left: 0;
   width: 0;
   height: 0;
+}
+
+.popup {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 20px;
+  transform: translate(-50%, 0);
 }

@@ -1,8 +1,5 @@
-
-  <map-layer-select
-    *ngIf="layerSelection && sources"
-    [layers]="layers$ | async"
-    [map]="map"
-  ></map-layer-select>
-  <div class="map" #mapbox></div>
-
+<map-layer-select *ngIf="layerSelection && sources" [layers]="layers$ | async" [map]="map"></map-layer-select>
+<div class="map" #mapbox></div>
+<div class="popup">
+  <ng-template wozCustomPopUp #popup></ng-template>
+</div>

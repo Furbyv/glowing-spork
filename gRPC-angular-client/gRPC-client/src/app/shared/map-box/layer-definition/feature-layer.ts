@@ -1,5 +1,7 @@
+import { Type } from '@angular/core';
 import { AnyLayer } from 'mapbox-gl';
-import { getLayerLayout } from '../map-box.utility';
+import { CustomPopUpComponent } from '../pop-up/custom-pop-up.component';
+import { getLayerLayout } from '../utility/map-box.utility';
 
 export enum LayerType {
   Circle = 'circle',
@@ -11,7 +13,7 @@ export enum LayerType {
   Line = 'line',
   Raster = 'raster',
   Symbol = 'symbol',
-  Sky = 'sky'
+  Sky = 'sky',
 }
 
 export class FeatureLayer {
@@ -19,6 +21,7 @@ export class FeatureLayer {
   private highLightLayer: AnyLayer | undefined;
   private visible: boolean = true;
   private multiSelect: boolean = false;
+  readonly customPopUp: Type<CustomPopUpComponent> | undefined;
   public readonly onClickEvent: boolean = true;
 
   get Visible() {
@@ -38,11 +41,20 @@ export class FeatureLayer {
     this.highLightLayer = onMultiSelectLayer;
   }
 
-  constructor(layer: AnyLayer) {
+  /*
+   ***Setting a custom component will disable the onClickEvent bool.
+   ***Rather use dblClickEvent to have interaction with object in the map
+   ***Or create interaction in the custom component
+   */
+  constructor(layer: AnyLayer, customPopUp?: Type<CustomPopUpComponent>) {
     this.mainLayer = layer;
     this.multiSelect = false;
     this.highLightLayer = undefined;
     this.visible = true;
+    this.customPopUp = customPopUp;
+    if (customPopUp) {
+      this.onClickEvent = false;
+    }
   }
 
   public setLayerVisibility(visibility: boolean) {
