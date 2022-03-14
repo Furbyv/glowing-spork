@@ -15,6 +15,7 @@
         [layers]="layers"
         [layerSelection]="false"
         [multipleSelect]="false"
+        [flyTo]="goToObject$ | async"
         [sources]="mapSource$ | async"
         (clickSelect)="onSelectionChange($event)"></woz-map-box>
       <ng-container *ngIf="state$ | async as state">

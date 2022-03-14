@@ -5,7 +5,7 @@
   aria-label="searching objects"></mat-spinner>
 <ng-template #content>
   <div class="search-list" *ngIf="wozObjects$ | async as Wozobjects">
-    <woz-object-search-list [wozObjects]="Wozobjects" (select)="onSelect($event)"></woz-object-search-list>
+    <woz-object-search-list [wozObjects]="Wozobjects" (singleClick)="onSelect($event)"></woz-object-search-list>
   </div>
   <mat-divider [vertical]="true"></mat-divider>
   <woz-notes-form class="content" (close)="onClose()" [selectedObject]="selectedObject"></woz-notes-form>

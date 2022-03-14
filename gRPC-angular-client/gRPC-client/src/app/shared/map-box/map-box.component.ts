@@ -37,6 +37,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   @Input() fullScreen: boolean = true;
   @Input() layerSelection: boolean = true;
   @Input() multipleSelect: boolean = false;
+  @Input() flyTo: mapboxgl.LngLat | null;
   @Output() clickSelect = new EventEmitter<string[]>();
   @Output() dblclickSelect = new EventEmitter<string>();
   @Output() multiselect = new EventEmitter<string[]>();
@@ -44,9 +45,8 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
 
   private mapLoaded$$: Subject<mapboxgl.Map> = new ReplaySubject<mapboxgl.Map>(1);
   private layers$$: Subject<FeatureLayer[]> = new ReplaySubject<FeatureLayer[]>(1);
-  layers$ = this.layers$$.asObservable();
-
   private sources$$: Subject<MapSource[]> = new ReplaySubject<MapSource[]>(1);
+  layers$ = this.layers$$.asObservable();
   map: mapboxgl.Map | undefined;
   private mapStyle = 'mapbox://styles/mapbox/streets-v11';
 
@@ -61,6 +61,9 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
     }
     if (this.sources && changes.sources) {
       this.sources$$.next(this.sources);
+    }
+    if (changes.flyTo && this.flyTo && this.map) {
+      this.map.flyTo({ center: this.flyTo, zoom: 16 });
     }
 
     if (this.map) {
@@ -148,7 +151,6 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
       this.layers?.forEach((l) => {
         if (l.customPopUp && this.map) {
           this.map.on('click', l.mainLayer.id, (e) => {
-            console.log(e);
             if (e && e.features) {
               this.creatCustomPoUp(l, e.features[0]);
             }

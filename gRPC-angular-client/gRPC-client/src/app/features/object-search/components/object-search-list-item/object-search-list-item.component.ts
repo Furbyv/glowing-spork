@@ -9,12 +9,9 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { ImagesService } from 'src/app/features/object-details/services/images.service';
 import { WozObjectReply } from 'src/app/proto/wozobject.pb';
-import { ObjectSearchService } from '../../services/object-search.service';
-import { SearchLayoutService } from '../../services/search-layout.service';
 
 @UntilDestroy()
 @Component({
@@ -25,7 +22,7 @@ import { SearchLayoutService } from '../../services/search-layout.service';
 })
 export class ObjectSearchListItemComponent implements OnInit, OnChanges {
   @Input() wozObject: WozObjectReply | undefined;
-  @Output() select = new EventEmitter<number>();
+  @Output() singleClick = new EventEmitter<number>();
   @Output() doubleClick = new EventEmitter<number>();
   trimmedAddress: string = '';
   secondLineAddress: string = '';
@@ -55,6 +52,6 @@ export class ObjectSearchListItemComponent implements OnInit, OnChanges {
   }
 
   onObjectClick() {
-    this.select.emit(+this.wozObject?.wozobjectnummer!);
+    this.singleClick.emit(+this.wozObject?.wozobjectnummer!);
   }
 }

@@ -12,6 +12,6 @@
       *ngFor="let wozobject of slicedList"
       [wozObject]="wozobject"
       (doubleClick)="onObjectDblClick($event)"
-      (select)="onObjectClick($event)"></woz-object-search-list-item>
+      (singleClick)="onObjectClick($event)"></woz-object-search-list-item>
   </ng-container>
 </mat-action-list>

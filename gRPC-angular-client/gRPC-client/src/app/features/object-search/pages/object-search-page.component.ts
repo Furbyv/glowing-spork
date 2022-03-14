@@ -63,6 +63,7 @@ export class ObjectSearchPageComponent {
     filter((state) => state.success),
     map((state) => state.res!)
   );
+  goToObject$ = this.objectSearchService.goToObject$;
   mapSource$: Observable<MapSource[]> = this.objectSearchService.wozObjectGeoJson$.pipe(
     map((data) => [
       {

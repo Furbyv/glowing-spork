@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, OnChanges, EventEmitter, Output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { WozObjectReply } from 'src/app/proto/wozobject.pb';
 
@@ -8,9 +8,9 @@ import { WozObjectReply } from 'src/app/proto/wozobject.pb';
   styleUrls: ['./object-search-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ObjectSearchListComponent implements OnInit, OnChanges {
+export class ObjectSearchListComponent implements OnChanges {
   @Input() wozObjects: WozObjectReply[] = [];
-  @Output() select = new EventEmitter<number>();
+  @Output() singleClick = new EventEmitter<number>();
   @Output() doubleClick = new EventEmitter<number>();
   // MatPaginator Inputs
   length = 100;
@@ -33,8 +33,6 @@ export class ObjectSearchListComponent implements OnInit, OnChanges {
     this.slicedList = this.wozObjects.slice(event.pageIndex * this.pageSize, (event.pageIndex + 1) * this.pageSize);
   }
 
-  ngOnInit(): void {}
-
   setPageSizeOptions(setPageSizeOptionsInput: string) {
     if (setPageSizeOptionsInput) {
       this.pageSizeOptions = setPageSizeOptionsInput.split(',').map((str) => +str);
@@ -46,6 +44,6 @@ export class ObjectSearchListComponent implements OnInit, OnChanges {
   }
 
   onObjectClick(id: number) {
-    this.select.emit(id);
+    this.singleClick.emit(id);
   }
 }

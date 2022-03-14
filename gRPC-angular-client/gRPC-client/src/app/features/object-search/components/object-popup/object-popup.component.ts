@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { GeoJsonProperties } from 'geojson';
 import { CustomPopUpComponent } from 'src/app/shared/map-box/pop-up/custom-pop-up.component';
 
@@ -8,10 +8,6 @@ import { CustomPopUpComponent } from 'src/app/shared/map-box/pop-up/custom-pop-u
   styleUrls: ['object-popup.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default,
 })
-export class ObjectPopupComponent implements CustomPopUpComponent, OnChanges {
+export class ObjectPopupComponent implements CustomPopUpComponent {
   @Input() data: GeoJsonProperties;
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
 }
