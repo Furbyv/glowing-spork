@@ -1,6 +1,48 @@
+@import 'variables';
+
 :host {
-  display: block;
-  height: 100px;
-  width: 200px;
-  background-color: red;
+  display: flex;
+}
+
+mat-card {
+  flex: 1;
+  display: flex;
+}
+
+hr {
+  border-width: 0px;
+  margin-top: 2px;
+  margin-right: 8px;
+  height: 4px;
+}
+
+.color-scheme-light,
+hr {
+  background-color: #0084cc;
+}
+
+.color-scheme-dark,
+hr {
+  background-color: $my-dark-main;
+}
+
+.img-container {
+  width: 56px;
+  height: 56px;
+  margin-right: 8px;
+}
+
+.image {
+  width: 56px;
+  height: 56px;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.header {
+  font-weight: bold;
 }

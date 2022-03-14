@@ -1,2 +1,13 @@
-<p>{{ data?.id ?? 'null' }}</p>
-<p>hoi</p>
+<mat-card>
+  <div class="img-container">
+    <img class="image" [src]="data?.image ?? 'assets/default_image.jpg'" />
+  </div>
+  <div class="item-container">
+    <div class="header">
+      {{ data?.id }}
+    </div>
+    <div class="address">{{ data?.address }}</div>
+    <div class="details">Type: {{ data?.soc }}</div>
+  </div>
+  <hr />
+</mat-card>
