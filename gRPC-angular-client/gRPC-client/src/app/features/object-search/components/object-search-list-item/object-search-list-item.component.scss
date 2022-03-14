@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 :host {
   display: block;
@@ -9,16 +9,6 @@ hr {
   margin-top: 2px;
   margin-right: 8px;
   height: 4px;
-}
-
-.color-scheme-light,
-hr {
-  background-color: #0084cc;
-}
-
-.color-scheme-dark,
-hr {
-  background-color: $my-dark-main;
 }
 
 .img-container {

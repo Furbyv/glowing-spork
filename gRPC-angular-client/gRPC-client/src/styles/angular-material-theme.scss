@@ -1,5 +1,5 @@
-@use "@angular/material" as mat;
-@import "variables";
+@use '@angular/material' as mat;
+@import 'variables';
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -32,7 +32,10 @@
     background-color: gray;
     opacity: 0.5;
   }
-  $primary: map-get($my-dark-theme, primary);
+
+  .background-primary {
+    background-color: #f58025;
+  }
 }
 
 .color-scheme-light {
@@ -51,5 +54,8 @@
   .mat-paginator-range-label {
     margin: 0 !important;
   }
-  $primary: map-get($my-light-theme, primary);
+
+  .background-primary {
+    background-color: #0084cc;
+  }
 }

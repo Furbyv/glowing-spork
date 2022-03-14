@@ -8,7 +8,7 @@ const objectLayer: CircleLayer = {
   type: 'circle',
   source: 'objects',
   paint: {
-    'circle-color': '#87c2fa',
+    'circle-color': '#ff4c29',
     'circle-opacity': 0.75,
   },
 };
