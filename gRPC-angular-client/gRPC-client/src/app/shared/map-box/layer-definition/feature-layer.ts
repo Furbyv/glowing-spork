@@ -23,6 +23,7 @@ export class FeatureLayer {
   private multiSelect: boolean = false;
   readonly customPopUp: Type<CustomPopUpComponent> | undefined;
   public readonly onClickEvent: boolean = true;
+  public readonly onDblClickEvent: boolean = true;
 
   get Visible() {
     return this.visible;
@@ -52,6 +53,7 @@ export class FeatureLayer {
     this.highLightLayer = undefined;
     this.visible = true;
     this.customPopUp = customPopUp;
+    this.onDblClickEvent = true;
     if (customPopUp) {
       this.onClickEvent = false;
     }

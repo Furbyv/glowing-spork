@@ -108,7 +108,7 @@ export class TaxOverviewPageComponent {
 
   layers: FeatureLayer[] = createFeatureLayers();
 
-  onOpenObject(objectnumber: number | string) {
+  onOpenObject(objectnumber: number | string[]) {
     this.layoutService.toggleObject();
     this.router.navigate([objectnumber], {
       relativeTo: this.route,

@@ -17,7 +17,8 @@
         [multipleSelect]="false"
         [flyTo]="goToObject$ | async"
         [sources]="mapSource$ | async"
-        (clickSelect)="onSelectionChange($event)"></woz-map-box>
+        (clickSelect)="onSelectionChange($event)"
+        (dblclickSelect)="onSelectionChange($event)"></woz-map-box>
       <ng-container *ngIf="state$ | async as state">
         <div class="router" [@displayObjectState]="state">
           <router-outlet></router-outlet>

@@ -39,7 +39,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   @Input() multipleSelect: boolean = false;
   @Input() flyTo: mapboxgl.LngLat | null;
   @Output() clickSelect = new EventEmitter<string[]>();
-  @Output() dblclickSelect = new EventEmitter<string>();
+  @Output() dblclickSelect = new EventEmitter<string[]>();
   @Output() multiselect = new EventEmitter<string[]>();
   @Output() mapLoaded = new EventEmitter<mapboxgl.Map>();
 
@@ -120,6 +120,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         center: [initialState.lng, initialState.lat],
         zoom: initialState.zoom,
         boxZoom: false,
+        doubleClickZoom: false,
         cooperativeGestures: true,
       });
       this.map.addControl(new mapboxgl.NavigationControl());
@@ -158,9 +159,14 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         }
       });
 
-      this.map.on('dblclick', (e) => {
-        if (e && e.features) {
-          this.dblclickSelect.emit(`${e.features[0].id!}`);
+      //set on dblclick event for each layer
+      this.layers?.forEach((l) => {
+        if (l.onClickEvent && this.map) {
+          this.map.on('dblclick', l.mainLayer.id, (e) => {
+            if (e && e.features) {
+              this.dblclickSelect.emit([`${e.features[0].id!}`]);
+            }
+          });
         }
       });
 

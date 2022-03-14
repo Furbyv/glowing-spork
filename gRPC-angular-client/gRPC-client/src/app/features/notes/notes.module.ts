@@ -10,19 +10,9 @@ import { NotesObjectOverviewComponent } from './components/notes-object-overview
 import { NotesDialogComponent } from './pages/notes-dialog.component';
 
 @NgModule({
-  declarations: [
-    NotesDialogComponent,
-    NotesObjectOverviewComponent,
-    NotesFormComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    SharedModule,
-    MaterialModule,
-    ObjectSearchModule
-  ],
+  declarations: [NotesDialogComponent, NotesObjectOverviewComponent, NotesFormComponent],
+  imports: [CommonModule, FormsModule, SharedModule, MaterialModule, ObjectSearchModule],
   exports: [NotesDialogComponent],
-  providers: [GetWozObjectsService]
+  providers: [GetWozObjectsService],
 })
 export class NotesModule {}
