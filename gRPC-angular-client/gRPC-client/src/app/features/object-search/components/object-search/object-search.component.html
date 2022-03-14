@@ -3,26 +3,23 @@
     *ngIf="!isExpanded"
     (toggleMap)="onToggleMap()"
     (toggleObject)="onToggleObject()"
-    (toggleMenu)="toggleMenu.emit(null)"
-  ></app-small-action-bar>
+    (toggleMenu)="toggleMenu.emit(null)"></app-small-action-bar>
   <app-large-action-bar
     *ngIf="isExpanded"
     (toggleMap)="onToggleMap()"
     (toggleObject)="onToggleObject()"
-    (toggleMenu)="toggleMenu.emit(null)"
-  ></app-large-action-bar>
+    (toggleMenu)="toggleMenu.emit(null)"></app-large-action-bar>
   <ng-container *ngIf="isExpanded">
     <div class="row">
       <mat-form-field class="search">
-        <mat-label>{{ "search-object-by-number" | transloco }}</mat-label>
+        <mat-label>{{ 'search-object-by-number' | transloco }}</mat-label>
         <input
           matInput
           type="number"
           #search
           maxlength="maxCharacters"
           [placeholder]="'search-object-by-number' | transloco"
-          (keydown.enter)="onSearch(search.value)"
-        />
+          (keydown.enter)="onSearch(search.value)" />
         <!-- <mat-hint align="end">{{ search.value.length }} / 12</mat-hint> -->
       </mat-form-field>
       <button
@@ -30,8 +27,7 @@
         color="primary"
         class="search-button"
         aria-label="search button"
-        (click)="onSearch(search.value)"
-      >
+        (click)="onSearch(search.value)">
         <mat-icon>search</mat-icon>
       </button>
     </div>
@@ -39,15 +35,13 @@
       class="loader"
       *ngIf="loading$ | async; else content"
       [diameter]="48"
-      aria-label="searching objects"
-    ></mat-spinner>
+      aria-label="searching objects"></mat-spinner>
     <ng-template #content>
       <ng-container *ngIf="wozobjects$ | async as Wozobjects">
-        <app-object-search-list
+        <woz-object-search-list
           [wozObjects]="Wozobjects"
           (doubleClick)="onObjectDoubleClicked($event)"
-          (select)="onObjectSelected($event)"
-        ></app-object-search-list>
+          (select)="onObjectSelected($event)"></woz-object-search-list>
       </ng-container>
     </ng-template>
   </ng-container>

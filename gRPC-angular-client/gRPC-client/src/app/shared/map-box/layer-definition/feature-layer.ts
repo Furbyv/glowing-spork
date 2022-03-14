@@ -19,6 +19,7 @@ export class FeatureLayer {
   private highLightLayer: AnyLayer | undefined;
   private visible: boolean = true;
   private multiSelect: boolean = false;
+  public readonly onClickEvent: boolean = true;
 
   get Visible() {
     return this.visible;

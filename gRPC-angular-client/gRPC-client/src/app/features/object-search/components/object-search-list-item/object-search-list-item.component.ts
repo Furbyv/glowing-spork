@@ -6,7 +6,7 @@ import {
   Output,
   EventEmitter,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,10 +18,10 @@ import { SearchLayoutService } from '../../services/search-layout.service';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-object-search-list-item',
+  selector: 'woz-object-search-list-item',
   templateUrl: './object-search-list-item.component.html',
   styleUrls: ['./object-search-list-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ObjectSearchListItemComponent implements OnInit, OnChanges {
   @Input() wozObject: WozObjectReply | undefined;
@@ -33,30 +33,22 @@ export class ObjectSearchListItemComponent implements OnInit, OnChanges {
   image: SafeUrl | undefined;
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (
-      changes.wozObject &&
-      this.wozObject &&
-      this.wozObject.imageData &&
-      this.wozObject.imageData.value
-    ) {
+    if (changes.wozObject && this.wozObject && this.wozObject.imageData && this.wozObject.imageData.value) {
       console.log(this.wozObject.imageData);
-      this.image = this.imageService.convertByteArrayToImage(
-        this.wozObject.imageData.value
-      );
+      this.image = this.imageService.convertByteArrayToImage(this.wozObject.imageData.value);
     }
   }
 
   constructor(private imageService: ImagesService) {}
 
   ngOnInit(): void {
-    this.trimmedAddress =
-      this.wozObject!.straatnaam?.value!.replace(/[^a-zA-Z ]/g, '') ?? '';
+    this.trimmedAddress = this.wozObject!.straatnaam?.value!.replace(/[^a-zA-Z ]/g, '') ?? '';
     this.trimmedAddress =
       this.trimmedAddress +
-      ` ${this.wozObject?.huisnummer ?? 0}${this.wozObject?.huisletter?.value ??
-        ''} ${this.wozObject?.huisnummertoevoeging?.value ?? ''}`;
-    this.secondLineAddress = `${this.wozObject?.postcode?.value ?? ''} | ${this
-      .wozObject?.gemeentenaam?.value ?? ''}`;
+      ` ${this.wozObject?.huisnummer ?? 0}${this.wozObject?.huisletter?.value ?? ''} ${
+        this.wozObject?.huisnummertoevoeging?.value ?? ''
+      }`;
+    this.secondLineAddress = `${this.wozObject?.postcode?.value ?? ''} | ${this.wozObject?.gemeentenaam?.value ?? ''}`;
   }
 
   onObjectDblClick() {

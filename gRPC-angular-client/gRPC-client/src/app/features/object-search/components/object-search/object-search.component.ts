@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  Output
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { combineLatest, Subject } from 'rxjs';
@@ -14,10 +8,10 @@ import { SearchLayoutService } from '../../services/search-layout.service';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-object-search',
+  selector: 'woz-object-search',
   templateUrl: './object-search.component.html',
   styleUrls: ['./object-search.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ObjectSearchComponent {
   @Input() isExpanded: boolean = true;
@@ -27,15 +21,14 @@ export class ObjectSearchComponent {
   private state: 'displayMap' | 'displayObject' | 'displayGrid' = 'displayMap';
   private startRequest$$: Subject<boolean> = new Subject<boolean>();
 
-  loading$ = combineLatest([
-    this.objectSearchService.wozObjects$,
-    this.startRequest$$
-  ]).pipe(map(([state]) => state.loading));
+  loading$ = combineLatest([this.objectSearchService.wozObjects$, this.startRequest$$]).pipe(
+    map(([state]) => state.loading)
+  );
 
   wozobjects$ = this.objectSearchService.wozObjects$.pipe(
-    filter(state => state.complete),
-    map(state => state.res!),
-    map(w => w.wozobjects)
+    filter((state) => state.complete),
+    map((state) => state.res!),
+    map((w) => w.wozobjects)
   );
 
   constructor(
@@ -44,9 +37,7 @@ export class ObjectSearchComponent {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.layoutService.state$
-      .pipe(untilDestroyed(this))
-      .subscribe(state => (this.state = state));
+    this.layoutService.state$.pipe(untilDestroyed(this)).subscribe((state) => (this.state = state));
   }
 
   onToggleMap() {
@@ -74,7 +65,7 @@ export class ObjectSearchComponent {
       this.objectSearchService.goToObject(id);
     } else {
       this.router.navigate([id], {
-        relativeTo: this.route
+        relativeTo: this.route,
       });
     }
   }
@@ -82,7 +73,7 @@ export class ObjectSearchComponent {
   onObjectDoubleClicked(id: number) {
     this.layoutService.toggleObject();
     this.router.navigate([id], {
-      relativeTo: this.route
+      relativeTo: this.route,
     });
   }
 }

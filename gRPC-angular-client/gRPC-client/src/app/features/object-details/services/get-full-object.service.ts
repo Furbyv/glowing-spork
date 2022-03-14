@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AsyncState, toAsyncState } from '@ngneat/loadoff';
 import { combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
-import { concatMap, filter, map, shareReplay, switchMap } from 'rxjs/operators';
+import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
 import {
   FullWozObjectReply,
   FullWozObjectSaveReply,
@@ -58,9 +58,10 @@ export class GetFullWozObjectService {
     this.saveWozObjectRequest$$.next(wozObject);
   }
 
-  wozObjectGeoJson$ = this.fullWozObject$.pipe(
+  wozObjectGeoJson$ : Observable<GeoJSON.FeatureCollection> = this.fullWozObject$.pipe(
     filter(state => state.success),
     map(state => state.res!),
-    map(wozObject => (wozObject ? convertWozObjectsToGeoJson([wozObject]) : []))
+    map(wozObject => (wozObject ? convertWozObjectsToGeoJson([wozObject]) : [])),
+    map(features => ({ type: 'FeatureCollection', features }))
   );
 }

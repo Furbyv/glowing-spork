@@ -9,11 +9,10 @@ import {
   AfterViewInit,
   Output,
   EventEmitter,
-  Renderer2
+  Renderer2,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import * as mapboxgl from 'mapbox-gl';
-import * as geojson from 'geojson';
 import { Map } from 'mapbox-gl';
 import { combineLatest, ReplaySubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -26,7 +25,7 @@ import { markers } from './markers';
   selector: 'woz-map-box',
   templateUrl: './map-box.component.html',
   styleUrls: ['./map-box.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapBoxComponent implements OnChanges, AfterViewInit {
   @Input() toggleRefresh: boolean = false;
@@ -40,12 +39,8 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   @Output() multiselect = new EventEmitter<string[]>();
   @Output() mapLoaded = new EventEmitter<mapboxgl.Map>();
 
-  private mapLoaded$$: Subject<mapboxgl.Map> = new ReplaySubject<mapboxgl.Map>(
-    1
-  );
-  private layers$$: Subject<FeatureLayer[]> = new ReplaySubject<FeatureLayer[]>(
-    1
-  );
+  private mapLoaded$$: Subject<mapboxgl.Map> = new ReplaySubject<mapboxgl.Map>(1);
+  private layers$$: Subject<FeatureLayer[]> = new ReplaySubject<FeatureLayer[]>(1);
   layers$ = this.layers$$.asObservable();
 
   private sources$$: Subject<MapSource[]> = new ReplaySubject<MapSource[]>(1);
@@ -75,7 +70,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
 
   private initMarkers(map: mapboxgl.Map) {
     if (markers) {
-      markers.forEach(marker => {
+      markers.forEach((marker) => {
         if (!map.hasImage(marker.id)) {
           map.loadImage(marker.uri, (_, image) => {
             if (image) {
@@ -87,23 +82,20 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
     }
   }
 
-  private mouseMoveListener: (this: Document, ev: MouseEvent) => any = e =>
-    this.onMouseMove(e);
-  private mouseUpListener: (this: Document, ev: MouseEvent) => any = e =>
-    this.onMouseUp(e);
-  private keyDownListener: (this: Document, ev: KeyboardEvent) => any = e =>
-    this.onKeyDown(e);
+  private mouseMoveListener: (this: Document, ev: MouseEvent) => any = (e) => this.onMouseMove(e);
+  private mouseUpListener: (this: Document, ev: MouseEvent) => any = (e) => this.onMouseUp(e);
+  private keyDownListener: (this: Document, ev: KeyboardEvent) => any = (e) => this.onKeyDown(e);
 
   // Create a popup, but don't add it to the map yet.
   private popup = new mapboxgl.Popup({
-    closeButton: false
+    closeButton: false,
   });
 
   ngAfterViewInit(): void {
     const initialState = {
       lng: 6.046511,
       lat: 53.084784,
-      zoom: 12
+      zoom: 12,
     };
     if (this.mapContainer) {
       this.map = new Map({
@@ -113,7 +105,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         center: [initialState.lng, initialState.lat],
         zoom: initialState.zoom,
         boxZoom: false,
-        cooperativeGestures: true
+        cooperativeGestures: true,
       });
       this.map.addControl(new mapboxgl.NavigationControl());
       if (this.fullScreen) {
@@ -129,13 +121,18 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         window.dispatchEvent(new Event('resize'));
       });
 
-      this.map.on('click', e => {
-        if (e && e.features) {
-          this.clickSelect.emit([`${e.features[0].id!}`]);
+      this.layers?.forEach((l) => {
+        if (l.onClickEvent && this.map) {
+          this.map.on('click', l.mainLayer.id, (e) => {
+            console.log(e);
+            if (e && e.features) {
+              this.clickSelect.emit([`${e.features[0].id!}`]);
+            }
+          });
         }
       });
 
-      this.map.on('dblclick', e => {
+      this.map.on('dblclick', (e) => {
         if (e && e.features) {
           console.log(e.features);
           this.dblclickSelect.emit(`${e.features[0].id!}`);
@@ -143,20 +140,13 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
       });
 
       const canvas = this.map.getCanvas();
-      canvas.addEventListener('mousedown', e => this.mouseDown(e), true);
+      canvas.addEventListener('mousedown', (e) => this.mouseDown(e), true);
 
-      this.map.on('mousemove', e => {
-        const layerIds = this.layers?.map(l => l.mainLayer.id);
-        if (
-          !this.map ||
-          !layerIds ||
-          !layerIds.length ||
-          !this.sources ||
-          !this.sources.length
-        )
-          return;
+      this.map.on('mousemove', (e) => {
+        const layerIds = this.layers?.map((l) => l.mainLayer.id);
+        if (!this.map || !layerIds || !layerIds.length || !this.sources || !this.sources.length) return;
         const features = this.map.queryRenderedFeatures(e.point, {
-          layers: layerIds
+          layers: layerIds,
         });
 
         // Change the cursor style as a UI indicator.
@@ -167,36 +157,21 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
           return;
         }
 
-        this.popup
-          .setLngLat(e.lngLat)
-          .setText(features[0].properties!.id)
-          .addTo(this.map);
+        this.popup.setLngLat(e.lngLat).setText(features[0].properties!.id).addTo(this.map);
       });
     }
   }
 
   private start: mapboxgl.Point | undefined;
   private box: HTMLDivElement | undefined;
-  getMousePosition(
-    map: mapboxgl.Map,
-    e: MouseEvent | (mapboxgl.MapMouseEvent & mapboxgl.EventData)
-  ) {
+  getMousePosition(map: mapboxgl.Map, e: MouseEvent | (mapboxgl.MapMouseEvent & mapboxgl.EventData)) {
     const canvas = map.getCanvas();
     const rect = canvas.getBoundingClientRect();
-    return new mapboxgl.Point(
-      e.clientX - rect.left - canvas.clientLeft,
-      e.clientY - rect.top - canvas.clientTop
-    );
+    return new mapboxgl.Point(e.clientX - rect.left - canvas.clientLeft, e.clientY - rect.top - canvas.clientTop);
   }
 
   mouseDown(e: MouseEvent) {
-    if (
-      !this.map ||
-      !this.layers ||
-      !this.layers.length ||
-      !this.sources ||
-      !this.sources.length
-    ) {
+    if (!this.map || !this.layers || !this.layers.length || !this.sources || !this.sources.length) {
       return;
     }
     // Continue the rest of the function if the shiftkey is pressed.
@@ -265,9 +240,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
     // If bbox exists. use this value as the argument for `queryRenderedFeatures`
     if (bbox && this.map && this.start) {
       const features = this.map.queryRenderedFeatures(bbox, {
-        layers: this.layers
-          ?.filter(l => l.MultiSelectable)
-          .map(l => l.mainLayer.id)
+        layers: this.layers?.filter((l) => l.MultiSelectable).map((l) => l.mainLayer.id),
       });
 
       if (features.length >= 1000) {
@@ -277,8 +250,8 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
       // Run through the selected features and set a filter
       // to match features with unique FIPS codes to activate
       // the `counties-highlighted` layer.
-      const selectedIds = features.map(feature => feature.properties!.id);
-      this.layers?.forEach(l => {
+      const selectedIds = features.map((feature) => feature.properties!.id);
+      this.layers?.forEach((l) => {
         if (this.map && l.HighLightLayer) {
           this.map.setFilter(l.HighLightLayer.id, ['in', 'id', ...selectedIds]);
         }
@@ -293,29 +266,19 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
     //subscription after map initialization to set layers
     combineLatest([this.layers$$, this.sources$$, this.mapLoaded$$])
       .pipe(untilDestroyed(this))
-      .subscribe(([collection, sources, map]) =>
-        this.buildLayers(collection, sources, map)
-      );
+      .subscribe(([collection, sources, map]) => this.buildLayers(collection, sources, map));
   }
 
-  buildLayers(
-    layers: FeatureLayer[],
-    sources: MapSource[],
-    map: mapboxgl.Map
-  ): void {
-    sources.forEach(s => {
-      if (map.getSource(s.id)) {
-        map.removeSource(s.id);
+  buildLayers(layers: FeatureLayer[], sources: MapSource[], map: mapboxgl.Map): void {
+    sources.forEach((s) => {
+      if (!map.getSource(s.id)) {
+        map.addSource(s.id, s.source);
       }
-      map.addSource(s.id, s.source);
     });
-    layers.forEach(layer => {
+    layers.forEach((layer) => {
       const id = layer.mainLayer.id;
       if (map.getLayer(id)) {
         map.removeLayer(id);
-      }
-      if (map.getSource(id)) {
-        map.removeSource(id);
       }
 
       // Add a symbol layer
@@ -328,20 +291,14 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   }
 
   private fitToFeatures(sources: MapSource[], map: mapboxgl.Map) {
-    const s = [...sources.filter(s => s.source.type === 'geojson')];
-    const geoJsonSources = s.map(s => s.source as mapboxgl.GeoJSONSourceRaw);
+    const s = [...sources.filter((s) => s.source.type === 'geojson')];
+    const geoJsonSources = s.map((s) => s.source as mapboxgl.GeoJSONSourceRaw);
     const bounds = new mapboxgl.LngLatBounds();
     const geo = geoJsonSources.flatMap(
-      (g: mapboxgl.GeoJSONSourceRaw) =>
-        g.data as GeoJSON.FeatureCollection<GeoJSON.Geometry>
+      (g: mapboxgl.GeoJSONSourceRaw) => g.data as GeoJSON.FeatureCollection<GeoJSON.Geometry>
     );
-    const coordinates = geo.flatMap(
-      (
-        g: GeoJSON.FeatureCollection<
-          GeoJSON.Geometry,
-          GeoJSON.GeoJsonProperties
-        >
-      ) => g.features.flatMap(f => this.getCoordinates(f.geometry))
+    const coordinates = geo.flatMap((g: GeoJSON.FeatureCollection<GeoJSON.Geometry, GeoJSON.GeoJsonProperties>) =>
+      g.features.flatMap((f) => this.getCoordinates(f.geometry))
     );
     for (let index = 0; index < coordinates.length; index++) {
       const c = coordinates[index];
@@ -352,9 +309,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
     map.fitBounds(bounds, { padding: 20 });
   }
 
-  private getCoordinates(
-    geo: GeoJSON.Geometry
-  ): [number, number][] | undefined {
+  private getCoordinates(geo: GeoJSON.Geometry): [number, number][] | undefined {
     let positions: GeoJSON.Position[];
     switch (geo.type) {
       case 'Point':
@@ -367,21 +322,17 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         positions = (geo as GeoJSON.LineString).coordinates;
         break;
       case 'MultiLineString':
-        positions = (geo as GeoJSON.MultiLineString).coordinates.flatMap(
-          c => c
-        );
+        positions = (geo as GeoJSON.MultiLineString).coordinates.flatMap((c) => c);
         break;
       case 'Polygon':
-        positions = (geo as GeoJSON.Polygon).coordinates.flatMap(c => c);
+        positions = (geo as GeoJSON.Polygon).coordinates.flatMap((c) => c);
         break;
       case 'MultiPolygon':
-        positions = (geo as GeoJSON.MultiPolygon).coordinates.flatMap(c =>
-          c.flatMap(a => a)
-        );
+        positions = (geo as GeoJSON.MultiPolygon).coordinates.flatMap((c) => c.flatMap((a) => a));
         break;
       default:
         return undefined;
     }
-    return positions.map(p => [p[0], p[1]]);
+    return positions.map((p) => [p[0], p[1]]);
   }
 }

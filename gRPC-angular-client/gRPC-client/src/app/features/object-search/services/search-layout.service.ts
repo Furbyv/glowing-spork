@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable()
 export class SearchLayoutService {
-  private stateToggle$$: Subject<
+  private stateToggle$$: Subject<'displayMap' | 'displayObject' | 'displayGrid'> = new BehaviorSubject<
     'displayMap' | 'displayObject' | 'displayGrid'
-  > = new BehaviorSubject<'displayMap' | 'displayObject' | 'displayGrid'>(
-    'displayMap'
-  );
+  >('displayMap');
 
   state$ = this.stateToggle$$.asObservable();
 
@@ -28,6 +26,7 @@ export class SearchLayoutService {
   }
 
   toggleObject() {
+    console.log('toggleObject');
     this.stateToggle$$.next('displayObject');
     this.refreshEvent();
   }

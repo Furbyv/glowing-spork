@@ -6,14 +6,6 @@
   height: 100%;
 }
 
-mat-card {
-  flex: 1;
-  display: flex;
-  margin-top: $default-gap;
-  margin-bottom: $default-gap;
-  width: 100%;
-}
-
 .mapboxgl-canvas {
   width: 100% !important;
 }

@@ -1,13 +1,17 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
+import { FeatureLayer } from 'src/app/shared/map-box/layer-definition/feature-layer';
+import { MapSource } from 'src/app/shared/map-box/map-box.utility';
+import { createFeatureLayers } from 'src/app/shared/map-box/utility/objects-layer';
 import { SearchLayoutService } from '../../object-search/services/search-layout.service';
 import { GetFullWozObjectService } from '../services/get-full-object.service';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-object-details',
+  selector: 'woz-object-details',
   templateUrl: './object-details.component.html',
   styleUrls: ['./object-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -22,7 +26,31 @@ export class ObjectDetailsComponent implements OnInit {
     filter(state => state.success),
     map(state => state.res!)
   );
-  wozObjectGeoJson$ = this.getFullWozObjectService.wozObjectGeoJson$;
+
+  dataSources$: Observable<MapSource[]> = this.getFullWozObjectService.wozObjectGeoJson$.pipe(
+  map(data => [
+    {
+      id: 'objects',
+      source: {
+        type: 'geojson',
+        data
+      }
+    }
+  ])
+);
+
+  layers: FeatureLayer[] = createFeatureLayers();
+
+  address$ = this.wozObject$.pipe(
+    map(
+      wozobject =>
+        `${wozobject.straatnaam?.value!.replace(/[^a-zA-Z ]/g, '') ??
+          ''} ${wozobject.huisnummer ?? 0}${wozobject.huisletter?.value ??
+          ''} ${wozobject.huisnummertoevoeging?.value ?? ''}, ${
+          wozobject.woonplaats?.value
+        }`
+    )
+  );
 
   constructor(
     private route: ActivatedRoute,

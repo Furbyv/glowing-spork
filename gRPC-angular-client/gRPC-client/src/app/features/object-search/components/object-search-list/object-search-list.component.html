@@ -4,16 +4,14 @@
   [pageSizeOptions]="pageSizeOptions"
   [hidePageSize]="true"
   (page)="onPageEvent($event)"
-  aria-label="Select page"
->
+  aria-label="Select page">
 </mat-paginator>
 <mat-action-list>
   <ng-container *ngIf="pageEvent">
-    <app-object-search-list-item
+    <woz-object-search-list-item
       *ngFor="let wozobject of slicedList"
       [wozObject]="wozobject"
       (doubleClick)="onObjectDblClick($event)"
-      (select)="onObjectClick($event)"
-    ></app-object-search-list-item>
+      (select)="onObjectClick($event)"></woz-object-search-list-item>
   </ng-container>
 </mat-action-list>

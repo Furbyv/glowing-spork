@@ -7,13 +7,17 @@ import {
 } from '@angular/animations';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { merge, Observable, ReplaySubject, Subject } from 'rxjs';
-import { filter, map, startWith, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { FeatureLayer } from 'src/app/shared/map-box/layer-definition/feature-layer';
+import { MapSource } from 'src/app/shared/map-box/map-box.utility';
+import { createFeatureLayers } from 'src/app/shared/map-box/utility/objects-layer';
 import { GetFullWozObjectService } from '../../object-details/services/get-full-object.service';
+import { ObjectSearchService } from '../services/object-search.service';
 import { SearchLayoutService } from '../services/search-layout.service';
 
 @Component({
-  selector: 'app-object-search-page',
+  selector: 'woz-object-search-page',
   templateUrl: './object-search-page.component.html',
   styleUrls: ['./object-search-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -58,11 +62,22 @@ export class ObjectSearchPageComponent {
   public isExpanded = false;
 
   state$ = this.layoutService.state$;
-
+  layers: FeatureLayer[] = createFeatureLayers();
   wozObject$ = this.getFullWozObjectService.fullWozObject$.pipe(
     filter(state => state.success),
     map(state => state.res!)
   );
+  mapSource$ : Observable<MapSource[]>  = this.objectSearchService.wozObjectGeoJson$.pipe(
+    map(data => [
+      {
+        id: 'objects',
+        source: {
+          type: 'geojson',
+          data
+        }
+      }
+    ])
+  );;
 
   public toggleMenu() {
     this.isExpanded = !this.isExpanded;
@@ -73,7 +88,8 @@ export class ObjectSearchPageComponent {
     private route: ActivatedRoute,
     private router: Router,
     private layoutService: SearchLayoutService,
-    private getFullWozObjectService: GetFullWozObjectService
+    private getFullWozObjectService: GetFullWozObjectService,
+    private objectSearchService: ObjectSearchService
   ) {}
 
   refreshEvent() {
@@ -82,9 +98,10 @@ export class ObjectSearchPageComponent {
     }, 500);
   }
 
-  onSelectionChange(id: string) {
+  onSelectionChange(id: string[]) {
+    console.log(id);
     this.layoutService.toggleObject();
-    this.router.navigate([id], {
+    this.router.navigate(id, {
       relativeTo: this.route
     });
   }

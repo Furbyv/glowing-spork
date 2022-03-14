@@ -19,6 +19,7 @@ import { ExpandPhotoDialog } from './expand-photo-dialog/expand-photo-dialog.com
 export class PhotosCardComponent implements OnChanges {
   loadstate$$: Subject<boolean> = new Subject<boolean>();
   @Input() id: number | undefined;
+  @Input() address: string | null = '';
   @Input() expanded: boolean = false;
 
   containerClass: string = 'photo-container';

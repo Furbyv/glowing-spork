@@ -7,17 +7,17 @@ import {
 } from '@angular/animations';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CircleLayer } from 'mapbox-gl';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FeatureLayer } from 'src/app/shared/map-box/layer-definition/feature-layer';
 import { MapSource } from 'src/app/shared/map-box/map-box.utility';
+import { createFeatureLayers } from 'src/app/shared/map-box/utility/objects-layer';
 import { SearchLayoutService } from '../../object-search/services/search-layout.service';
 import { SelectedObjectsService } from '../services/selected-objects.service';
 import { TaxOverviewService } from '../services/tax-overview.service';
 
 @Component({
-  selector: 'app-tax-overview-page',
+  selector: 'woz-tax-overview-page',
   templateUrl: 'tax-overview-page.component.html',
   styleUrls: ['tax-overview-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -114,34 +114,7 @@ export class TaxOverviewPageComponent {
     ])
   );
 
-  objectLayer: CircleLayer = {
-    id: 'Objecten',
-    type: 'circle',
-    source: 'objects',
-    paint: {
-      'circle-color': '#87c2fa',
-      'circle-opacity': 0.75
-    }
-  };
-
-  multiSelectLayer: CircleLayer = {
-    id: 'Objecten-hl',
-    type: 'circle',
-    source: 'objects',
-    paint: {
-      'circle-color': '#2605ff',
-      'circle-opacity': 0.75
-    },
-    filter: ['in', 'id', '']
-  };
-
-  layers: FeatureLayer[] = this.createFeautureLayers();
-
-  createFeautureLayers(): FeatureLayer[] {
-    const layer = new FeatureLayer(this.objectLayer);
-    layer.MakeMutliSelectable(this.multiSelectLayer);
-    return [layer];
-  }
+  layers: FeatureLayer[] = createFeatureLayers();
 
   onOpenObject(objectnumber: number | string) {
     this.layoutService.toggleObject();

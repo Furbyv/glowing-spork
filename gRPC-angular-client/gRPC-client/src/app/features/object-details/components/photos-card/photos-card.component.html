@@ -1,4 +1,7 @@
 <mat-card>
+  <mat-card-subtitle>
+    {{ address }}
+  </mat-card-subtitle>
   <mat-spinner
     *ngIf="loading$ | async; else content"
     class="loader"

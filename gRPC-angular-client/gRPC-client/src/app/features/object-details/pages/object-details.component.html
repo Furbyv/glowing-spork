@@ -8,19 +8,21 @@
   <ng-container *ngIf="wozObject$ | async as wozobject">
     <div class="details-grid">
       <div class="object-row">
-        <app-photos-card [id]="id" class="photo"></app-photos-card>
-        <app-object-properties
+        <app-photos-card
           [id]="id"
-          class="object-properties"
-        ></app-object-properties>
+          [address]="address$ | async"
+          class="photo"
+        ></app-photos-card>
+        <div class="properties">
+          <app-object-properties
+            [id]="id"
+            class="object-properties"
+          ></app-object-properties>
+        </div>
       </div>
       <div class="bottom-row">
         <app-object-tabs class="tabs" [id]="id"></app-object-tabs>
-        <app-object-map
-          *ngIf="wozObjectGeoJson$ | async as geo"
-          [objectFeatures]="geo"
-          class="maps"
-        ></app-object-map>
+        <woz-map-box [layers]="layers" [sources]="dataSources$ | async" class="maps" [layerSelection]="false"></woz-map-box>
       </div>
     </div>
   </ng-container>

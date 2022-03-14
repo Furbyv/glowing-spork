@@ -43,7 +43,9 @@ mat-form-field {
 // override material inline style to allow mini nav state
 mat-drawer[style] {
   visibility: visible !important;
+  display: flex !important;
 }
+
 .mat-drawer {
   transform: none !important;
 }

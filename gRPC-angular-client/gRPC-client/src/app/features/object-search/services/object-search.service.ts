@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { AsyncState, toAsyncState } from '@ngneat/loadoff';
 import { Subject, ReplaySubject, Observable, combineLatest } from 'rxjs';
 import { switchMap, map, filter, shareReplay } from 'rxjs/operators';
-import {
-  WozObjectReply,
-  WozObjectRequestById,
-  WozObjectsReply
-} from 'src/app/proto/wozobject.pb';
+import {  WozObjectRequestById,  WozObjectsReply} from 'src/app/proto/wozobject.pb';
 import { WozObjectsClient } from 'src/app/proto/wozobject.pbsc';
 import { convertWozObjectsToGeoJson } from 'src/app/shared/woz-object-utility';
 
@@ -38,13 +34,14 @@ export class ObjectSearchService {
     shareReplay({ bufferSize: 1, refCount: true })
   );
 
-  wozObjectGeoJson$ = this.wozObjects$.pipe(
+  wozObjectGeoJson$: Observable<GeoJSON.FeatureCollection> = this.wozObjects$.pipe(
     filter(state => state.success),
     map(state => state.res!),
     map(wozObject =>
       wozObject.wozobjects
         ? convertWozObjectsToGeoJson(wozObject.wozobjects)
         : []
-    )
+    ),
+    map(features => ({ type: 'FeatureCollection', features }))
   );
 }

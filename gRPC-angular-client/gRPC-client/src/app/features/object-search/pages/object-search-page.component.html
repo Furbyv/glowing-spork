@@ -5,19 +5,18 @@
     [opened]="isExpanded"
     #drawer
     [class.mat-drawer-collapsed]="!isExpanded"
-    ><app-object-search
-      (toggleMenu)="toggleMenu()"
-      [isExpanded]="isExpanded"
-    ></app-object-search
+    ><woz-object-search (toggleMenu)="toggleMenu()" [isExpanded]="isExpanded"></woz-object-search
   ></mat-drawer>
 
   <mat-drawer-content class="container">
     <div class="details">
-      <app-map-box-map
+      <woz-map-box
         [@displayMapState]="state$ | async"
-        [toggleRefresh]="isExpanded"
-        (onSelect)="onSelectionChange($event)"
-      ></app-map-box-map>
+        [layers]="layers"
+        [layerSelection]="false"
+        [multipleSelect]="false"
+        [sources]="mapSource$ | async"
+        (clickSelect)="onSelectionChange($event)"></woz-map-box>
       <ng-container *ngIf="state$ | async as state">
         <div class="router" [@displayObjectState]="state">
           <router-outlet></router-outlet>
