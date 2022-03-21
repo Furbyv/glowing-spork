@@ -107,6 +107,8 @@ export class TaxOverviewPageComponent {
   );
 
   layers: FeatureLayer[] = createFeatureLayers();
+  overviewObjects$ = this.taxOverviewService.overviewData$;
+  columnDefinitions$ = this.taxOverviewService.columnDefinitions$;
 
   onOpenObject(objectnumber: number | string[]) {
     this.layoutService.toggleObject();

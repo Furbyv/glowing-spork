@@ -1,26 +1,21 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import {
-  ColDef,
-  Column,
-  ColumnApi,
-  GridApi,
-  GridOptions
-} from 'ag-grid-community';
-import { combineLatest } from 'rxjs';
-import { filter, map, startWith } from 'rxjs/operators';
+import { ColDef, ColumnApi, GridApi, GridOptions } from 'ag-grid-community';
 import { ColorSchemeService } from 'src/app/layout/services/color-scheme.service';
-import { TaxOverviewService } from '../../services/tax-overview.service';
+import { ColumnDefinition } from 'src/app/protos/columndefinition.pb';
+import { WozObjectOverview } from 'src/app/protos/taxoverview.pb';
 
 @Component({
-  selector: 'app-tax-overview-grid',
+  selector: 'woz-tax-overview-grid',
   templateUrl: 'tax-overview-grid.component.html',
-  styleUrls: ['tax-overview-grid.component.scss']
+  styleUrls: ['tax-overview-grid.component.scss'],
 })
-export class TaxOverviewGridComponent {
+export class TaxOverviewGridComponent implements OnChanges {
+  @Input() overviewObject: WozObjectOverview[] | null = [];
+  @Input() columnDefinitions: ColumnDefinition[] | null = [];
   @Output() openObject = new EventEmitter<number>();
   @Output() selectedObjects = new EventEmitter<number[]>();
-  public isDarkTheme$ = this.colorSchemeService.isDaarkScheme$;
+  public isDarkTheme$ = this.colorSchemeService.isDarkScheme$;
   private gridApi: GridApi | undefined;
   private gridColumnApi: ColumnApi | undefined;
   overlayLoadingTemplate: any = `<span class="ag-overlay-loading-center">${this.transloco.translate(
@@ -31,170 +26,58 @@ export class TaxOverviewGridComponent {
     onRowDoubleClicked: (rows: any) => {
       const objectNummer: number = rows.data.wozobjectnummer;
       this.openObject.emit(objectNummer);
-    }
+    },
   };
 
   rowSelection = 'multiple';
   defaultColDef: ColDef = {
     editable: false,
-    filter: 'agTextColumnFilter'
+    filter: 'agTextColumnFilter',
   };
+  columnDefs: ColDef[] = [];
+  rowData: WozObjectOverview[] = [];
 
-  rowData$ = this.taxOverviewService.overviewObject$.pipe(
-    filter(state => state.success),
-    map(state => state.res!),
-    map(data => data.overviewObjects!)
-  );
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.overviewObject && this.overviewObject) {
+      this.rowData = this.overviewObject;
+    }
+    if (changes.columnDefinitions && this.columnDefinitions && this.columnDefinitions.length) {
+      this.columnDefs = this.buildColumnDefinition(this.columnDefinitions);
+    }
+  }
 
-  loading$ = combineLatest([
-    this.taxOverviewService.overviewObject$,
-    this.taxOverviewService.refresh$
-  ]).pipe(filter(([state]) => state.loading));
+  private buildColumnDefinition(columnDefinitions: ColumnDefinition[]): ColDef[] {
+    console.log(columnDefinitions);
+    return columnDefinitions.map((cd) => ({
+      field: cd.columnName ?? '',
+      headerName: cd.columnHeader ?? '',
+      headerTooltip: cd.columnDescription,
+      editable: cd.editable,
+    }));
+  }
 
-  constructor(
-    private taxOverviewService: TaxOverviewService,
-    private colorSchemeService: ColorSchemeService,
-    private transloco: TranslocoService
-  ) {}
+  constructor(private colorSchemeService: ColorSchemeService, private transloco: TranslocoService) {}
 
   onSelectionChanged() {
     if (this.gridApi) {
       const selectedRows = this.gridApi.getSelectedRows();
-      this.selectedObjects.emit(selectedRows.map(row => row.wozobjectnummer));
+      this.selectedObjects.emit(selectedRows.map((row) => row.wozobjectnummer));
     }
+  }
+
+  private resizeColumns() {
+    if (this.gridColumnApi) {
+      this.gridColumnApi.autoSizeAllColumns();
+    }
+  }
+
+  onGridChanged() {
+    this.resizeColumns();
   }
 
   onGridReady(params: any) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    if (this.gridColumnApi) {
-      const allColumnIds: Column[] = [];
-      const cols = this.gridColumnApi.getAllColumns();
-      if (cols) {
-        cols.forEach((column: Column) => {
-          allColumnIds.push(column);
-        });
-      }
-      this.gridColumnApi.autoSizeColumns(allColumnIds, true);
-    }
+    this.resizeColumns();
   }
-
-  columnDefs: ColDef[] = [
-    {
-      field: 'wozobjectnummer',
-      headerName: this.transloco.translate('wozobjectnummer')
-    },
-    {
-      field: 'gemeentecode',
-      headerName: this.transloco.translate('gemeentecode')
-    },
-    {
-      field: 'straatnaam.value',
-      headerName: this.transloco.translate('straatnaam')
-    },
-    {
-      field: 'huisnummer',
-      headerName: this.transloco.translate('huisnummer')
-    },
-    {
-      field: 'huisletter.value',
-      headerName: this.transloco.translate('huisletter')
-    },
-    {
-      field: 'huisnummertoevoeging.value',
-      headerName: this.transloco.translate('huisnummertoevoeging')
-    },
-    {
-      field: 'postcode.value',
-      headerName: this.transloco.translate('postcode')
-    },
-    {
-      field: 'wijkcode.value',
-      headerName: this.transloco.translate('wijkcode')
-    },
-    {
-      field: 'buurtcode.value',
-      headerName: this.transloco.translate('buurtcode')
-    },
-    {
-      field: 'woonplaatsnaam.value',
-      headerName: this.transloco.translate('woonplaatsnaam')
-    },
-    {
-      field: 'soortobjectcode.value',
-      headerName: this.transloco.translate('soortobjectcode')
-    },
-    {
-      field: 'groepaanduiding.value',
-      headerName: this.transloco.translate('groepaanduiding')
-    },
-    {
-      field: 'aanduidingbouwstroom.value',
-      headerName: this.transloco.translate('aanduidingbouwstroom')
-    },
-    {
-      field: 'statuswozobject.value',
-      headerName: this.transloco.translate('statuswozobject')
-    },
-    {
-      field: 'waardegebied.value',
-      headerName: this.transloco.translate('waardegebied')
-    },
-    {
-      field: 'model.value',
-      headerName: this.transloco.translate('model')
-    },
-    {
-      field: 'bouwjaar',
-      headerName: this.transloco.translate('bouwjaar')
-    },
-    {
-      field: 'woninh',
-      headerName: this.transloco.translate('woninh')
-    },
-    {
-      field: 'wonopp',
-      headerName: this.transloco.translate('wonopp')
-    },
-    {
-      field: 'aanbouwopp',
-      headerName: this.transloco.translate('wonopp')
-    },
-    {
-      field: 'grondopp',
-      headerName: this.transloco.translate('woninh')
-    },
-    {
-      field: 'schuuropp',
-      headerName: this.transloco.translate('wonopp')
-    },
-    {
-      field: 'garageopp',
-      headerName: this.transloco.translate('woninh')
-    },
-    {
-      field: 'indicatieligging.value',
-      headerName: this.transloco.translate('ligging')
-    },
-    {
-      field: 'kwaliteit.value',
-      headerName: this.transloco.translate('kwaliteit')
-    },
-    {
-      field: 'onderhoud.value',
-      headerName: this.transloco.translate('onderhoud')
-    },
-    {
-      field: 'uitstraling.value',
-      headerName: this.transloco.translate('uitstraling')
-    },
-    {
-      field: 'doelmatigheid.value',
-      headerName: this.transloco.translate('doelmatigheid')
-    },
-    {
-      field: 'voorzieningen.value',
-      headerName: this.transloco.translate('voorzieningen')
-    }
-  ];
 }

@@ -2,11 +2,11 @@ import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ColorSchemeService {
   private colorSchemeDark$$: Subject<boolean> = new ReplaySubject<boolean>(1);
-  public isDaarkScheme$ = this.colorSchemeDark$$.asObservable();
+  public isDarkScheme$ = this.colorSchemeDark$$.asObservable();
 
   private renderer: Renderer2;
   private colorScheme: string | null = 'dark';
@@ -22,10 +22,7 @@ export class ColorSchemeService {
     // Detect if prefers-color-scheme is supported
     if (window.matchMedia('(prefers-color-scheme)').media !== 'not all') {
       // Set colorScheme to Dark if prefers-color-scheme is dark. Otherwise set to light.
-      this.colorScheme = window.matchMedia('(prefers-color-scheme: dark)')
-        .matches
-        ? 'dark'
-        : 'light';
+      this.colorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       this.colorSchemeDark$$.next(this.colorScheme === 'dark');
     } else {
       // If the browser doesn't support prefers-color-scheme, set it as default to dark
@@ -55,19 +52,13 @@ export class ColorSchemeService {
 
   load() {
     this._getColorScheme();
-    this.renderer.addClass(
-      document.body,
-      this.colorSchemePrefix + this.colorScheme
-    );
+    this.renderer.addClass(document.body, this.colorSchemePrefix + this.colorScheme);
   }
 
   update(scheme: string) {
     this._setColorScheme(scheme);
     // Remove the old color-scheme class
-    this.renderer.removeClass(
-      document.body,
-      this.colorSchemePrefix + (this.colorScheme === 'dark' ? 'light' : 'dark')
-    );
+    this.renderer.removeClass(document.body, this.colorSchemePrefix + (this.colorScheme === 'dark' ? 'light' : 'dark'));
     // Add the new / current color-scheme class
     this.renderer.addClass(document.body, this.colorSchemePrefix + scheme);
   }

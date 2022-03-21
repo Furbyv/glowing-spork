@@ -1,9 +1,11 @@
-@import "variables";
-@import "angular-material-theme";
-@import "ag-grid-community/dist/styles/ag-grid.css";
-@import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-@import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
-@import "../node_modules/mapbox-gl/dist/mapbox-gl.css";
+@import 'variables';
+@import 'angular-material-theme';
+@import 'ag-grid-community/dist/styles/ag-grid.css';
+@import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+@import 'ag-grid-community/dist/styles/ag-theme-alpine-dark.css';
+@import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+@import 'ag-grid-community/dist/styles/ag-theme-balham-dark.css';
+@import '../node_modules/mapbox-gl/dist/mapbox-gl.css';
 
 html,
 body {
@@ -12,7 +14,7 @@ body {
 body {
   margin: 0;
   color: var(--text-color-hard);
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 *,

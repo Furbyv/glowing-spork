@@ -4,7 +4,7 @@
     {
         public static IEnumerable<Protos.ColumnDefinition> GetColumnDefinitions(DataContext context, Protos.GridType gridType)
         {
-            return context.ColumnDefinitions.Where(cd => (int)cd.GridType == ((int)gridType)).Select(ToProto);
+            return context.ColumnDefinitions.Where(cd =>  cd.GridType == (Models.GridType) gridType).Select(ToProto).ToList();
         }
 
         private static Protos.ColumnDefinition ToProto(Models.ColumnDefinition coldef)

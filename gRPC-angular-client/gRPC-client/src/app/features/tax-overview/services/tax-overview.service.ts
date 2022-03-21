@@ -25,7 +25,13 @@ export class TaxOverviewService {
   columnDefinitions$ = this.overviewObject$.pipe(
     filter((state) => state.success),
     map((state) => state.res!),
-    map((res) => res.columnDefinitions!)
+    map((res) => res.columnDefinitions!.sort((a, b) => a.sortOrder! - b.sortOrder!))
+  );
+
+  overviewData$ = this.overviewObject$.pipe(
+    filter((state) => state.success),
+    map((state) => state.res!),
+    map((data) => data.overviewObjects!)
   );
 
   wozObjectGeoJson$: Observable<GeoJSON.FeatureCollection> = this.overviewObject$.pipe(

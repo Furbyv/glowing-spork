@@ -12,7 +12,7 @@ import { FullWozObjectReply } from 'src/app/protos/wozobject.pb';
 })
 export class ObjectGridComponent implements OnChanges {
   @Input() wozObject: FullWozObjectReply | null = null;
-  public isDarkTheme$ = this.colorSchemeService.isDaarkScheme$;
+  public isDarkTheme$ = this.colorSchemeService.isDarkScheme$;
 
   defaultColDef: ColDef = {
     editable: false,
