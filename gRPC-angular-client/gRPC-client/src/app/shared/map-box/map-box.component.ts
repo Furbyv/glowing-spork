@@ -342,13 +342,14 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
     const coordinates = geo.flatMap((g: GeoJSON.FeatureCollection<GeoJSON.Geometry, GeoJSON.GeoJsonProperties>) =>
       g.features.flatMap((f) => this.getCoordinates(f.geometry))
     );
-    for (let index = 0; index < coordinates.length; index++) {
-      const c = coordinates[index];
-      if (c) {
-        bounds.extend(c);
+
+    if (coordinates.length) {
+      for (let index = 0; index < coordinates.length; index++) {
+        const c = coordinates[index];
+        if (c) {
+          bounds.extend(c);
+        }
       }
-    }
-    if (bounds && !bounds.isEmpty) {
       map.fitBounds(bounds, { padding: 20 });
     }
   }
