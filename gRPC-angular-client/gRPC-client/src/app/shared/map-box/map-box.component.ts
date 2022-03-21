@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import * as mapboxgl from 'mapbox-gl';
-import { Map } from 'mapbox-gl';
+import { GeoJSONSourceRaw, Map } from 'mapbox-gl';
 import { combineLatest, ReplaySubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FeatureLayer } from './layer-definition/feature-layer';
@@ -305,6 +305,12 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
     sources.forEach((s) => {
       if (!map.getSource(s.id)) {
         map.addSource(s.id, s.source);
+      } else {
+        const source = map.getSource(s.id);
+        if (source.type === 'geojson') {
+          const data = s.source as GeoJSONSourceRaw;
+          source.setData(data.data!);
+        }
       }
     });
     layers.forEach((layer) => {
@@ -312,12 +318,16 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
       if (map.getLayer(id)) {
         map.removeLayer(id);
       }
+      if (layer.HighLightLayer && map.getLayer(layer.HighLightLayer.id)) {
+        map.removeLayer(layer.HighLightLayer?.id);
+      }
 
       // Add a symbol layer
       map.addLayer(layer.mainLayer);
       if (layer.MultiSelectable && layer.HighLightLayer) {
         map.addLayer(layer.HighLightLayer);
       }
+      map.repaint = true;
     });
     this.fitToFeatures(sources, map);
   }
