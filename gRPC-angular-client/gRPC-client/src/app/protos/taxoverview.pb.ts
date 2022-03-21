@@ -11,6 +11,7 @@ import {
 } from '@ngx-grpc/common';
 import { BinaryReader, BinaryWriter, ByteSource } from 'google-protobuf';
 import * as googleProtobuf000 from '@ngx-grpc/well-known-types';
+import * as columndefinitions001 from './columndefinition.pb';
 /**
  * Message implementation for taxoverview.WozObjectFilterRequest
  */
@@ -755,6 +756,7 @@ export class WozObjectsTaxOverviewReply implements GrpcMessage {
    */
   static refineValues(_instance: WozObjectsTaxOverviewReply) {
     _instance.overviewObjects = _instance.overviewObjects || [];
+    _instance.columnDefinitions = _instance.columnDefinitions || [];
   }
 
   /**
@@ -780,6 +782,15 @@ export class WozObjectsTaxOverviewReply implements GrpcMessage {
             messageInitializer1
           );
           break;
+        case 2:
+          const messageInitializer2 = new columndefinitions001.ColumnDefinition();
+          _reader.readMessage(
+            messageInitializer2,
+            columndefinitions001.ColumnDefinition.deserializeBinaryFromReader
+          );
+          (_instance.columnDefinitions =
+            _instance.columnDefinitions || []).push(messageInitializer2);
+          break;
         default:
           _reader.skipField();
       }
@@ -804,9 +815,17 @@ export class WozObjectsTaxOverviewReply implements GrpcMessage {
         WozObjectOverview.serializeBinaryToWriter
       );
     }
+    if (_instance.columnDefinitions && _instance.columnDefinitions.length) {
+      _writer.writeRepeatedMessage(
+        2,
+        _instance.columnDefinitions as any,
+        columndefinitions001.ColumnDefinition.serializeBinaryToWriter
+      );
+    }
   }
 
   private _overviewObjects?: WozObjectOverview[];
+  private _columnDefinitions?: columndefinitions001.ColumnDefinition[];
 
   /**
    * Message constructor. Initializes the properties and applies default Protobuf values if necessary
@@ -817,6 +836,9 @@ export class WozObjectsTaxOverviewReply implements GrpcMessage {
     this.overviewObjects = (_value.overviewObjects || []).map(
       m => new WozObjectOverview(m)
     );
+    this.columnDefinitions = (_value.columnDefinitions || []).map(
+      m => new columndefinitions001.ColumnDefinition(m)
+    );
     WozObjectsTaxOverviewReply.refineValues(this);
   }
   get overviewObjects(): WozObjectOverview[] | undefined {
@@ -824,6 +846,14 @@ export class WozObjectsTaxOverviewReply implements GrpcMessage {
   }
   set overviewObjects(value: WozObjectOverview[] | undefined) {
     this._overviewObjects = value;
+  }
+  get columnDefinitions(): columndefinitions001.ColumnDefinition[] | undefined {
+    return this._columnDefinitions;
+  }
+  set columnDefinitions(
+    value: columndefinitions001.ColumnDefinition[] | undefined
+  ) {
+    this._columnDefinitions = value;
   }
 
   /**
@@ -841,7 +871,8 @@ export class WozObjectsTaxOverviewReply implements GrpcMessage {
    */
   toObject(): WozObjectsTaxOverviewReply.AsObject {
     return {
-      overviewObjects: (this.overviewObjects || []).map(m => m.toObject())
+      overviewObjects: (this.overviewObjects || []).map(m => m.toObject()),
+      columnDefinitions: (this.columnDefinitions || []).map(m => m.toObject())
     };
   }
 
@@ -864,6 +895,9 @@ export class WozObjectsTaxOverviewReply implements GrpcMessage {
     return {
       overviewObjects: (this.overviewObjects || []).map(m =>
         m.toProtobufJSON(options)
+      ),
+      columnDefinitions: (this.columnDefinitions || []).map(m =>
+        m.toProtobufJSON(options)
       )
     };
   }
@@ -874,6 +908,7 @@ export module WozObjectsTaxOverviewReply {
    */
   export interface AsObject {
     overviewObjects?: WozObjectOverview.AsObject[];
+    columnDefinitions?: columndefinitions001.ColumnDefinition.AsObject[];
   }
 
   /**
@@ -881,6 +916,9 @@ export module WozObjectsTaxOverviewReply {
    */
   export interface AsProtobufJSON {
     overviewObjects?: WozObjectOverview.AsProtobufJSON[] | null;
+    columnDefinitions?:
+      | columndefinitions001.ColumnDefinition.AsProtobufJSON[]
+      | null;
   }
 }
 

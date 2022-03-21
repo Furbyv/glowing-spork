@@ -5,25 +5,25 @@ import {
   Input,
   OnChanges,
   Output,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import { Timestamp } from '@ngx-grpc/well-known-types';
 import { merge } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
-import { NoteRecord } from 'src/app/proto/notes.pb';
+import { NoteRecord } from 'src/app/protos/notes.pb';
 import { NotesService } from '../../services/notes.service';
 
 export enum FormMode {
   editMode,
   addMode,
-  readMode
+  readMode,
 }
 
 @Component({
   selector: 'woz-notes-form',
   templateUrl: 'notes-form.component.html',
   styleUrls: ['notes-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotesFormComponent implements OnChanges {
   @Input() selectedObject: number | undefined;
@@ -33,18 +33,15 @@ export class NotesFormComponent implements OnChanges {
   readOnly = this.formMode === FormMode.readMode;
   selectedNote: NoteRecord | undefined;
   notes$ = this.notesService.notes$.pipe(
-    filter(state => state.success),
-    map(state => state.res!),
-    tap(notes => {
+    filter((state) => state.success),
+    map((state) => state.res!),
+    tap((notes) => {
       if (notes.length) {
         this.selectedNote = notes[0];
       }
     })
   );
-  saveState$ = merge(
-    this.notesService.saveState$,
-    this.notesService.editState$
-  );
+  saveState$ = merge(this.notesService.saveState$, this.notesService.editState$);
 
   ngOnChanges(_: SimpleChanges): void {
     if (this.selectedObject) {

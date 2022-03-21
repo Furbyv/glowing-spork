@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { WozObjectReply } from 'src/app/proto/wozobject.pb';
+import { WozObjectReply } from 'src/app/protos/wozobject.pb';
 
 @Component({
   selector: 'woz-object-search-list',

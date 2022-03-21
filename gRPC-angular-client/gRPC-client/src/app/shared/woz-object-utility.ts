@@ -1,6 +1,6 @@
 import { SafeUrl } from '@angular/platform-browser';
-import { WozObjectOverview } from '../proto/taxoverview.pb';
-import { FullWozObjectReply, WozObjectReply } from '../proto/wozobject.pb';
+import { WozObjectOverview } from '../protos/taxoverview.pb';
+import { FullWozObjectReply, WozObjectReply } from '../protos/wozobject.pb';
 
 export function getAddress(w: WozObjectReply | FullWozObjectReply | WozObjectOverview): string {
   const straatnaam = w.straatnaam ? w.straatnaam.value : '';

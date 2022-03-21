@@ -1,19 +1,13 @@
 import { Injectable } from '@angular/core';
 import { toAsyncState } from '@ngneat/loadoff';
-import {
-  BehaviorSubject,
-  combineLatest,
-  Observable,
-  ReplaySubject,
-  Subject
-} from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
 import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
-import { WozObjectFilterRequest } from 'src/app/proto/taxoverview.pb';
-import { TaxoverviewClient } from 'src/app/proto/taxoverview.pbsc';
+import { WozObjectFilterRequest } from 'src/app/protos/taxoverview.pb';
+import { TaxoverviewClient } from 'src/app/protos/taxoverview.pbsc';
 import { convertWozObjectsToGeoJson } from 'src/app/shared/woz-object-utility';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TaxOverviewService {
   private filterRequest$$: Subject<WozObjectFilterRequest> = new ReplaySubject<WozObjectFilterRequest>(1);
@@ -24,23 +18,21 @@ export class TaxOverviewService {
   filterRequest$ = this.filterRequest$$.asObservable();
 
   overviewObject$ = combineLatest([this.filterRequest$$, this.refresh$$]).pipe(
-    switchMap(([request]) =>
-      this.taxOverviewClient.getOverviewObjects(request).pipe(toAsyncState())
-    ),
+    switchMap(([request]) => this.taxOverviewClient.getOverviewObjects(request).pipe(toAsyncState())),
     shareReplay({ bufferSize: 1, refCount: false })
   );
 
-  wozObjectGeoJson$: Observable<
-    GeoJSON.FeatureCollection
-  > = this.overviewObject$.pipe(
-    filter(state => state.success),
-    map(state => state.res!),
-    map(wozObject =>
-      wozObject.overviewObjects
-        ? convertWozObjectsToGeoJson(wozObject.overviewObjects)
-        : []
-    ),
-    map(features => ({ type: 'FeatureCollection', features }))
+  columnDefinitions$ = this.overviewObject$.pipe(
+    filter((state) => state.success),
+    map((state) => state.res!),
+    map((res) => res.columnDefinitions!)
+  );
+
+  wozObjectGeoJson$: Observable<GeoJSON.FeatureCollection> = this.overviewObject$.pipe(
+    filter((state) => state.success),
+    map((state) => state.res!),
+    map((wozObject) => (wozObject.overviewObjects ? convertWozObjectsToGeoJson(wozObject.overviewObjects) : [])),
+    map((features) => ({ type: 'FeatureCollection', features }))
   );
 
   constructor(private taxOverviewClient: TaxoverviewClient) {}

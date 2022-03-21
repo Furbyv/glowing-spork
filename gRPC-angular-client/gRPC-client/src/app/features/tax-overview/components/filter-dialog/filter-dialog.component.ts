@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { WozObjectFilterRequest } from 'src/app/proto/taxoverview.pb';
+import { WozObjectFilterRequest } from 'src/app/protos/taxoverview.pb';
 import { Buurtcodes } from '../../filter-data/buurt-data';
 import { Gemeenten } from '../../filter-data/gemeente-data';
 import { Models } from '../../filter-data/model-data';
@@ -16,7 +16,7 @@ import { Woonplaatsen } from '../../filter-data/woonplaats-data';
   selector: 'app-filter-dialog',
   templateUrl: 'filter-dialog.component.html',
   styleUrls: ['filter-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterDialogComponent {
   //#TODO: Static data, replace with services
@@ -37,54 +37,37 @@ export class FilterDialogComponent {
   socControl = new FormControl();
 
   filterData: WozObjectFilterRequest = new WozObjectFilterRequest();
-  constructor(
-    public dialogRef: MatDialogRef<FilterDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    this.gemeenteControl.valueChanges
-      .pipe(untilDestroyed(this))
-      .subscribe((gemeentecodes: number[] | null) => {
-        if (gemeentecodes && gemeentecodes.length) {
-          this.buurtCodes = [
-            ...this.buurtCodes.filter(b =>
-              gemeentecodes.includes(b.gemeentecode)
-            )
-          ];
-        } else {
-          this.buurtCodes = Buurtcodes;
-        }
-      });
+  constructor(public dialogRef: MatDialogRef<FilterDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.gemeenteControl.valueChanges.pipe(untilDestroyed(this)).subscribe((gemeentecodes: number[] | null) => {
+      if (gemeentecodes && gemeentecodes.length) {
+        this.buurtCodes = [...this.buurtCodes.filter((b) => gemeentecodes.includes(b.gemeentecode))];
+      } else {
+        this.buurtCodes = Buurtcodes;
+      }
+    });
   }
 
   private filterBuurtcodes(gemeentecodes: number[]) {
     this.buurtCodes = gemeentecodes.length
-      ? [...this.buurtCodes.filter(b => gemeentecodes.includes(b.gemeentecode))]
+      ? [...this.buurtCodes.filter((b) => gemeentecodes.includes(b.gemeentecode))]
       : Buurtcodes;
   }
 
   private filterWijkcodes(gemeentecodes: number[]) {
     this.wijkList = gemeentecodes.length
-      ? [...this.wijkList.filter(b => gemeentecodes.includes(b.gemeentecode))]
+      ? [...this.wijkList.filter((b) => gemeentecodes.includes(b.gemeentecode))]
       : WijkCodes;
   }
 
   private filterWoonplaats(gemeentecodes: number[]) {
     this.woonplaatList = gemeentecodes.length
-      ? [
-          ...this.woonplaatList.filter(b =>
-            gemeentecodes.includes(b.gemeentecode)
-          )
-        ]
+      ? [...this.woonplaatList.filter((b) => gemeentecodes.includes(b.gemeentecode))]
       : Woonplaatsen;
   }
 
   private filterStraatnaam(gemeentecodes: number[]) {
     this.straatnaamList = gemeentecodes.length
-      ? [
-          ...this.straatnaamList.filter(b =>
-            gemeentecodes.includes(b.gemeentecode)
-          )
-        ]
+      ? [...this.straatnaamList.filter((b) => gemeentecodes.includes(b.gemeentecode))]
       : straatnamen;
   }
 

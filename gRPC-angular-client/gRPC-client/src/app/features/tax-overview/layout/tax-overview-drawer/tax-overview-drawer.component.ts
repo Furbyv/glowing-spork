@@ -1,15 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Output,
-  ViewContainerRef
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, ViewContainerRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ReplaySubject, Subject } from 'rxjs';
 import { NotesDialogComponent } from 'src/app/features/notes/pages/notes-dialog.component';
 import { SearchLayoutService } from 'src/app/features/object-search/services/search-layout.service';
-import { WozObjectFilterRequest } from 'src/app/proto/taxoverview.pb';
+import { WozObjectFilterRequest } from 'src/app/protos/taxoverview.pb';
 import { FilterDialogComponent } from '../../components/filter-dialog/filter-dialog.component';
 import { SelectedObjectsService } from '../../services/selected-objects.service';
 import { TaxOverviewService } from '../../services/tax-overview.service';
@@ -18,7 +12,7 @@ import { TaxOverviewService } from '../../services/tax-overview.service';
   selector: 'app-tax-overview-drawer',
   templateUrl: 'tax-overview-drawer.component.html',
   styleUrls: ['tax-overview-drawer.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaxOverviewDrawerComponent {
   isExpanded: boolean = false;
@@ -49,7 +43,7 @@ export class TaxOverviewDrawerComponent {
 
   onSetFilters() {
     const dialogRef = this.dialog.open(FilterDialogComponent, {
-      width: '400px'
+      width: '400px',
     });
 
     dialogRef.afterClosed().subscribe((result: WozObjectFilterRequest) => {
@@ -66,7 +60,7 @@ export class TaxOverviewDrawerComponent {
       width: '60vw',
       height: '60vh',
       viewContainerRef: this.vcr,
-      data: { wozobjectnummers: selectedObjects }
+      data: { wozobjectnummers: selectedObjects },
     });
   }
 

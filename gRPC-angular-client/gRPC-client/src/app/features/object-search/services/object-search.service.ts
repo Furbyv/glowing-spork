@@ -3,8 +3,8 @@ import { AsyncState, toAsyncState } from '@ngneat/loadoff';
 import mapboxgl from 'mapbox-gl';
 import { Subject, ReplaySubject, Observable, combineLatest } from 'rxjs';
 import { switchMap, map, filter, shareReplay, withLatestFrom } from 'rxjs/operators';
-import { WozObjectRequestById, WozObjectsReply } from 'src/app/proto/wozobject.pb';
-import { WozObjectsClient } from 'src/app/proto/wozobject.pbsc';
+import { WozObjectRequestById, WozObjectsReply } from 'src/app/protos/wozobject.pb';
+import { WozObjectsClient } from 'src/app/protos/wozobject.pbsc';
 import { convertWozObjectsToGeoJson } from 'src/app/shared/woz-object-utility';
 
 @Injectable({ providedIn: 'root' })

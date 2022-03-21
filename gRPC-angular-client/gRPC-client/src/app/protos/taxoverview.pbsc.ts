@@ -21,6 +21,7 @@ import {
 import { Observable } from 'rxjs';
 import * as thisProto from './taxoverview.pb';
 import * as googleProtobuf000 from '@ngx-grpc/well-known-types';
+import * as columndefinitions001 from './columndefinition.pb';
 import { GRPC_TAXOVERVIEW_CLIENT_SETTINGS } from './taxoverview.pbconf';
 /**
  * Service client implementation for taxoverview.Taxoverview

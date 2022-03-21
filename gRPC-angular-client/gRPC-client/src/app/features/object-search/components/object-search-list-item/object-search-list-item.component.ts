@@ -11,7 +11,7 @@ import {
 import { SafeUrl } from '@angular/platform-browser';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { ImagesService } from 'src/app/features/object-details/services/images.service';
-import { WozObjectReply } from 'src/app/proto/wozobject.pb';
+import { WozObjectReply } from 'src/app/protos/wozobject.pb';
 
 @UntilDestroy()
 @Component({

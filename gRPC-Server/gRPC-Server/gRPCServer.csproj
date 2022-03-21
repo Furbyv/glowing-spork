@@ -13,6 +13,7 @@
     <Protobuf Include="Protos\taxoverview.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\notes.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\timeperiod.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\columndefinition.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>

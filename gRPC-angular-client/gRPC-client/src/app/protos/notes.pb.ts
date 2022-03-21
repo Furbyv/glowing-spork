@@ -11,7 +11,6 @@ import {
 } from '@ngx-grpc/common';
 import { BinaryReader, BinaryWriter, ByteSource } from 'google-protobuf';
 import * as googleProtobuf000 from '@ngx-grpc/well-known-types';
-import * as googleProtobuf001 from '@ngx-grpc/well-known-types';
 /**
  * Message implementation for notes.GetNotesRequest
  */
@@ -497,10 +496,10 @@ export class NoteRecord implements GrpcMessage {
           _instance.userid = _reader.readInt64String();
           break;
         case 5:
-          _instance.noteDate = new googleProtobuf001.Timestamp();
+          _instance.noteDate = new googleProtobuf000.Timestamp();
           _reader.readMessage(
             _instance.noteDate,
-            googleProtobuf001.Timestamp.deserializeBinaryFromReader
+            googleProtobuf000.Timestamp.deserializeBinaryFromReader
           );
           break;
         case 6:
@@ -536,7 +535,7 @@ export class NoteRecord implements GrpcMessage {
       _writer.writeMessage(
         5,
         _instance.noteDate as any,
-        googleProtobuf001.Timestamp.serializeBinaryToWriter
+        googleProtobuf000.Timestamp.serializeBinaryToWriter
       );
     }
     if (_instance.noteText) {
@@ -548,7 +547,7 @@ export class NoteRecord implements GrpcMessage {
   private _wozobjectnummer?: string;
   private _user?: string;
   private _userid?: string;
-  private _noteDate?: googleProtobuf001.Timestamp;
+  private _noteDate?: googleProtobuf000.Timestamp;
   private _noteText?: string;
 
   /**
@@ -562,7 +561,7 @@ export class NoteRecord implements GrpcMessage {
     this.user = _value.user;
     this.userid = _value.userid;
     this.noteDate = _value.noteDate
-      ? new googleProtobuf001.Timestamp(_value.noteDate)
+      ? new googleProtobuf000.Timestamp(_value.noteDate)
       : undefined;
     this.noteText = _value.noteText;
     NoteRecord.refineValues(this);
@@ -591,10 +590,10 @@ export class NoteRecord implements GrpcMessage {
   set userid(value: string | undefined) {
     this._userid = value;
   }
-  get noteDate(): googleProtobuf001.Timestamp | undefined {
+  get noteDate(): googleProtobuf000.Timestamp | undefined {
     return this._noteDate;
   }
-  set noteDate(value: googleProtobuf001.Timestamp | undefined) {
+  set noteDate(value: googleProtobuf000.Timestamp | undefined) {
     this._noteDate = value;
   }
   get noteText(): string | undefined {
@@ -663,7 +662,7 @@ export module NoteRecord {
     wozobjectnummer?: string;
     user?: string;
     userid?: string;
-    noteDate?: googleProtobuf001.Timestamp.AsObject;
+    noteDate?: googleProtobuf000.Timestamp.AsObject;
     noteText?: string;
   }
 
@@ -675,7 +674,7 @@ export module NoteRecord {
     wozobjectnummer?: string;
     user?: string;
     userid?: string;
-    noteDate?: googleProtobuf001.Timestamp.AsProtobufJSON | null;
+    noteDate?: googleProtobuf000.Timestamp.AsProtobufJSON | null;
     noteText?: string;
   }
 }

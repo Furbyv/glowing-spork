@@ -3,8 +3,8 @@ import { AsyncState, toAsyncState } from '@ngneat/loadoff';
 import { BehaviorSubject, combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
 import { concatMap, map, shareReplay, tap, toArray } from 'rxjs/operators';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { WozObjectsClient } from 'src/app/proto/wozobject.pbsc';
-import { UploadImageRequest, WozObjectImageReply, WozObjectImageRequest } from 'src/app/proto/wozobject.pb';
+import { WozObjectsClient } from 'src/app/protos/wozobject.pbsc';
+import { UploadImageRequest, WozObjectImageReply, WozObjectImageRequest } from 'src/app/protos/wozobject.pb';
 
 @Injectable({ providedIn: 'root' })
 export class ImagesService {

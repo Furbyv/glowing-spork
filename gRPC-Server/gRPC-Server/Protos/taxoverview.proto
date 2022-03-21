@@ -1,5 +1,6 @@
 syntax = "proto3";
 import "google/protobuf/wrappers.proto";
+import "Protos/columndefinition.proto";
 
 option csharp_namespace = "gRPCServer.Protos";
 
@@ -44,6 +45,7 @@ message SubObjectFilterRequest {
 
 message WozObjectsTaxOverviewReply {
 	repeated WozObjectOverview overviewObjects =1;
+	repeated columndefinitions.ColumnDefinition column_definitions =2;
 }
 
 message WozObjectOverview {

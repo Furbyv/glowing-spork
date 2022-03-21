@@ -16,6 +16,7 @@ public class DataContext : DbContext
     public virtual DbSet<User> Users { get; set; }
     public virtual DbSet<Notes> Notes { get; set; }
     public virtual DbSet<TaxOverview> Taxatieoverzicht { get; set; }
+    public virtual DbSet<ColumnDefinition> ColumnDefinitions { get; set; }
     public DataContext(DbContextOptions<DataContext> options) : base(options) {
         NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite();
     }

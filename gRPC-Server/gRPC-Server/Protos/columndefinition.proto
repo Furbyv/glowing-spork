@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPCServer.Protos";
+
+package columndefinitions;
+
+  enum GridType {
+    TAXOVERVIEW = 0;
+  }
+
+message ColumnDefinition{
+	string column_name =1;
+	string column_header = 2;
+	string column_description = 3;
+	GridType grid_Type = 4;
+	bool editable = 5;
+	int32 sort_order = 6;
+}

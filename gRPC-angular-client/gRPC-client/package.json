@@ -8,8 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "proto:generate:win": "for /f %G in ('dir C:\\Users\\fbver\\source\\repos\\glowing-spork\\gRPC-angular-client\\gRPC-client\\protos\\*.proto') do grpc_tools_node_protoc --plugin=protoc-gen-ng=C:\\Users\\fbver\\source\\repos\\glowing-spork\\gRPC-angular-client\\gRPC-client\\node_modules\\.bin\\protoc-gen-ng.cmd --ng_out=src/app/proto -I ./protos protos/*.proto",
-    "compile": "C:/Users/fbver/source/repos/glowing-spork/gRPC-angular-client/gRPC-client/node_modules/protoc/protoc/bin/protoc --plugin=protoc-gen-ts=C:/Users/fbver/source/repos/glowing-spork/gRPC-angular-client/gRPC-client/node_modules/.bin/protoc-gen-ts.cmd --js_out=import_style=commonjs,binary:src/app/proto --ts_out=service=grpc-web:src/app/proto -I ./protos protos/*.proto"
+    "proto:generate:win": "for /f %G in ('dir /b .\\protos\\*.proto') do grpc_tools_node_protoc --plugin=protoc-gen-ng=.\\node_modules\\.bin\\protoc-gen-ng.cmd --ng_out=.\\src\\app\\protos -I .\\protos\\ -I .\\protos .\\protos\\%G"
   },
   "lint-staged": {
     "*.{json,scss,md,ts,html}": "prettier --write",

@@ -21,7 +21,6 @@ import {
 import { Observable } from 'rxjs';
 import * as thisProto from './notes.pb';
 import * as googleProtobuf000 from '@ngx-grpc/well-known-types';
-import * as googleProtobuf001 from '@ngx-grpc/well-known-types';
 import { GRPC_NOTES_CLIENT_SETTINGS } from './notes.pbconf';
 /**
  * Service client implementation for notes.Notes

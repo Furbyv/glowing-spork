@@ -25,64 +25,66 @@ namespace gRPCServer.Protos {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChhQcm90b3MvdGF4b3ZlcnZpZXcucHJvdG8SC3RheG92ZXJ2aWV3Gh5nb29n",
-            "bGUvcHJvdG9idWYvd3JhcHBlcnMucHJvdG8i1wEKFldvek9iamVjdEZpbHRl",
-            "clJlcXVlc3QSEQoJdGlqZHZha2lkGAEgASgFEhAKCG1vZGVsaWRzGAIgAygF",
-            "EhUKDWdlbWVlbnRlY29kZXMYAyADKAUSFAoMd29vbnBsYWF0c2VuGAQgAygJ",
-            "EhMKC3N0cmFhdG5hbWVuGAUgAygJEhEKCXdpamtjb2RlcxgGIAMoCRISCgpi",
-            "dXVydGNvZGVzGAcgAygJEhUKDXNvb3J0Z3JvZXBpZHMYCCADKAUSGAoQc29v",
-            "cnRvYmplY3Rjb2RlcxgJIAMoCSK4AgoWU3ViT2JqZWN0RmlsdGVyUmVxdWVz",
-            "dBIRCgl0aWpkdmFraWQYASABKAUSEAoIbW9kZWxpZHMYAiADKAUSFQoNZ2Vt",
-            "ZWVudGVjb2RlcxgDIAMoBRIUCgx3b29ucGxhYXRzZW4YBCADKAkSEwoLc3Ry",
-            "YWF0bmFtZW4YBSADKAkSEQoJd2lqa2NvZGVzGAYgAygJEhIKCmJ1dXJ0Y29k",
-            "ZXMYByADKAkSFAoMZGVlbGdyb2VwaWRzGAggAygFEhEKCWRlZWxjb2RlcxgJ",
-            "IAMoCRIRCglrd2FsaXRlaXQYCiADKAkSEQoJb25kZXJob3VkGAsgAygJEhMK",
-            "C3VpdHN0cmFsaW5nGAwgAygJEhUKDWRvZWxtYXRpZ2hlaWQYDSADKAkSFQoN",
-            "dm9vcnppZW5pbmdlbhgOIAMoCSJVChpXb3pPYmplY3RzVGF4T3ZlcnZpZXdS",
-            "ZXBseRI3Cg9vdmVydmlld09iamVjdHMYASADKAsyHi50YXhvdmVydmlldy5X",
-            "b3pPYmplY3RPdmVydmlldyLYCgoRV296T2JqZWN0T3ZlcnZpZXcSEQoJdGlq",
-            "ZHZha2lkGAEgASgFEhcKD3dvem9iamVjdG51bW1lchgCIAEoAxIpCgNsYXQY",
-            "AyABKAsyHC5nb29nbGUucHJvdG9idWYuRG91YmxlVmFsdWUSKQoDbG9uGAQg",
-            "ASgLMhwuZ29vZ2xlLnByb3RvYnVmLkRvdWJsZVZhbHVlEhQKDGdlbWVlbnRl",
-            "Y29kZRgFIAEoBRIwCgpzdHJhYXRuYWFtGAYgASgLMhwuZ29vZ2xlLnByb3Rv",
-            "YnVmLlN0cmluZ1ZhbHVlEhIKCmh1aXNudW1tZXIYByABKAUSMAoKaHVpc2xl",
-            "dHRlchgIIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI6ChRo",
-            "dWlzbnVtbWVydG9ldm9lZ2luZxgJIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5T",
-            "dHJpbmdWYWx1ZRIuCghwb3N0Y29kZRgKIAEoCzIcLmdvb2dsZS5wcm90b2J1",
-            "Zi5TdHJpbmdWYWx1ZRIuCgh3aWprY29kZRgLIAEoCzIcLmdvb2dsZS5wcm90",
-            "b2J1Zi5TdHJpbmdWYWx1ZRIvCglidXVydGNvZGUYDCABKAsyHC5nb29nbGUu",
-            "cHJvdG9idWYuU3RyaW5nVmFsdWUSNAoOd29vbnBsYWF0c25hYW0YDSABKAsy",
-            "HC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSOQoTbG9jYXRpZW9tc2No",
-            "cmlqdmluZxgOIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI1",
-            "Cg9zb29ydG9iamVjdGNvZGUYDyABKAsyHC5nb29nbGUucHJvdG9idWYuU3Ry",
-            "aW5nVmFsdWUSNgoQaW5kaWNhdGllbGlnZ2luZxgQIAEoCzIcLmdvb2dsZS5w",
-            "cm90b2J1Zi5TdHJpbmdWYWx1ZRI1Cg9ncm9lcGFhbmR1aWRpbmcYESABKAsy",
-            "HC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSOgoUYWFuZHVpZGluZ2Jv",
-            "dXdzdHJvb20YEiABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUS",
-            "NQoPc3RhdHVzd296b2JqZWN0GBMgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0",
-            "cmluZ1ZhbHVlEjIKDHdhYXJkZWdlYmllZBgUIAEoCzIcLmdvb2dsZS5wcm90",
-            "b2J1Zi5TdHJpbmdWYWx1ZRIrCgVtb2RlbBgVIAEoCzIcLmdvb2dsZS5wcm90",
-            "b2J1Zi5TdHJpbmdWYWx1ZRIOCgZ3b25pbmgYFiABKAUSDgoGd29ub3BwGBcg",
-            "ASgFEhAKCGdyb25kb3BwGBggASgFEhIKCmFhbmJvdXdvcHAYGSABKAUSEQoJ",
-            "c2NodXVyb3BwGBogASgFEhEKCWdhcmFnZW9wcBgbIAEoBRIQCghib3V3amFh",
-            "chgcIAEoBRIvCglrd2FsaXRlaXQYHSABKAsyHC5nb29nbGUucHJvdG9idWYu",
-            "U3RyaW5nVmFsdWUSLwoJb25kZXJob3VkGB4gASgLMhwuZ29vZ2xlLnByb3Rv",
-            "YnVmLlN0cmluZ1ZhbHVlEjEKC3VpdHN0cmFsaW5nGB8gASgLMhwuZ29vZ2xl",
-            "LnByb3RvYnVmLlN0cmluZ1ZhbHVlEjMKDWRvZWxtYXRpZ2hlaWQYICABKAsy",
-            "HC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSMwoNdm9vcnppZW5pbmdl",
-            "bhghIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZSIcChpTdWJP",
-            "YmplY3RzVGF4T3ZlcnZpZXdSZXBseTLYAQoLVGF4b3ZlcnZpZXcSYgoSR2V0",
-            "T3ZlcnZpZXdPYmplY3RzEiMudGF4b3ZlcnZpZXcuV296T2JqZWN0RmlsdGVy",
-            "UmVxdWVzdBonLnRheG92ZXJ2aWV3Lldvek9iamVjdHNUYXhPdmVydmlld1Jl",
-            "cGx5EmUKFUdldE92ZXJ2aWV3U3Vib2JqZWN0cxIjLnRheG92ZXJ2aWV3LlN1",
-            "Yk9iamVjdEZpbHRlclJlcXVlc3QaJy50YXhvdmVydmlldy5TdWJPYmplY3Rz",
-            "VGF4T3ZlcnZpZXdSZXBseUIUqgIRZ1JQQ1NlcnZlci5Qcm90b3NiBnByb3Rv",
-            "Mw=="));
+            "bGUvcHJvdG9idWYvd3JhcHBlcnMucHJvdG8aHVByb3Rvcy9jb2x1bW5kZWZp",
+            "bml0aW9uLnByb3RvItcBChZXb3pPYmplY3RGaWx0ZXJSZXF1ZXN0EhEKCXRp",
+            "amR2YWtpZBgBIAEoBRIQCghtb2RlbGlkcxgCIAMoBRIVCg1nZW1lZW50ZWNv",
+            "ZGVzGAMgAygFEhQKDHdvb25wbGFhdHNlbhgEIAMoCRITCgtzdHJhYXRuYW1l",
+            "bhgFIAMoCRIRCgl3aWprY29kZXMYBiADKAkSEgoKYnV1cnRjb2RlcxgHIAMo",
+            "CRIVCg1zb29ydGdyb2VwaWRzGAggAygFEhgKEHNvb3J0b2JqZWN0Y29kZXMY",
+            "CSADKAkiuAIKFlN1Yk9iamVjdEZpbHRlclJlcXVlc3QSEQoJdGlqZHZha2lk",
+            "GAEgASgFEhAKCG1vZGVsaWRzGAIgAygFEhUKDWdlbWVlbnRlY29kZXMYAyAD",
+            "KAUSFAoMd29vbnBsYWF0c2VuGAQgAygJEhMKC3N0cmFhdG5hbWVuGAUgAygJ",
+            "EhEKCXdpamtjb2RlcxgGIAMoCRISCgpidXVydGNvZGVzGAcgAygJEhQKDGRl",
+            "ZWxncm9lcGlkcxgIIAMoBRIRCglkZWVsY29kZXMYCSADKAkSEQoJa3dhbGl0",
+            "ZWl0GAogAygJEhEKCW9uZGVyaG91ZBgLIAMoCRITCgt1aXRzdHJhbGluZxgM",
+            "IAMoCRIVCg1kb2VsbWF0aWdoZWlkGA0gAygJEhUKDXZvb3J6aWVuaW5nZW4Y",
+            "DiADKAkilgEKGldvek9iamVjdHNUYXhPdmVydmlld1JlcGx5EjcKD292ZXJ2",
+            "aWV3T2JqZWN0cxgBIAMoCzIeLnRheG92ZXJ2aWV3Lldvek9iamVjdE92ZXJ2",
+            "aWV3Ej8KEmNvbHVtbl9kZWZpbml0aW9ucxgCIAMoCzIjLmNvbHVtbmRlZmlu",
+            "aXRpb25zLkNvbHVtbkRlZmluaXRpb24i2AoKEVdvek9iamVjdE92ZXJ2aWV3",
+            "EhEKCXRpamR2YWtpZBgBIAEoBRIXCg93b3pvYmplY3RudW1tZXIYAiABKAMS",
+            "KQoDbGF0GAMgASgLMhwuZ29vZ2xlLnByb3RvYnVmLkRvdWJsZVZhbHVlEikK",
+            "A2xvbhgEIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5Eb3VibGVWYWx1ZRIUCgxn",
+            "ZW1lZW50ZWNvZGUYBSABKAUSMAoKc3RyYWF0bmFhbRgGIAEoCzIcLmdvb2ds",
+            "ZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRISCgpodWlzbnVtbWVyGAcgASgFEjAK",
+            "Cmh1aXNsZXR0ZXIYCCABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFs",
+            "dWUSOgoUaHVpc251bW1lcnRvZXZvZWdpbmcYCSABKAsyHC5nb29nbGUucHJv",
+            "dG9idWYuU3RyaW5nVmFsdWUSLgoIcG9zdGNvZGUYCiABKAsyHC5nb29nbGUu",
+            "cHJvdG9idWYuU3RyaW5nVmFsdWUSLgoId2lqa2NvZGUYCyABKAsyHC5nb29n",
+            "bGUucHJvdG9idWYuU3RyaW5nVmFsdWUSLwoJYnV1cnRjb2RlGAwgASgLMhwu",
+            "Z29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjQKDndvb25wbGFhdHNuYWFt",
+            "GA0gASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjkKE2xvY2F0",
+            "aWVvbXNjaHJpanZpbmcYDiABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5n",
+            "VmFsdWUSNQoPc29vcnRvYmplY3Rjb2RlGA8gASgLMhwuZ29vZ2xlLnByb3Rv",
+            "YnVmLlN0cmluZ1ZhbHVlEjYKEGluZGljYXRpZWxpZ2dpbmcYECABKAsyHC5n",
+            "b29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSNQoPZ3JvZXBhYW5kdWlkaW5n",
+            "GBEgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjoKFGFhbmR1",
+            "aWRpbmdib3V3c3Ryb29tGBIgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmlu",
+            "Z1ZhbHVlEjUKD3N0YXR1c3dvem9iamVjdBgTIAEoCzIcLmdvb2dsZS5wcm90",
+            "b2J1Zi5TdHJpbmdWYWx1ZRIyCgx3YWFyZGVnZWJpZWQYFCABKAsyHC5nb29n",
+            "bGUucHJvdG9idWYuU3RyaW5nVmFsdWUSKwoFbW9kZWwYFSABKAsyHC5nb29n",
+            "bGUucHJvdG9idWYuU3RyaW5nVmFsdWUSDgoGd29uaW5oGBYgASgFEg4KBndv",
+            "bm9wcBgXIAEoBRIQCghncm9uZG9wcBgYIAEoBRISCgphYW5ib3V3b3BwGBkg",
+            "ASgFEhEKCXNjaHV1cm9wcBgaIAEoBRIRCglnYXJhZ2VvcHAYGyABKAUSEAoI",
+            "Ym91d2phYXIYHCABKAUSLwoJa3dhbGl0ZWl0GB0gASgLMhwuZ29vZ2xlLnBy",
+            "b3RvYnVmLlN0cmluZ1ZhbHVlEi8KCW9uZGVyaG91ZBgeIAEoCzIcLmdvb2ds",
+            "ZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRIxCgt1aXRzdHJhbGluZxgfIAEoCzIc",
+            "Lmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRIzCg1kb2VsbWF0aWdoZWlk",
+            "GCAgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjMKDXZvb3J6",
+            "aWVuaW5nZW4YISABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUi",
+            "HAoaU3ViT2JqZWN0c1RheE92ZXJ2aWV3UmVwbHky2AEKC1RheG92ZXJ2aWV3",
+            "EmIKEkdldE92ZXJ2aWV3T2JqZWN0cxIjLnRheG92ZXJ2aWV3Lldvek9iamVj",
+            "dEZpbHRlclJlcXVlc3QaJy50YXhvdmVydmlldy5Xb3pPYmplY3RzVGF4T3Zl",
+            "cnZpZXdSZXBseRJlChVHZXRPdmVydmlld1N1Ym9iamVjdHMSIy50YXhvdmVy",
+            "dmlldy5TdWJPYmplY3RGaWx0ZXJSZXF1ZXN0GicudGF4b3ZlcnZpZXcuU3Vi",
+            "T2JqZWN0c1RheE92ZXJ2aWV3UmVwbHlCFKoCEWdSUENTZXJ2ZXIuUHJvdG9z",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::gRPCServer.Protos.ColumndefinitionReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectFilterRequest), global::gRPCServer.Protos.WozObjectFilterRequest.Parser, new[]{ "Tijdvakid", "Modelids", "Gemeentecodes", "Woonplaatsen", "Straatnamen", "Wijkcodes", "Buurtcodes", "Soortgroepids", "Soortobjectcodes" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.SubObjectFilterRequest), global::gRPCServer.Protos.SubObjectFilterRequest.Parser, new[]{ "Tijdvakid", "Modelids", "Gemeentecodes", "Woonplaatsen", "Straatnamen", "Wijkcodes", "Buurtcodes", "Deelgroepids", "Deelcodes", "Kwaliteit", "Onderhoud", "Uitstraling", "Doelmatigheid", "Voorzieningen" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectsTaxOverviewReply), global::gRPCServer.Protos.WozObjectsTaxOverviewReply.Parser, new[]{ "OverviewObjects" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectsTaxOverviewReply), global::gRPCServer.Protos.WozObjectsTaxOverviewReply.Parser, new[]{ "OverviewObjects", "ColumnDefinitions" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.WozObjectOverview), global::gRPCServer.Protos.WozObjectOverview.Parser, new[]{ "Tijdvakid", "Wozobjectnummer", "Lat", "Lon", "Gemeentecode", "Straatnaam", "Huisnummer", "Huisletter", "Huisnummertoevoeging", "Postcode", "Wijkcode", "Buurtcode", "Woonplaatsnaam", "Locatieomschrijving", "Soortobjectcode", "Indicatieligging", "Groepaanduiding", "Aanduidingbouwstroom", "Statuswozobject", "Waardegebied", "Model", "Woninh", "Wonopp", "Grondopp", "Aanbouwopp", "Schuuropp", "Garageopp", "Bouwjaar", "Kwaliteit", "Onderhoud", "Uitstraling", "Doelmatigheid", "Voorzieningen" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.SubObjectsTaxOverviewReply), global::gRPCServer.Protos.SubObjectsTaxOverviewReply.Parser, null, null, null, null, null)
           }));
@@ -1062,6 +1064,7 @@ namespace gRPCServer.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public WozObjectsTaxOverviewReply(WozObjectsTaxOverviewReply other) : this() {
       overviewObjects_ = other.overviewObjects_.Clone();
+      columnDefinitions_ = other.columnDefinitions_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1082,6 +1085,17 @@ namespace gRPCServer.Protos {
       get { return overviewObjects_; }
     }
 
+    /// <summary>Field number for the "column_definitions" field.</summary>
+    public const int ColumnDefinitionsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::gRPCServer.Protos.ColumnDefinition> _repeated_columnDefinitions_codec
+        = pb::FieldCodec.ForMessage(18, global::gRPCServer.Protos.ColumnDefinition.Parser);
+    private readonly pbc::RepeatedField<global::gRPCServer.Protos.ColumnDefinition> columnDefinitions_ = new pbc::RepeatedField<global::gRPCServer.Protos.ColumnDefinition>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::gRPCServer.Protos.ColumnDefinition> ColumnDefinitions {
+      get { return columnDefinitions_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1098,6 +1112,7 @@ namespace gRPCServer.Protos {
         return true;
       }
       if(!overviewObjects_.Equals(other.overviewObjects_)) return false;
+      if(!columnDefinitions_.Equals(other.columnDefinitions_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1106,6 +1121,7 @@ namespace gRPCServer.Protos {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= overviewObjects_.GetHashCode();
+      hash ^= columnDefinitions_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1125,6 +1141,7 @@ namespace gRPCServer.Protos {
       output.WriteRawMessage(this);
     #else
       overviewObjects_.WriteTo(output, _repeated_overviewObjects_codec);
+      columnDefinitions_.WriteTo(output, _repeated_columnDefinitions_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1136,6 +1153,7 @@ namespace gRPCServer.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       overviewObjects_.WriteTo(ref output, _repeated_overviewObjects_codec);
+      columnDefinitions_.WriteTo(ref output, _repeated_columnDefinitions_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1147,6 +1165,7 @@ namespace gRPCServer.Protos {
     public int CalculateSize() {
       int size = 0;
       size += overviewObjects_.CalculateSize(_repeated_overviewObjects_codec);
+      size += columnDefinitions_.CalculateSize(_repeated_columnDefinitions_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1160,6 +1179,7 @@ namespace gRPCServer.Protos {
         return;
       }
       overviewObjects_.Add(other.overviewObjects_);
+      columnDefinitions_.Add(other.columnDefinitions_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1179,6 +1199,10 @@ namespace gRPCServer.Protos {
             overviewObjects_.AddEntriesFrom(input, _repeated_overviewObjects_codec);
             break;
           }
+          case 18: {
+            columnDefinitions_.AddEntriesFrom(input, _repeated_columnDefinitions_codec);
+            break;
+          }
         }
       }
     #endif
@@ -1196,6 +1220,10 @@ namespace gRPCServer.Protos {
             break;
           case 10: {
             overviewObjects_.AddEntriesFrom(ref input, _repeated_overviewObjects_codec);
+            break;
+          }
+          case 18: {
+            columnDefinitions_.AddEntriesFrom(ref input, _repeated_columnDefinitions_codec);
             break;
           }
         }
