@@ -348,7 +348,9 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         bounds.extend(c);
       }
     }
-    map.fitBounds(bounds, { padding: 20 });
+    if (bounds && !bounds.isEmpty) {
+      map.fitBounds(bounds, { padding: 20 });
+    }
   }
 
   private getCoordinates(geo: GeoJSON.Geometry): [number, number][] | undefined {
