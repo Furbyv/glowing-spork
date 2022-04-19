@@ -8,6 +8,12 @@ package columndefinitions;
     TAXOVERVIEW = 0;
   }
 
+  enum DataType {
+	  VARCHAR = 0;
+	  NUMBER = 1;
+	  DATE = 2;
+  }
+
 message ColumnDefinition{
 	string column_name =1;
 	string column_header = 2;
@@ -15,4 +21,5 @@ message ColumnDefinition{
 	GridType grid_Type = 4;
 	bool editable = 5;
 	int32 sort_order = 6;
+	DataType data_type = 7;
 }

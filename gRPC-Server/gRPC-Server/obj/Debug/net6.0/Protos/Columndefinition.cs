@@ -25,16 +25,18 @@ namespace gRPCServer.Protos {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch1Qcm90b3MvY29sdW1uZGVmaW5pdGlvbi5wcm90bxIRY29sdW1uZGVmaW5p",
-            "dGlvbnMisAEKEENvbHVtbkRlZmluaXRpb24SEwoLY29sdW1uX25hbWUYASAB",
+            "dGlvbnMi4AEKEENvbHVtbkRlZmluaXRpb24SEwoLY29sdW1uX25hbWUYASAB",
             "KAkSFQoNY29sdW1uX2hlYWRlchgCIAEoCRIaChJjb2x1bW5fZGVzY3JpcHRp",
             "b24YAyABKAkSLgoJZ3JpZF9UeXBlGAQgASgOMhsuY29sdW1uZGVmaW5pdGlv",
             "bnMuR3JpZFR5cGUSEAoIZWRpdGFibGUYBSABKAgSEgoKc29ydF9vcmRlchgG",
-            "IAEoBSobCghHcmlkVHlwZRIPCgtUQVhPVkVSVklFVxAAQhSqAhFnUlBDU2Vy",
-            "dmVyLlByb3Rvc2IGcHJvdG8z"));
+            "IAEoBRIuCglkYXRhX3R5cGUYByABKA4yGy5jb2x1bW5kZWZpbml0aW9ucy5E",
+            "YXRhVHlwZSobCghHcmlkVHlwZRIPCgtUQVhPVkVSVklFVxAAKi0KCERhdGFU",
+            "eXBlEgsKB1ZBUkNIQVIQABIKCgZOVU1CRVIQARIICgREQVRFEAJCFKoCEWdS",
+            "UENTZXJ2ZXIuUHJvdG9zYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::gRPCServer.Protos.GridType), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.ColumnDefinition), global::gRPCServer.Protos.ColumnDefinition.Parser, new[]{ "ColumnName", "ColumnHeader", "ColumnDescription", "GridType", "Editable", "SortOrder" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::gRPCServer.Protos.GridType), typeof(global::gRPCServer.Protos.DataType), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.ColumnDefinition), global::gRPCServer.Protos.ColumnDefinition.Parser, new[]{ "ColumnName", "ColumnHeader", "ColumnDescription", "GridType", "Editable", "SortOrder", "DataType" }, null, null, null, null)
           }));
     }
     #endregion
@@ -43,6 +45,12 @@ namespace gRPCServer.Protos {
   #region Enums
   public enum GridType {
     [pbr::OriginalName("TAXOVERVIEW")] Taxoverview = 0,
+  }
+
+  public enum DataType {
+    [pbr::OriginalName("VARCHAR")] Varchar = 0,
+    [pbr::OriginalName("NUMBER")] Number = 1,
+    [pbr::OriginalName("DATE")] Date = 2,
   }
 
   #endregion
@@ -88,6 +96,7 @@ namespace gRPCServer.Protos {
       gridType_ = other.gridType_;
       editable_ = other.editable_;
       sortOrder_ = other.sortOrder_;
+      dataType_ = other.dataType_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -169,6 +178,18 @@ namespace gRPCServer.Protos {
       }
     }
 
+    /// <summary>Field number for the "data_type" field.</summary>
+    public const int DataTypeFieldNumber = 7;
+    private global::gRPCServer.Protos.DataType dataType_ = global::gRPCServer.Protos.DataType.Varchar;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::gRPCServer.Protos.DataType DataType {
+      get { return dataType_; }
+      set {
+        dataType_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -190,6 +211,7 @@ namespace gRPCServer.Protos {
       if (GridType != other.GridType) return false;
       if (Editable != other.Editable) return false;
       if (SortOrder != other.SortOrder) return false;
+      if (DataType != other.DataType) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -203,6 +225,7 @@ namespace gRPCServer.Protos {
       if (GridType != global::gRPCServer.Protos.GridType.Taxoverview) hash ^= GridType.GetHashCode();
       if (Editable != false) hash ^= Editable.GetHashCode();
       if (SortOrder != 0) hash ^= SortOrder.GetHashCode();
+      if (DataType != global::gRPCServer.Protos.DataType.Varchar) hash ^= DataType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -245,6 +268,10 @@ namespace gRPCServer.Protos {
         output.WriteRawTag(48);
         output.WriteInt32(SortOrder);
       }
+      if (DataType != global::gRPCServer.Protos.DataType.Varchar) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) DataType);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -279,6 +306,10 @@ namespace gRPCServer.Protos {
         output.WriteRawTag(48);
         output.WriteInt32(SortOrder);
       }
+      if (DataType != global::gRPCServer.Protos.DataType.Varchar) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) DataType);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -306,6 +337,9 @@ namespace gRPCServer.Protos {
       }
       if (SortOrder != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(SortOrder);
+      }
+      if (DataType != global::gRPCServer.Protos.DataType.Varchar) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DataType);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -336,6 +370,9 @@ namespace gRPCServer.Protos {
       }
       if (other.SortOrder != 0) {
         SortOrder = other.SortOrder;
+      }
+      if (other.DataType != global::gRPCServer.Protos.DataType.Varchar) {
+        DataType = other.DataType;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -376,6 +413,10 @@ namespace gRPCServer.Protos {
             SortOrder = input.ReadInt32();
             break;
           }
+          case 56: {
+            DataType = (global::gRPCServer.Protos.DataType) input.ReadEnum();
+            break;
+          }
         }
       }
     #endif
@@ -413,6 +454,10 @@ namespace gRPCServer.Protos {
           }
           case 48: {
             SortOrder = input.ReadInt32();
+            break;
+          }
+          case 56: {
+            DataType = (global::gRPCServer.Protos.DataType) input.ReadEnum();
             break;
           }
         }

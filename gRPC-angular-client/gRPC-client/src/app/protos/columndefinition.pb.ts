@@ -13,6 +13,11 @@ import { BinaryReader, BinaryWriter, ByteSource } from 'google-protobuf';
 export enum GridType {
   TAXOVERVIEW = 0
 }
+export enum DataType {
+  VARCHAR = 0,
+  NUMBER = 1,
+  DATE = 2
+}
 /**
  * Message implementation for columndefinitions.ColumnDefinition
  */
@@ -43,6 +48,7 @@ export class ColumnDefinition implements GrpcMessage {
     _instance.gridType = _instance.gridType || 0;
     _instance.editable = _instance.editable || false;
     _instance.sortOrder = _instance.sortOrder || 0;
+    _instance.dataType = _instance.dataType || 0;
   }
 
   /**
@@ -75,6 +81,9 @@ export class ColumnDefinition implements GrpcMessage {
           break;
         case 6:
           _instance.sortOrder = _reader.readInt32();
+          break;
+        case 7:
+          _instance.dataType = _reader.readEnum();
           break;
         default:
           _reader.skipField();
@@ -111,6 +120,9 @@ export class ColumnDefinition implements GrpcMessage {
     if (_instance.sortOrder) {
       _writer.writeInt32(6, _instance.sortOrder);
     }
+    if (_instance.dataType) {
+      _writer.writeEnum(7, _instance.dataType);
+    }
   }
 
   private _columnName?: string;
@@ -119,6 +131,7 @@ export class ColumnDefinition implements GrpcMessage {
   private _gridType?: GridType;
   private _editable?: boolean;
   private _sortOrder?: number;
+  private _dataType?: DataType;
 
   /**
    * Message constructor. Initializes the properties and applies default Protobuf values if necessary
@@ -132,6 +145,7 @@ export class ColumnDefinition implements GrpcMessage {
     this.gridType = _value.gridType;
     this.editable = _value.editable;
     this.sortOrder = _value.sortOrder;
+    this.dataType = _value.dataType;
     ColumnDefinition.refineValues(this);
   }
   get columnName(): string | undefined {
@@ -170,6 +184,12 @@ export class ColumnDefinition implements GrpcMessage {
   set sortOrder(value: number | undefined) {
     this._sortOrder = value;
   }
+  get dataType(): DataType | undefined {
+    return this._dataType;
+  }
+  set dataType(value: DataType | undefined) {
+    this._dataType = value;
+  }
 
   /**
    * Serialize message to binary data
@@ -191,7 +211,8 @@ export class ColumnDefinition implements GrpcMessage {
       columnDescription: this.columnDescription,
       gridType: this.gridType,
       editable: this.editable,
-      sortOrder: this.sortOrder
+      sortOrder: this.sortOrder,
+      dataType: this.dataType
     };
   }
 
@@ -222,7 +243,13 @@ export class ColumnDefinition implements GrpcMessage {
             : this.gridType
         ],
       editable: this.editable,
-      sortOrder: this.sortOrder
+      sortOrder: this.sortOrder,
+      dataType:
+        DataType[
+          this.dataType === null || this.dataType === undefined
+            ? 0
+            : this.dataType
+        ]
     };
   }
 }
@@ -237,6 +264,7 @@ export module ColumnDefinition {
     gridType?: GridType;
     editable?: boolean;
     sortOrder?: number;
+    dataType?: DataType;
   }
 
   /**
@@ -249,5 +277,6 @@ export module ColumnDefinition {
     gridType?: string;
     editable?: boolean;
     sortOrder?: number;
+    dataType?: string;
   }
 }

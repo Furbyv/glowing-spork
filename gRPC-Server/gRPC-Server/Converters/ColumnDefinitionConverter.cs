@@ -15,7 +15,8 @@
             proto.ColumnHeader = coldef.ColumnHeader;
             proto.ColumnDescription = coldef.ColumnDescription;
             proto.Editable = coldef.Editable;
-            proto.GridType = (Protos.GridType)(int) coldef.GridType;
+            proto.GridType = (Protos.GridType)coldef.GridType;
+            proto.DataType = (Protos.DataType)coldef.DataType;
             return proto;
         }
     }

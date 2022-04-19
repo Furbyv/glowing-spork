@@ -9,7 +9,9 @@
   [rowSelection]="rowSelection"
   [suppressColumnVirtualisation]="true"
   [skipHeaderOnAutoSize]="true"
+  [cacheQuickFilter]="true"
   [overlayLoadingTemplate]="overlayLoadingTemplate"
+  [sideBar]="sideBar"
   (selectionChanged)="onSelectionChanged()"
   (componentStateChanged)="onGridChanged()"
   (gridReady)="onGridReady($event)">

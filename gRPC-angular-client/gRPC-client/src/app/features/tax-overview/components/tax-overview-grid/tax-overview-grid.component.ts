@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
-import { ColDef, ColumnApi, GridApi, GridOptions } from 'ag-grid-community';
+import { ColDef, ColumnApi, GridApi, GridOptions, SideBarDef } from 'ag-grid-community';
 import { ColorSchemeService } from 'src/app/layout/services/color-scheme.service';
-import { ColumnDefinition } from 'src/app/protos/columndefinition.pb';
+import { ColumnDefinition, DataType } from 'src/app/protos/columndefinition.pb';
 import { WozObjectOverview } from 'src/app/protos/taxoverview.pb';
 
 @Component({
@@ -32,10 +32,12 @@ export class TaxOverviewGridComponent implements OnChanges {
   rowSelection = 'multiple';
   defaultColDef: ColDef = {
     editable: false,
-    filter: 'agTextColumnFilter',
+    filter: true,
+    sortable: true,
   };
   columnDefs: ColDef[] = [];
   rowData: WozObjectOverview[] = [];
+  sideBar: SideBarDef | string | boolean | null = 'filters';
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.overviewObject && this.overviewObject) {
@@ -43,6 +45,9 @@ export class TaxOverviewGridComponent implements OnChanges {
     }
     if (changes.columnDefinitions && this.columnDefinitions && this.columnDefinitions.length) {
       this.columnDefs = this.buildColumnDefinition(this.columnDefinitions);
+    }
+    if (this.gridApi) {
+      this.gridApi.resetQuickFilter();
     }
   }
 
@@ -53,10 +58,17 @@ export class TaxOverviewGridComponent implements OnChanges {
       headerName: cd.columnHeader ?? '',
       headerTooltip: cd.columnDescription,
       editable: cd.editable,
+      filter: cd.dataType === DataType.VARCHAR ? 'agTextColumnFilter' : 'agNumberColumnFilter',
     }));
   }
 
   constructor(private colorSchemeService: ColorSchemeService, private transloco: TranslocoService) {}
+
+  clearFilters() {
+    if (this.gridApi) {
+      this.gridApi.setFilterModel(null);
+    }
+  }
 
   onSelectionChanged() {
     if (this.gridApi) {
