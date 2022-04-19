@@ -1,0 +1,92 @@
+syntax = "proto3";
+import "google/protobuf/wrappers.proto";
+import "Protos/columndefinition.proto";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "gRPCServer.Protos";
+
+package transactions;
+
+// This services get and update transaction.
+// GetTransactionsOverview can be used to request transactions based on al filter
+// GetTransactionsWozobject retrieves all transactions for a single wozobject (if present, otherwise will return empty array)
+// UpdateTransactions can be used to update an array of transactions
+service TransactionsService {
+  rpc GetTransactionsOverview (FilterRequest) returns (TransactionsOverview);
+  rpc GetTransactionsWozobject (TransactionRequest) returns (Transactions);
+  //rpc UpdateTransactions (Transaction) returns (AddOrEditNotesReply);
+}
+
+message TransactionsOverview {
+	repeated TransactionOverview overviewTransaction =1;
+	repeated columndefinitions.ColumnDefinition column_definitions =2;
+}
+
+message Transactions {
+	repeated Transaction transactions = 1;
+}
+
+message FilterRequest {
+  google.protobuf.Timestamp  startdate = 1;
+  google.protobuf.Timestamp  enddate = 2;
+  repeated int32 gemeentecodes = 3;
+  repeated string woonplaatsen = 4;
+  repeated string straatnamen = 5;
+  repeated string wijkcodes = 6;
+  repeated string buurtcodes = 7;
+  repeated int32 soortgroepids = 8;
+  repeated string soortobjectcodes = 9;
+}
+
+message TransactionRequest {
+	int64 wozobjectnummer = 1;
+}
+
+message Transaction {
+	int64 wozobjectnummer =1;
+	google.protobuf.DoubleValue lat =2;
+	google.protobuf.DoubleValue lon =3;
+	int64 transactieprijs = 4;
+	google.protobuf.Timestamp transactiedatum = 5;
+	string soort = 6;
+	string aard = 7;
+	string bruikbaarheid = 8;
+	int64 volgnummer = 9;
+}
+
+message TransactionOverview {
+	int64 wozobjectnummer =1;
+	google.protobuf.DoubleValue lat =2;
+	google.protobuf.DoubleValue lon =3;
+	int32 gemeentecode =4;
+	google.protobuf.StringValue straatnaam =5;
+	int32 huisnummer = 6;
+	google.protobuf.StringValue huisletter =7;
+	google.protobuf.StringValue huisnummertoevoeging =8;
+	google.protobuf.StringValue postcode =9;
+	google.protobuf.StringValue wijkcode =10;
+	google.protobuf.StringValue buurtcode =11;
+	google.protobuf.StringValue woonplaatsnaam =12;
+	google.protobuf.StringValue locatieomschrijving =13;
+	google.protobuf.StringValue soortobjectcode =14;
+	google.protobuf.StringValue indicatieligging =15;
+	google.protobuf.StringValue groepaanduiding =16;
+	google.protobuf.StringValue aanduidingbouwstroom = 17;
+	google.protobuf.StringValue statuswozobject =18;
+	google.protobuf.StringValue waardegebied =19;
+	google.protobuf.StringValue model =20;
+	int32 woninh =21;
+	int32 wonopp =22;
+	int32 bouwjaar =23;
+	google.protobuf.StringValue kwaliteit =24;
+	google.protobuf.StringValue onderhoud =25;
+	google.protobuf.StringValue uitstraling =26;
+	google.protobuf.StringValue doelmatigheid =27;
+	google.protobuf.StringValue voorzieningen =28;
+	int64 transactieprijs = 29;
+	google.protobuf.Timestamp transactiedatum = 30;
+	string soort = 31;
+	string aard = 32;
+	string bruikbaarheid = 33;
+	int64 volgnummer = 34;
+}

@@ -1,0 +1,5 @@
+obj\Debug\net6.0\Protos/Transactions.cs \
+obj\Debug\net6.0\Protos/TransactionsGrpc.cs: C:/Users/fbver/.nuget/packages/grpc.tools/2.41.0/build/native/include/google/protobuf/wrappers.proto\
+ Protos/columndefinition.proto\
+ C:/Users/fbver/.nuget/packages/grpc.tools/2.41.0/build/native/include/google/protobuf/timestamp.proto\
+ Protos/transactions.proto

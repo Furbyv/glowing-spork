@@ -14,6 +14,7 @@
     <Protobuf Include="Protos\notes.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\timeperiod.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\columndefinition.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\transactions.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>
