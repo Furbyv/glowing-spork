@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { WozObjectFilterRequest } from 'src/app/protos/taxoverview.pb';
+import { FilterRequest } from 'src/app/protos/overviewrequests.pb';
 import { Buurtcodes } from '../../filter-data/buurt-data';
 import { Gemeenten } from '../../filter-data/gemeente-data';
 import { Models } from '../../filter-data/model-data';
@@ -13,7 +13,7 @@ import { Woonplaatsen } from '../../filter-data/woonplaats-data';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-filter-dialog',
+  selector: 'woz-filter-dialog',
   templateUrl: 'filter-dialog.component.html',
   styleUrls: ['filter-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,14 +36,13 @@ export class FilterDialogComponent {
   straatnaamControl = new FormControl();
   socControl = new FormControl();
 
-  filterData: WozObjectFilterRequest = new WozObjectFilterRequest();
+  filterData: FilterRequest = new FilterRequest();
   constructor(public dialogRef: MatDialogRef<FilterDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
-    this.gemeenteControl.valueChanges.pipe(untilDestroyed(this)).subscribe((gemeentecodes: number[] | null) => {
-      if (gemeentecodes && gemeentecodes.length) {
-        this.buurtCodes = [...this.buurtCodes.filter((b) => gemeentecodes.includes(b.gemeentecode))];
-      } else {
-        this.buurtCodes = Buurtcodes;
-      }
+    this.gemeenteControl.valueChanges.pipe(untilDestroyed(this)).subscribe((_) => {
+      this.filterBuurtcodes;
+      this.filterWijkcodes;
+      this.filterWoonplaats;
+      this.filterStraatnaam;
     });
   }
 
@@ -76,12 +75,11 @@ export class FilterDialogComponent {
   }
 
   onOkClick(): void {
-    const request = new WozObjectFilterRequest();
+    const request = new FilterRequest();
     request.tijdvakid = 3;
     request.buurtcodes = this.buurtControl.value;
     request.wijkcodes = this.wijkControl.value;
     request.gemeentecodes = this.gemeenteControl.value;
-    request.modelids = this.modelControl.value;
     request.soortobjectcodes = this.socControl.value;
     request.woonplaatsen = this.woonplaatsControl.value;
     request.straatnamen = this.straatnaamControl.value;

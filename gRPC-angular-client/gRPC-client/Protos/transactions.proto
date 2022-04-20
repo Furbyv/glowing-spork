@@ -1,8 +1,8 @@
 syntax = "proto3";
 import "google/protobuf/wrappers.proto";
-import "Protos/columndefinition.proto";
+import "columndefinition.proto";
 import "google/protobuf/timestamp.proto";
-import "Protos/overviewrequests.proto";
+import "overviewrequests.proto";
 
 option csharp_namespace = "gRPCServer.Protos";
 

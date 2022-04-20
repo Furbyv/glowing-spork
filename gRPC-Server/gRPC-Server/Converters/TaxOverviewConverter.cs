@@ -1,6 +1,6 @@
 ﻿namespace gRPCServer.Converters
 {
-    public static  class TaxOverviewConverter
+    public static class TaxOverviewConverter
     {
         public static WozObjectOverview TaxOverviewToWozObjectOverview(TaxOverview model)
         {

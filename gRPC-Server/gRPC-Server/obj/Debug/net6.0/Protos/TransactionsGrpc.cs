@@ -52,7 +52,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::gRPCServer.Protos.FilterRequest> __Marshaller_transactions_FilterRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.FilterRequest.Parser));
+    static readonly grpc::Marshaller<global::gRPCServer.Protos.FilterRequest> __Marshaller_overviewrequests_FilterRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.FilterRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::gRPCServer.Protos.TransactionsOverview> __Marshaller_transactions_TransactionsOverview = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.TransactionsOverview.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -65,7 +65,7 @@ namespace gRPCServer.Protos {
         grpc::MethodType.Unary,
         __ServiceName,
         "GetTransactionsOverview",
-        __Marshaller_transactions_FilterRequest,
+        __Marshaller_overviewrequests_FilterRequest,
         __Marshaller_transactions_TransactionsOverview);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { toAsyncState } from '@ngneat/loadoff';
 import { BehaviorSubject, combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
 import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
-import { WozObjectFilterRequest } from 'src/app/protos/taxoverview.pb';
+import { FilterRequest } from 'src/app/protos/overviewrequests.pb';
 import { TaxoverviewClient } from 'src/app/protos/taxoverview.pbsc';
 import { convertWozObjectsToGeoJson } from 'src/app/shared/woz-object-utility';
 
@@ -10,7 +10,7 @@ import { convertWozObjectsToGeoJson } from 'src/app/shared/woz-object-utility';
   providedIn: 'root',
 })
 export class TaxOverviewService {
-  private filterRequest$$: Subject<WozObjectFilterRequest> = new ReplaySubject<WozObjectFilterRequest>(1);
+  private filterRequest$$: Subject<FilterRequest> = new ReplaySubject<FilterRequest>(1);
 
   private refresh$$: Subject<boolean> = new BehaviorSubject<boolean>(true);
   refresh$ = this.refresh$$.asObservable();
@@ -43,7 +43,7 @@ export class TaxOverviewService {
 
   constructor(private taxOverviewClient: TaxoverviewClient) {}
 
-  filter(request: WozObjectFilterRequest) {
+  filter(request: FilterRequest) {
     this.filterRequest$$.next(request);
   }
 

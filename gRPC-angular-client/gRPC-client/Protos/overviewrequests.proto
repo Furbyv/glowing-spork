@@ -1,0 +1,19 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "gRPCServer.Protos";
+
+package overviewrequests;
+
+message FilterRequest {
+  google.protobuf.Timestamp  startdate = 1;
+  google.protobuf.Timestamp  enddate = 2;
+  int32 tijdvakid= 3;
+  repeated int32 gemeentecodes = 4;
+  repeated string woonplaatsen = 5;
+  repeated string straatnamen = 6;
+  repeated string wijkcodes = 7;
+  repeated string buurtcodes = 8;
+  repeated int32 soortgroepids = 9;
+  repeated string soortobjectcodes = 10;
+}

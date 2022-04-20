@@ -27,67 +27,61 @@ namespace gRPCServer.Protos {
             "ChlQcm90b3MvdHJhbnNhY3Rpb25zLnByb3RvEgx0cmFuc2FjdGlvbnMaHmdv",
             "b2dsZS9wcm90b2J1Zi93cmFwcGVycy5wcm90bxodUHJvdG9zL2NvbHVtbmRl",
             "ZmluaXRpb24ucHJvdG8aH2dvb2dsZS9wcm90b2J1Zi90aW1lc3RhbXAucHJv",
-            "dG8ilwEKFFRyYW5zYWN0aW9uc092ZXJ2aWV3Ej4KE292ZXJ2aWV3VHJhbnNh",
-            "Y3Rpb24YASADKAsyIS50cmFuc2FjdGlvbnMuVHJhbnNhY3Rpb25PdmVydmll",
-            "dxI/ChJjb2x1bW5fZGVmaW5pdGlvbnMYAiADKAsyIy5jb2x1bW5kZWZpbml0",
-            "aW9ucy5Db2x1bW5EZWZpbml0aW9uIj8KDFRyYW5zYWN0aW9ucxIvCgx0cmFu",
-            "c2FjdGlvbnMYASADKAsyGS50cmFuc2FjdGlvbnMuVHJhbnNhY3Rpb24ihQIK",
-            "DUZpbHRlclJlcXVlc3QSLQoJc3RhcnRkYXRlGAEgASgLMhouZ29vZ2xlLnBy",
-            "b3RvYnVmLlRpbWVzdGFtcBIrCgdlbmRkYXRlGAIgASgLMhouZ29vZ2xlLnBy",
-            "b3RvYnVmLlRpbWVzdGFtcBIVCg1nZW1lZW50ZWNvZGVzGAMgAygFEhQKDHdv",
-            "b25wbGFhdHNlbhgEIAMoCRITCgtzdHJhYXRuYW1lbhgFIAMoCRIRCgl3aWpr",
-            "Y29kZXMYBiADKAkSEgoKYnV1cnRjb2RlcxgHIAMoCRIVCg1zb29ydGdyb2Vw",
-            "aWRzGAggAygFEhgKEHNvb3J0b2JqZWN0Y29kZXMYCSADKAkiLQoSVHJhbnNh",
-            "Y3Rpb25SZXF1ZXN0EhcKD3dvem9iamVjdG51bW1lchgBIAEoAyKSAgoLVHJh",
-            "bnNhY3Rpb24SFwoPd296b2JqZWN0bnVtbWVyGAEgASgDEikKA2xhdBgCIAEo",
-            "CzIcLmdvb2dsZS5wcm90b2J1Zi5Eb3VibGVWYWx1ZRIpCgNsb24YAyABKAsy",
-            "HC5nb29nbGUucHJvdG9idWYuRG91YmxlVmFsdWUSFwoPdHJhbnNhY3RpZXBy",
-            "aWpzGAQgASgDEjMKD3RyYW5zYWN0aWVkYXR1bRgFIAEoCzIaLmdvb2dsZS5w",
-            "cm90b2J1Zi5UaW1lc3RhbXASDQoFc29vcnQYBiABKAkSDAoEYWFyZBgHIAEo",
-            "CRIVCg1icnVpa2JhYXJoZWlkGAggASgJEhIKCnZvbGdudW1tZXIYCSABKAMi",
-            "kQsKE1RyYW5zYWN0aW9uT3ZlcnZpZXcSFwoPd296b2JqZWN0bnVtbWVyGAEg",
-            "ASgDEikKA2xhdBgCIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5Eb3VibGVWYWx1",
-            "ZRIpCgNsb24YAyABKAsyHC5nb29nbGUucHJvdG9idWYuRG91YmxlVmFsdWUS",
-            "FAoMZ2VtZWVudGVjb2RlGAQgASgFEjAKCnN0cmFhdG5hYW0YBSABKAsyHC5n",
-            "b29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSEgoKaHVpc251bW1lchgGIAEo",
-            "BRIwCgpodWlzbGV0dGVyGAcgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmlu",
-            "Z1ZhbHVlEjoKFGh1aXNudW1tZXJ0b2V2b2VnaW5nGAggASgLMhwuZ29vZ2xl",
-            "LnByb3RvYnVmLlN0cmluZ1ZhbHVlEi4KCHBvc3Rjb2RlGAkgASgLMhwuZ29v",
-            "Z2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEi4KCHdpamtjb2RlGAogASgLMhwu",
-            "Z29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEi8KCWJ1dXJ0Y29kZRgLIAEo",
-            "CzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI0Cg53b29ucGxhYXRz",
-            "bmFhbRgMIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI5ChNs",
-            "b2NhdGllb21zY2hyaWp2aW5nGA0gASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0",
-            "cmluZ1ZhbHVlEjUKD3Nvb3J0b2JqZWN0Y29kZRgOIAEoCzIcLmdvb2dsZS5w",
-            "cm90b2J1Zi5TdHJpbmdWYWx1ZRI2ChBpbmRpY2F0aWVsaWdnaW5nGA8gASgL",
-            "MhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjUKD2dyb2VwYWFuZHVp",
-            "ZGluZxgQIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI6ChRh",
-            "YW5kdWlkaW5nYm91d3N0cm9vbRgRIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5T",
-            "dHJpbmdWYWx1ZRI1Cg9zdGF0dXN3b3pvYmplY3QYEiABKAsyHC5nb29nbGUu",
-            "cHJvdG9idWYuU3RyaW5nVmFsdWUSMgoMd2FhcmRlZ2ViaWVkGBMgASgLMhwu",
-            "Z29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEisKBW1vZGVsGBQgASgLMhwu",
-            "Z29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEg4KBndvbmluaBgVIAEoBRIO",
-            "CgZ3b25vcHAYFiABKAUSEAoIYm91d2phYXIYFyABKAUSLwoJa3dhbGl0ZWl0",
-            "GBggASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEi8KCW9uZGVy",
-            "aG91ZBgZIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRIxCgt1",
-            "aXRzdHJhbGluZxgaIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1",
-            "ZRIzCg1kb2VsbWF0aWdoZWlkGBsgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0",
-            "cmluZ1ZhbHVlEjMKDXZvb3J6aWVuaW5nZW4YHCABKAsyHC5nb29nbGUucHJv",
-            "dG9idWYuU3RyaW5nVmFsdWUSFwoPdHJhbnNhY3RpZXByaWpzGB0gASgDEjMK",
-            "D3RyYW5zYWN0aWVkYXR1bRgeIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1l",
-            "c3RhbXASDQoFc29vcnQYHyABKAkSDAoEYWFyZBggIAEoCRIVCg1icnVpa2Jh",
-            "YXJoZWlkGCEgASgJEhIKCnZvbGdudW1tZXIYIiABKAMyywEKE1RyYW5zYWN0",
-            "aW9uc1NlcnZpY2USWgoXR2V0VHJhbnNhY3Rpb25zT3ZlcnZpZXcSGy50cmFu",
-            "c2FjdGlvbnMuRmlsdGVyUmVxdWVzdBoiLnRyYW5zYWN0aW9ucy5UcmFuc2Fj",
-            "dGlvbnNPdmVydmlldxJYChhHZXRUcmFuc2FjdGlvbnNXb3pvYmplY3QSIC50",
-            "cmFuc2FjdGlvbnMuVHJhbnNhY3Rpb25SZXF1ZXN0GhoudHJhbnNhY3Rpb25z",
-            "LlRyYW5zYWN0aW9uc0IUqgIRZ1JQQ1NlcnZlci5Qcm90b3NiBnByb3RvMw=="));
+            "dG8aHVByb3Rvcy9vdmVydmlld3JlcXVlc3RzLnByb3RvIpcBChRUcmFuc2Fj",
+            "dGlvbnNPdmVydmlldxI+ChNvdmVydmlld1RyYW5zYWN0aW9uGAEgAygLMiEu",
+            "dHJhbnNhY3Rpb25zLlRyYW5zYWN0aW9uT3ZlcnZpZXcSPwoSY29sdW1uX2Rl",
+            "ZmluaXRpb25zGAIgAygLMiMuY29sdW1uZGVmaW5pdGlvbnMuQ29sdW1uRGVm",
+            "aW5pdGlvbiI/CgxUcmFuc2FjdGlvbnMSLwoMdHJhbnNhY3Rpb25zGAEgAygL",
+            "MhkudHJhbnNhY3Rpb25zLlRyYW5zYWN0aW9uIi0KElRyYW5zYWN0aW9uUmVx",
+            "dWVzdBIXCg93b3pvYmplY3RudW1tZXIYASABKAMikgIKC1RyYW5zYWN0aW9u",
+            "EhcKD3dvem9iamVjdG51bW1lchgBIAEoAxIpCgNsYXQYAiABKAsyHC5nb29n",
+            "bGUucHJvdG9idWYuRG91YmxlVmFsdWUSKQoDbG9uGAMgASgLMhwuZ29vZ2xl",
+            "LnByb3RvYnVmLkRvdWJsZVZhbHVlEhcKD3RyYW5zYWN0aWVwcmlqcxgEIAEo",
+            "AxIzCg90cmFuc2FjdGllZGF0dW0YBSABKAsyGi5nb29nbGUucHJvdG9idWYu",
+            "VGltZXN0YW1wEg0KBXNvb3J0GAYgASgJEgwKBGFhcmQYByABKAkSFQoNYnJ1",
+            "aWtiYWFyaGVpZBgIIAEoCRISCgp2b2xnbnVtbWVyGAkgASgDIpELChNUcmFu",
+            "c2FjdGlvbk92ZXJ2aWV3EhcKD3dvem9iamVjdG51bW1lchgBIAEoAxIpCgNs",
+            "YXQYAiABKAsyHC5nb29nbGUucHJvdG9idWYuRG91YmxlVmFsdWUSKQoDbG9u",
+            "GAMgASgLMhwuZ29vZ2xlLnByb3RvYnVmLkRvdWJsZVZhbHVlEhQKDGdlbWVl",
+            "bnRlY29kZRgEIAEoBRIwCgpzdHJhYXRuYWFtGAUgASgLMhwuZ29vZ2xlLnBy",
+            "b3RvYnVmLlN0cmluZ1ZhbHVlEhIKCmh1aXNudW1tZXIYBiABKAUSMAoKaHVp",
+            "c2xldHRlchgHIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI6",
+            "ChRodWlzbnVtbWVydG9ldm9lZ2luZxgIIAEoCzIcLmdvb2dsZS5wcm90b2J1",
+            "Zi5TdHJpbmdWYWx1ZRIuCghwb3N0Y29kZRgJIAEoCzIcLmdvb2dsZS5wcm90",
+            "b2J1Zi5TdHJpbmdWYWx1ZRIuCgh3aWprY29kZRgKIAEoCzIcLmdvb2dsZS5w",
+            "cm90b2J1Zi5TdHJpbmdWYWx1ZRIvCglidXVydGNvZGUYCyABKAsyHC5nb29n",
+            "bGUucHJvdG9idWYuU3RyaW5nVmFsdWUSNAoOd29vbnBsYWF0c25hYW0YDCAB",
+            "KAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSOQoTbG9jYXRpZW9t",
+            "c2NocmlqdmluZxgNIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1",
+            "ZRI1Cg9zb29ydG9iamVjdGNvZGUYDiABKAsyHC5nb29nbGUucHJvdG9idWYu",
+            "U3RyaW5nVmFsdWUSNgoQaW5kaWNhdGllbGlnZ2luZxgPIAEoCzIcLmdvb2ds",
+            "ZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI1Cg9ncm9lcGFhbmR1aWRpbmcYECAB",
+            "KAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSOgoUYWFuZHVpZGlu",
+            "Z2JvdXdzdHJvb20YESABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFs",
+            "dWUSNQoPc3RhdHVzd296b2JqZWN0GBIgASgLMhwuZ29vZ2xlLnByb3RvYnVm",
+            "LlN0cmluZ1ZhbHVlEjIKDHdhYXJkZWdlYmllZBgTIAEoCzIcLmdvb2dsZS5w",
+            "cm90b2J1Zi5TdHJpbmdWYWx1ZRIrCgVtb2RlbBgUIAEoCzIcLmdvb2dsZS5w",
+            "cm90b2J1Zi5TdHJpbmdWYWx1ZRIOCgZ3b25pbmgYFSABKAUSDgoGd29ub3Bw",
+            "GBYgASgFEhAKCGJvdXdqYWFyGBcgASgFEi8KCWt3YWxpdGVpdBgYIAEoCzIc",
+            "Lmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRIvCglvbmRlcmhvdWQYGSAB",
+            "KAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSMQoLdWl0c3RyYWxp",
+            "bmcYGiABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSMwoNZG9l",
+            "bG1hdGlnaGVpZBgbIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1",
+            "ZRIzCg12b29yemllbmluZ2VuGBwgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0",
+            "cmluZ1ZhbHVlEhcKD3RyYW5zYWN0aWVwcmlqcxgdIAEoAxIzCg90cmFuc2Fj",
+            "dGllZGF0dW0YHiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEg0K",
+            "BXNvb3J0GB8gASgJEgwKBGFhcmQYICABKAkSFQoNYnJ1aWtiYWFyaGVpZBgh",
+            "IAEoCRISCgp2b2xnbnVtbWVyGCIgASgDMs8BChNUcmFuc2FjdGlvbnNTZXJ2",
+            "aWNlEl4KF0dldFRyYW5zYWN0aW9uc092ZXJ2aWV3Eh8ub3ZlcnZpZXdyZXF1",
+            "ZXN0cy5GaWx0ZXJSZXF1ZXN0GiIudHJhbnNhY3Rpb25zLlRyYW5zYWN0aW9u",
+            "c092ZXJ2aWV3ElgKGEdldFRyYW5zYWN0aW9uc1dvem9iamVjdBIgLnRyYW5z",
+            "YWN0aW9ucy5UcmFuc2FjdGlvblJlcXVlc3QaGi50cmFuc2FjdGlvbnMuVHJh",
+            "bnNhY3Rpb25zQhSqAhFnUlBDU2VydmVyLlByb3Rvc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::gRPCServer.Protos.ColumndefinitionReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::gRPCServer.Protos.ColumndefinitionReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::gRPCServer.Protos.OverviewrequestsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.TransactionsOverview), global::gRPCServer.Protos.TransactionsOverview.Parser, new[]{ "OverviewTransaction", "ColumnDefinitions" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.Transactions), global::gRPCServer.Protos.Transactions.Parser, new[]{ "Transactions_" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.FilterRequest), global::gRPCServer.Protos.FilterRequest.Parser, new[]{ "Startdate", "Enddate", "Gemeentecodes", "Woonplaatsen", "Straatnamen", "Wijkcodes", "Buurtcodes", "Soortgroepids", "Soortobjectcodes" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.TransactionRequest), global::gRPCServer.Protos.TransactionRequest.Parser, new[]{ "Wozobjectnummer" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.Transaction), global::gRPCServer.Protos.Transaction.Parser, new[]{ "Wozobjectnummer", "Lat", "Lon", "Transactieprijs", "Transactiedatum", "Soort", "Aard", "Bruikbaarheid", "Volgnummer" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.TransactionOverview), global::gRPCServer.Protos.TransactionOverview.Parser, new[]{ "Wozobjectnummer", "Lat", "Lon", "Gemeentecode", "Straatnaam", "Huisnummer", "Huisletter", "Huisnummertoevoeging", "Postcode", "Wijkcode", "Buurtcode", "Woonplaatsnaam", "Locatieomschrijving", "Soortobjectcode", "Indicatieligging", "Groepaanduiding", "Aanduidingbouwstroom", "Statuswozobject", "Waardegebied", "Model", "Woninh", "Wonopp", "Bouwjaar", "Kwaliteit", "Onderhoud", "Uitstraling", "Doelmatigheid", "Voorzieningen", "Transactieprijs", "Transactiedatum", "Soort", "Aard", "Bruikbaarheid", "Volgnummer" }, null, null, null, null)
@@ -479,436 +473,6 @@ namespace gRPCServer.Protos {
 
   }
 
-  public sealed partial class FilterRequest : pb::IMessage<FilterRequest>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<FilterRequest> _parser = new pb::MessageParser<FilterRequest>(() => new FilterRequest());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<FilterRequest> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::gRPCServer.Protos.TransactionsReflection.Descriptor.MessageTypes[2]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public FilterRequest() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public FilterRequest(FilterRequest other) : this() {
-      startdate_ = other.startdate_ != null ? other.startdate_.Clone() : null;
-      enddate_ = other.enddate_ != null ? other.enddate_.Clone() : null;
-      gemeentecodes_ = other.gemeentecodes_.Clone();
-      woonplaatsen_ = other.woonplaatsen_.Clone();
-      straatnamen_ = other.straatnamen_.Clone();
-      wijkcodes_ = other.wijkcodes_.Clone();
-      buurtcodes_ = other.buurtcodes_.Clone();
-      soortgroepids_ = other.soortgroepids_.Clone();
-      soortobjectcodes_ = other.soortobjectcodes_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public FilterRequest Clone() {
-      return new FilterRequest(this);
-    }
-
-    /// <summary>Field number for the "startdate" field.</summary>
-    public const int StartdateFieldNumber = 1;
-    private global::Google.Protobuf.WellKnownTypes.Timestamp startdate_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Google.Protobuf.WellKnownTypes.Timestamp Startdate {
-      get { return startdate_; }
-      set {
-        startdate_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "enddate" field.</summary>
-    public const int EnddateFieldNumber = 2;
-    private global::Google.Protobuf.WellKnownTypes.Timestamp enddate_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Google.Protobuf.WellKnownTypes.Timestamp Enddate {
-      get { return enddate_; }
-      set {
-        enddate_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "gemeentecodes" field.</summary>
-    public const int GemeentecodesFieldNumber = 3;
-    private static readonly pb::FieldCodec<int> _repeated_gemeentecodes_codec
-        = pb::FieldCodec.ForInt32(26);
-    private readonly pbc::RepeatedField<int> gemeentecodes_ = new pbc::RepeatedField<int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> Gemeentecodes {
-      get { return gemeentecodes_; }
-    }
-
-    /// <summary>Field number for the "woonplaatsen" field.</summary>
-    public const int WoonplaatsenFieldNumber = 4;
-    private static readonly pb::FieldCodec<string> _repeated_woonplaatsen_codec
-        = pb::FieldCodec.ForString(34);
-    private readonly pbc::RepeatedField<string> woonplaatsen_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> Woonplaatsen {
-      get { return woonplaatsen_; }
-    }
-
-    /// <summary>Field number for the "straatnamen" field.</summary>
-    public const int StraatnamenFieldNumber = 5;
-    private static readonly pb::FieldCodec<string> _repeated_straatnamen_codec
-        = pb::FieldCodec.ForString(42);
-    private readonly pbc::RepeatedField<string> straatnamen_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> Straatnamen {
-      get { return straatnamen_; }
-    }
-
-    /// <summary>Field number for the "wijkcodes" field.</summary>
-    public const int WijkcodesFieldNumber = 6;
-    private static readonly pb::FieldCodec<string> _repeated_wijkcodes_codec
-        = pb::FieldCodec.ForString(50);
-    private readonly pbc::RepeatedField<string> wijkcodes_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> Wijkcodes {
-      get { return wijkcodes_; }
-    }
-
-    /// <summary>Field number for the "buurtcodes" field.</summary>
-    public const int BuurtcodesFieldNumber = 7;
-    private static readonly pb::FieldCodec<string> _repeated_buurtcodes_codec
-        = pb::FieldCodec.ForString(58);
-    private readonly pbc::RepeatedField<string> buurtcodes_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> Buurtcodes {
-      get { return buurtcodes_; }
-    }
-
-    /// <summary>Field number for the "soortgroepids" field.</summary>
-    public const int SoortgroepidsFieldNumber = 8;
-    private static readonly pb::FieldCodec<int> _repeated_soortgroepids_codec
-        = pb::FieldCodec.ForInt32(66);
-    private readonly pbc::RepeatedField<int> soortgroepids_ = new pbc::RepeatedField<int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> Soortgroepids {
-      get { return soortgroepids_; }
-    }
-
-    /// <summary>Field number for the "soortobjectcodes" field.</summary>
-    public const int SoortobjectcodesFieldNumber = 9;
-    private static readonly pb::FieldCodec<string> _repeated_soortobjectcodes_codec
-        = pb::FieldCodec.ForString(74);
-    private readonly pbc::RepeatedField<string> soortobjectcodes_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> Soortobjectcodes {
-      get { return soortobjectcodes_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as FilterRequest);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(FilterRequest other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(Startdate, other.Startdate)) return false;
-      if (!object.Equals(Enddate, other.Enddate)) return false;
-      if(!gemeentecodes_.Equals(other.gemeentecodes_)) return false;
-      if(!woonplaatsen_.Equals(other.woonplaatsen_)) return false;
-      if(!straatnamen_.Equals(other.straatnamen_)) return false;
-      if(!wijkcodes_.Equals(other.wijkcodes_)) return false;
-      if(!buurtcodes_.Equals(other.buurtcodes_)) return false;
-      if(!soortgroepids_.Equals(other.soortgroepids_)) return false;
-      if(!soortobjectcodes_.Equals(other.soortobjectcodes_)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (startdate_ != null) hash ^= Startdate.GetHashCode();
-      if (enddate_ != null) hash ^= Enddate.GetHashCode();
-      hash ^= gemeentecodes_.GetHashCode();
-      hash ^= woonplaatsen_.GetHashCode();
-      hash ^= straatnamen_.GetHashCode();
-      hash ^= wijkcodes_.GetHashCode();
-      hash ^= buurtcodes_.GetHashCode();
-      hash ^= soortgroepids_.GetHashCode();
-      hash ^= soortobjectcodes_.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (startdate_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Startdate);
-      }
-      if (enddate_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Enddate);
-      }
-      gemeentecodes_.WriteTo(output, _repeated_gemeentecodes_codec);
-      woonplaatsen_.WriteTo(output, _repeated_woonplaatsen_codec);
-      straatnamen_.WriteTo(output, _repeated_straatnamen_codec);
-      wijkcodes_.WriteTo(output, _repeated_wijkcodes_codec);
-      buurtcodes_.WriteTo(output, _repeated_buurtcodes_codec);
-      soortgroepids_.WriteTo(output, _repeated_soortgroepids_codec);
-      soortobjectcodes_.WriteTo(output, _repeated_soortobjectcodes_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (startdate_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Startdate);
-      }
-      if (enddate_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Enddate);
-      }
-      gemeentecodes_.WriteTo(ref output, _repeated_gemeentecodes_codec);
-      woonplaatsen_.WriteTo(ref output, _repeated_woonplaatsen_codec);
-      straatnamen_.WriteTo(ref output, _repeated_straatnamen_codec);
-      wijkcodes_.WriteTo(ref output, _repeated_wijkcodes_codec);
-      buurtcodes_.WriteTo(ref output, _repeated_buurtcodes_codec);
-      soortgroepids_.WriteTo(ref output, _repeated_soortgroepids_codec);
-      soortobjectcodes_.WriteTo(ref output, _repeated_soortobjectcodes_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (startdate_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Startdate);
-      }
-      if (enddate_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Enddate);
-      }
-      size += gemeentecodes_.CalculateSize(_repeated_gemeentecodes_codec);
-      size += woonplaatsen_.CalculateSize(_repeated_woonplaatsen_codec);
-      size += straatnamen_.CalculateSize(_repeated_straatnamen_codec);
-      size += wijkcodes_.CalculateSize(_repeated_wijkcodes_codec);
-      size += buurtcodes_.CalculateSize(_repeated_buurtcodes_codec);
-      size += soortgroepids_.CalculateSize(_repeated_soortgroepids_codec);
-      size += soortobjectcodes_.CalculateSize(_repeated_soortobjectcodes_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(FilterRequest other) {
-      if (other == null) {
-        return;
-      }
-      if (other.startdate_ != null) {
-        if (startdate_ == null) {
-          Startdate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
-        }
-        Startdate.MergeFrom(other.Startdate);
-      }
-      if (other.enddate_ != null) {
-        if (enddate_ == null) {
-          Enddate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
-        }
-        Enddate.MergeFrom(other.Enddate);
-      }
-      gemeentecodes_.Add(other.gemeentecodes_);
-      woonplaatsen_.Add(other.woonplaatsen_);
-      straatnamen_.Add(other.straatnamen_);
-      wijkcodes_.Add(other.wijkcodes_);
-      buurtcodes_.Add(other.buurtcodes_);
-      soortgroepids_.Add(other.soortgroepids_);
-      soortobjectcodes_.Add(other.soortobjectcodes_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            if (startdate_ == null) {
-              Startdate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
-            }
-            input.ReadMessage(Startdate);
-            break;
-          }
-          case 18: {
-            if (enddate_ == null) {
-              Enddate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
-            }
-            input.ReadMessage(Enddate);
-            break;
-          }
-          case 26:
-          case 24: {
-            gemeentecodes_.AddEntriesFrom(input, _repeated_gemeentecodes_codec);
-            break;
-          }
-          case 34: {
-            woonplaatsen_.AddEntriesFrom(input, _repeated_woonplaatsen_codec);
-            break;
-          }
-          case 42: {
-            straatnamen_.AddEntriesFrom(input, _repeated_straatnamen_codec);
-            break;
-          }
-          case 50: {
-            wijkcodes_.AddEntriesFrom(input, _repeated_wijkcodes_codec);
-            break;
-          }
-          case 58: {
-            buurtcodes_.AddEntriesFrom(input, _repeated_buurtcodes_codec);
-            break;
-          }
-          case 66:
-          case 64: {
-            soortgroepids_.AddEntriesFrom(input, _repeated_soortgroepids_codec);
-            break;
-          }
-          case 74: {
-            soortobjectcodes_.AddEntriesFrom(input, _repeated_soortobjectcodes_codec);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            if (startdate_ == null) {
-              Startdate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
-            }
-            input.ReadMessage(Startdate);
-            break;
-          }
-          case 18: {
-            if (enddate_ == null) {
-              Enddate = new global::Google.Protobuf.WellKnownTypes.Timestamp();
-            }
-            input.ReadMessage(Enddate);
-            break;
-          }
-          case 26:
-          case 24: {
-            gemeentecodes_.AddEntriesFrom(ref input, _repeated_gemeentecodes_codec);
-            break;
-          }
-          case 34: {
-            woonplaatsen_.AddEntriesFrom(ref input, _repeated_woonplaatsen_codec);
-            break;
-          }
-          case 42: {
-            straatnamen_.AddEntriesFrom(ref input, _repeated_straatnamen_codec);
-            break;
-          }
-          case 50: {
-            wijkcodes_.AddEntriesFrom(ref input, _repeated_wijkcodes_codec);
-            break;
-          }
-          case 58: {
-            buurtcodes_.AddEntriesFrom(ref input, _repeated_buurtcodes_codec);
-            break;
-          }
-          case 66:
-          case 64: {
-            soortgroepids_.AddEntriesFrom(ref input, _repeated_soortgroepids_codec);
-            break;
-          }
-          case 74: {
-            soortobjectcodes_.AddEntriesFrom(ref input, _repeated_soortobjectcodes_codec);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
   public sealed partial class TransactionRequest : pb::IMessage<TransactionRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -923,7 +487,7 @@ namespace gRPCServer.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::gRPCServer.Protos.TransactionsReflection.Descriptor.MessageTypes[3]; }
+      get { return global::gRPCServer.Protos.TransactionsReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1112,7 +676,7 @@ namespace gRPCServer.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::gRPCServer.Protos.TransactionsReflection.Descriptor.MessageTypes[4]; }
+      get { return global::gRPCServer.Protos.TransactionsReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1622,7 +1186,7 @@ namespace gRPCServer.Protos {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::gRPCServer.Protos.TransactionsReflection.Descriptor.MessageTypes[5]; }
+      get { return global::gRPCServer.Protos.TransactionsReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

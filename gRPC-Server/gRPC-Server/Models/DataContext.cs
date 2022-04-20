@@ -17,6 +17,7 @@ public class DataContext : DbContext
     public virtual DbSet<Notes> Notes { get; set; }
     public virtual DbSet<TaxOverview> Taxatieoverzicht { get; set; }
     public virtual DbSet<Transaction> Transactions { get; set; }
+    public virtual DbSet<TransactionOverview> TransactieOverzicht { get; set; }
     public virtual DbSet<ColumnDefinition> ColumnDefinitions { get; set; }
     public DataContext(DbContextOptions<DataContext> options) : base(options) {
         NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite();
@@ -24,6 +25,7 @@ public class DataContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<TaxOverview>().HasNoKey();
+        modelBuilder.Entity<TransactionOverview>().HasNoKey();
     }
 }
 

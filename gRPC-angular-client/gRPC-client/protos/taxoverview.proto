@@ -1,6 +1,7 @@
 syntax = "proto3";
 import "google/protobuf/wrappers.proto";
 import "columndefinition.proto";
+import "overviewrequests.proto";
 
 option csharp_namespace = "gRPCServer.Protos";
 
@@ -9,7 +10,7 @@ package taxoverview;
 //Overview service definition, delivers a list of (sub)objects meeting the requirements specified in the request.
 service Taxoverview {
   //Gets all wozobjects meeting the conditions specified int the filter request
-  rpc GetOverviewObjects (WozObjectFilterRequest) returns (WozObjectsTaxOverviewReply);
+  rpc GetOverviewObjects (overviewrequests.FilterRequest) returns (WozObjectsTaxOverviewReply);
   //Gets all subobjects meeting the conditions specified int the filter request
   rpc GetOverviewSubobjects(SubObjectFilterRequest) returns (SubObjectsTaxOverviewReply);
 }

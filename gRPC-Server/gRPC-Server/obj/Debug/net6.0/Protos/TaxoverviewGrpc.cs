@@ -49,7 +49,7 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::gRPCServer.Protos.WozObjectFilterRequest> __Marshaller_taxoverview_WozObjectFilterRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.WozObjectFilterRequest.Parser));
+    static readonly grpc::Marshaller<global::gRPCServer.Protos.FilterRequest> __Marshaller_overviewrequests_FilterRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.FilterRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::gRPCServer.Protos.WozObjectsTaxOverviewReply> __Marshaller_taxoverview_WozObjectsTaxOverviewReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.WozObjectsTaxOverviewReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -58,11 +58,11 @@ namespace gRPCServer.Protos {
     static readonly grpc::Marshaller<global::gRPCServer.Protos.SubObjectsTaxOverviewReply> __Marshaller_taxoverview_SubObjectsTaxOverviewReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.SubObjectsTaxOverviewReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::gRPCServer.Protos.WozObjectFilterRequest, global::gRPCServer.Protos.WozObjectsTaxOverviewReply> __Method_GetOverviewObjects = new grpc::Method<global::gRPCServer.Protos.WozObjectFilterRequest, global::gRPCServer.Protos.WozObjectsTaxOverviewReply>(
+    static readonly grpc::Method<global::gRPCServer.Protos.FilterRequest, global::gRPCServer.Protos.WozObjectsTaxOverviewReply> __Method_GetOverviewObjects = new grpc::Method<global::gRPCServer.Protos.FilterRequest, global::gRPCServer.Protos.WozObjectsTaxOverviewReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetOverviewObjects",
-        __Marshaller_taxoverview_WozObjectFilterRequest,
+        __Marshaller_overviewrequests_FilterRequest,
         __Marshaller_taxoverview_WozObjectsTaxOverviewReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -90,7 +90,7 @@ namespace gRPCServer.Protos {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::gRPCServer.Protos.WozObjectsTaxOverviewReply> GetOverviewObjects(global::gRPCServer.Protos.WozObjectFilterRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::gRPCServer.Protos.WozObjectsTaxOverviewReply> GetOverviewObjects(global::gRPCServer.Protos.FilterRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -126,7 +126,7 @@ namespace gRPCServer.Protos {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public static void BindService(grpc::ServiceBinderBase serviceBinder, TaxoverviewBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_GetOverviewObjects, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::gRPCServer.Protos.WozObjectFilterRequest, global::gRPCServer.Protos.WozObjectsTaxOverviewReply>(serviceImpl.GetOverviewObjects));
+      serviceBinder.AddMethod(__Method_GetOverviewObjects, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::gRPCServer.Protos.FilterRequest, global::gRPCServer.Protos.WozObjectsTaxOverviewReply>(serviceImpl.GetOverviewObjects));
       serviceBinder.AddMethod(__Method_GetOverviewSubobjects, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::gRPCServer.Protos.SubObjectFilterRequest, global::gRPCServer.Protos.SubObjectsTaxOverviewReply>(serviceImpl.GetOverviewSubobjects));
     }
 

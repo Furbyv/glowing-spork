@@ -30,9 +30,10 @@ namespace gRPCServer.Protos {
             "b24YAyABKAkSLgoJZ3JpZF9UeXBlGAQgASgOMhsuY29sdW1uZGVmaW5pdGlv",
             "bnMuR3JpZFR5cGUSEAoIZWRpdGFibGUYBSABKAgSEgoKc29ydF9vcmRlchgG",
             "IAEoBRIuCglkYXRhX3R5cGUYByABKA4yGy5jb2x1bW5kZWZpbml0aW9ucy5E",
-            "YXRhVHlwZSobCghHcmlkVHlwZRIPCgtUQVhPVkVSVklFVxAAKi0KCERhdGFU",
-            "eXBlEgsKB1ZBUkNIQVIQABIKCgZOVU1CRVIQARIICgREQVRFEAJCFKoCEWdS",
-            "UENTZXJ2ZXIuUHJvdG9zYgZwcm90bzM="));
+            "YXRhVHlwZSo0CghHcmlkVHlwZRIPCgtUQVhPVkVSVklFVxAAEhcKE1RSQU5T",
+            "QUNUSU9OT1ZFUlZJRVcQASotCghEYXRhVHlwZRILCgdWQVJDSEFSEAASCgoG",
+            "TlVNQkVSEAESCAoEREFURRACQhSqAhFnUlBDU2VydmVyLlByb3Rvc2IGcHJv",
+            "dG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::gRPCServer.Protos.GridType), typeof(global::gRPCServer.Protos.DataType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -45,6 +46,7 @@ namespace gRPCServer.Protos {
   #region Enums
   public enum GridType {
     [pbr::OriginalName("TAXOVERVIEW")] Taxoverview = 0,
+    [pbr::OriginalName("TRANSACTIONOVERVIEW")] Transactionoverview = 1,
   }
 
   public enum DataType {

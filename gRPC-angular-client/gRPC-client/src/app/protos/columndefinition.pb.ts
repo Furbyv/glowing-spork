@@ -11,7 +11,8 @@ import {
 } from '@ngx-grpc/common';
 import { BinaryReader, BinaryWriter, ByteSource } from 'google-protobuf';
 export enum GridType {
-  TAXOVERVIEW = 0
+  TAXOVERVIEW = 0,
+  TRANSACTIONOVERVIEW = 1
 }
 export enum DataType {
   VARCHAR = 0,

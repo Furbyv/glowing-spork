@@ -19,17 +19,17 @@ import {
   throwStatusErrors
 } from '@ngx-grpc/core';
 import { Observable } from 'rxjs';
-import * as thisProto from './taxoverview.pb';
+import * as thisProto from './transactions.pb';
 import * as googleProtobuf000 from '@ngx-grpc/well-known-types';
 import * as googleProtobuf001 from '@ngx-grpc/well-known-types';
 import * as columndefinitions002 from './columndefinition.pb';
 import * as overviewrequests003 from './overviewrequests.pb';
-import { GRPC_TAXOVERVIEW_CLIENT_SETTINGS } from './taxoverview.pbconf';
+import { GRPC_TRANSACTIONS_SERVICE_CLIENT_SETTINGS } from './transactions.pbconf';
 /**
- * Service client implementation for taxoverview.Taxoverview
+ * Service client implementation for transactions.TransactionsService
  */
 @Injectable({ providedIn: 'any' })
-export class TaxoverviewClient {
+export class TransactionsServiceClient {
   private client: GrpcClient<any>;
 
   /**
@@ -39,89 +39,91 @@ export class TaxoverviewClient {
    */
   $raw = {
     /**
-     * Unary RPC for /taxoverview.Taxoverview/GetOverviewObjects
+     * Unary RPC for /transactions.TransactionsService/GetTransactionsOverview
      *
      * @param requestMessage Request message
      * @param requestMetadata Request metadata
-     * @returns Observable<GrpcEvent<thisProto.WozObjectsTaxOverviewReply>>
+     * @returns Observable<GrpcEvent<thisProto.TransactionsOverview>>
      */
-    getOverviewObjects: (
+    getTransactionsOverview: (
       requestData: overviewrequests003.FilterRequest,
       requestMetadata = new GrpcMetadata()
-    ): Observable<GrpcEvent<thisProto.WozObjectsTaxOverviewReply>> => {
+    ): Observable<GrpcEvent<thisProto.TransactionsOverview>> => {
       return this.handler.handle({
         type: GrpcCallType.unary,
         client: this.client,
-        path: '/taxoverview.Taxoverview/GetOverviewObjects',
+        path: '/transactions.TransactionsService/GetTransactionsOverview',
         requestData,
         requestMetadata,
         requestClass: overviewrequests003.FilterRequest,
-        responseClass: thisProto.WozObjectsTaxOverviewReply
+        responseClass: thisProto.TransactionsOverview
       });
     },
     /**
-     * Unary RPC for /taxoverview.Taxoverview/GetOverviewSubobjects
+     * Unary RPC for /transactions.TransactionsService/GetTransactionsWozobject
      *
      * @param requestMessage Request message
      * @param requestMetadata Request metadata
-     * @returns Observable<GrpcEvent<thisProto.SubObjectsTaxOverviewReply>>
+     * @returns Observable<GrpcEvent<thisProto.Transactions>>
      */
-    getOverviewSubobjects: (
-      requestData: thisProto.SubObjectFilterRequest,
+    getTransactionsWozobject: (
+      requestData: thisProto.TransactionRequest,
       requestMetadata = new GrpcMetadata()
-    ): Observable<GrpcEvent<thisProto.SubObjectsTaxOverviewReply>> => {
+    ): Observable<GrpcEvent<thisProto.Transactions>> => {
       return this.handler.handle({
         type: GrpcCallType.unary,
         client: this.client,
-        path: '/taxoverview.Taxoverview/GetOverviewSubobjects',
+        path: '/transactions.TransactionsService/GetTransactionsWozobject',
         requestData,
         requestMetadata,
-        requestClass: thisProto.SubObjectFilterRequest,
-        responseClass: thisProto.SubObjectsTaxOverviewReply
+        requestClass: thisProto.TransactionRequest,
+        responseClass: thisProto.Transactions
       });
     }
   };
 
   constructor(
-    @Optional() @Inject(GRPC_TAXOVERVIEW_CLIENT_SETTINGS) settings: any,
+    @Optional()
+    @Inject(GRPC_TRANSACTIONS_SERVICE_CLIENT_SETTINGS)
+    settings: any,
     @Inject(GRPC_CLIENT_FACTORY) clientFactory: GrpcClientFactory<any>,
     private handler: GrpcHandler
   ) {
     this.client = clientFactory.createClient(
-      'taxoverview.Taxoverview',
+      'transactions.TransactionsService',
       settings
     );
   }
 
   /**
-   * Unary RPC for /taxoverview.Taxoverview/GetOverviewObjects
+   * Unary RPC for /transactions.TransactionsService/GetTransactionsOverview
    *
    * @param requestMessage Request message
    * @param requestMetadata Request metadata
-   * @returns Observable<thisProto.WozObjectsTaxOverviewReply>
+   * @returns Observable<thisProto.TransactionsOverview>
    */
-  getOverviewObjects(
+  getTransactionsOverview(
     requestData: overviewrequests003.FilterRequest,
     requestMetadata = new GrpcMetadata()
-  ): Observable<thisProto.WozObjectsTaxOverviewReply> {
+  ): Observable<thisProto.TransactionsOverview> {
     return this.$raw
-      .getOverviewObjects(requestData, requestMetadata)
+      .getTransactionsOverview(requestData, requestMetadata)
       .pipe(throwStatusErrors(), takeMessages());
   }
 
   /**
-   * Unary RPC for /taxoverview.Taxoverview/GetOverviewSubobjects
+   * Unary RPC for /transactions.TransactionsService/GetTransactionsWozobject
    *
    * @param requestMessage Request message
    * @param requestMetadata Request metadata
-   * @returns Observable<thisProto.SubObjectsTaxOverviewReply>
+   * @returns Observable<thisProto.Transactions>
    */
-  getOverviewSubobjects(
-    requestData: thisProto.SubObjectFilterRequest,
+  getTransactionsWozobject(
+    requestData: thisProto.TransactionRequest,
     requestMetadata = new GrpcMetadata()
-  ): Observable<thisProto.SubObjectsTaxOverviewReply> {
+  ): Observable<thisProto.Transactions> {
     return this.$raw
-      .getOverviewSubobjects(requestData, requestMetadata)
+      .getTransactionsWozobject(requestData, requestMetadata)
       .pipe(throwStatusErrors(), takeMessages());
   }
 }

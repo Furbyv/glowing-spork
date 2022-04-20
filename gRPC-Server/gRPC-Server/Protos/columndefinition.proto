@@ -6,6 +6,7 @@ package columndefinitions;
 
   enum GridType {
     TAXOVERVIEW = 0;
+	TRANSACTIONOVERVIEW =1;
   }
 
   enum DataType {
