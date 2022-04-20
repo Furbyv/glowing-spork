@@ -2,6 +2,7 @@
 {
     public enum GridType
     {
-        TAXOVERVIEW = 0
+        TAXOVERVIEW = 0,
+        TRANSACTIONOVERVIEW = 1,
     }
 }
