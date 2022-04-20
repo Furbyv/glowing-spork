@@ -1,10 +1,9 @@
 <ag-grid-angular
-  [class.ag-theme-alpine]="(isDarkTheme$ | async) === false"
-  [class.ag-theme-alpine-dark]="(isDarkTheme$ | async) === true"
+  [class.ag-theme-balham]="(isDarkTheme$ | async) === false"
+  [class.ag-theme-balham-dark]="isDarkTheme$ | async"
   [rowData]="rowData"
   [columnDefs]="columnDefs"
   [defaultColDef]="defaultColDef"
   [skipHeaderOnAutoSize]="true"
-  (gridReady)="onGridReady($event)"
->
+  (gridReady)="onGridReady($event)">
 </ag-grid-angular>
