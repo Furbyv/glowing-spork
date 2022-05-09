@@ -1,4 +1,4 @@
-﻿namespace gRPCServer.Services
+﻿namespace gRPCServer
 {
     public class TransactionService : TransactionsService.TransactionsServiceBase
     {

@@ -1,5 +1,4 @@
-﻿
-namespace gRPCServer;
+﻿namespace gRPCServer;
 
 public class Startup
 {
@@ -38,6 +37,7 @@ public class Startup
             endpoints.MapGrpcService<WozObjectService>().EnableGrpcWeb();
             endpoints.MapGrpcService<WozSubobjectService>().EnableGrpcWeb();
             endpoints.MapGrpcService<TaxOverviewService>().EnableGrpcWeb();
+            endpoints.MapGrpcService<TransactionService>().EnableGrpcWeb();
             endpoints.MapGrpcService<NoteService>().EnableGrpcWeb();
             endpoints.MapGrpcService<TimePeriodService>().EnableGrpcWeb();
 

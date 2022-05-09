@@ -1,8 +1,9 @@
 import { SafeUrl } from '@angular/platform-browser';
 import { WozObjectOverview } from '../protos/taxoverview.pb';
+import { TransactionOverview } from '../protos/transactions.pb';
 import { FullWozObjectReply, WozObjectReply } from '../protos/wozobject.pb';
 
-export function getAddress(w: WozObjectReply | FullWozObjectReply | WozObjectOverview): string {
+export function getAddress(w: WozObjectReply | FullWozObjectReply | WozObjectOverview | TransactionOverview): string {
   const straatnaam = w.straatnaam ? w.straatnaam.value : '';
   const huisnummer = w.huisnummer;
   const huisletter = w.huisletter ? w.huisletter.value : '';
@@ -11,7 +12,7 @@ export function getAddress(w: WozObjectReply | FullWozObjectReply | WozObjectOve
 }
 
 export function convertWozObjectsToGeoJson(
-  wozObjects: WozObjectReply[] | FullWozObjectReply[] | WozObjectOverview[],
+  wozObjects: WozObjectReply[] | FullWozObjectReply[] | WozObjectOverview[] | TransactionOverview[],
   image?: SafeUrl | undefined
 ): GeoJSON.Feature[] {
   return wozObjects.map((w) => {

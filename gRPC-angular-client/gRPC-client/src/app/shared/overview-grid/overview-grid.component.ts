@@ -4,6 +4,7 @@ import { ColDef, ColumnApi, GridApi, GridOptions, SideBarDef } from 'ag-grid-com
 import { ColorSchemeService } from 'src/app/layout/services/color-scheme.service';
 import { ColumnDefinition, DataType } from 'src/app/protos/columndefinition.pb';
 import { WozObjectOverview } from 'src/app/protos/taxoverview.pb';
+import { TransactionOverview } from 'src/app/protos/transactions.pb';
 
 @Component({
   selector: 'woz-overview-grid',
@@ -11,7 +12,7 @@ import { WozObjectOverview } from 'src/app/protos/taxoverview.pb';
   styleUrls: ['overview-grid.component.scss'],
 })
 export class OverviewGridComponent implements OnChanges {
-  @Input() overviewObject: WozObjectOverview[] | null = [];
+  @Input() overviewObject: WozObjectOverview[] | TransactionOverview[] | null = [];
   @Input() columnDefinitions: ColumnDefinition[] | null = [];
   @Output() openObject = new EventEmitter<number>();
   @Output() selectedObjects = new EventEmitter<number[]>();
@@ -36,7 +37,7 @@ export class OverviewGridComponent implements OnChanges {
     sortable: true,
   };
   columnDefs: ColDef[] = [];
-  rowData: WozObjectOverview[] = [];
+  rowData: WozObjectOverview[] | TransactionOverview[] = [];
   sideBar: SideBarDef | string | boolean | null = 'filters';
 
   ngOnChanges(changes: SimpleChanges): void {

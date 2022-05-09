@@ -4,7 +4,7 @@ import { NotesDialogComponent } from 'src/app/features/notes/pages/notes-dialog.
 import { SearchLayoutService } from 'src/app/features/object-search/services/search-layout.service';
 import { FilterRequest } from 'src/app/protos/overviewrequests.pb';
 import { FilterDialogComponent } from 'src/app/shared/filter-dialog/filter-dialog.component';
-import { TaxOverviewService } from '../../tax-overview/services/tax-overview.service';
+import { TransactionOverviewService } from '../services/transaction-overview.service';
 
 @Component({
   selector: 'woz-transaction-overview-drawer',
@@ -35,7 +35,7 @@ export class TransactionOverviewDrawerComponent {
   constructor(
     public dialog: MatDialog,
     private layoutService: SearchLayoutService,
-    private taxOverviewService: TaxOverviewService,
+    private transactionOverviewService: TransactionOverviewService,
     private vcr: ViewContainerRef
   ) {}
 
@@ -45,12 +45,12 @@ export class TransactionOverviewDrawerComponent {
     });
 
     dialogRef.afterClosed().subscribe((result: FilterRequest) => {
-      this.taxOverviewService.filter(result);
+      this.transactionOverviewService.filter(result);
     });
   }
 
   onDoFilter() {
-    this.taxOverviewService.refresh();
+    this.transactionOverviewService.refresh();
   }
 
   openNotes(selectedObjects: number[]) {

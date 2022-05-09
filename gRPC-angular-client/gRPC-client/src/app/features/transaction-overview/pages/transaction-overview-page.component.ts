@@ -8,7 +8,7 @@ import { MapSource } from 'src/app/shared/map-box/utility/map-box.utility';
 import { createFeatureLayers } from 'src/app/shared/map-box/utility/objects-layer';
 import { SearchLayoutService } from '../../object-search/services/search-layout.service';
 import { SelectedObjectsService } from '../../tax-overview/services/selected-objects.service';
-import { TaxOverviewService } from '../../tax-overview/services/tax-overview.service';
+import { TransactionOverviewService } from '../services/transaction-overview.service';
 
 @Component({
   selector: 'woz-transaction-overview-page',
@@ -94,7 +94,7 @@ import { TaxOverviewService } from '../../tax-overview/services/tax-overview.ser
 })
 export class TransactionOverviewPageComponent {
   state$ = this.layoutService.state$;
-  dataSources$: Observable<MapSource[]> = this.taxOverviewService.wozObjectGeoJson$.pipe(
+  dataSources$: Observable<MapSource[]> = this.transactionOverviewService.wozObjectGeoJson$.pipe(
     map((data) => [
       {
         id: 'objects',
@@ -107,8 +107,8 @@ export class TransactionOverviewPageComponent {
   );
 
   layers: FeatureLayer[] = createFeatureLayers();
-  overviewObjects$ = this.taxOverviewService.overviewData$;
-  columnDefinitions$ = this.taxOverviewService.columnDefinitions$;
+  overviewObjects$ = this.transactionOverviewService.overviewData$;
+  columnDefinitions$ = this.transactionOverviewService.columnDefinitions$;
 
   onOpenObject(objectnumber: number | string[]) {
     this.layoutService.toggleObject();
@@ -124,7 +124,7 @@ export class TransactionOverviewPageComponent {
   constructor(
     private layoutService: SearchLayoutService,
     private selectedObjectsService: SelectedObjectsService,
-    private taxOverviewService: TaxOverviewService,
+    private transactionOverviewService: TransactionOverviewService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
