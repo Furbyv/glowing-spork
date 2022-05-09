@@ -3,13 +3,13 @@ import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FilterRequest } from 'src/app/protos/overviewrequests.pb';
-import { Buurtcodes } from '../../filter-data/buurt-data';
-import { Gemeenten } from '../../filter-data/gemeente-data';
-import { Models } from '../../filter-data/model-data';
-import { SoortobjectCodes } from '../../filter-data/soc-data';
-import { straatnamen } from '../../filter-data/straatnaam-data';
-import { WijkCodes } from '../../filter-data/wijk-data';
-import { Woonplaatsen } from '../../filter-data/woonplaats-data';
+import { Buurtcodes } from './filter-data/buurt-data';
+import { Gemeenten } from './filter-data/gemeente-data';
+import { Models } from './filter-data/model-data';
+import { SoortobjectCodes } from './filter-data/soc-data';
+import { straatnamen } from './filter-data/straatnaam-data';
+import { WijkCodes } from './filter-data/wijk-data';
+import { Woonplaatsen } from './filter-data/woonplaats-data';
 
 @UntilDestroy()
 @Component({

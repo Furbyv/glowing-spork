@@ -6,13 +6,13 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AgGridModule } from 'ag-grid-angular';
 import { ObjectDetailsModule } from '../object-details/object-details.module';
-import { SearchLayoutService } from '../object-search/services/search-layout.service';
 import { NotesModule } from '../notes/notes.module';
 import { MapBoxModule } from 'src/app/shared/map-box/map-box.module';
 import { TransactionOverviewRoutingModule } from './transaction-overview-routing.module';
 import { TransactionOverviewPageComponent } from './pages/transaction-overview-page.component';
 import { TransactionOverviewDrawerComponent } from './layout/transaction-overview-drawer.component';
-import { LayerComponent } from 'ngx-mapbox-gl';
+import { ActionDrawerModule } from 'src/app/layout/action-drawer/action-drawer.module';
+import { DrawerLayoutService } from 'src/app/layout/action-drawer/drawer-layout.service';
 
 @NgModule({
   declarations: [TransactionOverviewPageComponent, TransactionOverviewDrawerComponent],
@@ -21,15 +21,15 @@ import { LayerComponent } from 'ngx-mapbox-gl';
     AgGridModule,
     FormsModule,
     ReactiveFormsModule,
+    ActionDrawerModule,
     MaterialModule,
     SharedModule,
     ObjectDetailsModule,
     TranslocoModule,
-    LayerComponent,
     TransactionOverviewRoutingModule,
     NotesModule,
     MapBoxModule,
   ],
-  providers: [SearchLayoutService],
+  providers: [DrawerLayoutService],
 })
 export class TransactionOverviewModule {}

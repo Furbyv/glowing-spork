@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NotesDialogComponent } from 'src/app/features/notes/pages/notes-dialog.component';
 import { SearchLayoutService } from 'src/app/features/object-search/services/search-layout.service';
 import { FilterRequest } from 'src/app/protos/overviewrequests.pb';
-import { FilterDialogComponent } from '../../components/filter-dialog/filter-dialog.component';
+import { FilterDialogComponent } from 'src/app/shared/filter-dialog/filter-dialog.component';
 import { TaxOverviewService } from '../../services/tax-overview.service';
 
 @Component({
