@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy, Component, ViewContainerRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { map, startWith } from 'rxjs/operators';
 import { NotesDialogComponent } from 'src/app/features/notes/pages/notes-dialog.component';
 import { SearchLayoutService } from 'src/app/features/object-search/services/search-layout.service';
 import { FilterRequest } from 'src/app/protos/overviewrequests.pb';
 import { FilterDialogComponent } from 'src/app/shared/filter-dialog/filter-dialog.component';
+import { SelectedObjectsService } from '../../tax-overview/services/selected-objects.service';
 import { TransactionOverviewService } from '../services/transaction-overview.service';
 
 @Component({
@@ -14,7 +16,11 @@ import { TransactionOverviewService } from '../services/transaction-overview.ser
 })
 export class TransactionOverviewDrawerComponent {
   isExpanded: boolean = false;
-
+  hasFilterRequest$ = this.transactionOverviewService.filterRequest$.pipe(
+    map((_) => true),
+    startWith(false)
+  );
+  selectedObjects$ = this.selectedObjectsService.selectedObjects$;
   public toggleMenu() {
     this.isExpanded = !this.isExpanded;
     this.refreshEvent();
@@ -35,6 +41,7 @@ export class TransactionOverviewDrawerComponent {
   constructor(
     public dialog: MatDialog,
     private layoutService: SearchLayoutService,
+    private selectedObjectsService: SelectedObjectsService,
     private transactionOverviewService: TransactionOverviewService,
     private vcr: ViewContainerRef
   ) {}

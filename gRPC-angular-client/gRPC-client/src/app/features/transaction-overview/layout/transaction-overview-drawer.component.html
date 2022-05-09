@@ -7,6 +7,8 @@
     [class.mat-drawer-collapsed]="!isExpanded">
     <woz-small-action-drawer
       *ngIf="!isExpanded"
+      [enableRefresh]="hasFilterRequest$ | async"
+      [selectedObjects]="selectedObjects$ | async"
       (setFiltersAction)="onSetFilters()"
       (doFilterAction)="onDoFilter()"
       (toggleMenu)="toggleMenu()"
@@ -16,6 +18,8 @@
       (openNotes)="openNotes($event)"></woz-small-action-drawer>
     <woz-large-action-drawer
       *ngIf="isExpanded"
+      [enableRefresh]="hasFilterRequest$ | async"
+      [selectedObjects]="selectedObjects$ | async"
       (setFiltersAction)="onSetFilters()"
       (doFilterAction)="onDoFilter()"
       (toggleMenu)="toggleMenu()"

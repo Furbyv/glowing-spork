@@ -6,13 +6,15 @@ import { DrawerLayoutService } from '../drawer-layout.service';
 export abstract class BaseActionDrawerComponent {
   protected selectedObjects$$: Subject<number[]> = new ReplaySubject<number[]>(1);
   selectedObjects$ = this.selectedObjects$$.asObservable();
-  @Input() set selectedObjects(objects: number[]) {
-    this.selectedObjects$$.next(objects);
+  @Input() set selectedObjects(objects: number[] | null) {
+    if (objects) {
+      this.selectedObjects$$.next(objects);
+    }
   }
   protected enableRefresh$$: Subject<boolean> = new ReplaySubject<boolean>(1);
   enableRefresh$ = this.enableRefresh$$.asObservable();
-  @Input() set enableRefresh(enable: boolean) {
-    this.enableRefresh$$.next(enable);
+  @Input() set enableRefresh(enable: boolean | null) {
+    this.enableRefresh$$.next(enable ?? false);
   }
   @Output() toggleMenu = new EventEmitter();
   @Output() doFilterAction = new EventEmitter();
