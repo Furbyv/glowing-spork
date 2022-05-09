@@ -53,7 +53,6 @@ export class OverviewGridComponent implements OnChanges {
   }
 
   private buildColumnDefinition(columnDefinitions: ColumnDefinition[]): ColDef[] {
-    console.log(columnDefinitions);
     return columnDefinitions.map((cd) => ({
       field: cd.columnName ?? '',
       headerName: cd.columnHeader ?? '',

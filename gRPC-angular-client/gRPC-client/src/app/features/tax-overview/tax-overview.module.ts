@@ -9,22 +9,14 @@ import { ObjectDetailsModule } from '../object-details/object-details.module';
 import { TaxOverviewPageComponent } from './pages/tax-overview-page.component';
 import { TaxOverviewRoutingModule } from './tax-overview-routing.module';
 import { TaxOverviewDrawerComponent } from './layout/tax-overview-drawer/tax-overview-drawer.component';
-import { SmallActionBarComponent } from './layout/small-action-bar/small-action-bar.component';
-import { LargeActionBarComponent } from './layout/large-action-bar/large-action-bar.component';
-import { TaxOverviewGridComponent } from './components/tax-overview-grid/tax-overview-grid.component';
-import { SearchLayoutService } from '../object-search/services/search-layout.service';
 import { NotesModule } from '../notes/notes.module';
 import { MapBoxModule } from 'src/app/shared/map-box/map-box.module';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ActionDrawerModule } from 'src/app/layout/action-drawer/action-drawer.module';
+import { DrawerLayoutService } from 'src/app/layout/action-drawer/drawer-layout.service';
 
 @NgModule({
-  declarations: [
-    TaxOverviewPageComponent,
-    TaxOverviewGridComponent,
-    TaxOverviewDrawerComponent,
-    SmallActionBarComponent,
-    LargeActionBarComponent,
-  ],
+  declarations: [TaxOverviewPageComponent, TaxOverviewDrawerComponent],
   imports: [
     CommonModule,
     AgGridModule,
@@ -34,11 +26,12 @@ import { LayoutModule } from '@angular/cdk/layout';
     MaterialModule,
     SharedModule,
     ObjectDetailsModule,
+    ActionDrawerModule,
     TranslocoModule,
     TaxOverviewRoutingModule,
     NotesModule,
     MapBoxModule,
   ],
-  providers: [SearchLayoutService],
+  providers: [DrawerLayoutService],
 })
 export class TaxOverviewModule {}

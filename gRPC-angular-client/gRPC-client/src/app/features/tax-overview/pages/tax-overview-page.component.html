@@ -1,11 +1,11 @@
 <woz-tax-overview-drawer>
   <div class="overview-container">
     <div [@displayGridState]="state$ | async" class="tax-grid">
-      <woz-tax-overview-grid
+      <woz-overview-grid
         [overviewObject]="overviewObjects$ | async"
         [columnDefinitions]="columnDefinitions$ | async"
         (selectedObjects)="onObjectSelect($event)"
-        (openObject)="onOpenObject($event)"></woz-tax-overview-grid>
+        (openObject)="onOpenObject($event)"></woz-overview-grid>
     </div>
     <woz-map-box
       [@displayMapState]="state$ | async"

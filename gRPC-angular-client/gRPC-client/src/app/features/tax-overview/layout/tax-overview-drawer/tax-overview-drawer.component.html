@@ -4,28 +4,29 @@
     mode="side"
     [opened]="isExpanded"
     #drawer
-    [class.mat-drawer-collapsed]="!isExpanded"
-  >
-    <app-tax-small-action
+    [class.mat-drawer-collapsed]="!isExpanded">
+    <woz-small-action-drawer
       *ngIf="!isExpanded"
+      [enableRefresh]="hasFilterRequest$ | async"
+      [selectedObjects]="selectedObjects$ | async"
       (setFiltersAction)="onSetFilters()"
       (doFilterAction)="onDoFilter()"
       (toggleMenu)="toggleMenu()"
       (toggleObject)="toggleObject()"
       (toggleGrid)="toggleGrid()"
       (toggleMap)="toggleMap()"
-      (openNotes)="openNotes($event)"
-    ></app-tax-small-action>
-    <app-tax-large-action
+      (openNotes)="openNotes($event)"></woz-small-action-drawer>
+    <woz-large-action-drawer
       *ngIf="isExpanded"
+      [enableRefresh]="hasFilterRequest$ | async"
+      [selectedObjects]="selectedObjects$ | async"
       (setFiltersAction)="onSetFilters()"
       (doFilterAction)="onDoFilter()"
       (toggleMenu)="toggleMenu()"
       (toggleObject)="toggleObject()"
       (toggleGrid)="toggleGrid()"
       (toggleMap)="toggleMap()"
-      (openNotes)="openNotes($event)"
-    ></app-tax-large-action
+      (openNotes)="openNotes($event)"></woz-large-action-drawer
   ></mat-drawer>
 
   <mat-drawer-content class="container">
