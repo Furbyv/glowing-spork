@@ -3,10 +3,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { DrawerLayoutService } from 'src/app/layout/action-drawer/drawer-layout.service';
 import { FeatureLayer } from 'src/app/shared/map-box/layer-definition/feature-layer';
 import { MapSource } from 'src/app/shared/map-box/utility/map-box.utility';
 import { createFeatureLayers } from 'src/app/shared/map-box/utility/objects-layer';
-import { SearchLayoutService } from '../../object-search/services/search-layout.service';
 import { SelectedObjectsService } from '../services/selected-objects.service';
 import { TaxOverviewService } from '../services/tax-overview.service';
 
@@ -122,7 +122,7 @@ export class TaxOverviewPageComponent {
   }
 
   constructor(
-    private layoutService: SearchLayoutService,
+    private layoutService: DrawerLayoutService,
     private selectedObjectsService: SelectedObjectsService,
     private taxOverviewService: TaxOverviewService,
     private route: ActivatedRoute,

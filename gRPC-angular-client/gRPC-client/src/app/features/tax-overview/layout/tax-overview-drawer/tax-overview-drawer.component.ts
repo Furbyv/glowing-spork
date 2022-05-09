@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, ViewContainerRef } from '@angular/c
 import { MatDialog } from '@angular/material/dialog';
 import { map, startWith } from 'rxjs/operators';
 import { NotesDialogComponent } from 'src/app/features/notes/pages/notes-dialog.component';
-import { SearchLayoutService } from 'src/app/features/object-search/services/search-layout.service';
+import { DrawerLayoutService } from 'src/app/layout/action-drawer/drawer-layout.service';
 import { FilterRequest } from 'src/app/protos/overviewrequests.pb';
 import { FilterDialogComponent } from 'src/app/shared/filter-dialog/filter-dialog.component';
 import { SelectedObjectsService } from '../../services/selected-objects.service';
@@ -41,7 +41,7 @@ export class TaxOverviewDrawerComponent {
 
   constructor(
     public dialog: MatDialog,
-    private layoutService: SearchLayoutService,
+    private layoutService: DrawerLayoutService,
     private taxOverviewService: TaxOverviewService,
     private selectedObjectsService: SelectedObjectsService,
     private vcr: ViewContainerRef
