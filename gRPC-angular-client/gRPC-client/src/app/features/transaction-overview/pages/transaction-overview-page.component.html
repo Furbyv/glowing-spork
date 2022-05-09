@@ -1,0 +1,24 @@
+<woz-transaction-overview-drawer>
+  <div class="overview-container">
+    <div [@displayGridState]="state$ | async" class="tax-grid">
+      <woz-overview-grid
+        [overviewObject]="overviewObjects$ | async"
+        [columnDefinitions]="columnDefinitions$ | async"
+        (selectedObjects)="onObjectSelect($event)"
+        (openObject)="onOpenObject($event)"></woz-overview-grid>
+    </div>
+    <woz-map-box
+      [@displayMapState]="state$ | async"
+      [sources]="dataSources$ | async"
+      [layers]="layers"
+      [multipleSelect]="true"
+      (multiselect)="onObjectSelect($event)"
+      (clickSelect)="onObjectSelect($event)"
+      (dblclickSelect)="onOpenObject($event)"></woz-map-box>
+    <ng-container *ngIf="state$ | async as state">
+      <div class="router" [@displayObjectState]="state">
+        <router-outlet></router-outlet>
+      </div>
+    </ng-container>
+  </div>
+</woz-transaction-overview-drawer>

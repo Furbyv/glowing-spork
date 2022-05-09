@@ -1,0 +1,28 @@
+@import 'variables';
+
+.overview-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tax-grid {
+  flex: 1;
+  margin: $default-gap;
+  overflow: hidden;
+}
+
+woz-map-box {
+  margin-left: $default-gap;
+  margin-right: $default-gap;
+}
+.mat-drawer-collapsed {
+  position: inherit !important;
+}
+
+.router {
+  margin-left: $default-gap;
+  margin-right: $default-gap;
+}

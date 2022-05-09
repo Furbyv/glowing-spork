@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Output
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { SearchLayoutService } from 'src/app/features/object-search/services/search-layout.service';
 import { SelectedObjectsService } from '../../services/selected-objects.service';
 import { TaxOverviewService } from '../../services/tax-overview.service';
@@ -12,7 +7,7 @@ import { TaxOverviewService } from '../../services/tax-overview.service';
   selector: 'app-tax-small-action',
   templateUrl: 'small-action-bar.component.html',
   styleUrls: ['small-action-bar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SmallActionBarComponent {
   @Output() toggleMenu = new EventEmitter();

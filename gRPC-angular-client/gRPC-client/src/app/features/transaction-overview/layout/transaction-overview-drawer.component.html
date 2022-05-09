@@ -1,0 +1,31 @@
+<mat-drawer-container class="container">
+  <mat-drawer
+    fixedInViewport="true"
+    mode="side"
+    [opened]="isExpanded"
+    #drawer
+    [class.mat-drawer-collapsed]="!isExpanded">
+    <woz-small-action-drawer
+      *ngIf="!isExpanded"
+      (setFiltersAction)="onSetFilters()"
+      (doFilterAction)="onDoFilter()"
+      (toggleMenu)="toggleMenu()"
+      (toggleObject)="toggleObject()"
+      (toggleGrid)="toggleGrid()"
+      (toggleMap)="toggleMap()"
+      (openNotes)="openNotes($event)"></woz-small-action-drawer>
+    <woz-large-action-drawer
+      *ngIf="isExpanded"
+      (setFiltersAction)="onSetFilters()"
+      (doFilterAction)="onDoFilter()"
+      (toggleMenu)="toggleMenu()"
+      (toggleObject)="toggleObject()"
+      (toggleGrid)="toggleGrid()"
+      (toggleMap)="toggleMap()"
+      (openNotes)="openNotes($event)"></woz-large-action-drawer
+  ></mat-drawer>
+
+  <mat-drawer-content class="container">
+    <ng-content></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>
