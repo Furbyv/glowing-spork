@@ -1,3 +1,7 @@
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <input matInput placeholder="Search..." (keyup)="onFilterInputChanged($event)" />
+</mat-form-field>
 <ag-grid-angular
   [class.ag-theme-balham]="(isDarkTheme$ | async) === false"
   [class.ag-theme-balham-dark]="isDarkTheme$ | async"

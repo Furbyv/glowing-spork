@@ -77,6 +77,12 @@ export class OverviewGridComponent implements OnChanges {
     }
   }
 
+  onFilterInputChanged(event: any) {
+    if (this.gridApi) {
+      this.gridApi.setQuickFilter(event.target.value);
+    }
+  }
+
   private resizeColumns() {
     if (this.gridColumnApi) {
       this.gridColumnApi.autoSizeAllColumns();
