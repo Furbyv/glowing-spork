@@ -10,6 +10,8 @@ public partial class Wozobject
     public Point Geometry { get; set; }
     public ICollection<Wozdeelobject> Wozdeelobjects { get; set; } = new HashSet<Wozdeelobject>();
     public ICollection<Wozobjectproperty> Wozobjectproperties { get; set; } = new HashSet<Wozobjectproperty>();
+    public ICollection<Transaction> Transactions { get; set; } = new HashSet<Transaction>();
     public ICollection<Image> Images { get; set; } = new HashSet<Image>();
+    public ICollection<Taxation> Taxaties { get; set; } = new HashSet<Taxation>();
 }
 

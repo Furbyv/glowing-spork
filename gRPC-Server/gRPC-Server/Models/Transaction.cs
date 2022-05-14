@@ -1,4 +1,4 @@
-﻿namespace gRPCServer.Models
+﻿namespace gRPCServer
 {
     public class Transaction
     {
@@ -8,7 +8,8 @@
         public string Aard { get; set; }
         public string Soort { get; set; }
         public string Bruikbaarheid { get; set; }
-        public DateTime TrasactieDatum {  get; set; }
+        public DateTime TransactieDatum {  get; set; }
         public long Transactieprijs { get; set; }
+        public Wozobject Wozobject { get; set; }
     }
 }
