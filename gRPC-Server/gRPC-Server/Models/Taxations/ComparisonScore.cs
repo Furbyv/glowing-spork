@@ -1,9 +1,9 @@
-﻿namespace gRPCServer.Logic.ComparableObjects;{
+﻿namespace gRPCServer.Models;
 public class ComparisonScore
 {
     [Key]
     public long Id { get;set;}
-    public long TaxatieId { get; set; }
+    public long TaxId { get; set; }
     public long VolgnummerMarktgegeven { get; set; }
     public bool Selected { get; set; }
     public double TotaleScore { get; set; }

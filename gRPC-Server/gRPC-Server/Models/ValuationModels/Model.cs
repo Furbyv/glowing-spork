@@ -9,4 +9,5 @@ public class Model
     public long ModelGroupId { get; set; }
     public TimePeriod TimePeriod { get; set; }
     public ModelGroup ModelGroup { get; set; }
+    public ICollection<Deelgroup> DeelGroups { get; set; } = new HashSet<Deelgroup>();
 }

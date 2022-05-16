@@ -42,5 +42,41 @@
         public decimal? Einddatumgeldigheid { get; set; }
         public decimal? Tijdstipregistratie { get; set; }
         public Taxation Taxation { get; set; }
+        public FreezeWozobjectProperty() { }
+        public FreezeWozobjectProperty(long taxid,Wozobjectproperty wozobjectproperty) {
+            TaxId = taxid;
+            Nummeraanduiding = wozobjectproperty.Nummeraanduiding;
+            Gemeentecode = wozobjectproperty.Gemeentecode;
+            Naamopenbareruimte = wozobjectproperty.Naamopenbareruimte;
+            Straatnaam = wozobjectproperty.Straatnaam;
+            Huisnummer = wozobjectproperty.Huisnummer;
+            Huisletter = wozobjectproperty.Huisletter;
+            Huisnummertoevoeging = wozobjectproperty.Huisnummertoevoeging;
+            Postcode = wozobjectproperty.Postcode;
+            Wijkcode = wozobjectproperty.Wijkcode;
+            Buurtcode = wozobjectproperty.Buurtcode;
+            Woonplaatsnaam = wozobjectproperty.Woonplaatsnaam;
+            Locatieomschrijving = wozobjectproperty.Locatieomschrijving;
+            Grondoppervlakte = wozobjectproperty.Grondoppervlakte;
+            Soortobjectcode = wozobjectproperty.Soortobjectcode;
+            Indicatieligging = wozobjectproperty.Indicatieligging;
+            Aanwezigheidlift = wozobjectproperty.Aanwezigheidlift;
+            Gebruikscode = wozobjectproperty.Gebruikscode;
+            Codegebouwdongebouwd = wozobjectproperty.Codegebouwdongebouwd;
+            Meegetaxeerdeoppervlakte = wozobjectproperty.Meegetaxeerdeoppervlakte;
+            Ozbvrijstelling = wozobjectproperty.Ozbvrijstelling;
+            Bijzonderewaarderingscode = wozobjectproperty.Bijzonderewaarderingscode;
+            Monumentaanduiding = wozobjectproperty.Monumentaanduiding;
+            Codeomzetbelasting = wozobjectproperty.Codeomzetbelasting;
+            Groepaanduiding = wozobjectproperty.Groepaanduiding;
+            Aanduidingbouwstroom = wozobjectproperty.Aanduidingbouwstroom;
+            Aanduidingonderzoek = wozobjectproperty.Aanduidingonderzoek;
+            Statuswozobject = wozobjectproperty.Statuswozobject;
+            Waardegebied = wozobjectproperty.Waardegebied;
+            Codeontbrekennutsvoorzieningen = wozobjectproperty.Codeontbrekennutsvoorzieningen;
+            Financieringsvorm = wozobjectproperty.Financieringsvorm;
+            Stijlletter = wozobjectproperty.Stijlletter;
+            Omschrijving = wozobjectproperty.Omschrijving;
+        }
     }
 }

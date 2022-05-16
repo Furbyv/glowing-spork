@@ -20,14 +20,14 @@ public class DataContext : DbContext
     public virtual DbSet<TransactionOverview> TransactieOverzicht { get; set; }
     public virtual DbSet<ColumnDefinition> ColumnDefinitions { get; set; }
     public virtual DbSet<Model> Models { get; set; }
-    public virtual DbSet<VglSearchRestrictions> VglSearchRestrictions { get; set;}
+    public virtual DbSet<VglSearchRestriction> VglSearchRestrictions { get; set;}
     public virtual DbSet<Taxation> Taxations { get; set; }
     public virtual DbSet<FreezeWozobjectProperty> FreezeWozobjectProperties { get; set; }
     public virtual DbSet<FreezeWozDeelobject> FreezeWozDeelobjects { get; set; }
     public virtual DbSet<ModelGroup> ModelGroups { get; set; }
     public virtual DbSet<DeelgroupDefinition> DeelgroupDefinitions { get; set; }
     public virtual DbSet<Deelgroup> Deelgroups { get; set; }
-
+    public virtual DbSet<ComparisonScore> ComparisonScore { get; set; }
     public DataContext(DbContextOptions<DataContext> options) : base(options) {
         NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite();
     }

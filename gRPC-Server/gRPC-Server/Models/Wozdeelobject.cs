@@ -3,8 +3,8 @@ public partial class Wozdeelobject
 {
     [Key]
     public long Id { get; set; }
-    public long? Wozobjectnummer { get; set; }
-    public decimal? Nummerwozdeelobject { get; set; }
+    public long Wozobjectnummer { get; set; }
+    public long Nummerwozdeelobject { get; set; }
     public DateTime? Startdate { get; set; }
     public DateTime? Enddate { get; set; }
 

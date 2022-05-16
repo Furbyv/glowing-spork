@@ -1,7 +1,6 @@
-﻿namespace gRPCServer.Models
+﻿namespace gRPCServer.Models;
+public class FreezeWozDeelobject
 {
-    public class FreezeWozDeelobject
-    {
         [Key]
         public long Id { get; set; }
         public long TaxId { get; set; }
@@ -43,5 +42,44 @@
         public decimal? Tijdstipregistratie { get; set; }
         public Taxation Taxation { get; set; }
         public Deelgroup Deelgroup { get; set; }
+
+        public FreezeWozDeelobject() { }
+        public FreezeWozDeelobject(long taxid, long volgnummer, Wozdeelobjectproperty property ) {
+            TaxId = taxid;
+            NummerWozDeelobject = volgnummer;
+            Codewozdeelobject = property.Codewozdeelobject;
+            Bouwjaar = property.Bouwjaar;
+            Bouwlaag = property.Bouwlaag;
+            Ontsluitingverdieping = property.Ontsluitingverdieping;
+            Aantalkamers = property.Aantalkamers;
+            Bouwjaarklasse = property.Bouwjaarklasse;
+            Renovatiejaar = property.Renovatiejaar;
+            Renovatiepercentage = property.Renovatiepercentage;
+            Kwaliteit = property.Kwaliteit;
+            Onderhoudstoestand = property.Onderhoudstoestand;
+            Uitstraling = property.Uitstraling;
+            Doelmatigheid = property.Doelmatigheid;
+            Voorzieningen = property.Voorzieningen;
+            Inhoud = property.Inhoud;
+            Codebrutonettoinhoud = property.Codebrutonettoinhoud;
+            Oppervlakte = property.Oppervlakte;
+            Codenettobrutooppervlakte = property.Codenettobrutooppervlakte;
+            Aantalstuks = property.Aantalstuks;
+            Lengte = property.Lengte;
+            Breedte = property.Breedte;
+            Hoogte = property.Hoogte;
+            Frontbreedte = property.Frontbreedte;
+            Bagidentificatie = property.Bagidentificatie;
+            Bapaaltgegevenstaxatieverslag = property.Bapaaltgegevenstaxatieverslag;
+            Archetype = property.Archetype;
+            Statusdeelobject = property.Statusdeelobject;
+            Bepaaltaanduiding = property.Bepaaltaanduiding;
+            Codevrijstellingozb = property.Codevrijstellingozb;
+            Groepaanduiding = property.Groepaanduiding;
+            Codeomzetbelasting = property.Codeomzetbelasting;
+            Aantekening = property.Aantekening;
+            Begindatumgeldigheid = property.Begindatumgeldigheid;
+            Einddatumgeldigheid = property.Einddatumgeldigheid;
+            Tijdstipregistratie = property.Tijdstipregistratie;
     }
 }

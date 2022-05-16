@@ -14,5 +14,16 @@
         public Model Model { get; set; }
         public TimePeriod TimePeriod { get; set; }
         public FreezeWozobjectProperty FreezeWozobjectProperty { get; set; }
+        public ICollection<FreezeWozDeelobject> FreezeWozDeelobjects { get; set; } = new HashSet<FreezeWozDeelobject>();
+        public ICollection<ComparisonScore> ComparisonScores { get; set; } = new HashSet<ComparisonScore>();
+
+        public Taxation() { }
+        public Taxation(long wozObjectnummer, Model model) {
+            Wozobjectnummer = wozObjectnummer;
+            Model = model;
+            Active = true;
+            TimePeriodId = model.TimePeriodId;
+            Status = "W";
+        }
     }
 }
