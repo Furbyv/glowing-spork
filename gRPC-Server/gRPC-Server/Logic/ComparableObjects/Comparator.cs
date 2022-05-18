@@ -3,8 +3,8 @@
 public class Comparator
 {
     private readonly DataContext _context;
-    private readonly Taxation _taxation;
-    public Comparator(DataContext context, Taxation taxation) {
+    private readonly Models.Taxation _taxation;
+    public Comparator(DataContext context, Models.Taxation taxation) {
         _context = context;
         _taxation = taxation; 
     }

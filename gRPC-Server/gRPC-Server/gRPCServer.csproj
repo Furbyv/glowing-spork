@@ -16,6 +16,8 @@
     <Protobuf Include="Protos\columndefinition.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\overviewrequests.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\transactions.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\comparables.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\taxation.proto" GrpcServices="Server" />
   </ItemGroup>
 
   <ItemGroup>

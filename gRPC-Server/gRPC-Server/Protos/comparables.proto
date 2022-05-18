@@ -1,0 +1,28 @@
+syntax = "proto3";
+import "Protos/transactions.proto";
+
+option csharp_namespace = "gRPCServer.Protos";
+
+package comparables;
+
+message Comparables {
+	int64 taxid = 1;  
+	int64 wozobjectnummer = 2;
+	int64 prijspeilid = 3;
+	repeated ComparableObject comparable_objects =4;
+}
+
+message ComparableObject{
+	transactions.Transaction transaction = 1;
+	bool selected = 2;
+	double total_score =3;
+	double afstand_score=4;
+	double won_opp_score=5;
+	double aanbouw_opp_score=6;
+	double kavel_opp_score=7;
+	double transactie_datum_score=8;
+	double object_type_score=9;
+	double bijgebouwen_score=10;
+	double bouwjaar_score=11;
+
+}

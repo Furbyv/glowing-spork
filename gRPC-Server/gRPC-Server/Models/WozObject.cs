@@ -12,6 +12,6 @@ public partial class Wozobject
     public ICollection<Wozobjectproperty> Wozobjectproperties { get; set; } = new HashSet<Wozobjectproperty>();
     public ICollection<Transaction> Transactions { get; set; } = new HashSet<Transaction>();
     public ICollection<Image> Images { get; set; } = new HashSet<Image>();
-    public ICollection<Taxation> Taxaties { get; set; } = new HashSet<Taxation>();
+    public ICollection<Models.Taxation> Taxaties { get; set; } = new HashSet<Models.Taxation>();
 }
 
