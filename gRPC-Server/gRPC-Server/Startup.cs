@@ -40,6 +40,7 @@ public class Startup
             endpoints.MapGrpcService<TransactionService>().EnableGrpcWeb();
             endpoints.MapGrpcService<NoteService>().EnableGrpcWeb();
             endpoints.MapGrpcService<TimePeriodService>().EnableGrpcWeb();
+            endpoints.MapGrpcService<TaxationService>().EnableGrpcWeb();
 
             endpoints.MapGet("/", async context =>
             {

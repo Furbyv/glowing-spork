@@ -36,6 +36,26 @@ public static class WozObjectConverter
         Lon = property.WozObject.Geometry.X,
     };
 
+    public static FullWozObjectReply WozobjectpropertyToFullWozObjectsReply(FreezeWozobjectProperty property, Wozobject wozobject) => new FullWozObjectReply
+    {
+        Wozobjectnummer = (long)wozobject.Wozobjectnummer,
+        Gemeentenaam = "Test", //Add foreign key to gemeente?
+        Straatnaam = property.Straatnaam,
+        Huisnummer = (int)(property.Huisnummer ?? 0),
+        Huisletter = property.Huisletter,
+        Huisnummertoevoeging = property.Huisnummertoevoeging,
+        Postcode = property.Postcode,
+        Soortobjectcode = property.Soortobjectcode,
+        Wijkcode = property.Wijkcode,
+        Buurtcode = property.Buurtcode,
+        Woonplaats = property.Woonplaatsnaam,
+        Locatieomschrijving = property.Locatieomschrijving,
+        Indicatieligging = property.Indicatieligging,
+        Omschrijving = property.Omschrijving,
+        Lat = wozobject.Geometry.Y,
+        Lon = wozobject.Geometry.X,
+    };
+
     public static Wozobjectproperty FullWozObjectsReplyToWozobjectproperty(FullWozObjectReply fullWozObject, DataContext dbContext)
     {
         var wozobject = dbContext.Wozobjectproperties.Where(w => w.Wozobjectnummer == fullWozObject.Wozobjectnummer)

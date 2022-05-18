@@ -24,22 +24,22 @@ namespace gRPCServer.Protos {
     static TaxationReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChVQcm90b3MvdGF4YXRpb24ucHJvdG8SCHRheGF0aW9uGhZQcm90b3Mvd296",
-            "b2JqZWN0LnByb3RvGhdQcm90b3MvdGltZXBlcmlvZC5wcm90bxoWUHJvdG9z",
-            "L3N1Ym9iamVjdC5wcm90bxoYUHJvdG9zL2NvbXBhcmFibGVzLnByb3RvIj8K",
-            "D1RheGF0aW9uUmVxdWVzdBIXCg93b3pvYmplY3RudW1tZXIYASABKAMSEwoL",
-            "cHJpanNwZWlsaWQYAiABKAMiZgoPVGF4YXRpb25zT2JqZWN0EhcKD3dvem9i",
-            "amVjdG51bW1lchgBIAEoAxITCgtwcmlqc3BlaWxpZBgCIAEoAxIlCgl0YXhh",
-            "dGlvbnMYAyADKAsyEi50YXhhdGlvbi5UYXhhdGlvbiKRAgoIVGF4YXRpb24S",
-            "CgoCaWQYASABKAMSLQoGcGVyaW9kGAIgASgLMh0udGltZXBlcmlvZHMuVGlt",
-            "ZVBlcmlvZFJlY29yZBIOCgZzdGF0dXMYAyABKAkSDgoGYWN0aXZlGAQgASgI",
-            "EjYKD2ZyZWV6ZVdvek9iamVjdBgFIAEoCzIdLndvem9iamVjdC5GdWxsV296",
-            "T2JqZWN0UmVwbHkSNwoRZnJlZXplRGVlbG9iamVjdHMYBiADKAsyHC5zdWJv",
-            "YmplY3QuV296U3ViT2JqZWN0UmVwbHkSOQoSY29tcGFyYWJsZV9vYmplY3Rz",
-            "GAcgAygLMh0uY29tcGFyYWJsZXMuQ29tcGFyYWJsZU9iamVjdDJdCg9UYXhh",
-            "dGlvbk9iamVjdHMSSgoSR2V0VGF4YXRpb25zT2JqZWN0EhkudGF4YXRpb24u",
-            "VGF4YXRpb25SZXF1ZXN0GhkudGF4YXRpb24uVGF4YXRpb25zT2JqZWN0QhSq",
-            "AhFnUlBDU2VydmVyLlByb3Rvc2IGcHJvdG8z"));
+            "ChVQcm90b3MvdGF4YXRpb24ucHJvdG8SCXRheGF0aW9ucxoWUHJvdG9zL3dv",
+            "em9iamVjdC5wcm90bxoXUHJvdG9zL3RpbWVwZXJpb2QucHJvdG8aFlByb3Rv",
+            "cy9zdWJvYmplY3QucHJvdG8aGFByb3Rvcy9jb21wYXJhYmxlcy5wcm90byI/",
+            "Cg9UYXhhdGlvblJlcXVlc3QSFwoPd296b2JqZWN0bnVtbWVyGAEgASgDEhMK",
+            "C3ByaWpzcGVpbGlkGAIgASgDImcKD1RheGF0aW9uc09iamVjdBIXCg93b3pv",
+            "YmplY3RudW1tZXIYASABKAMSEwoLcHJpanNwZWlsaWQYAiABKAMSJgoJdGF4",
+            "YXRpb25zGAMgAygLMhMudGF4YXRpb25zLlRheGF0aW9uIpECCghUYXhhdGlv",
+            "bhIKCgJpZBgBIAEoAxItCgZwZXJpb2QYAiABKAsyHS50aW1lcGVyaW9kcy5U",
+            "aW1lUGVyaW9kUmVjb3JkEg4KBnN0YXR1cxgDIAEoCRIOCgZhY3RpdmUYBCAB",
+            "KAgSNgoPZnJlZXplV296T2JqZWN0GAUgASgLMh0ud296b2JqZWN0LkZ1bGxX",
+            "b3pPYmplY3RSZXBseRI3ChFmcmVlemVEZWVsb2JqZWN0cxgGIAMoCzIcLnN1",
+            "Ym9iamVjdC5Xb3pTdWJPYmplY3RSZXBseRI5ChJjb21wYXJhYmxlX29iamVj",
+            "dHMYByADKAsyHS5jb21wYXJhYmxlcy5Db21wYXJhYmxlT2JqZWN0Ml8KD1Rh",
+            "eGF0aW9uT2JqZWN0cxJMChJHZXRUYXhhdGlvbnNPYmplY3QSGi50YXhhdGlv",
+            "bnMuVGF4YXRpb25SZXF1ZXN0GhoudGF4YXRpb25zLlRheGF0aW9uc09iamVj",
+            "dEIUqgIRZ1JQQ1NlcnZlci5Qcm90b3NiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::gRPCServer.Protos.WozobjectReflection.Descriptor, global::gRPCServer.Protos.TimeperiodReflection.Descriptor, global::gRPCServer.Protos.SubobjectReflection.Descriptor, global::gRPCServer.Protos.ComparablesReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {

@@ -23,5 +23,23 @@
             }
             return reply;
         }
+
+        public static WozSubObjectReply WozdeelobjectToWozSubobjectReply(FreezeWozDeelobject subobject)
+        {
+            var reply = new WozSubObjectReply();
+            reply.Id = (int)subobject.Id;
+            reply.Nummerwozdeelobject = (int)subobject.NummerWozDeelobject;
+            reply.Codewozdeelobject = subobject.Codewozdeelobject;
+            reply.Bouwjaar = (int)(subobject.Bouwjaar ?? 0);
+            reply.Kwaliteit = subobject.Kwaliteit;
+            reply.Onderhoud = subobject.Onderhoudstoestand;
+            reply.Uitstraling = subobject.Uitstraling;
+            reply.Doelmatigheid = subobject.Doelmatigheid;
+            reply.Voorzieningen = subobject.Voorzieningen;
+            reply.Oppervlakte = (int)(subobject.Oppervlakte ?? 0);
+            reply.Aantalstuks = (int)(subobject.Aantalstuks ?? 0);
+            reply.Bagidentificatie = subobject.Bagidentificatie;
+            return reply;
+        }
     }
 }

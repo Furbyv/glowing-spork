@@ -13,7 +13,7 @@ namespace gRPCServer.Protos {
   /// </summary>
   public static partial class TaxationObjects
   {
-    static readonly string __ServiceName = "taxation.TaxationObjects";
+    static readonly string __ServiceName = "taxations.TaxationObjects";
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
@@ -49,17 +49,17 @@ namespace gRPCServer.Protos {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::gRPCServer.Protos.TaxationRequest> __Marshaller_taxation_TaxationRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.TaxationRequest.Parser));
+    static readonly grpc::Marshaller<global::gRPCServer.Protos.TaxationRequest> __Marshaller_taxations_TaxationRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.TaxationRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::gRPCServer.Protos.TaxationsObject> __Marshaller_taxation_TaxationsObject = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.TaxationsObject.Parser));
+    static readonly grpc::Marshaller<global::gRPCServer.Protos.TaxationsObject> __Marshaller_taxations_TaxationsObject = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::gRPCServer.Protos.TaxationsObject.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::gRPCServer.Protos.TaxationRequest, global::gRPCServer.Protos.TaxationsObject> __Method_GetTaxationsObject = new grpc::Method<global::gRPCServer.Protos.TaxationRequest, global::gRPCServer.Protos.TaxationsObject>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetTaxationsObject",
-        __Marshaller_taxation_TaxationRequest,
-        __Marshaller_taxation_TaxationsObject);
+        __Marshaller_taxations_TaxationRequest,
+        __Marshaller_taxations_TaxationsObject);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor

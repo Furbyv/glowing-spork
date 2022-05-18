@@ -6,7 +6,7 @@ import "Protos/comparables.proto";
 
 option csharp_namespace = "gRPCServer.Protos";
 
-package taxation;
+package taxations;
 
 // The service definition.
 service TaxationObjects {
