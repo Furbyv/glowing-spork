@@ -1,7 +1,7 @@
 using gRPCServer.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(optionsBuilder =>
+builder.Services.AddDbContext<DataContext>(optionsBuilder =>
 optionsBuilder.UseNpgsql(builder.Configuration.GetConnectionString("dbContext"), x => x.UseNetTopologySuite()).ReplaceService<ISqlGenerationHelper, CustomNameSqlGenerationHelper>().EnableDetailedErrors());
 builder.Services.AddGrpc();
 builder.Services.RegisterModules();
