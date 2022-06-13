@@ -1,4 +1,5 @@
-﻿using gRPCServer.Modules.TimePeriods.Models;
+﻿using gRPCServer.Modules.Overviews.Models;
+using gRPCServer.Modules.TimePeriods.Models;
 using Npgsql;
 
 namespace gRPCServer.Models;

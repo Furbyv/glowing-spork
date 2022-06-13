@@ -17,7 +17,7 @@ public class Comparator
         return restrictions;
     }
 
-    private IQueryable<Models.TransactionOverview> SetContextFilter(IQueryable<Models.TransactionOverview> query, VglSearchRestriction restriction, Wozobject wozObject)
+    private IQueryable<Modules.Overviews.Models.TransactionOverview> SetContextFilter(IQueryable<Modules.Overviews.Models.TransactionOverview> query, VglSearchRestriction restriction, Wozobject wozObject)
     {
 
         var lowerbound = (int)(restriction.MaxAbsoluteDifference != null ? restriction.MaxAbsoluteDifference : restriction.LowerBoundDifference);
@@ -46,7 +46,7 @@ public class Comparator
         }
     }
 
-    private IEnumerable<Models.TransactionOverview> FilterAvaiableTransactions(List<VglSearchRestriction> restrictions,Wozobject wozObject) 
+    private IEnumerable<Modules.Overviews.Models.TransactionOverview> FilterAvaiableTransactions(List<VglSearchRestriction> restrictions,Wozobject wozObject) 
     {
         var query = _context.TransactieOverzicht.AsQueryable();
         restrictions.ForEach(restriction => {
@@ -68,7 +68,7 @@ public class Comparator
         return comparables;
     }
 
-    private ComparisonScore ScoreTransaction(Models.TransactionOverview transactionOverview, Wozobject wozObject)
+    private ComparisonScore ScoreTransaction(Modules.Overviews.Models.TransactionOverview transactionOverview, Wozobject wozObject)
     {
         var score = new ComparisonScore();
         score.TaxId = _taxation.Id;

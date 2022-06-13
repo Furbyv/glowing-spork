@@ -21,7 +21,7 @@ namespace gRPCServer.Converters
             reply.Soortobjectcode = wozproperty.Soortobjectcode;
             return reply;
         }
-        public static TransactionOverview ModelToOverviewReply(Models.TransactionOverview model)
+        public static TransactionOverview ModelToOverviewReply(Modules.Overviews.Models.TransactionOverview model)
         {
             var reply = new TransactionOverview();
             reply.Wozobjectnummer = model.Wozobjectnummer;

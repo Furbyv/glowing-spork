@@ -1,4 +1,6 @@
-﻿namespace gRPCServer
+﻿using gRPCServer.Modules.Overviews.Models;
+
+namespace gRPCServer
 {
     public static class FilterRequestHelper
     {

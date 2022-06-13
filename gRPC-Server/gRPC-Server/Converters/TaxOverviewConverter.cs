@@ -1,4 +1,6 @@
-﻿namespace gRPCServer.Converters
+﻿using gRPCServer.Modules.Overviews.Models;
+
+namespace gRPCServer.Converters
 {
     public static class TaxOverviewConverter
     {

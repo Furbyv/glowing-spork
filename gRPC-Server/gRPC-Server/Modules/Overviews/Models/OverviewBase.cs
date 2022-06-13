@@ -1,4 +1,4 @@
-﻿namespace gRPCServer.Models
+﻿namespace gRPCServer.Modules.Overviews.Models
 {
     public class OverviewBase
     {
