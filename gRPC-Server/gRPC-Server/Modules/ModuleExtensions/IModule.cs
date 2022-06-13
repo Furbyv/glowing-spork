@@ -1,7 +1,7 @@
 ﻿namespace gRPCServer.Modules;
 public interface IModule
 {
-    IServiceCollection RegisterModule(IServiceCollection builder);
+    IServiceCollection RegisterModule(IServiceCollection builder, IConfiguration configuration);
     IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints);
 }
 
@@ -10,12 +10,12 @@ public static class ModuleExtensions
     // this could also be added into the DI container
     static readonly List<IModule> registeredModules = new List<IModule>();
 
-    public static IServiceCollection RegisterModules(this IServiceCollection services)
+    public static IServiceCollection RegisterModules(this IServiceCollection services, IConfiguration configuration)
     {
         var modules = DiscoverModules();
         foreach (var module in modules)
         {
-            module.RegisterModule(services);
+            module.RegisterModule(services, configuration);
             registeredModules.Add(module);
         }
 

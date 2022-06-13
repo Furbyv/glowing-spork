@@ -1,6 +1,7 @@
 ﻿using gRPCServer.Extensions;
 using gRPCServer.Modules.Taxations.Models;
 using gRPCServer.Modules.WozObjects.Models;
+using DataContext = gRPCServer.Models.DataContext;
 
 namespace gRPCServer.Logic;
 

@@ -2,9 +2,10 @@ using gRPCServer.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DataContext>(optionsBuilder =>
-optionsBuilder.UseNpgsql(builder.Configuration.GetConnectionString("dbContext"), x => x.UseNetTopologySuite()).ReplaceService<ISqlGenerationHelper, CustomNameSqlGenerationHelper>().EnableDetailedErrors());
+    optionsBuilder.UseNpgsql(builder.Configuration.GetConnectionString("dbContext"), x => x.UseNetTopologySuite()).ReplaceService<ISqlGenerationHelper, CustomNameSqlGenerationHelper>().EnableDetailedErrors()
+);
 builder.Services.AddGrpc();
-builder.Services.RegisterModules();
+builder.Services.RegisterModules(builder.Configuration);
 builder.Services.AddCors(o => o.AddPolicy("AllowAll", builder =>
 {
     builder.AllowAnyOrigin()

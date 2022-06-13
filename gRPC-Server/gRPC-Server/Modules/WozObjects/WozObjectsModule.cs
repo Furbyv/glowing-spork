@@ -1,4 +1,6 @@
-﻿using gRPCServer.Modules.WozObjects.Endpoints;
+﻿using gRPCServer.Extensions;
+using gRPCServer.Modules.WozObjects.Endpoints;
+using gRPCServer.Modules.WozObjects.Models;
 
 namespace gRPCServer.Modules.WozObjects
 {
@@ -11,7 +13,7 @@ namespace gRPCServer.Modules.WozObjects
             return endpoints;
         }
 
-        public IServiceCollection RegisterModule(IServiceCollection builder)
+        public IServiceCollection RegisterModule(IServiceCollection builder, IConfiguration configuration)
         {
             return builder;
         }

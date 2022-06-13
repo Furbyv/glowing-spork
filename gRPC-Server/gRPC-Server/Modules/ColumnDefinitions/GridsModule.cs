@@ -6,7 +6,7 @@ public class GridsModule : IModule
         return endpoints;
     }
 
-    public IServiceCollection RegisterModule(IServiceCollection builder)
+    public IServiceCollection RegisterModule(IServiceCollection builder, IConfiguration configuration)
     {
         return builder;
     }
