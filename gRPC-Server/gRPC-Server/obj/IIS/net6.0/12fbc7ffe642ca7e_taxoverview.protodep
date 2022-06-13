@@ -1,3 +1,0 @@
-obj\IIS\net6.0\Protos/Taxoverview.cs \
-obj\IIS\net6.0\Protos/TaxoverviewGrpc.cs: C:/Users/fbver/.nuget/packages/grpc.tools/2.41.0/build/native/include/google/protobuf/wrappers.proto\
- Protos/taxoverview.proto

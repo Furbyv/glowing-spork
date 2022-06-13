@@ -1,4 +1,6 @@
-﻿namespace gRPCServer;
+﻿using gRPCServer.Modules.TimePeriods.Models;
+
+namespace gRPCServer;
 
 public class Model
 {

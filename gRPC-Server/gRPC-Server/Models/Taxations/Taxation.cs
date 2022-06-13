@@ -1,4 +1,6 @@
-﻿namespace gRPCServer.Models
+﻿using gRPCServer.Modules.TimePeriods.Models;
+
+namespace gRPCServer.Models
 {
     public class Taxation
     {

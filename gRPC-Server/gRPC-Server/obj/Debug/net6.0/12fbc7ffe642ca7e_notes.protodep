@@ -1,3 +1,0 @@
-obj\Debug\net6.0\Protos/Notes.cs \
-obj\Debug\net6.0\Protos/NotesGrpc.cs: C:/Users/fbver/.nuget/packages/grpc.tools/2.41.0/build/native/include/google/protobuf/timestamp.proto\
- Protos/notes.proto

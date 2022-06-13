@@ -1,4 +1,5 @@
-﻿using Taxation = gRPCServer.Protos.Taxation;
+﻿using gRPCServer.Modules.TimePeriods.Endpoints;
+using Taxation = gRPCServer.Protos.Taxation;
 
 namespace gRPCServer.Converters
 {

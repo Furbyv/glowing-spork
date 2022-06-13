@@ -1,4 +1,0 @@
-obj\Debug\net6.0\Protos/Timeperiod.cs \
-obj\Debug\net6.0\Protos/TimeperiodGrpc.cs: C:/Users/fbver/.nuget/packages/grpc.tools/2.41.0/build/native/include/google/protobuf/timestamp.proto\
- C:/Users/fbver/.nuget/packages/grpc.tools/2.41.0/build/native/include/google/protobuf/empty.proto\
- Protos/timeperiod.proto

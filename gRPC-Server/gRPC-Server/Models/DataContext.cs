@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using gRPCServer.Modules.TimePeriods.Models;
+using Npgsql;
 
 namespace gRPCServer.Models;
 public class DataContext : DbContext

@@ -350,13 +350,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-gRPC-Server/.vs/gRPC-Server/v17/.suo
-gRPC-Server/gRPC-Server/bin/Debug/net6.0/gRPCServer.dll
-gRPC-Server/gRPC-Server/bin/Debug/net6.0/gRPCServer.pdb
-gRPC-Server/gRPC-Server/obj/Debug/net6.0/gRPCServer.csproj.CoreCompileInputs.cache
-gRPC-Server/gRPC-Server/obj/Debug/net6.0/gRPCServer.dll
-gRPC-Server/gRPC-Server/obj/Debug/net6.0/gRPCServer.pdb
-gRPC-Server/gRPC-Server/obj/Debug/net6.0/ref/gRPCServer.dll
-gRPC-Server/gRPC-Server/obj/Debug/net6.0/refint/gRPCServer.dll
-gRPC-Server/gRPC-Server/obj/staticwebassets.pack.sentinel
-gRPC-Server/gRPC-Server/obj/Debug/net6.0/gRPCServer.pdb
+gRPC-Server/.vs/gRPC-Server/v17/*
+gRPC-Server/gRPC-Server/bin/*
+gRPC-Server/gRPC-Server/obj/*

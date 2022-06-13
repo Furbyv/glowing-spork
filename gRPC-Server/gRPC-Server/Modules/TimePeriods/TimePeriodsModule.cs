@@ -3,7 +3,7 @@ public class TimePeriodsModule : IModule
 {
     public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGrpcService<TimePeriodService>().EnableGrpcWeb().RequireCors("AllowAll");
+        endpoints.MapGrpcService<TimePeriodsEndpoint>().EnableGrpcWeb().RequireCors("AllowAll");
         return endpoints;
     }
 
