@@ -1,4 +1,6 @@
-﻿namespace gRPCServer.Modules.Notes.Models
+﻿using gRPCServer.Modules.WozObjects.Models;
+
+namespace gRPCServer.Modules.Notes.Models
 {
     public class Notes
     {

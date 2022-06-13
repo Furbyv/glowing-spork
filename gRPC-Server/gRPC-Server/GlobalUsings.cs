@@ -1,7 +1,6 @@
 ﻿global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Storage;
 global using Grpc.Core;
-global using gRPCServer.Converters;
 global using gRPCServer.Models;
 global using gRPCServer.Protos;
 global using System.Diagnostics.CodeAnalysis;

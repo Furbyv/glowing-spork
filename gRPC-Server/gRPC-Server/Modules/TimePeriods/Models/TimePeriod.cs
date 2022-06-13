@@ -1,4 +1,4 @@
-﻿namespace gRPCServer.Modules.TimePeriods;
+﻿namespace gRPCServer.Modules.TimePeriods.Models;
 public class TimePeriod
 {
     [Key]

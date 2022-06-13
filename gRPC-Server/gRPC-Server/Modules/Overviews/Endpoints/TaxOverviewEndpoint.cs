@@ -1,4 +1,8 @@
-﻿namespace gRPCServer.Modules.Overviews.Endpoints;
+﻿using gRPCServer.Modules.Grids.Converters;
+using gRPCServer.Modules.Overviews.Converters;
+using gRPCServer.Modules.Overviews.Helpers;
+
+namespace gRPCServer.Modules.Overviews.Endpoints;
 public class TaxOverviewEndpoint : Taxoverview.TaxoverviewBase
 {
     private readonly ILogger<TaxOverviewEndpoint> _logger;
@@ -14,7 +18,7 @@ public class TaxOverviewEndpoint : Taxoverview.TaxoverviewBase
         var overviewQuery = _dbContext.Taxatieoverzicht.AsNoTracking().Where(t => t.Tijdvakid == request.Tijdvakid);
         overviewQuery = FilterRequestHelper.FilterFromRequest(request, overviewQuery);
 
-        var overviewObjects = overviewQuery.Select(t => TaxOverviewConverter.TaxOverviewToWozObjectOverview(t)).ToList();
+        var overviewObjects = overviewQuery.Select(t => OverviewsConverter.TaxOverviewToWozObjectOverview(t)).ToList();
         var columnDefinitions = ColumnDefinitionConverter.GetColumnDefinitions(_dbContext, Protos.GridType.Taxoverview);
 
         var reply = new WozObjectsTaxOverviewReply();

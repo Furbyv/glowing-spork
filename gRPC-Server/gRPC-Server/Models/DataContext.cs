@@ -1,7 +1,17 @@
-﻿using gRPCServer.Modules.Notes.Models;
+﻿using gRPCServer.Modules.Grids.Models;
+using gRPCServer.Modules.Notes.Models;
 using gRPCServer.Modules.Overviews.Models;
+using gRPCServer.Modules.Taxations.Models;
 using gRPCServer.Modules.TimePeriods.Models;
+using gRPCServer.Modules.Transactions.Models;
+using gRPCServer.Modules.ValuationModels.Models;
+using gRPCServer.Modules.WozObjects.Models;
 using Npgsql;
+using ColumnDefinition = gRPCServer.Modules.Grids.Models.ColumnDefinition;
+using Notes = gRPCServer.Modules.Notes.Models.Notes;
+using Taxation = gRPCServer.Modules.Taxations.Models.Taxation;
+using Transaction = gRPCServer.Modules.Transactions.Models.Transaction;
+using TransactionOverview = gRPCServer.Modules.Overviews.Models.TransactionOverview;
 
 namespace gRPCServer.Models;
 public class DataContext : DbContext

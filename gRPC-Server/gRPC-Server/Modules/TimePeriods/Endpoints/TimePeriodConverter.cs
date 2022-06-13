@@ -1,4 +1,6 @@
-﻿namespace gRPCServer.Modules.TimePeriods.Endpoints;
+﻿using gRPCServer.Modules.TimePeriods.Models;
+
+namespace gRPCServer.Modules.TimePeriods.Endpoints;
 
 public class TimePeriodConverter
 {

@@ -1,4 +1,8 @@
-﻿namespace gRPCServer.Modules.Overviews.Endpoints;
+﻿using gRPCServer.Modules.Grids.Converters;
+using gRPCServer.Modules.Overviews.Converters;
+using gRPCServer.Modules.Overviews.Helpers;
+
+namespace gRPCServer.Modules.Overviews.Endpoints;
 
 public class TransactionOverviewEndpoint : TransactionsService.TransactionsServiceBase
 {
@@ -14,7 +18,7 @@ public class TransactionOverviewEndpoint : TransactionsService.TransactionsServi
     {
         var overviewQuery = _dbContext.TransactieOverzicht.AsNoTracking().Where(t => t.TransactieDatum >= request.Startdate.ToDateTime() && t.TransactieDatum <= request.Enddate.ToDateTime());
         overviewQuery = FilterRequestHelper.FilterFromRequest(request, overviewQuery);
-        var overview = overviewQuery.Select(t => TransactionConverter.ModelToOverviewReply(t)).ToList();
+        var overview = overviewQuery.Select(t => OverviewsConverter.ModelToOverviewReply(t)).ToList();
         var columnDefinitions = ColumnDefinitionConverter.GetColumnDefinitions(_dbContext, Protos.GridType.Transactionoverview);
 
         var reply = new TransactionsOverview();
