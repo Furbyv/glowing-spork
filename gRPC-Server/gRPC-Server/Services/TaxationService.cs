@@ -1,4 +1,5 @@
-﻿using gRPCServer.Logic.Valuation;
+﻿using gRPCServer.Logic;
+using gRPCServer.Logic.Valuation;
 
 namespace gRPCServer
 {
@@ -16,6 +17,7 @@ namespace gRPCServer
         {
             var wozObject = await _dbContext.Wozobjects
                 .AsNoTracking()
+                .AsSplitQuery()
                 .Include(w => w.Wozobjectproperties)
                 .Include(w => w.Wozdeelobjects)
                 .ThenInclude(w =>  w.Wozdeelobjectproperties) 
@@ -29,6 +31,8 @@ namespace gRPCServer
             if (wozObject != null && model != null)
             {
                 var taxation = TaxationBuilder.BuildNewTaxation(wozObject, model);
+                var comparator = new Comparator(_dbContext,taxation);
+                taxation.ComparisonScores = comparator.FindComparableObjects(wozObject).ToList();
                 var taxObject = TaxationConverter.TaxationToReply(taxation);
                 reply.Taxations.Add(taxObject);
             }

@@ -12,7 +12,7 @@
         public int? LowerBoundDifference {  get; set; }
         [AllowNull]
         public int? UpperBoundDifference { get; set; }
-        public int Priority { get; set; }
+        public bool Priority { get; set; }
 
         [Column("RestrictionDefinitionId")]
         public RestrictionDefinitions RestrictionDefinition {  get; set; }

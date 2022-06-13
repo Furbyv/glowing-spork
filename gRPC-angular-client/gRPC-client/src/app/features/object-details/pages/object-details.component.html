@@ -2,27 +2,24 @@
   class="loader"
   *ngIf="loading$ | async; else content"
   [diameter]="48"
-  aria-label="searching objects"
-></mat-spinner>
+  aria-label="searching objects"></mat-spinner>
 <ng-template #content>
+  <ng-container></ng-container>
   <ng-container *ngIf="wozObject$ | async as wozobject">
     <div class="details-grid">
       <div class="object-row">
-        <app-photos-card
-          [id]="id"
-          [address]="address$ | async"
-          class="photo"
-        ></app-photos-card>
+        <app-photos-card [id]="id" [address]="address$ | async" class="photo"></app-photos-card>
         <div class="properties">
-          <app-object-properties
-            [id]="id"
-            class="object-properties"
-          ></app-object-properties>
+          <app-object-properties [id]="id" class="object-properties"></app-object-properties>
         </div>
       </div>
       <div class="bottom-row">
         <app-object-tabs class="tabs" [id]="id"></app-object-tabs>
-        <woz-map-box [layers]="layers" [sources]="dataSources$ | async" class="maps" [layerSelection]="false"></woz-map-box>
+        <woz-map-box
+          [layers]="layers"
+          [sources]="dataSources$ | async"
+          class="maps"
+          [layerSelection]="false"></woz-map-box>
       </div>
     </div>
   </ng-container>

@@ -35,6 +35,10 @@ public class DataContext : DbContext
     {
         modelBuilder.Entity<TaxOverview>().HasNoKey();
         modelBuilder.Entity<TransactionOverview>().HasNoKey();
+        modelBuilder.Entity<Taxation>()
+           .HasOne(b => b.FreezeWozobjectProperty)
+           .WithOne(i => i.Taxation)
+           .HasForeignKey<FreezeWozobjectProperty>(b => b.TaxationId);
     }
 }
 

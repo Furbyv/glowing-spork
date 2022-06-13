@@ -3,8 +3,7 @@
     public class FreezeWozobjectProperty
     {
         [Key]
-        public long Id { get; set; }
-        public long TaxId { get; set; }
+        public long TaxationId { get; set; }
         public string Adresidentificatie { get; set; }
         public string Nummeraanduiding { get; set; }
         public decimal Gemeentecode { get; set; }
@@ -44,7 +43,7 @@
         public Taxation Taxation { get; set; }
         public FreezeWozobjectProperty() { }
         public FreezeWozobjectProperty(long taxid,Wozobjectproperty wozobjectproperty) {
-            TaxId = taxid;
+            TaxationId = taxid;
             Nummeraanduiding = wozobjectproperty.Nummeraanduiding;
             Gemeentecode = wozobjectproperty.Gemeentecode;
             Naamopenbareruimte = wozobjectproperty.Naamopenbareruimte;

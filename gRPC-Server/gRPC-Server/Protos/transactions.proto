@@ -41,6 +41,11 @@ message Transaction {
 	string aard = 7;
 	string bruikbaarheid = 8;
 	int64 volgnummer = 9;
+	google.protobuf.StringValue soortobjectcode =10;
+	google.protobuf.StringValue straatnaam =11;
+	int32 huisnummer = 12;
+	google.protobuf.StringValue huisletter =13;
+	google.protobuf.StringValue huisnummertoevoeging =14;	
 }
 
 message TransactionOverview {

@@ -526,6 +526,12 @@ export class Transaction implements GrpcMessage {
     _instance.aard = _instance.aard || '';
     _instance.bruikbaarheid = _instance.bruikbaarheid || '';
     _instance.volgnummer = _instance.volgnummer || '0';
+    _instance.soortobjectcode = _instance.soortobjectcode || undefined;
+    _instance.straatnaam = _instance.straatnaam || undefined;
+    _instance.huisnummer = _instance.huisnummer || 0;
+    _instance.huisletter = _instance.huisletter || undefined;
+    _instance.huisnummertoevoeging =
+      _instance.huisnummertoevoeging || undefined;
   }
 
   /**
@@ -579,6 +585,37 @@ export class Transaction implements GrpcMessage {
           break;
         case 9:
           _instance.volgnummer = _reader.readInt64String();
+          break;
+        case 10:
+          _instance.soortobjectcode = new googleProtobuf001.StringValue();
+          _reader.readMessage(
+            _instance.soortobjectcode,
+            googleProtobuf001.StringValue.deserializeBinaryFromReader
+          );
+          break;
+        case 11:
+          _instance.straatnaam = new googleProtobuf001.StringValue();
+          _reader.readMessage(
+            _instance.straatnaam,
+            googleProtobuf001.StringValue.deserializeBinaryFromReader
+          );
+          break;
+        case 12:
+          _instance.huisnummer = _reader.readInt32();
+          break;
+        case 13:
+          _instance.huisletter = new googleProtobuf001.StringValue();
+          _reader.readMessage(
+            _instance.huisletter,
+            googleProtobuf001.StringValue.deserializeBinaryFromReader
+          );
+          break;
+        case 14:
+          _instance.huisnummertoevoeging = new googleProtobuf001.StringValue();
+          _reader.readMessage(
+            _instance.huisnummertoevoeging,
+            googleProtobuf001.StringValue.deserializeBinaryFromReader
+          );
           break;
         default:
           _reader.skipField();
@@ -636,6 +673,37 @@ export class Transaction implements GrpcMessage {
     if (_instance.volgnummer) {
       _writer.writeInt64String(9, _instance.volgnummer);
     }
+    if (_instance.soortobjectcode) {
+      _writer.writeMessage(
+        10,
+        _instance.soortobjectcode as any,
+        googleProtobuf001.StringValue.serializeBinaryToWriter
+      );
+    }
+    if (_instance.straatnaam) {
+      _writer.writeMessage(
+        11,
+        _instance.straatnaam as any,
+        googleProtobuf001.StringValue.serializeBinaryToWriter
+      );
+    }
+    if (_instance.huisnummer) {
+      _writer.writeInt32(12, _instance.huisnummer);
+    }
+    if (_instance.huisletter) {
+      _writer.writeMessage(
+        13,
+        _instance.huisletter as any,
+        googleProtobuf001.StringValue.serializeBinaryToWriter
+      );
+    }
+    if (_instance.huisnummertoevoeging) {
+      _writer.writeMessage(
+        14,
+        _instance.huisnummertoevoeging as any,
+        googleProtobuf001.StringValue.serializeBinaryToWriter
+      );
+    }
   }
 
   private _wozobjectnummer?: string;
@@ -647,6 +715,11 @@ export class Transaction implements GrpcMessage {
   private _aard?: string;
   private _bruikbaarheid?: string;
   private _volgnummer?: string;
+  private _soortobjectcode?: googleProtobuf001.StringValue;
+  private _straatnaam?: googleProtobuf001.StringValue;
+  private _huisnummer?: number;
+  private _huisletter?: googleProtobuf001.StringValue;
+  private _huisnummertoevoeging?: googleProtobuf001.StringValue;
 
   /**
    * Message constructor. Initializes the properties and applies default Protobuf values if necessary
@@ -669,6 +742,19 @@ export class Transaction implements GrpcMessage {
     this.aard = _value.aard;
     this.bruikbaarheid = _value.bruikbaarheid;
     this.volgnummer = _value.volgnummer;
+    this.soortobjectcode = _value.soortobjectcode
+      ? new googleProtobuf001.StringValue(_value.soortobjectcode)
+      : undefined;
+    this.straatnaam = _value.straatnaam
+      ? new googleProtobuf001.StringValue(_value.straatnaam)
+      : undefined;
+    this.huisnummer = _value.huisnummer;
+    this.huisletter = _value.huisletter
+      ? new googleProtobuf001.StringValue(_value.huisletter)
+      : undefined;
+    this.huisnummertoevoeging = _value.huisnummertoevoeging
+      ? new googleProtobuf001.StringValue(_value.huisnummertoevoeging)
+      : undefined;
     Transaction.refineValues(this);
   }
   get wozobjectnummer(): string | undefined {
@@ -725,6 +811,36 @@ export class Transaction implements GrpcMessage {
   set volgnummer(value: string | undefined) {
     this._volgnummer = value;
   }
+  get soortobjectcode(): googleProtobuf001.StringValue | undefined {
+    return this._soortobjectcode;
+  }
+  set soortobjectcode(value: googleProtobuf001.StringValue | undefined) {
+    this._soortobjectcode = value;
+  }
+  get straatnaam(): googleProtobuf001.StringValue | undefined {
+    return this._straatnaam;
+  }
+  set straatnaam(value: googleProtobuf001.StringValue | undefined) {
+    this._straatnaam = value;
+  }
+  get huisnummer(): number | undefined {
+    return this._huisnummer;
+  }
+  set huisnummer(value: number | undefined) {
+    this._huisnummer = value;
+  }
+  get huisletter(): googleProtobuf001.StringValue | undefined {
+    return this._huisletter;
+  }
+  set huisletter(value: googleProtobuf001.StringValue | undefined) {
+    this._huisletter = value;
+  }
+  get huisnummertoevoeging(): googleProtobuf001.StringValue | undefined {
+    return this._huisnummertoevoeging;
+  }
+  set huisnummertoevoeging(value: googleProtobuf001.StringValue | undefined) {
+    this._huisnummertoevoeging = value;
+  }
 
   /**
    * Serialize message to binary data
@@ -751,7 +867,16 @@ export class Transaction implements GrpcMessage {
       soort: this.soort,
       aard: this.aard,
       bruikbaarheid: this.bruikbaarheid,
-      volgnummer: this.volgnummer
+      volgnummer: this.volgnummer,
+      soortobjectcode: this.soortobjectcode
+        ? this.soortobjectcode.toObject()
+        : undefined,
+      straatnaam: this.straatnaam ? this.straatnaam.toObject() : undefined,
+      huisnummer: this.huisnummer,
+      huisletter: this.huisletter ? this.huisletter.toObject() : undefined,
+      huisnummertoevoeging: this.huisnummertoevoeging
+        ? this.huisnummertoevoeging.toObject()
+        : undefined
     };
   }
 
@@ -782,7 +907,20 @@ export class Transaction implements GrpcMessage {
       soort: this.soort,
       aard: this.aard,
       bruikbaarheid: this.bruikbaarheid,
-      volgnummer: this.volgnummer
+      volgnummer: this.volgnummer,
+      soortobjectcode: this.soortobjectcode
+        ? this.soortobjectcode.toProtobufJSON(options)
+        : null,
+      straatnaam: this.straatnaam
+        ? this.straatnaam.toProtobufJSON(options)
+        : null,
+      huisnummer: this.huisnummer,
+      huisletter: this.huisletter
+        ? this.huisletter.toProtobufJSON(options)
+        : null,
+      huisnummertoevoeging: this.huisnummertoevoeging
+        ? this.huisnummertoevoeging.toProtobufJSON(options)
+        : null
     };
   }
 }
@@ -800,6 +938,11 @@ export module Transaction {
     aard?: string;
     bruikbaarheid?: string;
     volgnummer?: string;
+    soortobjectcode?: googleProtobuf001.StringValue.AsObject;
+    straatnaam?: googleProtobuf001.StringValue.AsObject;
+    huisnummer?: number;
+    huisletter?: googleProtobuf001.StringValue.AsObject;
+    huisnummertoevoeging?: googleProtobuf001.StringValue.AsObject;
   }
 
   /**
@@ -815,6 +958,11 @@ export module Transaction {
     aard?: string;
     bruikbaarheid?: string;
     volgnummer?: string;
+    soortobjectcode?: googleProtobuf001.StringValue.AsProtobufJSON | null;
+    straatnaam?: googleProtobuf001.StringValue.AsProtobufJSON | null;
+    huisnummer?: number;
+    huisletter?: googleProtobuf001.StringValue.AsProtobufJSON | null;
+    huisnummertoevoeging?: googleProtobuf001.StringValue.AsProtobufJSON | null;
   }
 }
 

@@ -33,57 +33,63 @@ namespace gRPCServer.Protos {
             "ZmluaXRpb25zGAIgAygLMiMuY29sdW1uZGVmaW5pdGlvbnMuQ29sdW1uRGVm",
             "aW5pdGlvbiI/CgxUcmFuc2FjdGlvbnMSLwoMdHJhbnNhY3Rpb25zGAEgAygL",
             "MhkudHJhbnNhY3Rpb25zLlRyYW5zYWN0aW9uIi0KElRyYW5zYWN0aW9uUmVx",
-            "dWVzdBIXCg93b3pvYmplY3RudW1tZXIYASABKAMikgIKC1RyYW5zYWN0aW9u",
+            "dWVzdBIXCg93b3pvYmplY3RudW1tZXIYASABKAMi/QMKC1RyYW5zYWN0aW9u",
             "EhcKD3dvem9iamVjdG51bW1lchgBIAEoAxIpCgNsYXQYAiABKAsyHC5nb29n",
             "bGUucHJvdG9idWYuRG91YmxlVmFsdWUSKQoDbG9uGAMgASgLMhwuZ29vZ2xl",
             "LnByb3RvYnVmLkRvdWJsZVZhbHVlEhcKD3RyYW5zYWN0aWVwcmlqcxgEIAEo",
             "AxIzCg90cmFuc2FjdGllZGF0dW0YBSABKAsyGi5nb29nbGUucHJvdG9idWYu",
             "VGltZXN0YW1wEg0KBXNvb3J0GAYgASgJEgwKBGFhcmQYByABKAkSFQoNYnJ1",
-            "aWtiYWFyaGVpZBgIIAEoCRISCgp2b2xnbnVtbWVyGAkgASgDIpELChNUcmFu",
-            "c2FjdGlvbk92ZXJ2aWV3EhcKD3dvem9iamVjdG51bW1lchgBIAEoAxIpCgNs",
-            "YXQYAiABKAsyHC5nb29nbGUucHJvdG9idWYuRG91YmxlVmFsdWUSKQoDbG9u",
-            "GAMgASgLMhwuZ29vZ2xlLnByb3RvYnVmLkRvdWJsZVZhbHVlEhQKDGdlbWVl",
-            "bnRlY29kZRgEIAEoBRIwCgpzdHJhYXRuYWFtGAUgASgLMhwuZ29vZ2xlLnBy",
-            "b3RvYnVmLlN0cmluZ1ZhbHVlEhIKCmh1aXNudW1tZXIYBiABKAUSMAoKaHVp",
-            "c2xldHRlchgHIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI6",
-            "ChRodWlzbnVtbWVydG9ldm9lZ2luZxgIIAEoCzIcLmdvb2dsZS5wcm90b2J1",
-            "Zi5TdHJpbmdWYWx1ZRIuCghwb3N0Y29kZRgJIAEoCzIcLmdvb2dsZS5wcm90",
-            "b2J1Zi5TdHJpbmdWYWx1ZRIuCgh3aWprY29kZRgKIAEoCzIcLmdvb2dsZS5w",
-            "cm90b2J1Zi5TdHJpbmdWYWx1ZRIvCglidXVydGNvZGUYCyABKAsyHC5nb29n",
-            "bGUucHJvdG9idWYuU3RyaW5nVmFsdWUSNAoOd29vbnBsYWF0c25hYW0YDCAB",
-            "KAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSOQoTbG9jYXRpZW9t",
-            "c2NocmlqdmluZxgNIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1",
-            "ZRI1Cg9zb29ydG9iamVjdGNvZGUYDiABKAsyHC5nb29nbGUucHJvdG9idWYu",
-            "U3RyaW5nVmFsdWUSNgoQaW5kaWNhdGllbGlnZ2luZxgPIAEoCzIcLmdvb2ds",
-            "ZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI1Cg9ncm9lcGFhbmR1aWRpbmcYECAB",
-            "KAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSOgoUYWFuZHVpZGlu",
-            "Z2JvdXdzdHJvb20YESABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFs",
-            "dWUSNQoPc3RhdHVzd296b2JqZWN0GBIgASgLMhwuZ29vZ2xlLnByb3RvYnVm",
-            "LlN0cmluZ1ZhbHVlEjIKDHdhYXJkZWdlYmllZBgTIAEoCzIcLmdvb2dsZS5w",
-            "cm90b2J1Zi5TdHJpbmdWYWx1ZRIrCgVtb2RlbBgUIAEoCzIcLmdvb2dsZS5w",
-            "cm90b2J1Zi5TdHJpbmdWYWx1ZRIOCgZ3b25pbmgYFSABKAUSDgoGd29ub3Bw",
-            "GBYgASgFEhAKCGJvdXdqYWFyGBcgASgFEi8KCWt3YWxpdGVpdBgYIAEoCzIc",
-            "Lmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRIvCglvbmRlcmhvdWQYGSAB",
-            "KAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSMQoLdWl0c3RyYWxp",
-            "bmcYGiABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSMwoNZG9l",
-            "bG1hdGlnaGVpZBgbIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1",
-            "ZRIzCg12b29yemllbmluZ2VuGBwgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0",
-            "cmluZ1ZhbHVlEhcKD3RyYW5zYWN0aWVwcmlqcxgdIAEoAxIzCg90cmFuc2Fj",
-            "dGllZGF0dW0YHiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEg0K",
-            "BXNvb3J0GB8gASgJEgwKBGFhcmQYICABKAkSFQoNYnJ1aWtiYWFyaGVpZBgh",
-            "IAEoCRISCgp2b2xnbnVtbWVyGCIgASgDMs8BChNUcmFuc2FjdGlvbnNTZXJ2",
-            "aWNlEl4KF0dldFRyYW5zYWN0aW9uc092ZXJ2aWV3Eh8ub3ZlcnZpZXdyZXF1",
-            "ZXN0cy5GaWx0ZXJSZXF1ZXN0GiIudHJhbnNhY3Rpb25zLlRyYW5zYWN0aW9u",
-            "c092ZXJ2aWV3ElgKGEdldFRyYW5zYWN0aW9uc1dvem9iamVjdBIgLnRyYW5z",
-            "YWN0aW9ucy5UcmFuc2FjdGlvblJlcXVlc3QaGi50cmFuc2FjdGlvbnMuVHJh",
-            "bnNhY3Rpb25zQhSqAhFnUlBDU2VydmVyLlByb3Rvc2IGcHJvdG8z"));
+            "aWtiYWFyaGVpZBgIIAEoCRISCgp2b2xnbnVtbWVyGAkgASgDEjUKD3Nvb3J0",
+            "b2JqZWN0Y29kZRgKIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1",
+            "ZRIwCgpzdHJhYXRuYWFtGAsgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmlu",
+            "Z1ZhbHVlEhIKCmh1aXNudW1tZXIYDCABKAUSMAoKaHVpc2xldHRlchgNIAEo",
+            "CzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRI6ChRodWlzbnVtbWVy",
+            "dG9ldm9lZ2luZxgOIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1",
+            "ZSKRCwoTVHJhbnNhY3Rpb25PdmVydmlldxIXCg93b3pvYmplY3RudW1tZXIY",
+            "ASABKAMSKQoDbGF0GAIgASgLMhwuZ29vZ2xlLnByb3RvYnVmLkRvdWJsZVZh",
+            "bHVlEikKA2xvbhgDIAEoCzIcLmdvb2dsZS5wcm90b2J1Zi5Eb3VibGVWYWx1",
+            "ZRIUCgxnZW1lZW50ZWNvZGUYBCABKAUSMAoKc3RyYWF0bmFhbRgFIAEoCzIc",
+            "Lmdvb2dsZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRISCgpodWlzbnVtbWVyGAYg",
+            "ASgFEjAKCmh1aXNsZXR0ZXIYByABKAsyHC5nb29nbGUucHJvdG9idWYuU3Ry",
+            "aW5nVmFsdWUSOgoUaHVpc251bW1lcnRvZXZvZWdpbmcYCCABKAsyHC5nb29n",
+            "bGUucHJvdG9idWYuU3RyaW5nVmFsdWUSLgoIcG9zdGNvZGUYCSABKAsyHC5n",
+            "b29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSLgoId2lqa2NvZGUYCiABKAsy",
+            "HC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSLwoJYnV1cnRjb2RlGAsg",
+            "ASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjQKDndvb25wbGFh",
+            "dHNuYWFtGAwgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjkK",
+            "E2xvY2F0aWVvbXNjaHJpanZpbmcYDSABKAsyHC5nb29nbGUucHJvdG9idWYu",
+            "U3RyaW5nVmFsdWUSNQoPc29vcnRvYmplY3Rjb2RlGA4gASgLMhwuZ29vZ2xl",
+            "LnByb3RvYnVmLlN0cmluZ1ZhbHVlEjYKEGluZGljYXRpZWxpZ2dpbmcYDyAB",
+            "KAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSNQoPZ3JvZXBhYW5k",
+            "dWlkaW5nGBAgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjoK",
+            "FGFhbmR1aWRpbmdib3V3c3Ryb29tGBEgASgLMhwuZ29vZ2xlLnByb3RvYnVm",
+            "LlN0cmluZ1ZhbHVlEjUKD3N0YXR1c3dvem9iamVjdBgSIAEoCzIcLmdvb2ds",
+            "ZS5wcm90b2J1Zi5TdHJpbmdWYWx1ZRIyCgx3YWFyZGVnZWJpZWQYEyABKAsy",
+            "HC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSKwoFbW9kZWwYFCABKAsy",
+            "HC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSDgoGd29uaW5oGBUgASgF",
+            "Eg4KBndvbm9wcBgWIAEoBRIQCghib3V3amFhchgXIAEoBRIvCglrd2FsaXRl",
+            "aXQYGCABKAsyHC5nb29nbGUucHJvdG9idWYuU3RyaW5nVmFsdWUSLwoJb25k",
+            "ZXJob3VkGBkgASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1ZhbHVlEjEK",
+            "C3VpdHN0cmFsaW5nGBogASgLMhwuZ29vZ2xlLnByb3RvYnVmLlN0cmluZ1Zh",
+            "bHVlEjMKDWRvZWxtYXRpZ2hlaWQYGyABKAsyHC5nb29nbGUucHJvdG9idWYu",
+            "U3RyaW5nVmFsdWUSMwoNdm9vcnppZW5pbmdlbhgcIAEoCzIcLmdvb2dsZS5w",
+            "cm90b2J1Zi5TdHJpbmdWYWx1ZRIXCg90cmFuc2FjdGllcHJpanMYHSABKAMS",
+            "MwoPdHJhbnNhY3RpZWRhdHVtGB4gASgLMhouZ29vZ2xlLnByb3RvYnVmLlRp",
+            "bWVzdGFtcBINCgVzb29ydBgfIAEoCRIMCgRhYXJkGCAgASgJEhUKDWJydWlr",
+            "YmFhcmhlaWQYISABKAkSEgoKdm9sZ251bW1lchgiIAEoAzLPAQoTVHJhbnNh",
+            "Y3Rpb25zU2VydmljZRJeChdHZXRUcmFuc2FjdGlvbnNPdmVydmlldxIfLm92",
+            "ZXJ2aWV3cmVxdWVzdHMuRmlsdGVyUmVxdWVzdBoiLnRyYW5zYWN0aW9ucy5U",
+            "cmFuc2FjdGlvbnNPdmVydmlldxJYChhHZXRUcmFuc2FjdGlvbnNXb3pvYmpl",
+            "Y3QSIC50cmFuc2FjdGlvbnMuVHJhbnNhY3Rpb25SZXF1ZXN0GhoudHJhbnNh",
+            "Y3Rpb25zLlRyYW5zYWN0aW9uc0IUqgIRZ1JQQ1NlcnZlci5Qcm90b3NiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, global::gRPCServer.Protos.ColumndefinitionReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::gRPCServer.Protos.OverviewrequestsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.TransactionsOverview), global::gRPCServer.Protos.TransactionsOverview.Parser, new[]{ "OverviewTransaction", "ColumnDefinitions" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.Transactions), global::gRPCServer.Protos.Transactions.Parser, new[]{ "Transactions_" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.TransactionRequest), global::gRPCServer.Protos.TransactionRequest.Parser, new[]{ "Wozobjectnummer" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.Transaction), global::gRPCServer.Protos.Transaction.Parser, new[]{ "Wozobjectnummer", "Lat", "Lon", "Transactieprijs", "Transactiedatum", "Soort", "Aard", "Bruikbaarheid", "Volgnummer" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.Transaction), global::gRPCServer.Protos.Transaction.Parser, new[]{ "Wozobjectnummer", "Lat", "Lon", "Transactieprijs", "Transactiedatum", "Soort", "Aard", "Bruikbaarheid", "Volgnummer", "Soortobjectcode", "Straatnaam", "Huisnummer", "Huisletter", "Huisnummertoevoeging" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::gRPCServer.Protos.TransactionOverview), global::gRPCServer.Protos.TransactionOverview.Parser, new[]{ "Wozobjectnummer", "Lat", "Lon", "Gemeentecode", "Straatnaam", "Huisnummer", "Huisletter", "Huisnummertoevoeging", "Postcode", "Wijkcode", "Buurtcode", "Woonplaatsnaam", "Locatieomschrijving", "Soortobjectcode", "Indicatieligging", "Groepaanduiding", "Aanduidingbouwstroom", "Statuswozobject", "Waardegebied", "Model", "Woninh", "Wonopp", "Bouwjaar", "Kwaliteit", "Onderhoud", "Uitstraling", "Doelmatigheid", "Voorzieningen", "Transactieprijs", "Transactiedatum", "Soort", "Aard", "Bruikbaarheid", "Volgnummer" }, null, null, null, null)
           }));
     }
@@ -705,6 +711,11 @@ namespace gRPCServer.Protos {
       aard_ = other.aard_;
       bruikbaarheid_ = other.bruikbaarheid_;
       volgnummer_ = other.volgnummer_;
+      Soortobjectcode = other.Soortobjectcode;
+      Straatnaam = other.Straatnaam;
+      huisnummer_ = other.huisnummer_;
+      Huisletter = other.Huisletter;
+      Huisnummertoevoeging = other.Huisnummertoevoeging;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -826,6 +837,74 @@ namespace gRPCServer.Protos {
       }
     }
 
+    /// <summary>Field number for the "soortobjectcode" field.</summary>
+    public const int SoortobjectcodeFieldNumber = 10;
+    private static readonly pb::FieldCodec<string> _single_soortobjectcode_codec = pb::FieldCodec.ForClassWrapper<string>(82);
+    private string soortobjectcode_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Soortobjectcode {
+      get { return soortobjectcode_; }
+      set {
+        soortobjectcode_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "straatnaam" field.</summary>
+    public const int StraatnaamFieldNumber = 11;
+    private static readonly pb::FieldCodec<string> _single_straatnaam_codec = pb::FieldCodec.ForClassWrapper<string>(90);
+    private string straatnaam_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Straatnaam {
+      get { return straatnaam_; }
+      set {
+        straatnaam_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "huisnummer" field.</summary>
+    public const int HuisnummerFieldNumber = 12;
+    private int huisnummer_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Huisnummer {
+      get { return huisnummer_; }
+      set {
+        huisnummer_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "huisletter" field.</summary>
+    public const int HuisletterFieldNumber = 13;
+    private static readonly pb::FieldCodec<string> _single_huisletter_codec = pb::FieldCodec.ForClassWrapper<string>(106);
+    private string huisletter_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Huisletter {
+      get { return huisletter_; }
+      set {
+        huisletter_ = value;
+      }
+    }
+
+
+    /// <summary>Field number for the "huisnummertoevoeging" field.</summary>
+    public const int HuisnummertoevoegingFieldNumber = 14;
+    private static readonly pb::FieldCodec<string> _single_huisnummertoevoeging_codec = pb::FieldCodec.ForClassWrapper<string>(114);
+    private string huisnummertoevoeging_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Huisnummertoevoeging {
+      get { return huisnummertoevoeging_; }
+      set {
+        huisnummertoevoeging_ = value;
+      }
+    }
+
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -850,6 +929,11 @@ namespace gRPCServer.Protos {
       if (Aard != other.Aard) return false;
       if (Bruikbaarheid != other.Bruikbaarheid) return false;
       if (Volgnummer != other.Volgnummer) return false;
+      if (Soortobjectcode != other.Soortobjectcode) return false;
+      if (Straatnaam != other.Straatnaam) return false;
+      if (Huisnummer != other.Huisnummer) return false;
+      if (Huisletter != other.Huisletter) return false;
+      if (Huisnummertoevoeging != other.Huisnummertoevoeging) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -866,6 +950,11 @@ namespace gRPCServer.Protos {
       if (Aard.Length != 0) hash ^= Aard.GetHashCode();
       if (Bruikbaarheid.Length != 0) hash ^= Bruikbaarheid.GetHashCode();
       if (Volgnummer != 0L) hash ^= Volgnummer.GetHashCode();
+      if (soortobjectcode_ != null) hash ^= Soortobjectcode.GetHashCode();
+      if (straatnaam_ != null) hash ^= Straatnaam.GetHashCode();
+      if (Huisnummer != 0) hash ^= Huisnummer.GetHashCode();
+      if (huisletter_ != null) hash ^= Huisletter.GetHashCode();
+      if (huisnummertoevoeging_ != null) hash ^= Huisnummertoevoeging.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -918,6 +1007,22 @@ namespace gRPCServer.Protos {
         output.WriteRawTag(72);
         output.WriteInt64(Volgnummer);
       }
+      if (soortobjectcode_ != null) {
+        _single_soortobjectcode_codec.WriteTagAndValue(output, Soortobjectcode);
+      }
+      if (straatnaam_ != null) {
+        _single_straatnaam_codec.WriteTagAndValue(output, Straatnaam);
+      }
+      if (Huisnummer != 0) {
+        output.WriteRawTag(96);
+        output.WriteInt32(Huisnummer);
+      }
+      if (huisletter_ != null) {
+        _single_huisletter_codec.WriteTagAndValue(output, Huisletter);
+      }
+      if (huisnummertoevoeging_ != null) {
+        _single_huisnummertoevoeging_codec.WriteTagAndValue(output, Huisnummertoevoeging);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -962,6 +1067,22 @@ namespace gRPCServer.Protos {
         output.WriteRawTag(72);
         output.WriteInt64(Volgnummer);
       }
+      if (soortobjectcode_ != null) {
+        _single_soortobjectcode_codec.WriteTagAndValue(ref output, Soortobjectcode);
+      }
+      if (straatnaam_ != null) {
+        _single_straatnaam_codec.WriteTagAndValue(ref output, Straatnaam);
+      }
+      if (Huisnummer != 0) {
+        output.WriteRawTag(96);
+        output.WriteInt32(Huisnummer);
+      }
+      if (huisletter_ != null) {
+        _single_huisletter_codec.WriteTagAndValue(ref output, Huisletter);
+      }
+      if (huisnummertoevoeging_ != null) {
+        _single_huisnummertoevoeging_codec.WriteTagAndValue(ref output, Huisnummertoevoeging);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -998,6 +1119,21 @@ namespace gRPCServer.Protos {
       }
       if (Volgnummer != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Volgnummer);
+      }
+      if (soortobjectcode_ != null) {
+        size += _single_soortobjectcode_codec.CalculateSizeWithTag(Soortobjectcode);
+      }
+      if (straatnaam_ != null) {
+        size += _single_straatnaam_codec.CalculateSizeWithTag(Straatnaam);
+      }
+      if (Huisnummer != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Huisnummer);
+      }
+      if (huisletter_ != null) {
+        size += _single_huisletter_codec.CalculateSizeWithTag(Huisletter);
+      }
+      if (huisnummertoevoeging_ != null) {
+        size += _single_huisnummertoevoeging_codec.CalculateSizeWithTag(Huisnummertoevoeging);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1044,6 +1180,29 @@ namespace gRPCServer.Protos {
       }
       if (other.Volgnummer != 0L) {
         Volgnummer = other.Volgnummer;
+      }
+      if (other.soortobjectcode_ != null) {
+        if (soortobjectcode_ == null || other.Soortobjectcode != "") {
+          Soortobjectcode = other.Soortobjectcode;
+        }
+      }
+      if (other.straatnaam_ != null) {
+        if (straatnaam_ == null || other.Straatnaam != "") {
+          Straatnaam = other.Straatnaam;
+        }
+      }
+      if (other.Huisnummer != 0) {
+        Huisnummer = other.Huisnummer;
+      }
+      if (other.huisletter_ != null) {
+        if (huisletter_ == null || other.Huisletter != "") {
+          Huisletter = other.Huisletter;
+        }
+      }
+      if (other.huisnummertoevoeging_ != null) {
+        if (huisnummertoevoeging_ == null || other.Huisnummertoevoeging != "") {
+          Huisnummertoevoeging = other.Huisnummertoevoeging;
+        }
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1105,6 +1264,38 @@ namespace gRPCServer.Protos {
             Volgnummer = input.ReadInt64();
             break;
           }
+          case 82: {
+            string value = _single_soortobjectcode_codec.Read(input);
+            if (soortobjectcode_ == null || value != "") {
+              Soortobjectcode = value;
+            }
+            break;
+          }
+          case 90: {
+            string value = _single_straatnaam_codec.Read(input);
+            if (straatnaam_ == null || value != "") {
+              Straatnaam = value;
+            }
+            break;
+          }
+          case 96: {
+            Huisnummer = input.ReadInt32();
+            break;
+          }
+          case 106: {
+            string value = _single_huisletter_codec.Read(input);
+            if (huisletter_ == null || value != "") {
+              Huisletter = value;
+            }
+            break;
+          }
+          case 114: {
+            string value = _single_huisnummertoevoeging_codec.Read(input);
+            if (huisnummertoevoeging_ == null || value != "") {
+              Huisnummertoevoeging = value;
+            }
+            break;
+          }
         }
       }
     #endif
@@ -1163,6 +1354,38 @@ namespace gRPCServer.Protos {
           }
           case 72: {
             Volgnummer = input.ReadInt64();
+            break;
+          }
+          case 82: {
+            string value = _single_soortobjectcode_codec.Read(ref input);
+            if (soortobjectcode_ == null || value != "") {
+              Soortobjectcode = value;
+            }
+            break;
+          }
+          case 90: {
+            string value = _single_straatnaam_codec.Read(ref input);
+            if (straatnaam_ == null || value != "") {
+              Straatnaam = value;
+            }
+            break;
+          }
+          case 96: {
+            Huisnummer = input.ReadInt32();
+            break;
+          }
+          case 106: {
+            string value = _single_huisletter_codec.Read(ref input);
+            if (huisletter_ == null || value != "") {
+              Huisletter = value;
+            }
+            break;
+          }
+          case 114: {
+            string value = _single_huisnummertoevoeging_codec.Read(ref input);
+            if (huisnummertoevoeging_ == null || value != "") {
+              Huisnummertoevoeging = value;
+            }
             break;
           }
         }

@@ -32,6 +32,7 @@ namespace gRPCServer.Converters
             reply.TransactieDatumScore = score.TransactieDatumScore;
             reply.WonOppScore = score.WonOppScore;
             reply.TotalScore = score.TotaleScore;
+            reply.Transaction = TransactionConverter.ModelToTransactionReply(score.Transaction);
             return reply;
         }
     }
