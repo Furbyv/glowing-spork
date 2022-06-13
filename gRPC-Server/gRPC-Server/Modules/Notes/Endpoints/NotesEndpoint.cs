@@ -1,10 +1,10 @@
-﻿namespace gRPCServer;
+﻿namespace gRPCServer.Modules.Notes;
 
-public class NoteService : Protos.Notes.NotesBase
+public class NotesEndpoint : Protos.Notes.NotesBase
 {
-    private readonly ILogger<NoteService> _logger;
+    private readonly ILogger<NotesEndpoint> _logger;
     readonly DataContext _dbContext;
-    public NoteService(ILogger<NoteService> logger, DataContext dbContext)
+    public NotesEndpoint(ILogger<NotesEndpoint> logger, DataContext dbContext)
     {
         _dbContext = dbContext;
         _logger = logger;
@@ -12,8 +12,8 @@ public class NoteService : Protos.Notes.NotesBase
 
     public async override Task<AddOrEditNotesReply> AddNotes(AddNotesRequest request, ServerCallContext context)
     {
-        var model = NoteConverter.ToModel(request.Note,_dbContext);
-        await _dbContext.AddAsync(model,context.CancellationToken);
+        var model = NoteConverter.ToModel(request.Note, _dbContext);
+        await _dbContext.AddAsync(model, context.CancellationToken);
         var success = await _dbContext.SaveChangesAsync(context.CancellationToken);
         var reply = new AddOrEditNotesReply();
         reply.Succes = success > 0;
@@ -31,7 +31,7 @@ public class NoteService : Protos.Notes.NotesBase
 
     public async override Task<NoteReply> GetNotes(GetNotesRequest request, ServerCallContext context)
     {
-        var notes = await _dbContext.Notes.Include(n => n.User).Where(n => n.Wozobjectnummer == request.Wozobjectnummer).Select(n=> NoteConverter.ToRecord(n)).ToArrayAsync(
+        var notes = await _dbContext.Notes.Include(n => n.User).Where(n => n.Wozobjectnummer == request.Wozobjectnummer).Select(n => NoteConverter.ToRecord(n)).ToArrayAsync(
             context.CancellationToken);
         var reply = new NoteReply();
         reply.Notes.AddRange(notes);

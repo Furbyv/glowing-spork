@@ -1,5 +1,6 @@
 using gRPCServer;
 using gRPCServer.Modules;
+using gRPCServer.Modules.Notes.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEntityFrameworkNpgsql().AddDbContext<DataContext>(optionsBuilder =>
@@ -23,9 +24,8 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapGrpcService<WozObjectService>().EnableGrpcWeb().RequireCors("AllowAll");
     endpoints.MapGrpcService<WozSubobjectService>().EnableGrpcWeb().RequireCors("AllowAll");
-    endpoints.MapGrpcService<TaxOverviewService>().EnableGrpcWeb().RequireCors("AllowAll");
     endpoints.MapGrpcService<TransactionService>().EnableGrpcWeb().RequireCors("AllowAll");
-    endpoints.MapGrpcService<NoteService>().EnableGrpcWeb().RequireCors("AllowAll");
+    endpoints.MapGrpcService<NotesEndpoint>().EnableGrpcWeb().RequireCors("AllowAll");
     endpoints.MapGrpcService<TaxationService>().EnableGrpcWeb().RequireCors("AllowAll");
 }
 );

@@ -1,4 +1,6 @@
-﻿namespace gRPCServer.Converters;
+﻿using gRPCServer.Modules.Notes.Models;
+
+namespace gRPCServer.Converters;
 public static class NoteConverter
 {
     public static Notes ToModel(NoteRecord record, DataContext context)

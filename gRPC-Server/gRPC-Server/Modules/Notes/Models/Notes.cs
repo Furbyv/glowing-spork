@@ -1,4 +1,4 @@
-﻿namespace gRPCServer
+﻿namespace gRPCServer.Modules.Notes.Models
 {
     public class Notes
     {
@@ -12,6 +12,6 @@
         public Wozobject WozObject { get; set; }
 
         [ForeignKey("UserId")]
-        public User User{ get; set; }
+        public User User { get; set; }
     }
 }
