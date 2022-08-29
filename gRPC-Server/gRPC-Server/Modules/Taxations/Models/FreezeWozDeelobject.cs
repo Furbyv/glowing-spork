@@ -43,6 +43,9 @@ public class FreezeWozDeelobject
     public decimal? Begindatumgeldigheid { get; set; }
     public decimal? Einddatumgeldigheid { get; set; }
     public decimal? Tijdstipregistratie { get; set; }
+    public double? ModelValue { get; set; }
+
+    public double? ModelPpe { get; set; }
     
     [ForeignKey("TaxId")]
     public Taxation Taxation { get; set; }

@@ -23,9 +23,10 @@ public class TaxationsEndpoint : TaxationObjects.TaxationObjectsBase
             .ThenInclude(w => w.Wozdeelobjectproperties)
             .FirstOrDefaultAsync(x => x.Wozobjectnummer == request.Wozobjectnummer);
         var model = await _dbContext.Models
+            .AsSplitQuery()
             .Include(m => m.DeelGroups)
             .Include(m => m.TimePeriod)
-            .Include(m => m.MarketSegments).ThenInclude(s => s.DeelPrices)
+            .Include(m => m.MarketSegments).ThenInclude(s => s.DeelPrices).ThenInclude(p => p.Deelgroup)
             .FirstOrDefaultAsync(m => m.TimePeriodId == request.Prijspeilid);
         var reply = new TaxationsObject();
         reply.Prijspeilid = request.Prijspeilid;

@@ -14,6 +14,7 @@ public class Taxation
     public long TimePeriodId { get; set; }
     public bool Active { get; set; }
     public long MarketSegmentId { get; set; }
+    public double? TotalModelValue { get; set; }
 
     [ForeignKey("Wozobjectnummer")]
     public Wozobject Wozobject { get; set; }

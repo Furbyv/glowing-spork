@@ -1,5 +1,6 @@
 ﻿using gRPCServer.Extensions;
 using gRPCServer.Modules.Taxations.Models;
+using gRPCServer.Modules.ValuationModels.Logic;
 using gRPCServer.Modules.ValuationModels.Models;
 using gRPCServer.Modules.WozObjects.Models;
 using Taxation = gRPCServer.Modules.Taxations.Models.Taxation;
@@ -10,11 +11,12 @@ public static class TaxationBuilder
     public async static Task<Taxation> BuildNewTaxation(DataContext dbContext,Wozobject wozObject, Model model) {
         var taxation = new Taxation(wozObject.Wozobjectnummer, model);
         taxation.Wozobject = wozObject;
-        taxation.TimePeriodId = model.TimePeriodId;
+        taxation.TimePeriod = model.TimePeriod;
         SetFreezeObjectProperty(taxation, wozObject);
         SetFreezeDeelObjects(taxation, wozObject);
         taxation.MarketSegment = GetMarketSegment(model,await GetWaardeGebied(dbContext, taxation.FreezeWozobjectProperty),
             await GetObjectGroupDefinition(dbContext, taxation.FreezeWozobjectProperty));
+        Valuator.ValuateTaxation(taxation);
         return taxation;
     }
 
@@ -29,10 +31,10 @@ public static class TaxationBuilder
     {
         var propertydate = taxation.Model.TimePeriod.PropertyDate.SetKindUtc();
         var wozDelen = wozObject.Wozdeelobjects.Where(w => w.Startdate <= propertydate && w.Enddate >= propertydate).ToList();
+        taxation.FreezeWozDeelobjects = new List<FreezeWozDeelobject>();
         wozDelen.ForEach(w =>
         {
             var wozdeelproperty = w.Wozdeelobjectproperties.FirstOrDefault(p => p.Startdate <= propertydate && p.Enddate >= propertydate);
-            taxation.FreezeWozDeelobjects = new List<FreezeWozDeelobject>();
             var freezeDeelobject = new FreezeWozDeelobject(taxation.Id, w.Nummerwozdeelobject, wozdeelproperty);
             freezeDeelobject.Deelgroup = GetDeelgroup(wozdeelproperty, taxation.Model);
             taxation.FreezeWozDeelobjects.Add(freezeDeelobject);
