@@ -43,7 +43,11 @@ public class FreezeWozDeelobject
     public decimal? Begindatumgeldigheid { get; set; }
     public decimal? Einddatumgeldigheid { get; set; }
     public decimal? Tijdstipregistratie { get; set; }
+    
+    [ForeignKey("TaxId")]
     public Taxation Taxation { get; set; }
+    
+    [ForeignKey("DeelgroupId")]
     public Deelgroup Deelgroup { get; set; }
 
     public FreezeWozDeelobject() { }

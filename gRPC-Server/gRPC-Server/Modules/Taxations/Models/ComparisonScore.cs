@@ -6,7 +6,7 @@ public class ComparisonScore
 {
     [Key]
     public long Id { get; set; }
-    public long TaxId { get; set; }
+    public long TaxationId { get; set; }
     public long VolgnummerMarktgegeven { get; set; }
     public bool Selected { get; set; }
     public double TotaleScore { get; set; }
@@ -18,6 +18,10 @@ public class ComparisonScore
     public double ObjectTypeScore { get; set; }
     public double AantalBijgebouwenScore { get; set; }
     public double BouwjaarScore { get; set; }
+
+    [ForeignKey("VolgnummerMarktgegeven")]
     public Transaction Transaction { get; set; }
+
+    [ForeignKey("TaxationId")]
     public Taxation Taxation { get; set; }
 }

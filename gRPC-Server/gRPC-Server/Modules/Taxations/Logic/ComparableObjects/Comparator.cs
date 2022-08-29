@@ -74,7 +74,7 @@ public class Comparator
     private ComparisonScore ScoreTransaction(Modules.Overviews.Models.TransactionOverview transactionOverview, Wozobject wozObject)
     {
         var score = new ComparisonScore();
-        score.TaxId = _taxation.Id;
+        score.TaxationId = _taxation.Id;
         score.VolgnummerMarktgegeven = transactionOverview.Volgnummer;
         score.Selected = false;
         score.AfstandScore = CalculateDistanceScore(wozObject.Geometry, transactionOverview.Geometry);

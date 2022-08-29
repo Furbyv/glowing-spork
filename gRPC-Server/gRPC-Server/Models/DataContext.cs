@@ -35,11 +35,19 @@ public class DataContext : DbContext
     public virtual DbSet<Model> Models { get; set; }
     public virtual DbSet<VglSearchRestriction> VglSearchRestrictions { get; set;}
     public virtual DbSet<Taxation> Taxations { get; set; }
+    public virtual DbSet<TaxationStatus> TaxationStatus { get; set; }
     public virtual DbSet<FreezeWozobjectProperty> FreezeWozobjectProperties { get; set; }
     public virtual DbSet<FreezeWozDeelobject> FreezeWozDeelobjects { get; set; }
     public virtual DbSet<ModelGroup> ModelGroups { get; set; }
     public virtual DbSet<DeelgroupDefinition> DeelgroupDefinitions { get; set; }
     public virtual DbSet<Deelgroup> Deelgroups { get; set; }
+    public virtual DbSet<ObjectGroupDefinition> ObjectGroupDefinitions { get; set; }
+    public virtual DbSet<ObjectGroup> ObjectGroups { get; set; }
+    public virtual DbSet<WozObjectCode> WozObjectCodes { get; set; }
+    public virtual DbSet<WaardeGebied> WaardeGebieden { get; set; }
+    public virtual DbSet<GebiedGroup> GebiedGroups { get; set; }
+    public virtual DbSet<MarketSegment> MarketSegments { get; set; }
+    public virtual DbSet<DeelPrice> DeelPrices { get; set; }
     public virtual DbSet<ComparisonScore> ComparisonScore { get; set; }
     public DataContext(DbContextOptions<DataContext> options) : base(options) {
         NpgsqlConnection.GlobalTypeMapper.UseNetTopologySuite();

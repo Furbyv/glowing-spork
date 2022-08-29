@@ -42,6 +42,8 @@ public class FreezeWozobjectProperty
     public decimal? Begindatumgeldigheid { get; set; }
     public decimal? Einddatumgeldigheid { get; set; }
     public decimal? Tijdstipregistratie { get; set; }
+
+    [ForeignKey("TaxationId")]
     public Taxation Taxation { get; set; }
     public FreezeWozobjectProperty() { }
     public FreezeWozobjectProperty(long taxid, Wozobjectproperty wozobjectproperty)
