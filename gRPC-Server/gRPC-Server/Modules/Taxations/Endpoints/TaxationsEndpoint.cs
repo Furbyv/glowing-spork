@@ -32,7 +32,11 @@ public class TaxationsEndpoint : TaxationObjects.TaxationObjectsBase
         reply.Prijspeilid = request.Prijspeilid;
         if (wozObject != null && model != null)
         {
-            var taxation = _dbContext.Taxations.Include(t => t.ComparisonScores).Where(t => t.Wozobjectnummer == request.Wozobjectnummer && t.TimePeriodId == request.Prijspeilid).SingleOrDefault();
+            var taxation = _dbContext.Taxations
+                .Include(t => t.ComparisonScores)
+                .Include(t => t.FreezeWozobjectProperty)
+                .Include(t => t.FreezeWozDeelobjects)
+                .Where(t => t.Wozobjectnummer == request.Wozobjectnummer && t.TimePeriodId == request.Prijspeilid).SingleOrDefault();
             if(taxation == null)
             {
                 taxation = await TaxationBuilder.BuildNewTaxation(_dbContext,wozObject, model);

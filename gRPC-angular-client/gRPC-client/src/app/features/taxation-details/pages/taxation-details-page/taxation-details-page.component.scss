@@ -1,0 +1,80 @@
+:host {
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+}
+
+.page {
+  flex: 1;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.grid-container {
+  display: grid;
+  gap: 8px;
+  grid-template-rows: 32px 400px;
+  grid-template-areas:
+    'status model taxCode valuateBtn'
+    'middleRow middleRow middleRow middleRow'
+    'bottomRow bottomRow bottomRow bottomRow';
+  height: 100%;
+}
+
+.status {
+  grid-area: status;
+  max-height: 32px;
+}
+
+.model {
+  grid-area: model;
+  max-height: 32px;
+}
+
+.taxcode {
+  grid-area: taxCode;
+  max-height: 32px;
+}
+
+.valuate-btn {
+  grid-area: valuateBtn;
+  max-height: 32px;
+}
+
+.middle-row {
+  grid-area: middleRow;
+  display: grid;
+  gap: 8px;
+  height: 100%;
+  grid-template-columns: 432px;
+  grid-template-areas: 'photos valueDetails objectDetails';
+}
+
+.photo-box {
+  grid-area: photos;
+  max-width: 432px;
+}
+
+.value-details {
+  grid-area: valueDetails;
+}
+
+.object-details {
+  grid-area: objectDetails;
+}
+
+.bottom-row {
+  grid-area: bottomRow;
+  display: grid;
+  gap: 8px;
+  height: 100%;
+  grid-template-areas: 'detailTabs detailTabs mapBox';
+}
+
+.detail-tabs {
+  grid-area: detailTabs;
+}
+
+.mapbox {
+  grid-area: mapBox;
+}

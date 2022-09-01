@@ -36,13 +36,13 @@ public class Comparator
             case RestrictionDefinitions.VerschilGemeente:
                 return query.Where(t => t.Gemeentecode == wozObject.Wozobjectproperties.FirstOrDefault().Gemeentecode);
             case RestrictionDefinitions.Bouwjaar:
-                var bouwjaar = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup.DeelgroupDefinitionId == 1).Select(f=> f.Bouwjaar).Min();
+                var bouwjaar = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup != null && f.Deelgroup.DeelgroupDefinitionId == 1).Select(f=> f.Bouwjaar).Min();
                 return query.Where(t => t.Bouwjaar >= bouwjaar - lowerbound && t.Bouwjaar <= bouwjaar + upperbound);
             case RestrictionDefinitions.VerschilPrimairGbo:
-                var primairGbo = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup.DeelgroupDefinitionId == 1).Select(f => f.Oppervlakte).Sum();
+                var primairGbo = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup != null && f.Deelgroup.DeelgroupDefinitionId == 1).Select(f => f.Oppervlakte).Sum();
                 return query.Where(t => t.Wonopp >= primairGbo - lowerbound && t.Wonopp <= primairGbo + upperbound);
             case RestrictionDefinitions.VerschilKavelOpp:
-                var kavelOpp = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup.DeelgroupDefinitionId == 2).Select(f => f.Oppervlakte).Sum();
+                var kavelOpp = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup != null && f.Deelgroup.DeelgroupDefinitionId == 2).Select(f => f.Oppervlakte).Sum();
                 return query.Where(t => t.Grondopp >= kavelOpp - lowerbound && t.Grondopp <= kavelOpp + upperbound);
             default:
                 return query;
@@ -83,28 +83,28 @@ public class Comparator
             score.TotaleScore = -1;
             return score;
         }
-        var bouwjaar = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup.DeelgroupDefinitionId == 1).Min(a => a.Bouwjaar);
+        var bouwjaar = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup != null && f.Deelgroup.DeelgroupDefinitionId == 1).Min(a => a.Bouwjaar);
         score.BouwjaarScore = CalculateBouwjaarScore((int)bouwjaar, (int)transactionOverview.Bouwjaar);
         if (score.BouwjaarScore > 0)
         {
             score.TotaleScore = -1;
             return score;
         }
-        var primairGbo = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup.DeelgroupDefinitionId == 1).Sum(d => d.Oppervlakte);
+        var primairGbo = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup != null && f.Deelgroup.DeelgroupDefinitionId == 1).Sum(d => d.Oppervlakte);
         score.WonOppScore = CalculateOppScore((int)(primairGbo ?? 0M), (transactionOverview.Wonopp ?? 0));
         if (score.WonOppScore > 0)
         {
             score.TotaleScore = -1;
             return score;
         }
-        var kavelOpp = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup.DeelgroupDefinitionId == 2).Sum(d => d.Oppervlakte);
+        var kavelOpp = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup != null && f.Deelgroup.DeelgroupDefinitionId == 2).Sum(d => d.Oppervlakte);
         score.KavelOppScore = CalculateOppScore((int)(kavelOpp ?? 0M), (transactionOverview.Grondopp ?? 0));
         if (score.KavelOppScore > 0)
         {
             score.TotaleScore = -1;
             return score;
         }
-        var aanbouwOpp = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup.DeelgroupDefinitionId == 3).Sum(d => d.Oppervlakte);
+        var aanbouwOpp = _taxation.FreezeWozDeelobjects.Where(f => f.Deelgroup != null && f.Deelgroup.DeelgroupDefinitionId == 3).Sum(d => d.Oppervlakte);
         score.AanbouwOppScore = CalculateOppScore((int)(aanbouwOpp ?? 0M), (transactionOverview.Aanbouwopp ?? 0));
         if (score.AanbouwOppScore > 0)
         {

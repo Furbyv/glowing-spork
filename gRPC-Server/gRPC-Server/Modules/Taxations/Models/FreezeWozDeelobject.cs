@@ -7,7 +7,7 @@ public class FreezeWozDeelobject
     [Key]
     public long Id { get; set; }
     public long TaxId { get; set; }
-    public long DeelgroupId { get; set; }
+    public long? DeelgroupId { get; set; }
     public long NummerWozDeelobject { get; set; }
     public string Codewozdeelobject { get; set; }
     public decimal? Bouwjaar { get; set; }

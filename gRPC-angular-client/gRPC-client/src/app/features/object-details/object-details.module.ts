@@ -5,7 +5,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { AgGridModule } from 'ag-grid-angular';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ExpandPhotoDialog } from './components/photos-card/expand-photo-dialog/expand-photo-dialog.component';
+import { ExpandPhotoDialogComponent } from './components/photos-card/expand-photo-dialog/expand-photo-dialog.component';
 import { SubobjectGridComponent } from './components/subobject-grid/subobject-grid.component';
 import { ObjectPropertiesComponent } from './components/object-properties/object-properties.component';
 import { ObjectTabsComponent } from './components/object-tabs/object-tabs.component';
@@ -21,19 +21,12 @@ import { MapBoxModule } from 'src/app/shared/map-box/map-box.module';
     ObjectPropertiesComponent,
     ObjectTabsComponent,
     PhotosCardComponent,
-    ExpandPhotoDialog,
+    ExpandPhotoDialogComponent,
     SubobjectGridComponent,
     PhotoImageComponent,
-    ObjectGridComponent
+    ObjectGridComponent,
   ],
-  imports: [
-    CommonModule,
-    MapBoxModule,
-    AgGridModule,
-    FormsModule,
-    MaterialModule,
-    SharedModule,
-    TranslocoModule
-  ]
+  imports: [CommonModule, MapBoxModule, AgGridModule, FormsModule, MaterialModule, SharedModule, TranslocoModule],
+  exports: [PhotosCardComponent],
 })
 export class ObjectDetailsModule {}

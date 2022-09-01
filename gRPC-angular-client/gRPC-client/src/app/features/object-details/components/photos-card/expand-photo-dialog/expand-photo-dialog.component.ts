@@ -1,20 +1,19 @@
-import { Component, Inject, OnChanges } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ImagesService } from 'src/app/features/object-details/services/images.service';
 
 export interface PhotoDialogData {
   id: number;
 }
 
 @Component({
-  selector: 'app-expand-dialog',
+  selector: 'woz-expand-dialog',
   styleUrls: ['expand-photo-dialog.component.scss'],
-  templateUrl: 'expand-photo-dialog.component.html'
+  templateUrl: 'expand-photo-dialog.component.html',
 })
-export class ExpandPhotoDialog {
+export class ExpandPhotoDialogComponent {
   id: number;
   constructor(
-    public dialogRef: MatDialogRef<ExpandPhotoDialog>,
+    public dialogRef: MatDialogRef<ExpandPhotoDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: PhotoDialogData
   ) {
     this.id = data.id;

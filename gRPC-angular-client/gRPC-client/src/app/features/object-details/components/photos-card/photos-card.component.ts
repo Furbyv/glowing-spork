@@ -1,21 +1,26 @@
 import { Component, Input, OnChanges, SimpleChanges, ViewContainerRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { merge, Subject } from 'rxjs';
-import { filter, map, startWith, tap } from 'rxjs/operators';
+import { filter, map, startWith } from 'rxjs/operators';
 import { ImagesService } from '../../services/images.service';
-import { ExpandPhotoDialog } from './expand-photo-dialog/expand-photo-dialog.component';
+import { ExpandPhotoDialogComponent } from './expand-photo-dialog/expand-photo-dialog.component';
 
 @Component({
-  selector: 'app-photos-card',
+  selector: 'woz-photos-card',
   templateUrl: 'photos-card.component.html',
   styleUrls: ['photos-card.component.scss'],
 })
 export class PhotosCardComponent implements OnChanges {
   loadstate$$: Subject<boolean> = new Subject<boolean>();
-  @Input() id: number | undefined;
+  @Input() set id(value: number | string | undefined | null) {
+    if (value) {
+      this.imagesService.getImages(+value, false);
+    }
+  }
   @Input() address: string | null = '';
   @Input() expanded: boolean = false;
 
+  imageId$ = this.imagesService.imageId$;
   containerClass: string = 'photo-container';
   photoClass: string = 'photo';
 
@@ -34,30 +39,26 @@ export class PhotosCardComponent implements OnChanges {
     map((reply) => (reply.length ? reply : [this.imagesService.defaultImage]))
   );
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes.id && this.id) {
-      this.imagesService.getImages(this.id, false);
-    }
+  ngOnChanges(_: SimpleChanges) {
     this.containerClass = this.expanded ? 'photo-container-expanded' : 'photo-container';
-
     this.photoClass = this.expanded ? 'photo-expanded' : 'photo';
   }
 
   constructor(private imagesService: ImagesService, private dialog: MatDialog, private vcr: ViewContainerRef) {}
 
-  onFileSelected(files: FileList | null) {
+  onFileSelected(files: FileList | null, id: number) {
     if (files && files.length && this.id) {
       for (let i = 0; i < files.length; i++) {
         files[i].arrayBuffer().then((buff) => {
-          let x = new Uint8Array(buff);
-          this.imagesService.uploadImages(x, this.id!);
+          const x = new Uint8Array(buff);
+          this.imagesService.uploadImages(x, id);
         });
       }
     }
   }
 
   onExpand() {
-    this.dialog.open(ExpandPhotoDialog, {
+    this.dialog.open(ExpandPhotoDialogComponent, {
       width: '80vw',
       height: '80vh',
       viewContainerRef: this.vcr,

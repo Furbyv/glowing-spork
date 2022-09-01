@@ -14,6 +14,7 @@ import { MapBoxModule } from 'src/app/shared/map-box/map-box.module';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ActionDrawerModule } from 'src/app/layout/action-drawer/action-drawer.module';
 import { DrawerLayoutService } from 'src/app/layout/action-drawer/drawer-layout.service';
+import { TaxationDetailsModule } from '../taxation-details/taxation-details.module';
 
 @NgModule({
   declarations: [TaxOverviewPageComponent, TaxOverviewDrawerComponent],
@@ -26,6 +27,7 @@ import { DrawerLayoutService } from 'src/app/layout/action-drawer/drawer-layout.
     MaterialModule,
     SharedModule,
     ObjectDetailsModule,
+    TaxationDetailsModule,
     ActionDrawerModule,
     TranslocoModule,
     TaxOverviewRoutingModule,

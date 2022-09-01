@@ -1,0 +1,29 @@
+<div class="page">
+  <mat-spinner
+    class="loader"
+    *ngIf="loading$ | async; else content"
+    [diameter]="48"
+    aria-label="searching objects"></mat-spinner>
+  <ng-template #content>
+    <div class="grid-container">
+      <mat-card class="status"></mat-card>
+      <mat-card class="model"></mat-card>
+      <mat-card class="taxcode"></mat-card>
+      <button mat-raised-button color="primary" class="valuate-btn">Valuate</button>
+      <div class="middle-row">
+        <woz-photos-card [id]="(freezeWozObject$ | async)?.wozobjectnummer" class="photo-box"></woz-photos-card>
+        <mat-card class="value-details"></mat-card>
+        <mat-card class="object-details"></mat-card>
+      </div>
+      <div class="bottom-row">
+        <mat-card class="detail-tabs"></mat-card>
+        <woz-map-box
+          class="mapbox"
+          [layers]="layers"
+          [sources]="mapData$ | async"
+          [layerSelection]="false"></woz-map-box>
+      </div>
+    </div>
+  </ng-template>
+</div>
+

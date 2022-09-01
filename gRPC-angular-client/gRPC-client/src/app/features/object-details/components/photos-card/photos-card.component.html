@@ -2,23 +2,15 @@
   <mat-card-subtitle>
     {{ address }}
   </mat-card-subtitle>
-  <mat-spinner
-    *ngIf="loading$ | async; else content"
-    class="loader"
-    [diameter]="48"
-  ></mat-spinner>
+  <mat-spinner *ngIf="loading$ | async; else content" class="loader" [diameter]="48"></mat-spinner>
   <ng-template #content>
     <div class="action-row">
-      <input
-        type="file"
-        class="file-input"
-        (change)="onFileSelected(fileUpload.files)"
-        #fileUpload
-        multiple
-      />
-      <button mat-icon-button (click)="fileUpload.click()">
-        <mat-icon>file_upload</mat-icon>
-      </button>
+      <ng-container *ngIf="imageId$ | async as id">
+        <input type="file" class="file-input" (change)="onFileSelected(fileUpload.files, id)" #fileUpload multiple />
+        <button mat-icon-button (click)="fileUpload.click()">
+          <mat-icon>file_upload</mat-icon>
+        </button>
+      </ng-container>
       <button mat-icon-button (click)="refresh()">
         <mat-icon>refresh</mat-icon>
       </button>

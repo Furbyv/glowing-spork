@@ -9,10 +9,10 @@ import { UploadImageRequest, WozObjectImageReply, WozObjectImageRequest } from '
 @Injectable({ providedIn: 'root' })
 export class ImagesService {
   private refresh$$: Subject<boolean> = new BehaviorSubject<boolean>(false);
+  private imageRequest$$: Subject<WozObjectImageRequest> = new ReplaySubject<WozObjectImageRequest>(1);
+  imageId$: Observable<number> = this.imageRequest$$.pipe(map((req) => +req.wozobjectnummer!));
 
   constructor(private wozObjectsClient: WozObjectsClient, private sanitizer: DomSanitizer) {}
-
-  private imageRequest$$: Subject<WozObjectImageRequest> = new ReplaySubject<WozObjectImageRequest>(1);
 
   private imageUploadRequest$$: Subject<{
     data: Uint8Array;

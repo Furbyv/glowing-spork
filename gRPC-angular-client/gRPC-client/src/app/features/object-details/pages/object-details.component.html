@@ -5,11 +5,10 @@
   aria-label="searching objects"></mat-spinner>
 <ng-template #content>
   <ng-container></ng-container>
-  <ng-container *ngIf="taxations$ | async as tax"></ng-container>
   <ng-container *ngIf="wozObject$ | async as wozobject">
     <div class="details-grid">
       <div class="object-row">
-        <app-photos-card [id]="id" [address]="address$ | async" class="photo"></app-photos-card>
+        <woz-photos-card [id]="id" [address]="address$ | async" class="photo"></woz-photos-card>
         <div class="properties">
           <app-object-properties [id]="id" class="object-properties"></app-object-properties>
         </div>
