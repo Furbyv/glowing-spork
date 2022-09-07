@@ -9,6 +9,7 @@ import { TaxationService } from '../../services/taxation-service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Taxation } from 'src/app/protos/taxation.pb';
 import { FullWozObjectReply } from 'src/app/protos/wozobject.pb';
+import { DrawerLayoutService } from 'src/app/layout/action-drawer/drawer-layout.service';
 
 @UntilDestroy()
 @Component({
@@ -53,11 +54,16 @@ export class TaxationDetailsPageComponent implements OnInit {
     ])
   );
 
-  constructor(private taxationService: TaxationService, private route: ActivatedRoute) {}
+  constructor(
+    private taxationService: TaxationService,
+    private route: ActivatedRoute,
+    private layoutService: DrawerLayoutService
+  ) {}
 
   ngOnInit(): void {
     this.route.params.pipe(untilDestroyed(this)).subscribe((params: Params) => {
       this.taxationService.getTaxations(+params['id']);
+      this.layoutService.toggleObject();
     });
   }
 
