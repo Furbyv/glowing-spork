@@ -15,10 +15,15 @@
   gap: 8px;
   grid-template-rows: 48px 400px;
   grid-template-areas:
-    'status model taxCode valuateBtn'
-    'middleRow middleRow middleRow middleRow'
-    'bottomRow bottomRow bottomRow bottomRow';
+    'objectid status model taxCode valuateBtn'
+    'middleRow middleRow middleRow middleRow middleRow'
+    'bottomRow bottomRow bottomRow bottomRow bottomRow';
   height: 100%;
+}
+
+.objectid {
+  grid-area: objectid;
+  height: 48px;
 }
 
 .status {
