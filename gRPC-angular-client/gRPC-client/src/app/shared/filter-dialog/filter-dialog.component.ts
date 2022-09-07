@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FilterRequest } from 'src/app/protos/overviewrequests.pb';
@@ -28,13 +28,13 @@ export class FilterDialogComponent {
   woonplaatList = Woonplaatsen;
   straatnaamList = straatnamen;
 
-  gemeenteControl = new FormControl();
-  modelControl = new FormControl();
-  buurtControl = new FormControl();
-  wijkControl = new FormControl();
-  woonplaatsControl = new FormControl();
-  straatnaamControl = new FormControl();
-  socControl = new FormControl();
+  gemeenteControl = new UntypedFormControl();
+  modelControl = new UntypedFormControl();
+  buurtControl = new UntypedFormControl();
+  wijkControl = new UntypedFormControl();
+  woonplaatsControl = new UntypedFormControl();
+  straatnaamControl = new UntypedFormControl();
+  socControl = new UntypedFormControl();
 
   filterData: FilterRequest = new FilterRequest();
   constructor(public dialogRef: MatDialogRef<FilterDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
