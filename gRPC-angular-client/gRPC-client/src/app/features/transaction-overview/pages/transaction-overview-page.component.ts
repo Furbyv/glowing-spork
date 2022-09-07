@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { FeatureLayer } from 'src/app/shared/map-box/layer-definition/feature-layer';
@@ -10,6 +11,7 @@ import { SearchLayoutService } from '../../object-search/services/search-layout.
 import { SelectedObjectsService } from '../../tax-overview/services/selected-objects.service';
 import { TransactionOverviewService } from '../services/transaction-overview.service';
 
+@UntilDestroy()
 @Component({
   selector: 'woz-transaction-overview-page',
   templateUrl: 'transaction-overview-page.component.html',
@@ -92,7 +94,7 @@ import { TransactionOverviewService } from '../services/transaction-overview.ser
     ]),
   ],
 })
-export class TransactionOverviewPageComponent {
+export class TransactionOverviewPageComponent implements OnInit {
   state$ = this.layoutService.state$;
   dataSources$: Observable<MapSource[]> = this.transactionOverviewService.wozObjectGeoJson$.pipe(
     map((data) => [
@@ -128,4 +130,10 @@ export class TransactionOverviewPageComponent {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+
+  ngOnInit(): void {
+    this.route.params.pipe(untilDestroyed(this)).subscribe(() => {
+      this.layoutService.toggleObject();
+    });
+  }
 }

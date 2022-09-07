@@ -8,7 +8,6 @@ import { MapSource } from 'src/app/shared/map-box/utility/map-box.utility';
 import { createFeatureLayers } from 'src/app/shared/map-box/utility/objects-layer';
 import { SearchLayoutService } from '../../object-search/services/search-layout.service';
 import { GetFullWozObjectService } from '../services/get-full-object.service';
-import { TaxationService } from '../../taxation-details/services/taxation-service';
 
 @UntilDestroy()
 @Component({
@@ -51,7 +50,6 @@ export class ObjectDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private getFullWozObjectService: GetFullWozObjectService,
-    private taxationService: TaxationService,
     private searchLayoutService: SearchLayoutService
   ) {}
 
@@ -60,7 +58,6 @@ export class ObjectDetailsComponent implements OnInit {
       this.searchLayoutService.toggleObject();
       this.id = +params['id'];
       this.getFullWozObjectService.getFullWozObject(this.id);
-      this.taxationService.getTaxations(this.id);
     });
   }
 }

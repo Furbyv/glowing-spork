@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DrawerLayoutService } from 'src/app/layout/action-drawer/drawer-layout.service';
@@ -10,6 +11,7 @@ import { createFeatureLayers } from 'src/app/shared/map-box/utility/objects-laye
 import { SelectedObjectsService } from '../services/selected-objects.service';
 import { TaxOverviewService } from '../services/tax-overview.service';
 
+@UntilDestroy()
 @Component({
   selector: 'woz-tax-overview-page',
   templateUrl: 'tax-overview-page.component.html',
@@ -92,7 +94,7 @@ import { TaxOverviewService } from '../services/tax-overview.service';
     ]),
   ],
 })
-export class TaxOverviewPageComponent {
+export class TaxOverviewPageComponent implements OnInit {
   state$ = this.layoutService.state$;
   dataSources$: Observable<MapSource[]> = this.taxOverviewService.wozObjectGeoJson$.pipe(
     map((data) => [
@@ -128,4 +130,10 @@ export class TaxOverviewPageComponent {
     private route: ActivatedRoute,
     private router: Router
   ) {}
+
+  ngOnInit(): void {
+    this.route.params.pipe(untilDestroyed(this)).subscribe(() => {
+      this.layoutService.toggleObject();
+    });
+  }
 }
