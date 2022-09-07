@@ -24,7 +24,7 @@ export class NotesService {
     shareReplay({ bufferSize: 1, refCount: true }),
     tap((state) => {
       if (state.success) {
-        this.refresh$$.next();
+        this.refresh$$.next(true);
       }
     })
   );
@@ -34,7 +34,7 @@ export class NotesService {
     shareReplay({ bufferSize: 1, refCount: true }),
     tap((state) => {
       if (state.success) {
-        this.refresh$$.next();
+        this.refresh$$.next(true);
       }
     })
   );

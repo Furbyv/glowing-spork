@@ -131,9 +131,9 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
       this.map.on('load', () => {
         if (this.map) {
           this.initMarkers(this.map);
+          this.mapLoaded$$.next(this.map);
+          this.mapLoaded.emit(this.map);
         }
-        this.mapLoaded$$.next(this.map);
-        this.mapLoaded.emit(this.map);
         window.dispatchEvent(new Event('resize'));
       });
 

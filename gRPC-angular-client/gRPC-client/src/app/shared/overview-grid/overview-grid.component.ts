@@ -30,7 +30,7 @@ export class OverviewGridComponent implements OnChanges {
     },
   };
 
-  rowSelection = 'multiple';
+  rowSelection: 'multiple' | 'single' | undefined = 'multiple';
   defaultColDef: ColDef = {
     editable: false,
     filter: true,

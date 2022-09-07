@@ -1,12 +1,10 @@
-import { AfterViewInit, Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { merge, Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { TimePeriodService } from 'src/app/features/time-period/services/time-period.service';
 import { TimePeriodRecord } from 'src/app/protos/timeperiod.pb';
 
 @Component({
-  selector: 'app-toolbar',
+  selector: 'woz-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
 })

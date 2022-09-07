@@ -26,7 +26,7 @@ import { StartPageModule } from './features/start-page/start-page.module';
     TranslocoRootModule,
     LayoutModule,
     StartPageModule,
-    AgGridModule.withComponents([]),
+    AgGridModule,
     GrpcCoreModule.forRoot(),
     GrpcWebClientModule.forRoot({
       settings: { host: 'https://localhost:5001' },
