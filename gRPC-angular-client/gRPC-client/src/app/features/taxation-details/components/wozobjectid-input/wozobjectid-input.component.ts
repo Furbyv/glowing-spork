@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'woz-wozobjectid-input',
@@ -7,9 +8,22 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from 
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WozobjectidInputComponent {
-  @Input() wozobjectid: number;
+  public objectIdControl = new FormControl<number | null | undefined>(null, [
+    Validators.required,
+    Validators.minLength(12),
+    Validators.maxLength(12),
+  ]);
+  @Input() set wozobjectid(value: number | null | undefined) {
+    this.objectIdControl.setValue(value);
+  }
   @Output() wozobjectidChange = new EventEmitter<number>();
-  // objectIdControl = new FormControl<number | null>(null);
+
   constructor() {}
+
+  onSearch() {
+    if (this.objectIdControl.valid && this.objectIdControl.value) {
+      this.wozobjectidChange.emit(this.objectIdControl.value);
+    }
+  }
 }
 

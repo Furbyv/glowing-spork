@@ -38,6 +38,7 @@ export class TaxationDetailsPageComponent implements OnInit {
     filter((t) => !!t && !!t.freezeWozObject),
     map((t) => t!.freezeWozObject!)
   );
+  wozobjectid$ = this.freezeWozObject$.pipe(map((obj) => (obj.wozobjectnummer ? +obj.wozobjectnummer : undefined)));
 
   layers: FeatureLayer[] = createFeatureLayers();
   mapData$: Observable<MapSource[]> = this.taxationService.taxationGeoJson$.pipe(
