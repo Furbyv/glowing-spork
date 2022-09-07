@@ -21,15 +21,16 @@ message TaxationRequest {
 message TaxationsObject{
   int64 wozobjectnummer = 1;
   int64 prijspeilid = 2;
-  repeated Taxation taxations =3;
+  repeated Taxation taxations = 3;
 }
 
 message Taxation {
   int64 id = 1;
-  timeperiods.TimePeriodRecord period =2;
-  string status =3;
-  bool active =4;
+  timeperiods.TimePeriodRecord period = 2;
+  string status = 3;
+  bool active = 4;
   wozobject.FullWozObjectReply freezeWozObject = 5;
-  repeated subobject.WozSubObjectReply freezeDeelobjects =6;
-  repeated comparables.ComparableObject comparable_objects =7;
+  repeated subobject.WozSubObjectReply freezeDeelobjects = 6;
+  repeated comparables.ComparableObject comparable_objects = 7;
+  string taxCode = 8;
 }

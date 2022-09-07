@@ -392,6 +392,7 @@ export class Taxation implements GrpcMessage {
     _instance.freezeWozObject = _instance.freezeWozObject || undefined;
     _instance.freezeDeelobjects = _instance.freezeDeelobjects || [];
     _instance.comparableObjects = _instance.comparableObjects || [];
+    _instance.taxCode = _instance.taxCode || '';
   }
 
   /**
@@ -448,6 +449,9 @@ export class Taxation implements GrpcMessage {
           (_instance.comparableObjects =
             _instance.comparableObjects || []).push(messageInitializer7);
           break;
+        case 8:
+          _instance.taxCode = _reader.readString();
+          break;
         default:
           _reader.skipField();
       }
@@ -499,6 +503,9 @@ export class Taxation implements GrpcMessage {
         comparables007.ComparableObject.serializeBinaryToWriter
       );
     }
+    if (_instance.taxCode) {
+      _writer.writeString(8, _instance.taxCode);
+    }
   }
 
   private _id?: string;
@@ -508,6 +515,7 @@ export class Taxation implements GrpcMessage {
   private _freezeWozObject?: wozobject004.FullWozObjectReply;
   private _freezeDeelobjects?: subobject006.WozSubObjectReply[];
   private _comparableObjects?: comparables007.ComparableObject[];
+  private _taxCode?: string;
 
   /**
    * Message constructor. Initializes the properties and applies default Protobuf values if necessary
@@ -530,6 +538,7 @@ export class Taxation implements GrpcMessage {
     this.comparableObjects = (_value.comparableObjects || []).map(
       m => new comparables007.ComparableObject(m)
     );
+    this.taxCode = _value.taxCode;
     Taxation.refineValues(this);
   }
   get id(): string | undefined {
@@ -574,6 +583,12 @@ export class Taxation implements GrpcMessage {
   set comparableObjects(value: comparables007.ComparableObject[] | undefined) {
     this._comparableObjects = value;
   }
+  get taxCode(): string | undefined {
+    return this._taxCode;
+  }
+  set taxCode(value: string | undefined) {
+    this._taxCode = value;
+  }
 
   /**
    * Serialize message to binary data
@@ -598,7 +613,8 @@ export class Taxation implements GrpcMessage {
         ? this.freezeWozObject.toObject()
         : undefined,
       freezeDeelobjects: (this.freezeDeelobjects || []).map(m => m.toObject()),
-      comparableObjects: (this.comparableObjects || []).map(m => m.toObject())
+      comparableObjects: (this.comparableObjects || []).map(m => m.toObject()),
+      taxCode: this.taxCode
     };
   }
 
@@ -631,7 +647,8 @@ export class Taxation implements GrpcMessage {
       ),
       comparableObjects: (this.comparableObjects || []).map(m =>
         m.toProtobufJSON(options)
-      )
+      ),
+      taxCode: this.taxCode
     };
   }
 }
@@ -647,6 +664,7 @@ export module Taxation {
     freezeWozObject?: wozobject004.FullWozObjectReply.AsObject;
     freezeDeelobjects?: subobject006.WozSubObjectReply.AsObject[];
     comparableObjects?: comparables007.ComparableObject.AsObject[];
+    taxCode?: string;
   }
 
   /**
@@ -660,5 +678,6 @@ export module Taxation {
     freezeWozObject?: wozobject004.FullWozObjectReply.AsProtobufJSON | null;
     freezeDeelobjects?: subobject006.WozSubObjectReply.AsProtobufJSON[] | null;
     comparableObjects?: comparables007.ComparableObject.AsProtobufJSON[] | null;
+    taxCode?: string;
   }
 }

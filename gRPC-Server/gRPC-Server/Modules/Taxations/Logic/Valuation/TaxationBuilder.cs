@@ -12,6 +12,7 @@ public static class TaxationBuilder
         var taxation = new Taxation(wozObject.Wozobjectnummer, model);
         taxation.Wozobject = wozObject;
         taxation.TimePeriod = model.TimePeriod;
+        taxation.TaxCode = "HER";
         SetFreezeObjectProperty(taxation, wozObject);
         SetFreezeDeelObjects(taxation, wozObject);
         taxation.MarketSegment = GetMarketSegment(model,await GetWaardeGebied(dbContext, taxation.FreezeWozobjectProperty),

@@ -5,10 +5,14 @@
     [diameter]="48"
     aria-label="searching objects"></mat-spinner>
   <ng-template #content>
-    <div class="grid-container">
-      <mat-card class="status"></mat-card>
+    <div class="grid-container" *ngIf="selectedTaxation$ | async as taxation">
+      <button mat-raised-button color="accent" class="status">{{ taxation.status }}</button>
       <mat-card class="model"></mat-card>
-      <mat-card class="taxcode"></mat-card>
+      <woz-taxcode-select
+        class="taxcode"
+        [taxations]="taxations$ | async"
+        [selectedTaxation]="taxation"
+        (selectedTaxationChange)="onTaxationSelect($event)"></woz-taxcode-select>
       <button mat-raised-button color="primary" class="valuate-btn">Valuate</button>
       <div class="middle-row">
         <woz-photos-card [id]="(freezeWozObject$ | async)?.wozobjectnummer" class="photo-box"></woz-photos-card>

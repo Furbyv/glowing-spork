@@ -32,4 +32,5 @@ message Taxation {
   wozobject.FullWozObjectReply freezeWozObject = 5;
   repeated subobject.WozSubObjectReply freezeDeelobjects =6;
   repeated comparables.ComparableObject comparable_objects =7;
+  string taxCode = 8;
 }

@@ -1,5 +1,5 @@
 {
-  "search-object-by-number":"Zoek op woz-objectnummer.",
+  "search-object-by-number": "Zoek op woz-objectnummer.",
   "pick-file": "Selecteer bestanden om te uploaden",
   "timeframe": "Tijdvak",
   "subobjects": "Deelobjecten",
@@ -17,11 +17,13 @@
   "voorzieningen": "Vz",
   "opp": "Opp",
   "stuks": "Aant",
-  "object-search" : "Zoek WOZ-object",
-  "tax-overview" : "Taxatieoverzicht",
-  "transaction-overview" : "PMA-overzicht",
-  "reports" : "Rapportages",
-  "exports" : "Exporteer bestanden",
-  "settings" : "Instellingen",
-  "do-filter-objects":"Klik op filter om objecten te tonen"
+  "object-search": "Zoek WOZ-object",
+  "tax-overview": "Taxatieoverzicht",
+  "transaction-overview": "PMA-overzicht",
+  "reports": "Rapportages",
+  "exports": "Exporteer bestanden",
+  "settings": "Instellingen",
+  "do-filter-objects": "Klik op filter om objecten te tonen",
+  "taxcode": "Taxatiecode"
 }
+

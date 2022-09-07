@@ -15,6 +15,7 @@ public class Taxation
     public bool Active { get; set; }
     public long MarketSegmentId { get; set; }
     public double? TotalModelValue { get; set; }
+    public string TaxCode { get; set; }
 
     [ForeignKey("Wozobjectnummer")]
     public Wozobject Wozobject { get; set; }
@@ -30,6 +31,9 @@ public class Taxation
 
     [ForeignKey("MarketSegmentId")]
     public MarketSegment MarketSegment { get; set; }
+
+    [ForeignKey("TaxCode")]
+    public TaxationCode TaxationCode { get; set; }
     public FreezeWozobjectProperty FreezeWozobjectProperty { get; set; }
     public ICollection<FreezeWozDeelobject> FreezeWozDeelobjects { get; set; } = new HashSet<FreezeWozDeelobject>();
     public ICollection<ComparisonScore> ComparisonScores { get; set; } = new HashSet<ComparisonScore>();

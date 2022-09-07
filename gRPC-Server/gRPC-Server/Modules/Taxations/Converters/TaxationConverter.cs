@@ -17,6 +17,7 @@ namespace gRPCServer.Modules.Taxations.Converters
             reply.FreezeDeelobjects.AddRange(delen);
             reply.Active = taxation.Active;
             reply.Status = taxation.Status;
+            reply.TaxCode = taxation.TaxCode;
             reply.Period = TimePeriodConverter.ToRecord(taxation.TimePeriod);
             var comparables = taxation.ComparisonScores.Select(s => ComparisonScoreToReply(s)).ToList();
             reply.ComparableObjects.AddRange(comparables);

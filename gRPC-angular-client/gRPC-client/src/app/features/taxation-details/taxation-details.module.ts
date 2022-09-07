@@ -7,10 +7,11 @@ import { MapBoxModule } from 'src/app/shared/map-box/map-box.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ObjectDetailsModule } from '../object-details/object-details.module';
+import { TaxcodeSelectComponent } from './components/taxcode-select/taxcode-select.component';
 import { TaxationDetailsPageComponent } from './pages/taxation-details-page/taxation-details-page.component';
 
 @NgModule({
-  declarations: [TaxationDetailsPageComponent],
+  declarations: [TaxationDetailsPageComponent, TaxcodeSelectComponent],
   imports: [
     CommonModule,
     MapBoxModule,

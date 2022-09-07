@@ -13,7 +13,7 @@
 .grid-container {
   display: grid;
   gap: 8px;
-  grid-template-rows: 32px 400px;
+  grid-template-rows: 48px 400px;
   grid-template-areas:
     'status model taxCode valuateBtn'
     'middleRow middleRow middleRow middleRow'
@@ -23,22 +23,23 @@
 
 .status {
   grid-area: status;
-  max-height: 32px;
+  height: 48px;
+  width: 32px;
 }
 
 .model {
   grid-area: model;
-  max-height: 32px;
+  max-height: 48px;
 }
 
 .taxcode {
   grid-area: taxCode;
-  max-height: 32px;
+  max-height: 48px;
 }
 
 .valuate-btn {
   grid-area: valuateBtn;
-  max-height: 32px;
+  max-height: 48px;
 }
 
 .middle-row {
