@@ -15,13 +15,14 @@ import {
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import * as mapboxgl from 'mapbox-gl';
-import { GeoJSONSourceRaw, Map } from 'mapbox-gl';
+import { Map } from 'mapbox-gl';
 import { combineLatest, ReplaySubject, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { FeatureLayer } from './layer-definition/feature-layer';
 import { MapSource } from './utility/map-box.utility';
 import { markers } from './markers';
 import { CustomPopUpComponent } from './pop-up/custom-pop-up.component';
+import GeoJSON from 'geojson';
 
 @UntilDestroy()
 @Component({
@@ -37,7 +38,7 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
   @Input() fullScreen: boolean = true;
   @Input() layerSelection: boolean = true;
   @Input() multipleSelect: boolean = false;
-  @Input() flyTo: mapboxgl.LngLat | null;
+  @Input() flyTo: mapboxgl.LngLatLike | null;
   @Output() clickSelect = new EventEmitter<string[]>();
   @Output() dblclickSelect = new EventEmitter<string[]>();
   @Output() multiselect = new EventEmitter<string[]>();
@@ -307,9 +308,14 @@ export class MapBoxComponent implements OnChanges, AfterViewInit {
         map.addSource(s.id, s.source);
       } else {
         const source = map.getSource(s.id);
-        if (source.type === 'geojson') {
-          const data = s.source as GeoJSONSourceRaw;
-          source.setData(data.data!);
+        if (source.type === 'geojson' && s.source.type === 'geojson') {
+          const data = s.source;
+          if (
+            typeof data.data! !== 'string' &&
+            (data.data?.type === 'Feature' || data.data?.type === 'FeatureCollection')
+          ) {
+            source.setData(data.data!);
+          }
         }
       }
     });

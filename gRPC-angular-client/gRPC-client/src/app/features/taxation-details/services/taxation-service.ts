@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { toAsyncState } from '@ngneat/loadoff';
 import { combineLatest, Observable, ReplaySubject, Subject } from 'rxjs';
 import { filter, map, shareReplay, switchMap } from 'rxjs/operators';
-import { TaxationRequest } from 'src/app/protos/taxation.pb';
+import { Taxation, TaxationRequest } from 'src/app/protos/taxation.pb';
 import { TaxationObjectsClient } from 'src/app/protos/taxation.pbsc';
 import { convertWozObjectsToGeoJson } from 'src/app/shared/woz-object-utility';
 import { TimePeriodService } from '../../time-period/services/time-period.service';
@@ -18,7 +18,7 @@ export class TaxationService {
     shareReplay({ bufferSize: 0, refCount: true })
   );
 
-  singleTaxation$ = this.taxations$.pipe(
+  singleTaxation$: Observable<Taxation | null> = this.taxations$.pipe(
     filter((state) => state.success),
     map((state) => state.res!),
     map((t) => (t.taxations ? t.taxations[0] : null))

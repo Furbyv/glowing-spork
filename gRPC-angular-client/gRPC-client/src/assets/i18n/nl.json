@@ -24,6 +24,7 @@
   "exports": "Exporteer bestanden",
   "settings": "Instellingen",
   "do-filter-objects": "Klik op filter om objecten te tonen",
-  "taxcode": "Taxatiecode"
+  "taxcode": "Taxatiecode",
+  "model": "Waarderingsmodel"
 }
 

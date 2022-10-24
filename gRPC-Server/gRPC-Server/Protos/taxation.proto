@@ -3,6 +3,7 @@ import "Protos/wozobject.proto";
 import "Protos/timeperiod.proto";
 import "Protos/subobject.proto";
 import "Protos/comparables.proto";
+import "Protos/models.proto";
 
 option csharp_namespace = "gRPCServer.Protos";
 
@@ -33,4 +34,6 @@ message Taxation {
   repeated subobject.WozSubObjectReply freezeDeelobjects = 6;
   repeated comparables.ComparableObject comparable_objects = 7;
   string taxCode = 8;
+  models.ModelRecord model =9;
+  models.ModelsProto availableModels = 10;
 }

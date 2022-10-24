@@ -8,7 +8,7 @@
     <div class="grid-container" *ngIf="selectedTaxation$ | async as taxation">
       <button mat-raised-button color="accent" class="status">{{ taxation.status }}</button>
       <woz-wozobjectid-input class="objectid" [wozobjectid]="wozobjectid$ | async"></woz-wozobjectid-input>
-      <mat-card class="model"></mat-card>
+      <woz-model-select class="model"></woz-model-select>
       <woz-taxcode-select
         class="taxcode"
         [taxations]="taxations$ | async"

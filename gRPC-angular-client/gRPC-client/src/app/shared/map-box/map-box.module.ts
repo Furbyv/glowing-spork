@@ -14,7 +14,6 @@ import { MapBoxComponent } from './map-box.component';
     TranslocoModule,
     NgxMapboxGLModule.withConfig({
       accessToken: 'pk.eyJ1IjoiZnJhbmt2ZSIsImEiOiJja3h4ZDg1cXoyNTNpMnNtcGdmeThxeTY5In0.-OgEUsCLZv5yV35LiNa-Pg',
-      geocoderAccessToken: '',
     }),
   ],
   exports: [MapBoxComponent],

@@ -1,0 +1,7 @@
+<mat-form-field class="model-select">
+  <mat-label>{{ 'model' | transloco }}</mat-label>
+  <mat-select [value]="selectedModel$ | async" (valueChange)="onSelectionChange($event)">
+    <mat-option *ngFor="let model of valuationModels$ | async" [value]="model">{{ model.description }}</mat-option>
+  </mat-select>
+</mat-form-field>
+

@@ -8,10 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\models.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\models.proto">
+      <GrpcServices>Server</GrpcServices>
+    </Protobuf>
     <Protobuf Include="Protos\wozobject.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\subobject.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\taxoverview.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\notes.proto" GrpcServices="Server" />
+    <Protobuf Include="Protos\models.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\timeperiod.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\columndefinition.proto" GrpcServices="Server" />
     <Protobuf Include="Protos\overviewrequests.proto" GrpcServices="Server" />

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "gRPCServer.Protos";
+
+package models;
+
+message ModelsProto{
+	repeated ModelRecord notes = 1;
+}
+
+message ModelRecord{
+	int64 id= 1;
+	string description = 2;
+}

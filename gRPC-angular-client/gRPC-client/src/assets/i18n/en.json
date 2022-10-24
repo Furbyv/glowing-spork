@@ -24,6 +24,7 @@
   "exports": "Export files",
   "settings": "Settings",
   "do-filter-objects": "Press filter to look-up objects",
-  "taxcode": "Tax code"
+  "taxcode": "Tax code",
+  "model": "Model"
 }
 

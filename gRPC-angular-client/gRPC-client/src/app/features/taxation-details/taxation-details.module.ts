@@ -7,12 +7,13 @@ import { MapBoxModule } from 'src/app/shared/map-box/map-box.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ObjectDetailsModule } from '../object-details/object-details.module';
+import { ModelSelectComponent } from './components/model-select/model-select.component';
 import { TaxcodeSelectComponent } from './components/taxcode-select/taxcode-select.component';
 import { WozobjectidInputComponent } from './components/wozobjectid-input/wozobjectid-input.component';
 import { TaxationDetailsPageComponent } from './pages/taxation-details-page/taxation-details-page.component';
 
 @NgModule({
-  declarations: [TaxationDetailsPageComponent, TaxcodeSelectComponent, WozobjectidInputComponent],
+  declarations: [TaxationDetailsPageComponent, TaxcodeSelectComponent, WozobjectidInputComponent, ModelSelectComponent],
   imports: [
     CommonModule,
     MapBoxModule,
